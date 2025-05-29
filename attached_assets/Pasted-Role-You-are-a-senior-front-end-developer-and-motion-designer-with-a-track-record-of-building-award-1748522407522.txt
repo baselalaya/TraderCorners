@@ -1,0 +1,100 @@
+Role: You are a senior front-end developer and motion designer with a track record of building award-winning crypto and trading platforms.
+
+Project: Design a high-end homepage for Trader Corners, a digital-first financial trading platform offering Forex, Crypto, and CFDs. The site should feel futuristic, secure, and trader-focused, inspired by Awwwards-style websites.
+
+Visual Reference: Use the style and animations from the attached image — glowing UI, neumorphic cards, smooth transitions, dark futuristic aesthetic — but tailor the layout and flow for Trader Corners.
+
+⸻
+
+🧠 Homepage Structure Based on Best UX/UI Practices for 2025
+
+1. Immersive Hero Section
+	•	Headline: “Trade Bold. Win Smart.”
+	•	Subheading: “Unlock global markets with lightning-fast execution and real-time insights.”
+	•	Animated 3D globe, token wheel, or abstract crypto spiral
+	•	CTA Buttons: Start Trading | Try Demo
+	•	Real-time animated ticker (BTC/USD, EUR/USD, Gold)
+
+2. Why Trader Corners?
+	•	3 or 4 icon cards with hover animations:
+	•	Fast Execution ⚡
+	•	Fully Regulated & Secure 🔒
+	•	24/5 Multilingual Support 🤝
+	•	Multi-Asset Trading 💹
+
+3. Live Markets Section
+	•	Tabbed: Forex | Crypto | Commodities
+	•	Table with live data, smooth animated % changes
+	•	Use card-style rows or data grid for mobile
+
+4. Copy Trading / Smart Strategies
+	•	Horizontal card carousel:
+	•	Each card shows a top trader with ROI stats
+	•	CTA: “Copy Strategy” or “View Profile”
+
+5. Trading Platforms
+	•	Highlight MT4 (Desktop, Web, Mobile)
+	•	Show animated device previews or scrolling interfaces
+	•	CTA: “Download MT4 Platform”
+
+6. Account Types (No Islamic)
+	•	Grid layout or 3 cards: Demo, Standard, VIP
+	•	Each card shows:
+	•	Minimum deposit
+	•	Spreads
+	•	Leverage
+	•	Commissions
+	•	Animate card flip or elevation on hover
+
+7. Education Hub
+	•	Slider with educational resources:
+	•	Trading Videos 🎥
+	•	Webinars 📅
+	•	Market News 📰
+	•	eBooks 📘
+	•	CTA: “Explore Learning Center”
+
+8. Security & Trust Section
+	•	Highlight:
+	•	Protection Fund
+	•	Cold Wallet Storage
+	•	Tier-1 Licensing Logos
+	•	Central animated badge (e.g. glowing shield or coin)
+
+9. Mobile App CTA
+	•	Side-by-side layout: app screenshots + QR code
+	•	CTA: “Download the Trader Corners App”
+	•	iOS & Android badges
+
+10. FAQ Accordion
+	•	Smooth expand/collapse
+	•	Example questions:
+	•	How do I open an account?
+	•	Is my capital safe?
+	•	How can I track my trades?
+	•	What products can I trade?
+
+11. Global Footer
+	•	Columns: Company | Products | Platforms | Resources | Legal | Socials
+	•	Newsletter signup with success feedback animation
+
+⸻
+
+⚙️ TECH STACK + UI BEHAVIOR
+	•	Stack: HTML5, TailwindCSS, JS (Alpine.js or Framer Motion)
+	•	Interactions:
+	•	Scroll-triggered section reveals
+	•	Hover scale and glow on cards
+	•	Button micro-interactions
+	•	Parallax or animated background blobs
+	•	Fonts: Manrope, Satoshi, or Space Grotesk
+	•	Colors:
+	•	Background: #0B0F17
+	•	Accent: #00F3C8, #00A3FF
+	•	Text: #FFFFFF (80-100% opacity tiers)
+
+⸻
+
+🧬 Final Prompt Summary
+
+Build a homepage for Trader Corners — a cutting-edge trading platform for Forex, Crypto, and CFDs. The site should feel premium, modern, and globally trusted. Use a dark glowing aesthetic, fluid animations, and high-converting layout with clear CTAs and top-tier mobile responsiveness. Prioritize user flow, interactivity, and trust-building components.
