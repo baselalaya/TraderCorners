@@ -11,6 +11,7 @@ import MobileAppSection from "@/components/mobile-app-section";
 import FAQSection from "@/components/faq-section";
 import Footer from "@/components/footer";
 import InteractiveCursor from "@/components/interactive-cursor";
+import ScrollProgress from "@/components/scroll-progress";
 
 export default function Home() {
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Home() {
       <div className="floating-element w-36 h-36 bottom-1/3 right-10 liquid-morph" style={{ animationDelay: "8s" }} />
       <div className="floating-element w-20 h-20 top-3/4 left-1/2 breathing" style={{ animationDelay: "10s" }} />
       
+      <ScrollProgress />
       <InteractiveCursor />
       <Header />
       <HeroSection />

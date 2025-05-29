@@ -39,7 +39,7 @@ export default function Header() {
             <Button variant="outline" className="hidden md:block border-white/20 hover:border-primary backdrop-blur-sm glow-hover">
               Login
             </Button>
-            <Button className="btn-primary text-primary-foreground hover:shadow-lg glow-hover">
+            <Button className="btn-primary text-primary-foreground hover:shadow-lg glow-hover magnetic-btn spotlight">
               Start Trading
             </Button>
             <Button

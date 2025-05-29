@@ -54,23 +54,28 @@ export default function HeroSection() {
           </div>
         </motion.div>
         
-        {/* Live Ticker */}
+        {/* Live Ticker with Advanced Effects */}
         <motion.div 
-          className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal"
+          className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal spotlight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
         >
           <div className="overflow-hidden">
-            <div className="flex space-x-8 ticker-animation">
+            <div className="flex space-x-12 ticker-animation">
               {tickerData.concat(tickerData).map((item, index) => (
-                <div key={index} className="flex items-center space-x-4 whitespace-nowrap">
-                  <span className="font-semibold">{item.symbol}</span>
-                  <span className="text-primary">{item.price}</span>
-                  <span className={item.isPositive ? "text-green-400" : "text-red-400"}>
+                <motion.div 
+                  key={index} 
+                  className="flex items-center space-x-4 whitespace-nowrap group"
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                >
+                  <span className="font-semibold group-hover:text-primary transition-colors">{item.symbol}</span>
+                  <span className="text-primary font-mono">{item.price}</span>
+                  <span className={`font-semibold ${item.isPositive ? "text-green-400" : "text-red-400"} group-hover:scale-110 transition-transform`}>
                     {item.change}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
