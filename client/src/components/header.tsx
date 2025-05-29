@@ -32,11 +32,21 @@ export default function Header() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
               {activeDropdown === 'markets' && (
-                <div className="absolute top-full left-0 mt-4 w-48 bg-background/95 backdrop-blur-xl rounded-xl p-4 shadow-2xl border border-white/20" style={{ zIndex: 9999 }}>
-                  <a href="#forex" className="block py-3 text-sm hover:text-primary transition-colors border-b border-white/10 last:border-b-0">Forex Trading</a>
-                  <a href="#crypto" className="block py-3 text-sm hover:text-primary transition-colors border-b border-white/10 last:border-b-0">Cryptocurrency</a>
-                  <a href="#stocks" className="block py-3 text-sm hover:text-primary transition-colors border-b border-white/10 last:border-b-0">Stock Markets</a>
-                  <a href="#commodities" className="block py-3 text-sm hover:text-primary transition-colors border-b border-white/10 last:border-b-0">Commodities</a>
+                <div className="absolute top-full left-0 mt-4 w-56 bg-slate-900/95 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-slate-700/50" style={{ zIndex: 9999 }}>
+                  <div className="space-y-1">
+                    <a href="#forex" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
+                      📈 Forex Trading
+                    </a>
+                    <a href="#crypto" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
+                      ₿ Cryptocurrency
+                    </a>
+                    <a href="#stocks" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
+                      📊 Stock Markets
+                    </a>
+                    <a href="#commodities" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
+                      🥇 Commodities
+                    </a>
+                  </div>
                 </div>
               )}
             </div>
