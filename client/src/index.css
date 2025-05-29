@@ -517,22 +517,21 @@
 
   /* Clean CTA Button Styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 ease-out;
-    box-shadow: 0 2px 8px rgba(0, 243, 200, 0.2);
+    @apply bg-primary text-black font-semibold rounded-lg transition-all duration-300 ease-out;
+    background: #00F3C8;
   }
 
   .btn-primary:hover {
-    @apply bg-primary/90;
-    box-shadow: 0 4px 12px rgba(0, 243, 200, 0.3);
+    background: #00D4B0;
   }
 
   .btn-secondary {
-    @apply border border-white/30 text-white font-semibold rounded-xl transition-all duration-300 ease-out;
-    background: rgba(255, 255, 255, 0.05);
+    @apply border border-white/30 text-white font-semibold rounded-lg transition-all duration-300 ease-out;
+    background: transparent;
   }
 
   .btn-secondary:hover {
-    @apply border-primary bg-primary/10;
+    @apply border-white bg-white/10;
   }
 
   /* Parallax Section */
