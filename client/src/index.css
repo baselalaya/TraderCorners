@@ -88,7 +88,7 @@
     overflow: hidden;
   }
 
-  .neumorphic::before {
+  .header-shimmer::before {
     content: '';
     position: absolute;
     top: 0;
@@ -98,10 +98,10 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05),
       transparent
     );
-    animation: shimmerSweep 3s ease-in-out infinite;
+    animation: shimmerSweep 6s ease-in-out infinite;
   }
 
   /* Award-Level Hover Effects with Advanced Micro-interactions */
@@ -259,9 +259,10 @@
   }
 
   @keyframes shimmerSweep {
-    0% { left: -100%; }
-    50% { left: 100%; }
-    100% { left: 100%; }
+    0% { left: -100%; opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
   }
 
   /* Magnetic Button Effect */

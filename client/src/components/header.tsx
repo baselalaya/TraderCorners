@@ -6,11 +6,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 neumorphic backdrop-blur-xl">
+    <header className="fixed top-0 w-full z-50 neumorphic backdrop-blur-xl header-shimmer">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 btn-primary rounded-lg flex items-center justify-center pulse-glow">
+            <div className="w-10 h-10 btn-primary rounded-lg flex items-center justify-center">
               <TrendingUp className="text-primary-foreground" size={20} />
             </div>
             <span className="font-space text-xl font-bold">Trader Corners</span>

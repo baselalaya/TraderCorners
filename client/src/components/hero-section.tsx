@@ -27,7 +27,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-space text-hero-xl mb-6 text-balance breathing">
+          <h1 className="font-space text-hero-xl mb-6 text-balance">
             Trade <span className="text-gradient">Bold.</span><br />
             Win <span className="text-gradient">Smart.</span>
           </h1>
@@ -38,7 +38,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Button 
               size="lg" 
-              className="btn-primary text-primary-foreground magnetic-btn spotlight px-8 py-4 glow-hover"
+              className="btn-primary text-primary-foreground magnetic-btn px-8 py-4 glow-hover"
             >
               <Rocket className="mr-2" size={20} />
               Start Trading
@@ -56,7 +56,7 @@ export default function HeroSection() {
         
         {/* Live Ticker with Advanced Effects */}
         <motion.div 
-          className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal spotlight"
+          className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

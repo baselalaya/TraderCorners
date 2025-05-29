@@ -39,7 +39,7 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="neumorphic rounded-2xl p-8 text-center glow-hover scroll-reveal group card-tilt spotlight"
+              className="neumorphic rounded-2xl p-8 text-center glow-hover scroll-reveal group card-tilt"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
                 transition: { duration: 0.4, type: "spring" }
               }}
             >
-              <div className="w-16 h-16 btn-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-125 transition-all duration-500 shadow-lg breathing">
+              <div className="w-16 h-16 btn-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-125 transition-all duration-500 shadow-lg">
                 <feature.icon className="text-primary-foreground" size={32} />
               </div>
               <h3 className="font-space text-xl font-bold mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>

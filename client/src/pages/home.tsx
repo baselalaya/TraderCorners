@@ -36,13 +36,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Award-Winning Floating Background Elements */}
-      <div className="floating-element w-32 h-32 top-20 left-10 liquid-morph" style={{ animationDelay: "0s" }} />
-      <div className="floating-element w-24 h-24 top-1/2 right-20 breathing" style={{ animationDelay: "2s" }} />
-      <div className="floating-element w-40 h-40 bottom-20 left-1/4 liquid-morph" style={{ animationDelay: "4s" }} />
-      <div className="floating-element w-28 h-28 top-1/3 right-1/3 breathing" style={{ animationDelay: "6s" }} />
-      <div className="floating-element w-36 h-36 bottom-1/3 right-10 liquid-morph" style={{ animationDelay: "8s" }} />
-      <div className="floating-element w-20 h-20 top-3/4 left-1/2 breathing" style={{ animationDelay: "10s" }} />
+
       
       <ScrollProgress />
       <InteractiveCursor />
