@@ -515,65 +515,60 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Premium 2025 CTA Buttons - Built from Scratch */
+  /* 2025 Premium CTA System */
   .btn-primary {
     background: #00F3C8;
-    color: #1a1a1a;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.5px;
+    color: #0B0F17;
+    font-weight: 600;
+    font-size: inherit;
+    letter-spacing: 0.3px;
     border: none;
-    border-radius: 10px;
-    padding: 14px 28px;
+    border-radius: 12px;
+    padding: 16px 32px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.25s ease;
     box-shadow: 
-      0 4px 14px 0 rgba(0, 243, 200, 0.15),
-      0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      0 2px 8px rgba(0, 243, 200, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
     position: relative;
-    overflow: hidden;
   }
 
   .btn-primary:hover {
-    background: #00E0B5;
-    transform: translateY(-1px);
+    background: #00E6BB;
+    transform: translateY(-2px);
     box-shadow: 
-      0 6px 20px 0 rgba(0, 243, 200, 0.25),
-      0 2px 4px 0 rgba(0, 0, 0, 0.12);
-  }
-
-  .btn-primary:active {
-    transform: translateY(0);
-    box-shadow: 
-      0 2px 8px 0 rgba(0, 243, 200, 0.2),
-      0 1px 2px 0 rgba(0, 0, 0, 0.08);
+      0 8px 24px rgba(0, 243, 200, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.15);
   }
 
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: transparent;
     color: #ffffff;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 14px 28px;
+    font-weight: 600;
+    font-size: inherit;
+    letter-spacing: 0.3px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px 31px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(8px);
     position: relative;
   }
 
   .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .btn-secondary:active {
-    transform: translateY(0);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
   }
 
   /* Parallax Section */
