@@ -68,8 +68,8 @@ export default function EducationSection() {
               </div>
               <h3 className="font-space text-xl font-bold mb-3">{resource.title}</h3>
               <p className="text-muted-foreground mb-4 text-balance">{resource.description}</p>
-              <button className="text-primary hover:text-foreground transition-all duration-300 font-medium group-hover:scale-105">
-                {resource.action} <ArrowRight className="inline ml-1 transition-transform group-hover:translate-x-1" size={16} />
+              <button className="cta-button cta-outline cta-sm" aria-label={`${resource.action} for ${resource.title}`}>
+                {resource.action} <ArrowRight className="ml-1" size={16} />
               </button>
             </motion.div>
           ))}

@@ -71,9 +71,9 @@ export default function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" className="border-white/20 hover:border-primary">
+            <button className="cta-button cta-outline" aria-label="Login to your trading account">
               Login
-            </Button>
+            </button>
             <button className="cta-button cta-lg" aria-label="Start trading with Trader Corners">
               Start Trading
             </button>
@@ -100,7 +100,7 @@ export default function Header() {
               <a href="#accounts" className="hover:text-primary transition-colors text-lg">Accounts</a>
               <a href="#contact" className="hover:text-primary transition-colors text-lg">Contact</a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-white/10">
-                <Button variant="outline" className="border-white/20 justify-start">Login</Button>
+                <button className="cta-button cta-outline justify-start w-full" aria-label="Login to your trading account">Login</button>
                 <button className="cta-button" aria-label="Start trading with Trader Corners">Start Trading</button>
               </div>
             </div>
