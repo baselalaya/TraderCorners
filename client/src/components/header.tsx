@@ -21,18 +21,18 @@ export default function Header() {
           </div>
           
           <div className="hidden lg:flex items-center space-x-8">
-            <div className="relative group">
-              <button 
-                className="flex items-center space-x-1 hover:text-primary transition-all duration-300 relative group font-medium"
-                onMouseEnter={() => setActiveDropdown('markets')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
+            <div 
+              className="relative group"
+              onMouseEnter={() => setActiveDropdown('markets')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="flex items-center space-x-1 hover:text-primary transition-all duration-300 relative group font-medium">
                 <span>Markets</span>
                 <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
               {activeDropdown === 'markets' && (
-                <div className="absolute top-full left-0 mt-2 w-48 neumorphic rounded-xl p-4 shadow-xl border border-white/10">
+                <div className="absolute top-full left-0 mt-2 w-48 neumorphic rounded-xl p-4 shadow-xl border border-white/10 z-50">
                   <a href="#forex" className="block py-2 text-sm hover:text-primary transition-colors">Forex Trading</a>
                   <a href="#crypto" className="block py-2 text-sm hover:text-primary transition-colors">Cryptocurrency</a>
                   <a href="#stocks" className="block py-2 text-sm hover:text-primary transition-colors">Stock Markets</a>
