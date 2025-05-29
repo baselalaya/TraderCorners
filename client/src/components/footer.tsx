@@ -68,10 +68,10 @@ export default function Footer() {
                 />
                 <Button 
                   type="submit"
-                  className={`rounded-l-none px-6 ${
+                  className={`rounded-l-none px-6 transition-all ${
                     isSubscribed 
-                      ? 'bg-green-500 hover:bg-green-600 text-white font-semibold transition-all duration-300' 
-                      : 'btn-primary'
+                      ? 'bg-green-500 hover:bg-green-600' 
+                      : 'bg-gradient-cyber text-primary-foreground hover:shadow-lg'
                   }`}
                 >
                   {isSubscribed ? 'Subscribed!' : 'Subscribe'}

@@ -16,7 +16,7 @@ export default function Header() {
               <TrendingUp className="text-white" size={22} />
             </div>
             <div className="flex flex-col">
-              <span className="font-display text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
+              <span className="font-space text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
               <span className="text-xs text-muted-foreground/60 font-medium">Premium Trading</span>
             </div>
           </div>
@@ -43,17 +43,21 @@ export default function Header() {
                 onMouseLeave={() => setShowMarketsDropdown(false)}
               >
                 <div className="p-4 space-y-2">
-                  <a href="#forex" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
-                    Forex Trading
+                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">📈</span>
+                    <span className="font-medium">Forex Trading</span>
                   </a>
-                  <a href="#crypto" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
-                    Cryptocurrency
+                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">₿</span>
+                    <span className="font-medium">Cryptocurrency</span>
                   </a>
-                  <a href="#stocks" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
-                    Stock Markets
+                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">📊</span>
+                    <span className="font-medium">Stock Markets</span>
                   </a>
-                  <a href="#commodities" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
-                    Commodities
+                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">🥇</span>
+                    <span className="font-medium">Commodities</span>
                   </a>
                 </div>
               </div>
@@ -67,10 +71,10 @@ export default function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button className="btn-secondary px-6 py-2.5">
+            <Button variant="outline" className="border-white/20 hover:border-primary">
               Login
             </Button>
-            <Button className="btn-primary px-6 py-2.5">
+            <Button className="cta-primary px-6 py-2.5 rounded-xl font-semibold">
               Start Trading
             </Button>
           </div>

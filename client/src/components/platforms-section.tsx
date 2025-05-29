@@ -47,7 +47,10 @@ export default function PlatformsSection() {
               ))}
             </div>
             
-            <Button className="btn-primary px-8 py-4 text-lg">
+            <Button 
+              size="lg" 
+              className="bg-gradient-cyber text-primary-foreground hover:shadow-lg px-8 py-4"
+            >
               <Download className="mr-2" size={20} />
               Download MT4
             </Button>

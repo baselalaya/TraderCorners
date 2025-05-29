@@ -99,10 +99,13 @@ export default function AccountsSection() {
               </div>
               
               <Button 
-                className={`w-full py-3 ${
+                variant={account.buttonVariant}
+                className={`w-full py-3 glow-hover ${
                   account.buttonVariant === 'default' 
-                    ? 'btn-primary' 
-                    : 'btn-secondary'
+                    ? 'btn-primary text-primary-foreground hover:shadow-lg' 
+                    : account.name === 'VIP'
+                    ? 'border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground backdrop-blur-sm'
+                    : 'border-primary text-primary hover:bg-primary hover:text-primary-foreground backdrop-blur-sm'
                 }`}
               >
                 {account.buttonText}
