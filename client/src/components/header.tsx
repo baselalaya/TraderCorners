@@ -16,7 +16,7 @@ export default function Header() {
               <TrendingUp className="text-white" size={22} />
             </div>
             <div className="flex flex-col">
-              <span className="font-space text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
+              <span className="font-display text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
               <span className="text-xs text-muted-foreground/60 font-medium">Premium Trading</span>
             </div>
           </div>
