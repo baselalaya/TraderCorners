@@ -19,18 +19,58 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20">
-      <div className="container mx-auto px-6 text-center">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <div className="hero-bg-effect" />
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      
+      {/* Trading-themed Background Elements */}
+      <div className="hero-geometry"></div>
+      <div className="hero-geometry"></div>
+      <div className="hero-geometry"></div>
+      <div className="hero-geometry"></div>
+      
+      {/* Floating Market Particles */}
+      {[...Array(8)].map((_, i) => (
+        <div 
+          key={i}
+          className="hero-particle"
+          style={{
+            left: `${10 + i * 12}%`,
+            animationDelay: `${i * 1.5}s`,
+            animationDuration: `${12 + i * 2}s`
+          }}
+        />
+      ))}
+      
+      {/* Financial Data Streams */}
+      <div className="absolute top-1/4 left-8 opacity-20 text-xs font-mono text-primary">
+        <div className="animate-pulse">BTC: $42,851</div>
+        <div className="animate-pulse" style={{ animationDelay: '0.5s' }}>ETH: $2,651</div>
+        <div className="animate-pulse" style={{ animationDelay: '1s' }}>EUR/USD: 1.0842</div>
+      </div>
+      
+      <div className="absolute bottom-1/3 right-8 opacity-20 text-xs font-mono text-secondary">
+        <div className="animate-pulse" style={{ animationDelay: '1.5s' }}>GOLD: $2,048</div>
+        <div className="animate-pulse" style={{ animationDelay: '2s' }}>S&P500: 4,785</div>
+        <div className="animate-pulse" style={{ animationDelay: '2.5s' }}>OIL: $78.42</div>
+      </div>
+      
+      <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div 
-          className="scroll-reveal"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="scroll-reveal max-w-6xl mx-auto"
+          initial={{ opacity: 0, y: 60, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
         >
-          <h1 className="font-space text-hero-xl mb-6 text-balance">
-            Trade <span className="text-gradient">Bold.</span><br />
-            Win <span className="text-gradient">Smart.</span>
-          </h1>
+          <motion.h1 
+            className="font-space text-hero-xl mb-8 text-balance"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+          >
+            Trade <span className="hero-word">Bold.</span><br />
+            Win <span className="hero-word">Smart.</span>
+          </motion.h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
             Unlock global markets with lightning-fast execution and real-time insights.
           </p>
