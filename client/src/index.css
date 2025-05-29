@@ -515,36 +515,65 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Clean CTA Button Styles */
+  /* Premium 2025 CTA Buttons - Built from Scratch */
   .btn-primary {
-    background-color: #00F3C8;
-    color: #000000;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 12px 24px;
+    background: #00F3C8;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
     border: none;
-    transition: background-color 0.2s ease;
+    border-radius: 10px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+      0 4px 14px 0 rgba(0, 243, 200, 0.15),
+      0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-primary:hover {
-    background-color: #00D4B0;
-    color: #000000;
+    background: #00E0B5;
+    transform: translateY(-1px);
+    box-shadow: 
+      0 6px 20px 0 rgba(0, 243, 200, 0.25),
+      0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 2px 8px 0 rgba(0, 243, 200, 0.2),
+      0 1px 2px 0 rgba(0, 0, 0, 0.08);
   }
 
   .btn-secondary {
-    background-color: transparent;
+    background: rgba(255, 255, 255, 0.05);
     color: #ffffff;
-    font-weight: 600;
-    border: 2px solid #ffffff;
-    border-radius: 8px;
-    padding: 10px 22px;
-    transition: all 0.2s ease;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
   }
 
   .btn-secondary:hover {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   /* Parallax Section */
