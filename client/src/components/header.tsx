@@ -67,10 +67,10 @@ export default function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" className="border-white/20 hover:border-primary">
+            <Button className="btn-secondary px-6 py-2.5">
               Login
             </Button>
-            <Button className="cta-primary px-6 py-2.5 rounded-xl font-semibold">
+            <Button className="btn-primary px-6 py-2.5">
               Start Trading
             </Button>
           </div>

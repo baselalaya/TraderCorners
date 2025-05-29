@@ -515,55 +515,23 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Enhanced CTA Button Effects */
-  .cta-primary {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(0);
+  /* Unified CTA Button Styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold rounded-xl transition-all duration-300;
   }
 
-  .cta-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  .btn-primary:hover {
+    @apply shadow-lg;
+    transform: translateY(-1px);
   }
 
-  .cta-primary:hover::before {
-    left: 100%;
+  .btn-secondary {
+    @apply border border-white/20 text-white font-semibold rounded-xl transition-all duration-300;
   }
 
-  .cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-      0 0 30px rgba(0, 243, 200, 0.4),
-      0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .cta-secondary {
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-  }
-
-  .cta-secondary:hover {
-    transform: translateY(-2px);
-    border-color: hsl(var(--primary));
-    background: rgba(0, 243, 200, 0.1);
-    box-shadow: 
-      0 0 20px rgba(0, 243, 200, 0.2),
-      0 8px 25px rgba(0, 0, 0, 0.1);
+  .btn-secondary:hover {
+    @apply border-primary bg-primary/10;
+    transform: translateY(-1px);
   }
 
   /* Parallax Section */
