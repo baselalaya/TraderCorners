@@ -515,58 +515,36 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Premium Award-Winning CTA Button Styles 2025 */
-  button.btn-primary {
-    all: unset !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    background: #00F3C8 !important;
-    color: #000000 !important;
-    font-weight: 600 !important;
-    border-radius: 8px !important;
-    padding: 12px 24px !important;
-    border: none !important;
-    transition: all 0.2s ease !important;
-    box-shadow: 0 2px 8px rgba(0, 243, 200, 0.2) !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
+  /* Clean CTA Button Styles */
+  .btn-primary {
+    background-color: #00F3C8;
+    color: #000000;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px 24px;
+    border: none;
+    transition: background-color 0.2s ease;
   }
 
-  button.btn-primary:hover {
-    background: #00D4B0 !important;
-    color: #000000 !important;
-    box-shadow: 0 4px 12px rgba(0, 243, 200, 0.3) !important;
+  .btn-primary:hover {
+    background-color: #00D4B0;
+    color: #000000;
   }
 
-  button.btn-secondary {
-    all: unset !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    background: transparent !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 8px !important;
-    padding: 10px 22px !important;
-    transition: all 0.2s ease !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
+  .btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 600;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 10px 22px;
+    transition: all 0.2s ease;
   }
 
-  button.btn-secondary:hover {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: #ffffff !important;
+  .btn-secondary:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
   }
 
   /* Parallax Section */
