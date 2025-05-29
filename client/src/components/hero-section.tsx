@@ -27,7 +27,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-space text-5xl md:text-7xl text-hero mb-6 text-balance">
+          <h1 className="font-space text-hero-xl mb-6 text-balance breathing">
             Trade <span className="text-gradient">Bold.</span><br />
             Win <span className="text-gradient">Smart.</span>
           </h1>
@@ -38,7 +38,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Button 
               size="lg" 
-              className="btn-primary text-primary-foreground hover:shadow-2xl transform hover:scale-105 transition-all px-8 py-4 pulse-glow"
+              className="btn-primary text-primary-foreground magnetic-btn spotlight px-8 py-4 glow-hover"
             >
               <Rocket className="mr-2" size={20} />
               Start Trading
@@ -46,7 +46,7 @@ export default function HeroSection() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-white/20 hover:border-primary hover:bg-primary/10 px-8 py-4 backdrop-blur-sm glow-hover"
+              className="border-white/20 hover:border-primary hover:bg-primary/10 px-8 py-4 backdrop-blur-sm glow-hover magnetic-btn"
             >
               <Play className="mr-2" size={20} />
               Try Demo
