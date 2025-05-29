@@ -156,13 +156,13 @@
     animation: gradientShift 4s ease infinite;
   }
 
-  /* WOW Factor Hero Typography */
+  /* Premium Hero Typography */
   .text-hero-xl {
     font-size: clamp(3.5rem, 10vw, 8rem);
     line-height: 0.9;
     font-weight: 900;
     letter-spacing: -0.04em;
-    text-shadow: 0 0 30px rgba(0, 243, 200, 0.15);
+    text-shadow: 0 0 20px rgba(0, 243, 200, 0.08);
   }
 
   .hero-word {
@@ -170,23 +170,14 @@
     background: linear-gradient(
       135deg,
       #ffffff 0%,
-      #00f3c8 20%,
-      #00a3ff 40%,
-      #ffffff 60%,
-      #00f3c8 80%,
+      #00f3c8 30%,
+      #00a3ff 70%,
       #ffffff 100%
     );
-    background-size: 400% 400%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: heroGradient 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(0, 243, 200, 0.1));
-  }
-
-  @keyframes heroGradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    filter: drop-shadow(0 0 8px rgba(0, 243, 200, 0.08));
   }
 
   /* Hero Section Background Effects */
