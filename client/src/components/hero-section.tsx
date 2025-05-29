@@ -19,7 +19,7 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background via-background/98 to-background/95">
       <div className="hero-bg-effect" />
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       
