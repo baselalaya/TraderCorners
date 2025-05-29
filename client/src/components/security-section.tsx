@@ -48,17 +48,21 @@ export default function SecuritySection() {
                 {securityFeatures.map((feature, index) => (
                   <motion.div
                     key={feature.title}
-                    className="text-center"
+                    className="text-center group card-tilt"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
                   >
-                    <div className="w-16 h-16 bg-gradient-cyber rounded-2xl flex items-center justify-center mx-auto mb-4 glow-animation">
+                    <div className="w-16 h-16 btn-primary rounded-2xl flex items-center justify-center mx-auto mb-4 pulse-glow group-hover:scale-110 transition-transform">
                       <feature.icon className="text-primary-foreground" size={32} />
                     </div>
                     <h3 className="font-space text-lg font-bold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground text-sm">{feature.description}</p>
+                    <p className="text-muted-foreground text-sm text-balance">{feature.description}</p>
                   </motion.div>
                 ))}
               </div>

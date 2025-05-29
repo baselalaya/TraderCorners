@@ -52,19 +52,24 @@ export default function EducationSection() {
           {resources.map((resource, index) => (
             <motion.div
               key={resource.title}
-              className="neumorphic rounded-2xl p-6 text-center glow-hover scroll-reveal group"
+              className="neumorphic rounded-2xl p-6 text-center glow-hover scroll-reveal group card-tilt"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 3,
+                transition: { duration: 0.3 }
+              }}
             >
-              <div className={`w-16 h-16 ${resource.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+              <div className={`w-16 h-16 ${resource.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg backdrop-blur-sm`}>
                 <resource.icon className={resource.iconColor} size={32} />
               </div>
               <h3 className="font-space text-xl font-bold mb-3">{resource.title}</h3>
-              <p className="text-muted-foreground mb-4">{resource.description}</p>
-              <button className="text-primary hover:text-foreground transition-colors font-medium">
-                {resource.action} <ArrowRight className="inline ml-1" size={16} />
+              <p className="text-muted-foreground mb-4 text-balance">{resource.description}</p>
+              <button className="text-primary hover:text-foreground transition-all duration-300 font-medium group-hover:scale-105">
+                {resource.action} <ArrowRight className="inline ml-1 transition-transform group-hover:translate-x-1" size={16} />
               </button>
             </motion.div>
           ))}
@@ -79,7 +84,7 @@ export default function EducationSection() {
         >
           <Button 
             size="lg" 
-            className="bg-gradient-cyber text-primary-foreground hover:shadow-lg px-8 py-4"
+            className="btn-primary text-primary-foreground hover:shadow-lg px-8 py-4 glow-hover"
           >
             <GraduationCap className="mr-2" size={20} />
             Explore Learning Center
