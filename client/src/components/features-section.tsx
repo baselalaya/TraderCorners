@@ -39,17 +39,23 @@ export default function FeaturesSection() {
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="neumorphic rounded-2xl p-8 text-center glow-hover scroll-reveal group"
+              className="neumorphic rounded-2xl p-8 text-center glow-hover scroll-reveal group card-tilt"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 5,
+                rotateX: 5,
+                transition: { duration: 0.3 }
+              }}
             >
-              <div className="w-16 h-16 bg-gradient-cyber rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 btn-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
                 <feature.icon className="text-primary-foreground" size={32} />
               </div>
               <h3 className="font-space text-xl font-bold mb-4">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <p className="text-muted-foreground text-balance">{feature.description}</p>
             </motion.div>
           ))}
         </div>

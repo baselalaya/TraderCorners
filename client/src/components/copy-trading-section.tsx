@@ -38,24 +38,32 @@ export default function CopyTradingSection() {
           {traders.map((trader, index) => (
             <motion.div
               key={trader.name}
-              className="neumorphic rounded-2xl p-6 glow-hover scroll-reveal text-center group"
+              className="neumorphic rounded-2xl p-6 glow-hover scroll-reveal text-center group card-tilt"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.02,
+                rotateY: 5,
+                transition: { duration: 0.3 }
+              }}
             >
-              <img 
-                src={trader.image} 
-                alt={trader.name}
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover group-hover:scale-110 transition-transform"
-              />
+              <div className="relative mb-4">
+                <img 
+                  src={trader.image} 
+                  alt={trader.name}
+                  className="w-20 h-20 rounded-full mx-auto object-cover group-hover:scale-110 transition-transform shadow-lg"
+                />
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-background pulse-glow"></div>
+              </div>
               <h3 className="font-space text-xl font-bold mb-2">{trader.name}</h3>
-              <p className="text-muted-foreground mb-4">{trader.specialty}</p>
-              <div className="mb-6">
+              <p className="text-muted-foreground mb-4 text-balance">{trader.specialty}</p>
+              <div className="mb-6 p-4 neumorphic rounded-xl">
                 <div className={`text-2xl font-bold mb-1 ${trader.color}`}>{trader.roi}</div>
                 <div className="text-sm text-muted-foreground">ROI (12 months)</div>
               </div>
-              <Button className="w-full bg-gradient-cyber text-primary-foreground hover:shadow-lg">
+              <Button className="w-full btn-primary text-primary-foreground hover:shadow-lg glow-hover">
                 Copy Strategy
               </Button>
             </motion.div>

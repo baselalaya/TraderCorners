@@ -31,10 +31,10 @@ export default function MarketsSection() {
               <Button
                 key={tab.id}
                 onClick={() => setActiveMarket(tab.id)}
-                className={`mx-2 mb-2 px-6 py-3 rounded-xl font-semibold transition-all ${
+                className={`mx-2 mb-2 px-6 py-3 rounded-xl font-semibold transition-all glow-hover ${
                   activeMarket === tab.id
-                    ? 'bg-gradient-cyber text-primary-foreground'
-                    : 'bg-transparent hover:bg-primary/20 border border-muted-foreground'
+                    ? 'btn-primary text-primary-foreground'
+                    : 'bg-transparent hover:bg-primary/20 border border-white/20 backdrop-blur-sm'
                 }`}
                 variant={activeMarket === tab.id ? 'default' : 'outline'}
               >
@@ -66,7 +66,7 @@ export default function MarketsSection() {
                   >
                     <td className="py-4 px-4">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-gradient-cyber rounded-full flex items-center justify-center text-xs font-bold text-primary-foreground">
+                        <div className="w-8 h-8 btn-primary rounded-full flex items-center justify-center text-xs font-bold text-primary-foreground shadow-lg">
                           {item.icon}
                         </div>
                         <span className="font-semibold">{item.symbol}</span>
@@ -82,7 +82,7 @@ export default function MarketsSection() {
                     <td className="text-center py-4 px-4">
                       <Button 
                         size="sm" 
-                        className="bg-gradient-cyber text-primary-foreground hover:shadow-lg"
+                        className="btn-primary text-primary-foreground hover:shadow-lg glow-hover"
                       >
                         Trade
                       </Button>
