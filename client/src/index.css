@@ -188,9 +188,9 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(ellipse at 20% 50%, rgba(0, 243, 200, 0.015) 0%, transparent 70%),
-      radial-gradient(ellipse at 80% 20%, rgba(0, 163, 255, 0.02) 0%, transparent 70%),
-      radial-gradient(ellipse at 40% 80%, rgba(0, 243, 200, 0.01) 0%, transparent 70%);
+      radial-gradient(ellipse at 20% 50%, rgba(0, 243, 200, 0.02) 0%, transparent 70%),
+      radial-gradient(ellipse at 80% 20%, rgba(0, 163, 255, 0.025) 0%, transparent 70%),
+      radial-gradient(ellipse at 40% 80%, rgba(0, 243, 200, 0.015) 0%, transparent 70%);
     animation: heroBackgroundPulse 15s ease-in-out infinite;
   }
 

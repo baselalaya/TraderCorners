@@ -19,9 +19,15 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background via-background/98 to-background/95">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background/95 via-background/90 to-background/85">
       <div className="hero-bg-effect" />
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      
+      {/* Simple Background Elements */}
+      <div className="absolute top-1/3 left-1/4 w-1 h-32 bg-gradient-to-b from-primary/10 to-transparent opacity-30"></div>
+      <div className="absolute top-1/2 right-1/3 w-24 h-24 border border-primary/8 rounded-full opacity-20"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-16 h-1 bg-gradient-to-r from-secondary/10 to-transparent opacity-25"></div>
+      <div className="absolute top-1/4 right-1/4 w-2 h-20 bg-gradient-to-b from-secondary/8 to-transparent opacity-30 transform rotate-45"></div>
       
       {/* Trading-themed Background Elements */}
       <div className="hero-geometry"></div>
