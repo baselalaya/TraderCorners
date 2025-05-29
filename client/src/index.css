@@ -516,37 +516,51 @@
   }
 
   /* Premium Award-Winning CTA Button Styles 2025 */
-  .btn-primary {
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active {
     background: #00F3C8 !important;
+    background-image: none !important;
+    background-color: #00F3C8 !important;
     color: #000000 !important;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 12px 24px;
-    border: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 243, 200, 0.2);
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 243, 200, 0.2) !important;
   }
 
   .btn-primary:hover {
     background: #00D4B0 !important;
+    background-color: #00D4B0 !important;
+    background-image: none !important;
     color: #000000 !important;
-    box-shadow: 0 4px 12px rgba(0, 243, 200, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 243, 200, 0.3) !important;
   }
 
-  .btn-secondary {
+  .btn-secondary,
+  .btn-secondary:hover,
+  .btn-secondary:focus,
+  .btn-secondary:active {
     background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
     color: #ffffff !important;
-    font-weight: 600;
-    border: 2px solid #ffffff;
-    border-radius: 8px;
-    padding: 10px 22px;
-    transition: all 0.2s ease;
+    font-weight: 600 !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 8px !important;
+    padding: 10px 22px !important;
+    transition: all 0.2s ease !important;
   }
 
   .btn-secondary:hover {
     background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
     color: #000000 !important;
-    border-color: #ffffff;
+    border-color: #ffffff !important;
   }
 
   /* Parallax Section */
