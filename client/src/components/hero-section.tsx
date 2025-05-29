@@ -89,13 +89,6 @@ export default function HeroSection() {
           </div>
         </motion.div>
         
-        {/* Premium Scroll Indicator */}
-        <div className="scroll-indicator">
-          <div className="scroll-text">Scroll</div>
-          <div className="scroll-line"></div>
-          <div className="scroll-arrow"></div>
-        </div>
-        
         {/* Live Ticker with Advanced Effects */}
         <motion.div 
           className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal"
@@ -122,6 +115,13 @@ export default function HeroSection() {
             </div>
           </div>
         </motion.div>
+      </div>
+      
+      {/* Premium Scroll Indicator */}
+      <div className="scroll-indicator">
+        <div className="scroll-text">Scroll</div>
+        <div className="scroll-line"></div>
+        <div className="scroll-arrow"></div>
       </div>
     </section>
   );

@@ -322,7 +322,7 @@
   /* Premium Scroll Indicator */
   .scroll-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -330,6 +330,7 @@
     align-items: center;
     opacity: 0.6;
     transition: opacity 0.3s ease;
+    z-index: 50;
   }
 
   .scroll-indicator:hover {
