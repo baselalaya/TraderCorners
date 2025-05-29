@@ -38,7 +38,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Button 
               size="lg" 
-              className="btn-primary text-primary-foreground magnetic-btn px-8 py-4 glow-hover"
+              className="btn-primary text-primary-foreground cta-primary px-8 py-4"
             >
               <Rocket className="mr-2" size={20} />
               Start Trading
@@ -46,7 +46,7 @@ export default function HeroSection() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-white/20 hover:border-primary hover:bg-primary/10 px-8 py-4 backdrop-blur-sm glow-hover magnetic-btn"
+              className="cta-secondary px-8 py-4"
             >
               <Play className="mr-2" size={20} />
               Try Demo
