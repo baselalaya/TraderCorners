@@ -515,23 +515,74 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Unified CTA Button Styles */
+  /* Enhanced Premium CTA Button Styles */
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold rounded-xl transition-all duration-300;
+    @apply relative overflow-hidden bg-gradient-to-r from-primary via-primary to-secondary text-primary-foreground font-semibold rounded-xl transition-all duration-500 ease-out;
+    background-size: 200% 100%;
+    box-shadow: 
+      0 4px 15px rgba(0, 243, 200, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
   }
 
   .btn-primary:hover {
-    @apply shadow-lg;
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
+    background-position: 100% 0;
+    box-shadow: 
+      0 8px 25px rgba(0, 243, 200, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
   }
 
   .btn-secondary {
-    @apply border border-white/20 text-white font-semibold rounded-xl transition-all duration-300;
+    @apply relative border-2 text-white font-semibold rounded-xl transition-all duration-500 ease-out;
+    border-image: linear-gradient(135deg, rgba(0, 243, 200, 0.4), rgba(0, 163, 255, 0.4), rgba(0, 243, 200, 0.4)) 1;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(0, 243, 200, 0.6), rgba(0, 163, 255, 0.6));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
 
   .btn-secondary:hover {
-    @apply border-primary bg-primary/10;
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
+    background: linear-gradient(135deg, rgba(0, 243, 200, 0.1), rgba(0, 163, 255, 0.05));
+    box-shadow: 
+      0 8px 25px rgba(0, 243, 200, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover::before {
+    opacity: 1;
   }
 
   /* Parallax Section */

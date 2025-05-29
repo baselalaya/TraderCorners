@@ -53,20 +53,14 @@ export default function MobileAppSection() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                variant="outline"
-                className="flex items-center justify-center space-x-3 px-6 py-3 bg-black/50 hover:bg-black border-gray-700 hover:border-gray-600"
-              >
+              <Button className="btn-secondary flex items-center justify-center space-x-3 px-6 py-3">
                 <FaApple className="text-white" size={24} />
                 <div className="text-left">
                   <div className="text-xs text-muted-foreground">Download on the</div>
                   <div className="text-sm font-semibold">App Store</div>
                 </div>
               </Button>
-              <Button 
-                variant="outline"
-                className="flex items-center justify-center space-x-3 px-6 py-3 bg-black/50 hover:bg-black border-gray-700 hover:border-gray-600"
-              >
+              <Button className="btn-secondary flex items-center justify-center space-x-3 px-6 py-3">
                 <FaGooglePlay className="text-white" size={24} />
                 <div className="text-left">
                   <div className="text-xs text-muted-foreground">Get it on</div>
