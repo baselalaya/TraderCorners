@@ -74,9 +74,9 @@ export default function Header() {
             <Button variant="outline" className="border-white/20 hover:border-primary">
               Login
             </Button>
-            <Button className="cta-primary px-6 py-2.5 rounded-xl font-semibold">
+            <button className="cta-button cta-lg" aria-label="Start trading with Trader Corners">
               Start Trading
-            </Button>
+            </button>
           </div>
           
           {/* Mobile Menu Button */}
@@ -101,7 +101,7 @@ export default function Header() {
               <a href="#contact" className="hover:text-primary transition-colors text-lg">Contact</a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-white/10">
                 <Button variant="outline" className="border-white/20 justify-start">Login</Button>
-                <Button className="cta-primary rounded-xl">Start Trading</Button>
+                <button className="cta-button" aria-label="Start trading with Trader Corners">Start Trading</button>
               </div>
             </div>
           </div>

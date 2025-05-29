@@ -98,18 +98,18 @@ export default function AccountsSection() {
                 ))}
               </div>
               
-              <Button 
-                variant={account.buttonVariant}
-                className={`w-full py-3 glow-hover ${
+              <button 
+                className={`cta-button w-full ${
                   account.buttonVariant === 'default' 
-                    ? 'btn-primary text-primary-foreground hover:shadow-lg' 
+                    ? '' 
                     : account.name === 'VIP'
-                    ? 'border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground backdrop-blur-sm'
-                    : 'border-primary text-primary hover:bg-primary hover:text-primary-foreground backdrop-blur-sm'
+                    ? 'cta-secondary'
+                    : 'cta-outline'
                 }`}
+                aria-label={`${account.buttonText} for ${account.name} account`}
               >
                 {account.buttonText}
-              </Button>
+              </button>
             </motion.div>
           ))}
         </div>

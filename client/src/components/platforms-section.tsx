@@ -47,13 +47,10 @@ export default function PlatformsSection() {
               ))}
             </div>
             
-            <Button 
-              size="lg" 
-              className="bg-gradient-cyber text-primary-foreground hover:shadow-lg px-8 py-4"
-            >
+            <button className="cta-button cta-lg" aria-label="Download MetaTrader 4 platform">
               <Download className="mr-2" size={20} />
               Download MT4
-            </Button>
+            </button>
           </motion.div>
           
           <motion.div 

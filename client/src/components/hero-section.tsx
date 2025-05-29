@@ -77,21 +77,14 @@ export default function HeroSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <Button 
-              size="lg" 
-              className="btn-primary text-primary-foreground cta-primary px-8 py-4"
-            >
+            <button className="cta-button cta-lg" aria-label="Start trading with premium features">
               <Rocket className="mr-2" size={20} />
               Start Trading
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="cta-secondary px-8 py-4"
-            >
+            </button>
+            <button className="cta-button cta-outline cta-lg" aria-label="Try our trading demo">
               <Play className="mr-2" size={20} />
               Try Demo
-            </Button>
+            </button>
           </div>
         </motion.div>
         

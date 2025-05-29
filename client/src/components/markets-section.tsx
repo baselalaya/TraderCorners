@@ -28,18 +28,18 @@ export default function MarketsSection() {
           {/* Market Tabs */}
           <div className="flex flex-wrap justify-center mb-8">
             {tabs.map((tab) => (
-              <Button
+              <button
                 key={tab.id}
                 onClick={() => setActiveMarket(tab.id)}
-                className={`mx-2 mb-2 px-6 py-3 rounded-xl font-semibold transition-all glow-hover ${
+                className={`cta-button mx-2 mb-2 ${
                   activeMarket === tab.id
-                    ? 'btn-primary text-primary-foreground'
-                    : 'bg-transparent hover:bg-primary/20 border border-white/20 backdrop-blur-sm'
+                    ? ''
+                    : 'cta-outline'
                 }`}
-                variant={activeMarket === tab.id ? 'default' : 'outline'}
+                aria-label={`View ${tab.label} market data`}
               >
                 {tab.label}
-              </Button>
+              </button>
             ))}
           </div>
           
