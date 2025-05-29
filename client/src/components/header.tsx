@@ -4,15 +4,16 @@ import { TrendingUp, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [showMarketsDropdown, setShowMarketsDropdown] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 neumorphic backdrop-blur-xl header-shimmer border-b border-white/5">
-      <nav className="container mx-auto px-6 py-4">
+    <header className="fixed top-0 w-full z-[100] bg-background/80 backdrop-blur-xl border-b border-white/10">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-11 h-11 btn-primary rounded-xl flex items-center justify-center shadow-lg">
-              <TrendingUp className="text-primary-foreground" size={22} />
+            <div className="w-11 h-11 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+              <TrendingUp className="text-white" size={22} />
             </div>
             <div className="flex flex-col">
               <span className="font-space text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
@@ -20,93 +21,92 @@ export default function Header() {
             </div>
           </div>
           
-          <div className="hidden lg:flex items-center space-x-8">
-            <div 
-              className="relative group"
-              onMouseEnter={() => setActiveDropdown('markets')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="flex items-center space-x-1 hover:text-primary transition-all duration-300 relative group font-medium">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
+            <div className="relative">
+              <button 
+                className="flex items-center space-x-1 hover:text-primary transition-colors font-medium py-2"
+                onMouseEnter={() => setShowMarketsDropdown(true)}
+                onMouseLeave={() => setShowMarketsDropdown(false)}
+              >
                 <span>Markets</span>
-                <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <ChevronDown size={14} className={`transition-transform ${showMarketsDropdown ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'markets' && (
-                <div className="absolute top-full left-0 mt-4 w-56 bg-slate-900/95 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-slate-700/50" style={{ zIndex: 9999 }}>
-                  <div className="space-y-1">
-                    <a href="#forex" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
-                      📈 Forex Trading
-                    </a>
-                    <a href="#crypto" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
-                      ₿ Cryptocurrency
-                    </a>
-                    <a href="#stocks" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
-                      📊 Stock Markets
-                    </a>
-                    <a href="#commodities" className="block px-3 py-3 text-sm text-white hover:text-primary hover:bg-white/5 rounded-lg transition-all duration-200">
-                      🥇 Commodities
-                    </a>
-                  </div>
+              
+              {/* Dropdown Menu */}
+              <div 
+                className={`absolute top-full left-0 w-64 bg-slate-800/95 backdrop-blur-xl rounded-xl shadow-2xl border border-slate-600/50 transition-all duration-300 ${
+                  showMarketsDropdown ? 'opacity-100 visible translate-y-2' : 'opacity-0 invisible translate-y-0'
+                }`}
+                style={{ zIndex: 1000 }}
+                onMouseEnter={() => setShowMarketsDropdown(true)}
+                onMouseLeave={() => setShowMarketsDropdown(false)}
+              >
+                <div className="p-4 space-y-2">
+                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">📈</span>
+                    <span className="font-medium">Forex Trading</span>
+                  </a>
+                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">₿</span>
+                    <span className="font-medium">Cryptocurrency</span>
+                  </a>
+                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">📊</span>
+                    <span className="font-medium">Stock Markets</span>
+                  </a>
+                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                    <span className="text-lg">🥇</span>
+                    <span className="font-medium">Commodities</span>
+                  </a>
                 </div>
-              )}
+              </div>
             </div>
-            <a href="#platforms" className="hover:text-primary transition-all duration-300 relative group font-medium">
-              Platforms
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#education" className="hover:text-primary transition-all duration-300 relative group font-medium">
-              Education
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#accounts" className="hover:text-primary transition-all duration-300 relative group font-medium">
-              Accounts
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#contact" className="hover:text-primary transition-all duration-300 relative group font-medium">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          </div>
+            
+            <a href="#platforms" className="hover:text-primary transition-colors font-medium">Platforms</a>
+            <a href="#education" className="hover:text-primary transition-colors font-medium">Education</a>
+            <a href="#accounts" className="hover:text-primary transition-colors font-medium">Accounts</a>
+            <a href="#contact" className="hover:text-primary transition-colors font-medium">Contact</a>
+          </nav>
           
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" className="hidden lg:block border-white/20 hover:border-primary backdrop-blur-sm font-medium">
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <Button variant="outline" className="border-white/20 hover:border-primary">
               Login
             </Button>
-            <Button className="cta-primary text-primary-foreground px-6 py-2.5 rounded-xl font-semibold">
+            <Button className="cta-primary px-6 py-2.5 rounded-xl font-semibold">
               Start Trading
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
           </div>
+          
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
         </div>
         
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden mt-6 pb-6 border-t border-white/10">
             <div className="flex flex-col space-y-4 pt-6">
-              <a href="#markets" className="hover:text-primary transition-colors text-lg font-medium">Markets</a>
-              <a href="#platforms" className="hover:text-primary transition-colors text-lg font-medium">Platforms</a>
-              <a href="#education" className="hover:text-primary transition-colors text-lg font-medium">Education</a>
-              <a href="#accounts" className="hover:text-primary transition-colors text-lg font-medium">Accounts</a>
-              <a href="#contact" className="hover:text-primary transition-colors text-lg font-medium">Contact</a>
+              <a href="#markets" className="hover:text-primary transition-colors text-lg">Markets</a>
+              <a href="#platforms" className="hover:text-primary transition-colors text-lg">Platforms</a>
+              <a href="#education" className="hover:text-primary transition-colors text-lg">Education</a>
+              <a href="#accounts" className="hover:text-primary transition-colors text-lg">Accounts</a>
+              <a href="#contact" className="hover:text-primary transition-colors text-lg">Contact</a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-white/10">
-                <Button variant="outline" className="border-white/20 hover:border-primary backdrop-blur-sm font-medium text-left justify-start">
-                  Login
-                </Button>
-                <Button className="cta-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold">
-                  Start Trading
-                </Button>
+                <Button variant="outline" className="border-white/20 justify-start">Login</Button>
+                <Button className="cta-primary rounded-xl">Start Trading</Button>
               </div>
             </div>
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 }
