@@ -43,21 +43,17 @@ export default function Header() {
                 onMouseLeave={() => setShowMarketsDropdown(false)}
               >
                 <div className="p-4 space-y-2">
-                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">📈</span>
-                    <span className="font-medium">Forex Trading</span>
+                  <a href="#forex" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
+                    Forex Trading
                   </a>
-                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">₿</span>
-                    <span className="font-medium">Cryptocurrency</span>
+                  <a href="#crypto" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
+                    Cryptocurrency
                   </a>
-                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">📊</span>
-                    <span className="font-medium">Stock Markets</span>
+                  <a href="#stocks" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
+                    Stock Markets
                   </a>
-                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">🥇</span>
-                    <span className="font-medium">Commodities</span>
+                  <a href="#commodities" className="block px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all font-medium">
+                    Commodities
                   </a>
                 </div>
               </div>
