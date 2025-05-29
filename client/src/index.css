@@ -162,7 +162,7 @@
     line-height: 0.9;
     font-weight: 900;
     letter-spacing: -0.04em;
-    text-shadow: 0 0 50px rgba(0, 243, 200, 0.4);
+    text-shadow: 0 0 30px rgba(0, 243, 200, 0.15);
   }
 
   .hero-word {
@@ -181,7 +181,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: heroGradient 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(0, 243, 200, 0.3));
+    filter: drop-shadow(0 0 10px rgba(0, 243, 200, 0.1));
   }
 
   @keyframes heroGradient {
@@ -304,9 +304,9 @@
   /* Particle System */
   .hero-particle {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(0, 243, 200, 0.6);
+    width: 1px;
+    height: 1px;
+    background: rgba(0, 243, 200, 0.2);
     border-radius: 50%;
     animation: particleFloat 12s linear infinite;
   }

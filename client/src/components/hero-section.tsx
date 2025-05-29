@@ -43,13 +43,13 @@ export default function HeroSection() {
       ))}
       
       {/* Financial Data Streams */}
-      <div className="absolute top-1/4 left-8 opacity-20 text-xs font-mono text-primary">
+      <div className="absolute top-1/4 left-8 opacity-10 text-xs font-mono text-primary">
         <div className="animate-pulse">BTC: $42,851</div>
         <div className="animate-pulse" style={{ animationDelay: '0.5s' }}>ETH: $2,651</div>
         <div className="animate-pulse" style={{ animationDelay: '1s' }}>EUR/USD: 1.0842</div>
       </div>
       
-      <div className="absolute bottom-1/3 right-8 opacity-20 text-xs font-mono text-secondary">
+      <div className="absolute bottom-1/3 right-8 opacity-10 text-xs font-mono text-secondary">
         <div className="animate-pulse" style={{ animationDelay: '1.5s' }}>GOLD: $2,048</div>
         <div className="animate-pulse" style={{ animationDelay: '2s' }}>S&P500: 4,785</div>
         <div className="animate-pulse" style={{ animationDelay: '2.5s' }}>OIL: $78.42</div>
