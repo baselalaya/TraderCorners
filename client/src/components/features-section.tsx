@@ -53,7 +53,7 @@ export default function FeaturesSection() {
             ⚡ Next-Generation Features
           </motion.div>
           
-          <h2 className="font-space text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
             Why Trader Corners?
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -101,7 +101,7 @@ export default function FeaturesSection() {
                   </div>
                   
                   {/* Enhanced Typography */}
-                  <h3 className="font-space text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground text-balance group-hover:text-foreground transition-colors duration-300 leading-relaxed">

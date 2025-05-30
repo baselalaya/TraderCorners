@@ -109,7 +109,7 @@ export default function HeroSection() {
                 ✨ Award-Winning Platform
               </motion.div>
               
-              <h1 className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 <div className="relative">
                   <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
                   <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:rotate-1 hero-highlight">Bold.</span>
