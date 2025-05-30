@@ -156,10 +156,10 @@ export default function Header() {
                         <IconComponent className="text-primary" size={24} />
                       </div>
                       <div className="flex-1">
-                        <div className="font-display text-xl font-semibold text-white group-hover:text-primary transition-colors">
+                        <div className="font-display text-xl font-semibold text-black group-hover:text-primary transition-colors">
                           {item.label}
                         </div>
-                        <div className="text-sm text-gray-400">
+                        <div className="text-sm text-gray-600">
                           Explore {item.label.toLowerCase()}
                         </div>
                       </div>
