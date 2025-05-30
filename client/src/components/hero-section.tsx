@@ -100,15 +100,6 @@ export default function HeroSection() {
             transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
           >
             <div className="space-y-4">
-              <motion.div 
-                className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-semibold text-primary backdrop-blur-sm"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                ✨ Award-Winning Platform
-              </motion.div>
-              
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 <div className="relative">
                   <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
