@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Menu, X, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,12 +70,24 @@ export default function Header() {
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="cta-button cta-outline" aria-label="Login to your trading account">
-              Login
-            </button>
-            <button className="cta-button cta-lg" aria-label="Start trading with Trader Corners">
-              Start Trading
-            </button>
+            <motion.button 
+              className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label="Login to your trading account"
+            >
+              <span className="relative z-10 font-bold">Login</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
+            <motion.button 
+              className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label="Start trading with Trader Corners"
+            >
+              <span className="relative z-10 font-bold">Start Trading</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
           </div>
           
           {/* Mobile Menu Button */}
@@ -98,8 +111,24 @@ export default function Header() {
               <a href="#accounts" className="hover:text-primary transition-colors text-lg">Accounts</a>
               <a href="#contact" className="hover:text-primary transition-colors text-lg">Contact</a>
               <div className="flex flex-col space-y-3 pt-6 border-t border-white/10">
-                <button className="cta-button cta-outline justify-start w-full" aria-label="Login to your trading account">Login</button>
-                <button className="cta-button" aria-label="Start trading with Trader Corners">Start Trading</button>
+                <motion.button 
+                  className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group w-full"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="Login to your trading account"
+                >
+                  <span className="relative z-10 font-bold">Login</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
+                <motion.button 
+                  className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group w-full"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="Start trading with Trader Corners"
+                >
+                  <span className="relative z-10 font-bold">Start Trading</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
               </div>
             </div>
           </div>
