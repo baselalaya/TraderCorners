@@ -514,7 +514,51 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Pure Gold CTA Buttons */
+  /* Micro-interaction Keyframes */
+  @keyframes focusPulse {
+    0% { 
+      box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.3),
+        0 0 0 6px rgba(255, 215, 0, 0.1),
+        0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+    50% { 
+      box-shadow: 
+        0 0 0 5px rgba(255, 215, 0, 0.4),
+        0 0 0 10px rgba(255, 215, 0, 0.15),
+        0 6px 16px rgba(255, 215, 0, 0.3);
+    }
+    100% { 
+      box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.3),
+        0 0 0 6px rgba(255, 215, 0, 0.1),
+        0 4px 12px rgba(255, 215, 0, 0.2);
+    }
+  }
+
+  @keyframes buttonBounce {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-2px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  @keyframes rippleExpand {
+    0% { 
+      width: 0; 
+      height: 0; 
+      opacity: 0.6; 
+    }
+    50% { 
+      opacity: 0.3; 
+    }
+    100% { 
+      width: 300px; 
+      height: 300px; 
+      opacity: 0; 
+    }
+  }
+
+  /* Pure Gold CTA Buttons with Micro-interactions */
   .cta-button {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 600 !important;
@@ -526,7 +570,7 @@
     font-size: 14px !important;
     line-height: 1.5 !important;
     cursor: pointer !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
     overflow: hidden !important;
     text-decoration: none !important;
@@ -534,8 +578,44 @@
     align-items: center !important;
     justify-content: center !important;
     white-space: nowrap !important;
+    transform: translateY(0) scale(1) !important;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2) !important;
   }
 
+  /* Micro-interaction: Ripple Effect */
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: 1;
+  }
+
+  /* Micro-interaction: Shimmer Effect */
+  .cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s ease;
+    z-index: 2;
+  }
+
+  /* Hover Micro-interactions */
   .cta-button:hover,
   button.cta-button:hover,
   .cta-button.cta-lg:hover,
@@ -550,20 +630,49 @@
     background-repeat: initial !important;
     background-size: initial !important;
     color: #000000 !important;
-    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4) !important;
-    transform: translateY(-1px) !important;
+    box-shadow: 
+      0 8px 25px rgba(255, 176, 0, 0.3),
+      0 4px 12px rgba(255, 215, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-3px) scale(1.02) !important;
     border-color: #FFB000 !important;
   }
 
-  .cta-button:active {
-    background-color: #E6A000;
-    box-shadow: 0 0 25px rgba(230, 160, 0, 0.6);
-    transform: translateY(0);
+  /* Shimmer effect on hover */
+  .cta-button:hover::after {
+    left: 100% !important;
   }
 
-  .cta-button:focus {
-    outline: 2px solid #FFB000;
-    outline-offset: 2px;
+  /* Ripple effect on hover */
+  .cta-button:hover::before {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  /* Active state micro-interactions */
+  .cta-button:active,
+  button.cta-button:active,
+  .cta-button.cta-lg:active,
+  button.cta-button.cta-lg:active {
+    background-color: #E6A000 !important;
+    box-shadow: 
+      0 2px 8px rgba(230, 160, 0, 0.4),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-1px) scale(0.98) !important;
+    transition: all 0.1s ease !important;
+  }
+
+  /* Focus state with animated ring */
+  .cta-button:focus,
+  button.cta-button:focus,
+  .cta-button.cta-lg:focus,
+  button.cta-button.cta-lg:focus {
+    outline: none !important;
+    box-shadow: 
+      0 0 0 3px rgba(255, 215, 0, 0.3),
+      0 0 0 6px rgba(255, 215, 0, 0.1),
+      0 4px 12px rgba(255, 215, 0, 0.2) !important;
+    animation: focusPulse 2s ease-in-out infinite !important;
   }
 
   /* Size variants */
@@ -579,31 +688,120 @@
     border-radius: 6px;
   }
 
-  /* Secondary CTA variant */
+  /* Secondary CTA variant with micro-interactions */
   .cta-button.cta-secondary {
-    background-color: transparent;
-    color: #0A0A0B;
-    border: 2px solid #FFD700;
+    background-color: transparent !important;
+    color: #0A0A0B !important;
+    border: 2px solid #FFD700 !important;
+    position: relative !important;
+  }
+
+  .cta-button.cta-secondary::before {
+    background: rgba(255, 215, 0, 0.1) !important;
   }
 
   .cta-button.cta-secondary:hover {
-    background-color: #FFD700;
-    color: #000000;
-    border-color: #FFB000;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    background-color: #FFD700 !important;
+    color: #000000 !important;
+    border-color: #FFB000 !important;
+    box-shadow: 
+      0 6px 20px rgba(255, 215, 0, 0.25),
+      0 2px 8px rgba(255, 176, 0, 0.15) !important;
+    transform: translateY(-2px) scale(1.01) !important;
   }
 
-  /* Outline variant */
+  /* Outline variant with enhanced micro-interactions */
   .cta-button.cta-outline {
     background-color: transparent !important;
     color: #FFD700 !important;
     border: 2px solid #FFD700 !important;
+    position: relative !important;
+  }
+
+  .cta-button.cta-outline::before {
+    background: rgba(255, 215, 0, 0.08) !important;
+  }
+
+  .cta-button.cta-outline::after {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 215, 0, 0.3),
+      transparent
+    ) !important;
   }
 
   .cta-button.cta-outline:hover {
     background-color: #FFD700 !important;
     color: #000000 !important;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
+    box-shadow: 
+      0 8px 25px rgba(255, 215, 0, 0.3),
+      0 4px 12px rgba(255, 176, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-3px) scale(1.02) !important;
+    border-color: transparent !important;
+  }
+
+  /* Enhanced Micro-interactions for UI Elements */
+  
+  /* Card Hover Micro-interactions */
+  .neumorphic {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .neumorphic:hover {
+    transform: translateY(-4px) rotateX(2deg) rotateY(1deg);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      0 4px 16px rgba(255, 215, 0, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.95),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Link Micro-interactions */
+  a, .hover-link {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  a:hover, .hover-link:hover {
+    transform: translateY(-1px);
+  }
+
+  a::after, .hover-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD700, #FFB000);
+    transition: width 0.3s ease;
+  }
+
+  a:hover::after, .hover-link:hover::after {
+    width: 100%;
+  }
+
+  /* Icon Micro-interactions */
+  .icon-hover, svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .icon-hover:hover, svg:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.2));
+  }
+
+  /* Text Hover Effects */
+  .text-hover {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .text-hover:hover {
+    color: hsl(var(--primary));
+    transform: translateX(2px);
   }
 
   /* Parallax Section */
