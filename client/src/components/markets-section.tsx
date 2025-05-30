@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { marketData } from "@/lib/market-data";
 
@@ -17,82 +16,148 @@ export default function MarketsSection() {
   const currentData = marketData[activeMarket];
 
   return (
-    <section id="markets" className="py-20">
+    <section id="markets" className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 scroll-reveal">
-          <h2 className="font-space text-4xl md:text-5xl font-bold mb-6">Live Markets</h2>
-          <p className="text-xl text-muted-foreground">Real-time pricing across all major asset classes</p>
+        <div className="text-center mb-16">
+          <motion.div 
+            className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-semibold text-primary backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            📈 Real-Time Data
+          </motion.div>
+          
+          <motion.h2 
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            Live Markets
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            Real-time pricing across all major asset classes with institutional-grade data feeds
+          </motion.p>
         </div>
         
-        <div className="neumorphic rounded-2xl p-8 scroll-reveal">
+        <motion.div 
+          className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
           {/* Market Tabs */}
-          <div className="flex flex-wrap justify-center mb-8">
-            {tabs.map((tab) => (
-              <button
+          <div className="flex flex-wrap justify-center mb-12">
+            {tabs.map((tab, index) => (
+              <motion.button
                 key={tab.id}
                 onClick={() => setActiveMarket(tab.id)}
-                className={`cta-button mx-2 mb-2 ${
+                className={`relative mx-2 mb-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   activeMarket === tab.id
-                    ? ''
-                    : 'cta-outline'
+                    ? 'bg-primary text-primary-foreground shadow-lg'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
                 }`}
                 aria-label={`View ${tab.label} market data`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {tab.label}
-              </button>
+                {activeMarket === tab.id && (
+                  <motion.div
+                    className="absolute inset-0 bg-primary/20 rounded-full blur-md"
+                    layoutId="activeTab"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.label}</span>
+              </motion.button>
             ))}
           </div>
           
-          {/* Market Data Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-4 px-4">Asset</th>
-                  <th className="text-right py-4 px-4">Price</th>
-                  <th className="text-right py-4 px-4">Change</th>
-                  <th className="text-right py-4 px-4">Volume</th>
-                  <th className="text-center py-4 px-4">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentData.map((item, index) => (
-                  <motion.tr
-                    key={item.symbol}
-                    className="border-b border-border hover:bg-accent/50 transition-colors"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                  >
-                    <td className="py-4 px-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 btn-primary rounded-full flex items-center justify-center text-xs font-bold text-primary-foreground shadow-lg">
-                          {item.icon}
-                        </div>
-                        <span className="font-semibold">{item.symbol}</span>
+          {/* Market Data Cards */}
+          <div className="grid gap-4">
+            {currentData.map((item, index) => (
+              <motion.div
+                key={item.symbol}
+                className="group relative bg-card/30 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card/50 hover:border-primary/30 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+              >
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-4 items-center">
+                  {/* Asset */}
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center text-lg font-bold text-primary shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <span className="font-display font-semibold text-lg text-foreground">{item.symbol}</span>
+                      <div className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {activeMarket.charAt(0).toUpperCase() + activeMarket.slice(1)}
                       </div>
-                    </td>
-                    <td className="text-right py-4 px-4 font-mono">{item.price}</td>
-                    <td className="text-right py-4 px-4">
-                      <span className={item.isPositive ? "text-green-400" : "text-red-400"}>
-                        {item.change}
-                      </span>
-                    </td>
-                    <td className="text-right py-4 px-4 text-muted-foreground">{item.volume}</td>
-                    <td className="text-center py-4 px-4">
-                      <Button 
-                        size="sm" 
-                        className="btn-primary text-primary-foreground hover:shadow-lg glow-hover"
-                      >
-                        Trade
-                      </Button>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                  </div>
+
+                  {/* Price */}
+                  <div className="text-right md:text-left">
+                    <div className="text-sm text-muted-foreground mb-1">Price</div>
+                    <div className="font-mono text-xl font-bold text-foreground">{item.price}</div>
+                  </div>
+
+                  {/* Change */}
+                  <div className="text-right md:text-left">
+                    <div className="text-sm text-muted-foreground mb-1">24h Change</div>
+                    <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold ${
+                      item.isPositive 
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    }`}>
+                      <span className="text-xs">{item.isPositive ? '↗' : '↘'}</span>
+                      {item.change}
+                    </div>
+                  </div>
+
+                  {/* Volume */}
+                  <div className="text-right md:text-left">
+                    <div className="text-sm text-muted-foreground mb-1">Volume</div>
+                    <div className="font-medium text-foreground">{item.volume}</div>
+                  </div>
+
+                  {/* Action */}
+                  <div className="col-span-2 md:col-span-1 flex justify-center md:justify-end">
+                    <motion.button
+                      className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Trade Now
+                    </motion.button>
+                  </div>
+                </div>
+
+                {/* Pulse Animation */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-80" />
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
