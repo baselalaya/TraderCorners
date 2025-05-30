@@ -90,7 +90,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
         >
-          <h1 className="font-space text-hero-xl mb-8 text-balance">
+          <h1 className="font-space text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance text-foreground leading-tight">
             Trade <span className="text-primary font-bold">Bold.</span><br />
             Win <span className="text-primary font-bold">Smart.</span>
           </h1>
