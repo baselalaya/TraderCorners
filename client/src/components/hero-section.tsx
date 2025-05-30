@@ -23,31 +23,26 @@ export default function HeroSection() {
       {/* Modern Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
       
-
+      {/* Subtle Dots Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)`,
+          backgroundSize: '80px 80px',
+          backgroundPosition: '0 0, 40px 40px'
+        }}></div>
+      </div>
       
-      {/* Floating Geometric Shapes */}
+      {/* Minimal Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-20 h-20 border border-primary/10 rounded-full"
-            style={{
-              left: `${10 + i * 12}%`,
-              top: `${15 + (i % 3) * 25}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              rotate: [0, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 15 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5
-            }}
-          />
-        ))}
+        {/* Small Corner Accents */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-primary/20 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-32 w-1 h-1 bg-primary/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-40 w-1.5 h-1.5 bg-primary/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-20 w-2 h-2 bg-primary/20 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
+        
+        {/* Subtle Lines */}
+        <div className="absolute top-1/3 left-8 w-16 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        <div className="absolute bottom-1/3 right-8 w-12 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
       </div>
       
       {/* Financial Data Streams */}
