@@ -15,15 +15,15 @@
   --card-foreground: 222 84% 5%; /* #0A0A0B */
   --border: 214 32% 91%; /* #E2E8F0 */
   --input: 214 32% 91%; /* #E2E8F0 */
-  --primary: 36 77% 49%; /* #D97706 - Elegant Gold */
-  --primary-foreground: 0 0% 98%; /* #FAFAFA */
-  --secondary: 45 93% 47%; /* #EAB308 - Brighter Gold */
-  --secondary-foreground: 222 84% 5%; /* #0A0A0B */
-  --accent: 47 96% 53%; /* #FCD34D - Light Gold */
-  --accent-foreground: 222 84% 5%; /* #0A0A0B */
+  --primary: 48 96% 53%; /* #FFD700 - Pure Gold */
+  --primary-foreground: 0 0% 0%; /* #000000 */
+  --secondary: 45 100% 51%; /* #FFB000 - Rich Gold */
+  --secondary-foreground: 0 0% 0%; /* #000000 */
+  --accent: 51 100% 50%; /* #FFDF00 - Bright Gold */
+  --accent-foreground: 0 0% 0%; /* #000000 */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 36 77% 49%; /* #D97706 */
+  --ring: 48 96% 53%; /* #FFD700 */
   --radius: 0.5rem;
 }
 
@@ -38,15 +38,15 @@
   --card-foreground: 0 0% 98%; /* #FAFAFA */
   --border: 215 28% 17%; /* #1E293B */
   --input: 215 28% 17%; /* #1E293B */
-  --primary: 36 77% 49%; /* #D97706 - Elegant Gold */
-  --primary-foreground: 0 0% 98%; /* #FAFAFA */
-  --secondary: 45 93% 47%; /* #EAB308 - Brighter Gold */
-  --secondary-foreground: 222 84% 5%; /* #0A0A0B */
-  --accent: 47 96% 53%; /* #FCD34D - Light Gold */
-  --accent-foreground: 222 84% 5%; /* #0A0A0B */
+  --primary: 48 96% 53%; /* #FFD700 - Pure Gold */
+  --primary-foreground: 0 0% 0%; /* #000000 */
+  --secondary: 45 100% 51%; /* #FFB000 - Rich Gold */
+  --secondary-foreground: 0 0% 0%; /* #000000 */
+  --accent: 51 100% 50%; /* #FFDF00 - Bright Gold */
+  --accent-foreground: 0 0% 0%; /* #000000 */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 36 77% 49%; /* #D97706 */
+  --ring: 48 96% 53%; /* #FFD700 */
   --radius: 0.5rem;
 }
 
@@ -60,9 +60,9 @@
     font-family: 'Inter', 'Space Grotesk', sans-serif;
     overflow-x: hidden;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(234, 179, 8, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(252, 211, 77, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 176, 0, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 223, 0, 0.03) 0%, transparent 50%),
       linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
     background-attachment: fixed;
   }
@@ -78,10 +78,10 @@
     @apply bg-card/60 backdrop-blur-sm border border-border;
     background: 
       linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%),
-      linear-gradient(45deg, rgba(217, 119, 6, 0.03) 0%, rgba(234, 179, 8, 0.02) 100%);
+      linear-gradient(45deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 176, 0, 0.02) 100%);
     box-shadow: 
       0 4px 20px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(217, 119, 6, 0.05),
+      0 2px 8px rgba(255, 215, 0, 0.05),
       inset 0 1px 1px rgba(255, 255, 255, 0.9),
       inset 0 -1px 1px rgba(0, 0, 0, 0.02);
     position: relative;
@@ -98,7 +98,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(217, 119, 6, 0.1),
+      rgba(255, 215, 0, 0.1),
       transparent
     );
     animation: shimmerSweep 6s ease-in-out infinite;
@@ -116,7 +116,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(45deg, rgba(217, 119, 6, 0.1), rgba(234, 179, 8, 0.1));
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 176, 0, 0.1));
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -125,9 +125,9 @@
   .glow-hover:hover {
     transform: translateY(-8px) rotateX(5deg) rotateY(1deg) scale(1.02);
     box-shadow: 
-      0 0 40px rgba(217, 119, 6, 0.3),
+      0 0 40px rgba(255, 215, 0, 0.3),
       0 20px 40px rgba(0, 0, 0, 0.15),
-      0 0 60px rgba(234, 179, 8, 0.2);
+      0 0 60px rgba(255, 176, 0, 0.2);
   }
 
   .glow-hover:hover::after {
@@ -515,12 +515,12 @@
     100% { left: 100%; opacity: 0; }
   }
 
-  /* Elegant Gold CTA Buttons */
+  /* Pure Gold CTA Buttons */
   .cta-button {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 600;
-    background-color: #D97706;
-    color: #FAFAFA;
+    background-color: #FFD700;
+    color: #000000;
     border: none;
     border-radius: 8px;
     padding: 12px 24px;
@@ -538,20 +538,20 @@
   }
 
   .cta-button:hover {
-    background-color: #EAB308;
-    color: #0A0A0B;
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+    background-color: #FFB000;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
     transform: translateY(-1px);
   }
 
   .cta-button:active {
-    background-color: #CA8A04;
-    box-shadow: 0 0 25px rgba(202, 138, 4, 0.6);
+    background-color: #E6A000;
+    box-shadow: 0 0 25px rgba(230, 160, 0, 0.6);
     transform: translateY(0);
   }
 
   .cta-button:focus {
-    outline: 2px solid #EAB308;
+    outline: 2px solid #FFB000;
     outline-offset: 2px;
   }
 
@@ -572,27 +572,27 @@
   .cta-button.cta-secondary {
     background-color: transparent;
     color: #0A0A0B;
-    border: 2px solid #D97706;
+    border: 2px solid #FFD700;
   }
 
   .cta-button.cta-secondary:hover {
-    background-color: #D97706;
-    color: #FAFAFA;
-    border-color: #EAB308;
-    box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+    background-color: #FFD700;
+    color: #000000;
+    border-color: #FFB000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   }
 
   /* Outline variant */
   .cta-button.cta-outline {
     background-color: transparent;
-    color: #D97706;
-    border: 2px solid #D97706;
+    color: #FFD700;
+    border: 2px solid #FFD700;
   }
 
   .cta-button.cta-outline:hover {
-    background-color: #D97706;
-    color: #FAFAFA;
-    box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+    background-color: #FFD700;
+    color: #000000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
   }
 
   /* Parallax Section */
