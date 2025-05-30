@@ -7,7 +7,7 @@ const resources = [
     title: "Trading Courses",
     description: "Comprehensive courses from beginner to advanced trading strategies",
     icon: BookOpen,
-    color: "from-amber-500 to-orange-500",
+    color: "from-amber-500 to-yellow-500",
     action: "Start Learning",
     stats: "50+ Courses"
   },
@@ -23,7 +23,7 @@ const resources = [
     title: "Trading Community",
     description: "Connect with traders worldwide and share strategies",
     icon: Users,
-    color: "from-orange-500 to-amber-500",
+    color: "from-yellow-600 to-amber-500",
     action: "Join Community",
     stats: "10K+ Members"
   },
@@ -140,7 +140,7 @@ export default function EducationSection() {
                   
                   {/* CTA */}
                   <motion.button 
-                    className={`w-full py-2 px-4 bg-gradient-to-r ${resource.color} text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn`}
+                    className="w-full py-3 px-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -148,6 +148,7 @@ export default function EducationSection() {
                       {resource.action}
                       <ArrowRight className="ml-1" size={14} />
                     </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                   </motion.button>
                 </div>
 

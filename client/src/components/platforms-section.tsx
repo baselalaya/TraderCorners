@@ -7,8 +7,8 @@ export default function PlatformsSection() {
       name: "MetaTrader 4",
       description: "Industry-leading platform with advanced charting and automated trading capabilities",
       icon: Monitor,
-      color: "from-amber-500 via-yellow-500 to-orange-500",
-      glowColor: "from-amber-500/20 to-orange-500/20",
+      color: "from-amber-500 via-yellow-500 to-yellow-600",
+      glowColor: "from-amber-500/20 to-yellow-600/20",
       features: [
         "Advanced charting tools",
         "Expert Advisors (EAs)",
@@ -20,8 +20,8 @@ export default function PlatformsSection() {
       name: "Web Terminal",
       description: "Trade directly from your browser with full platform functionality",
       icon: Globe,
-      color: "from-yellow-500 via-amber-400 to-orange-400",
-      glowColor: "from-yellow-500/20 to-orange-400/20",
+      color: "from-yellow-500 via-amber-400 to-amber-500",
+      glowColor: "from-yellow-500/20 to-amber-500/20",
       features: [
         "No downloads required",
         "Cross-platform compatibility",
@@ -33,8 +33,8 @@ export default function PlatformsSection() {
       name: "Mobile App",
       description: "Professional trading on-the-go with mobile-optimized interface",
       icon: Smartphone,
-      color: "from-orange-500 via-amber-500 to-yellow-500",
-      glowColor: "from-orange-500/20 to-yellow-500/20",
+      color: "from-yellow-600 via-amber-500 to-yellow-500",
+      glowColor: "from-yellow-600/20 to-yellow-500/20",
       features: [
         "iOS & Android apps",
         "Touch-friendly interface",
@@ -144,7 +144,7 @@ export default function PlatformsSection() {
                   
                   {/* CTA */}
                   <motion.button 
-                    className={`w-full py-4 px-6 bg-gradient-to-r ${platform.color} text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group/btn border border-white/20`}
+                    className="w-full py-4 px-6 bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group/btn"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -153,7 +153,6 @@ export default function PlatformsSection() {
                       Get Started
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                    <div className={`absolute -inset-1 bg-gradient-to-r ${platform.color} opacity-0 group-hover/btn:opacity-30 blur-lg transition-opacity duration-300`} />
                   </motion.button>
                 </div>
 
