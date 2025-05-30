@@ -68,7 +68,6 @@ export default function EducationSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-background to-muted/10" />
       <div className="absolute top-40 left-20 w-80 h-80 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-40 right-20 w-96 h-96 bg-gradient-to-tr from-secondary/5 to-primary/5 rounded-full blur-3xl" />
-      
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
@@ -78,9 +77,7 @@ export default function EducationSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-          >
-            📚 Learn & Grow
-          </motion.div>
+          >Learn & Grow</motion.div>
           
           <motion.h2 
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground"

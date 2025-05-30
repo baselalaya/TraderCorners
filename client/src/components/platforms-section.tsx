@@ -67,7 +67,7 @@ export default function PlatformsSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            🚀 Advanced Technology
+            Advanced Technology
           </motion.div>
           
           <motion.h2 

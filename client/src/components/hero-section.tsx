@@ -174,46 +174,84 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
           >
-            {/* Floating Market Cards */}
-            <div className="relative h-64 market-constellation">
-              {tickerData.map((item, index) => (
-                <motion.div 
-                  key={item.symbol} 
-                  className="market-card absolute"
-                  style={{
-                    left: `${15 + index * 18}%`,
-                    top: `${20 + (index % 2) * 40}%`,
-                    zIndex: 10 + index
-                  }}
-                  initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
-                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 0.2 * index,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{ 
-                    scale: 1.15,
-                    rotateY: 10,
-                    rotateX: 5,
-                    zIndex: 50,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <div className="market-card-inner">
-                    <div className="market-card-front">
-                      <div className="symbol-badge">{item.symbol}</div>
-                      <div className="price-display">{item.price}</div>
-                      <div className={`change-indicator ${item.isPositive ? 'positive' : 'negative'}`}>
-                        <span className="change-arrow">{item.isPositive ? '↗' : '↘'}</span>
-                        {item.change}
+            {/* Modern Market Display */}
+            <div className="relative space-y-6">
+              {/* Live Market Header */}
+              <motion.div 
+                className="flex items-center space-x-3 mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
+              </motion.div>
+
+              {/* Market Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {tickerData.map((item, index) => (
+                  <motion.div
+                    key={item.symbol}
+                    className="group relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index, duration: 0.6 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {/* Glass Card */}
+                    <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/20">
+                      {/* Glow Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Content */}
+                      <div className="relative z-10">
+                        {/* Symbol */}
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-xs font-semibold text-primary tracking-wider uppercase">
+                            {item.symbol}
+                          </span>
+                          <div className={`w-2 h-2 rounded-full ${item.isPositive ? 'bg-emerald-400' : 'bg-red-400'} animate-pulse`}></div>
+                        </div>
+                        
+                        {/* Price */}
+                        <div className="text-2xl font-bold text-foreground mb-2 font-mono">
+                          {item.price}
+                        </div>
+                        
+                        {/* Change */}
+                        <div className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold ${
+                          item.isPositive 
+                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                            : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                        }`}>
+                          <span className={`${item.isPositive ? 'rotate-45' : '-rotate-45'} transition-transform duration-300`}>
+                            →
+                          </span>
+                          <span>{item.change}</span>
+                        </div>
                       </div>
-                      <div className="market-pulse"></div>
+
+                      {/* Animated Border */}
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-transparent to-primary/50 animate-pulse"></div>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Market Trend Indicator */}
+              <motion.div 
+                className="mt-8 text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce"></div>
+                  <span className="text-sm text-emerald-400 font-medium">Markets are up 2.3% today</span>
+                </div>
+              </motion.div>
               
               {/* Connecting Lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none">

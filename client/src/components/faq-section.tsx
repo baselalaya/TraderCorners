@@ -74,7 +74,7 @@ export default function FAQSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            ❓ Got Questions?
+            Got Questions?
           </motion.div>
           
           <motion.h2 

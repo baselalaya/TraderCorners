@@ -49,7 +49,7 @@ export default function MobileAppSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            📱 Mobile Trading
+            Mobile Trading
           </motion.div>
           
           <motion.h2 

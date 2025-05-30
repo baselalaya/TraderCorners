@@ -73,7 +73,7 @@ export default function SecuritySection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            🔒 Maximum Security
+            Maximum Security
           </motion.div>
           
           <motion.h2 
