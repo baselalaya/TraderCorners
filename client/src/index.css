@@ -1053,11 +1053,11 @@
     }
   }
 
-  /* Pure Gold CTA Buttons with Micro-interactions */
+  /* Logo Gold CTA Buttons with Micro-interactions */
   .cta-button {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 600 !important;
-    background-color: #FFD700 !important;
+    background-color: #d3a246 !important;
     color: #000000 !important;
     border: none !important;
     border-radius: 8px !important;
@@ -1074,7 +1074,7 @@
     justify-content: center !important;
     white-space: nowrap !important;
     transform: translateY(0) scale(1) !important;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(211, 162, 70, 0.2) !important;
   }
 
   /* Micro-interaction: Ripple Effect */
@@ -1115,8 +1115,8 @@
   button.cta-button:hover,
   .cta-button.cta-lg:hover,
   button.cta-button.cta-lg:hover {
-    background: #FFB000 !important;
-    background-color: #FFB000 !important;
+    background: #e6b35a !important;
+    background-color: #e6b35a !important;
     background-image: none !important;
     background-origin: initial !important;
     background-clip: initial !important;
@@ -1126,11 +1126,11 @@
     background-size: initial !important;
     color: #000000 !important;
     box-shadow: 
-      0 8px 25px rgba(255, 176, 0, 0.3),
-      0 4px 12px rgba(255, 215, 0, 0.2),
+      0 8px 25px rgba(230, 179, 90, 0.3),
+      0 4px 12px rgba(211, 162, 70, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     transform: translateY(-3px) scale(1.02) !important;
-    border-color: #FFB000 !important;
+    border-color: #e6b35a !important;
   }
 
   /* Shimmer effect on hover */
@@ -1196,42 +1196,42 @@
   }
 
   .cta-button.cta-secondary:hover {
-    background-color: #FFD700 !important;
+    background-color: #d3a246 !important;
     color: #000000 !important;
-    border-color: #FFB000 !important;
+    border-color: #e6b35a !important;
     box-shadow: 
-      0 6px 20px rgba(255, 215, 0, 0.25),
-      0 2px 8px rgba(255, 176, 0, 0.15) !important;
+      0 6px 20px rgba(211, 162, 70, 0.25),
+      0 2px 8px rgba(230, 179, 90, 0.15) !important;
     transform: translateY(-2px) scale(1.01) !important;
   }
 
   /* Outline variant with enhanced micro-interactions */
   .cta-button.cta-outline {
     background-color: transparent !important;
-    color: #FFD700 !important;
-    border: 2px solid #FFD700 !important;
+    color: #d3a246 !important;
+    border: 2px solid #d3a246 !important;
     position: relative !important;
   }
 
   .cta-button.cta-outline::before {
-    background: rgba(255, 215, 0, 0.08) !important;
+    background: rgba(211, 162, 70, 0.08) !important;
   }
 
   .cta-button.cta-outline::after {
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 215, 0, 0.3),
+      rgba(211, 162, 70, 0.3),
       transparent
     ) !important;
   }
 
   .cta-button.cta-outline:hover {
-    background-color: #FFD700 !important;
+    background-color: #d3a246 !important;
     color: #000000 !important;
     box-shadow: 
-      0 8px 25px rgba(255, 215, 0, 0.3),
-      0 4px 12px rgba(255, 176, 0, 0.2),
+      0 8px 25px rgba(211, 162, 70, 0.3),
+      0 4px 12px rgba(230, 179, 90, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     transform: translateY(-3px) scale(1.02) !important;
     border-color: transparent !important;

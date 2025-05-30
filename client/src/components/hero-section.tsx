@@ -128,14 +128,25 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <button className="cta-button cta-lg group" aria-label="Start trading with premium features">
+              <motion.button 
+                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex items-center justify-center"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                aria-label="Start trading with premium features"
+              >
                 <Rocket className="mr-2 group-hover:translate-x-1 transition-transform" size={20} />
-                Start Trading
-              </button>
-              <button className="cta-button cta-outline cta-lg group" aria-label="Try our trading demo">
+                <span className="relative z-10 font-bold">Start Trading</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
+              <motion.button 
+                className="border-2 border-primary text-primary bg-transparent px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group flex items-center justify-center"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                aria-label="Try our trading demo"
+              >
                 <Play className="mr-2 group-hover:scale-110 transition-transform" size={20} />
-                Try Demo
-              </button>
+                <span className="relative z-10 font-bold">Try Demo</span>
+              </motion.button>
             </motion.div>
             
             {/* Trust Indicators */}
