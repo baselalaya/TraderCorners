@@ -105,7 +105,7 @@ export default function Footer() {
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-muted-foreground text-sm mb-4 md:mb-0">
-              © 2024 Trader Corners. All rights reserved. Trading involves risk.
+              © 2025 Trader Corners. All rights reserved. Trading involves risk.
             </div>
             
             <div className="flex space-x-6">
