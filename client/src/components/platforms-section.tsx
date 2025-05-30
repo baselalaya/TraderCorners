@@ -119,7 +119,7 @@ export default function PlatformsSection() {
                 
                 {/* Content */}
                 <div className="relative z-10">
-                  <h3 className="font-display text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-2xl font-bold mb-4 text-foreground">
                     {platform.name}
                   </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
