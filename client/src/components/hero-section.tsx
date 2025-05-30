@@ -25,8 +25,7 @@ export default function HeroSection() {
       {/* 3D Morphing Background */}
       <div className="morphing-backdrop"></div>
       
-      {/* Holographic Grid */}
-      <div className="holographic-grid"></div>
+
       
       {/* Advanced Trading Chart Visualization */}
       <div className="trading-chart-bg">
@@ -86,8 +85,7 @@ export default function HeroSection() {
         />
       ))}
       
-      {/* Dynamic Grid Lines */}
-      <div className="hero-grid-overlay"></div>
+
       
       {/* Prismatic Light Beams */}
       <div className="light-beam beam-1"></div>
