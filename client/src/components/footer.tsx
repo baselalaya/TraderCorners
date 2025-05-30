@@ -116,26 +116,7 @@ export default function Footer() {
                   </form>
                 </div>
 
-                {/* Contact Information */}
-                <div className="space-y-3">
-                  <h4 className="font-display text-lg font-bold mb-4 text-foreground">Get in Touch</h4>
-                  {contactInfo.map((info, index) => {
-                    const IconComponent = info.icon;
-                    return (
-                      <motion.a
-                        key={index}
-                        href={info.href}
-                        className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group"
-                        whileHover={{ x: 5 }}
-                      >
-                        <div className="w-8 h-8 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
-                          <IconComponent size={16} className="text-primary" />
-                        </div>
-                        <span className="text-sm">{info.text}</span>
-                      </motion.a>
-                    );
-                  })}
-                </div>
+
               </motion.div>
             </div>
 
