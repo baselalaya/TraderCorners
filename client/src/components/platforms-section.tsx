@@ -33,8 +33,8 @@ export default function PlatformsSection() {
       name: "Mobile App",
       description: "Professional trading on-the-go with mobile-optimized interface",
       icon: Smartphone,
-      color: "from-yellow-600 via-amber-500 to-yellow-500",
-      glowColor: "from-yellow-600/20 to-yellow-500/20",
+      color: "from-blue-700 via-blue-600 to-blue-500",
+      glowColor: "from-blue-700/20 to-blue-500/20",
       features: [
         "iOS & Android apps",
         "Touch-friendly interface",
