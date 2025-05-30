@@ -43,19 +43,19 @@ export default function Header() {
                 onMouseLeave={() => setShowMarketsDropdown(false)}
               >
                 <div className="p-4 space-y-2">
-                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
                     <span className="text-lg">FX</span>
                     <span className="font-medium">Forex Trading</span>
                   </a>
-                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
                     <span className="text-lg">₿</span>
                     <span className="font-medium">Cryptocurrency</span>
                   </a>
-                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
                     <span className="text-lg">STK</span>
                     <span className="font-medium">Stock Markets</span>
                   </a>
-                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
+                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
                     <span className="text-lg">OIL</span>
                     <span className="font-medium">Commodities</span>
                   </a>
