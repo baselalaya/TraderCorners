@@ -66,7 +66,7 @@ export default function Footer() {
       <div className="relative z-10 py-20 border-t border-border/50">
         <div className="container mx-auto px-6">
           {/* Main Footer Content */}
-          <div className="grid lg:grid-cols-12 gap-12 mb-16">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-16">
             {/* Brand & Newsletter Section */}
             <div className="lg:col-span-4">
               <motion.div
@@ -122,7 +122,7 @@ export default function Footer() {
 
             {/* Footer Links */}
             <div className="lg:col-span-8">
-              <div className="grid md:grid-cols-5 gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
                 {footerSections.map((section, index) => (
                   <motion.div
                     key={section.title}
@@ -131,13 +131,13 @@ export default function Footer() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <h4 className="font-display font-bold mb-6 text-foreground">{section.title}</h4>
-                    <ul className="space-y-3">
+                    <h4 className="font-display font-bold mb-4 md:mb-6 text-foreground text-sm md:text-base">{section.title}</h4>
+                    <ul className="space-y-2 md:space-y-3">
                       {section.links.map((link) => (
                         <li key={link}>
                           <motion.a 
                             href="#" 
-                            className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                            className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                             whileHover={{ x: 3 }}
                           >
                             {link}
@@ -153,13 +153,13 @@ export default function Footer() {
 
           {/* Certifications Section */}
           <motion.div 
-            className="bg-card/30 backdrop-blur-xl border border-border/50 rounded-2xl p-6 mb-12"
+            className="bg-card/30 backdrop-blur-xl border border-border/50 rounded-2xl p-4 md:p-6 mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {certifications.map((cert, index) => {
                 const IconComponent = cert.icon;
                 return (
@@ -175,8 +175,8 @@ export default function Footer() {
           </motion.div>
           
           {/* Bottom Section */}
-          <div className="border-t border-border/50 pt-8">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+          <div className="border-t border-border/50 pt-6 md:pt-8">
+            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
               {/* Copyright */}
               <motion.div 
                 className="text-center lg:text-left"
@@ -185,7 +185,7 @@ export default function Footer() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <div className="text-muted-foreground text-sm mb-2">
+                <div className="text-muted-foreground text-xs md:text-sm mb-2">
                   © 2025 Trader Corners. All rights reserved.
                 </div>
                 <div className="text-xs text-muted-foreground/70">

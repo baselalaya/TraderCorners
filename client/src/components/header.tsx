@@ -113,7 +113,7 @@ export default function Header() {
           >
             <div className="flex flex-col h-full">
               {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border/20">
+              <div className="flex items-center justify-between p-6 border-b border-border/20 bg-[#ffffff]">
                 <img 
                   src="/logo-trader.png" 
                   alt="Trader Corners"
@@ -156,10 +156,10 @@ export default function Header() {
                         <IconComponent className="text-primary" size={24} />
                       </div>
                       <div className="flex-1">
-                        <div className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                        <div className="font-display text-xl font-semibold text-white group-hover:text-primary transition-colors">
                           {item.label}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-gray-400">
                           Explore {item.label.toLowerCase()}
                         </div>
                       </div>
