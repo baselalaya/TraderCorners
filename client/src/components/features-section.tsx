@@ -102,7 +102,7 @@ export default function FeaturesSection() {
                   <h3 className="font-display text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300 text-center">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground text-balance group-hover:text-foreground transition-colors duration-300 leading-relaxed">
+                  <p className="text-muted-foreground text-balance group-hover:text-foreground transition-colors duration-300 leading-relaxed text-center">
                     {feature.description}
                   </p>
                   
