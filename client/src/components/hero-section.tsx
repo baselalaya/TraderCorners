@@ -23,14 +23,7 @@ export default function HeroSection() {
       {/* Modern Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
       
-      {/* Animated Grid Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-          animation: 'gridFloat 20s ease-in-out infinite'
-        }}></div>
-      </div>
+
       
       {/* Floating Geometric Shapes */}
       <div className="absolute inset-0 pointer-events-none">
