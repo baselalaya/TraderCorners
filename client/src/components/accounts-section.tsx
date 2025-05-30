@@ -82,8 +82,8 @@ export default function AccountsSection() {
           {accounts.map((account, index) => (
             <motion.div
               key={account.name}
-              className={`group relative bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl transition-all duration-500 hover:shadow-3xl overflow-hidden ${
-                account.popular ? 'border-primary/50 ring-2 ring-primary/20' : ''
+              className={`group relative bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl transition-all duration-500 hover:shadow-3xl ${
+                account.popular ? 'border-primary/50 ring-2 ring-primary/20 mt-6' : ''
               }`}
               initial={{ opacity: 0, y: 40, rotateX: 10 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -178,7 +178,7 @@ export default function AccountsSection() {
               </div>
               
               {/* Hover Shine Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out overflow-hidden rounded-3xl" />
             </motion.div>
           ))}
         </div>
