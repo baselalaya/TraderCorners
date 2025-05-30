@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Menu, X, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram } from "react-icons/fa";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -101,37 +102,131 @@ export default function Header() {
           </Button>
         </div>
         
-        {/* Mobile Menu */}
+        {/* Full-Screen Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-6 pb-6 border-t border-white/10">
-            <div className="flex flex-col space-y-4 pt-6">
-              <a href="#markets" className="hover:text-primary transition-colors text-lg">Markets</a>
-              <a href="#platforms" className="hover:text-primary transition-colors text-lg">Platforms</a>
-              <a href="#education" className="hover:text-primary transition-colors text-lg">Education</a>
-              <a href="#accounts" className="hover:text-primary transition-colors text-lg">Accounts</a>
-              <a href="#contact" className="hover:text-primary transition-colors text-lg">Contact</a>
-              <div className="flex flex-col space-y-3 pt-6 border-t border-white/10">
-                <motion.button 
-                  className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group w-full"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  aria-label="Login to your trading account"
+          <motion.div 
+            className="lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col h-full">
+              {/* Mobile Menu Header */}
+              <div className="flex items-center justify-between p-6 border-b border-border/20">
+                <img 
+                  src="/logo-trader.png" 
+                  alt="Trader Corners"
+                  className="h-10 w-auto"
+                />
+                <motion.button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-10 h-10 rounded-xl bg-card/50 border border-border/30 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
-                  <span className="relative z-10 font-bold">Login</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
-                <motion.button 
-                  className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group w-full"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  aria-label="Start trading with Trader Corners"
-                >
-                  <span className="relative z-10 font-bold">Start Trading</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <X size={20} />
                 </motion.button>
               </div>
+
+              {/* Navigation Links */}
+              <div className="flex-1 flex flex-col justify-center px-8 py-12">
+                <div className="space-y-8">
+                  {[
+                    { label: "Markets", href: "#markets", icon: "📈" },
+                    { label: "Platforms", href: "#platforms", icon: "💻" },
+                    { label: "Education", href: "#education", icon: "📚" },
+                    { label: "Accounts", href: "#accounts", icon: "👤" },
+                    { label: "Contact", href: "#contact", icon: "📞" },
+                  ].map((item, index) => (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="group flex items-center space-x-4 py-4 px-6 rounded-2xl bg-card/30 border border-border/20 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                      whileHover={{ x: 10 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {item.label}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          Explore {item.label.toLowerCase()}
+                        </div>
+                      </div>
+                      <div className="text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                        →
+                      </div>
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Menu Footer */}
+              <div className="p-8 border-t border-border/20">
+                <div className="space-y-4">
+                  <motion.button 
+                    className="w-full border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Login to your trading account"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <span className="relative z-10 font-bold">Login to Account</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.button>
+                  
+                  <motion.button 
+                    className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-label="Start trading with Trader Corners"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <span className="relative z-10 font-bold">Start Trading Now</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.button>
+                </div>
+
+                {/* Social Links */}
+                <motion.div 
+                  className="flex justify-center space-x-4 mt-8 pt-6 border-t border-border/20"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  {[
+                    { icon: FaTwitter, href: "#", label: "Twitter" },
+                    { icon: FaLinkedin, href: "#", label: "LinkedIn" },
+                    { icon: FaYoutube, href: "#", label: "YouTube" },
+                    { icon: FaTelegram, href: "#", label: "Telegram" },
+                  ].map((social, index) => (
+                    <motion.a
+                      key={index}
+                      href={social.href}
+                      aria-label={social.label}
+                      className="w-12 h-12 bg-card/50 border border-border/30 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <social.icon size={18} />
+                    </motion.a>
+                  ))}
+                </motion.div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </header>
