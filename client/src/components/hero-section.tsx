@@ -69,8 +69,8 @@ export default function HeroSection() {
           transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
         >
           <h1 className="font-space text-hero-xl mb-8 text-balance">
-            Trade <span className="hero-word">Bold.</span><br />
-            Win <span className="hero-word">Smart.</span>
+            Trade <span className="text-primary font-bold">Bold.</span><br />
+            Win <span className="text-primary font-bold">Smart.</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
             Unlock global markets with lightning-fast execution and real-time insights.
