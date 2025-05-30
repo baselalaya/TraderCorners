@@ -19,7 +19,7 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-br from-background via-background/98 to-background/95">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background via-background/98 to-background/90">
       <div className="hero-bg-effect" />
       
       {/* 3D Morphing Background */}
