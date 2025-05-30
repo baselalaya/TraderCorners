@@ -13,7 +13,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src="/attached_assets/tradercorners-logo.jpg" 
+              src="/tradercorners-logo.jpg" 
               alt="Trader Corners"
               className="h-10 w-auto"
             />
