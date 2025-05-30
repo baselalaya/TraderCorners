@@ -38,15 +38,15 @@
   --card-foreground: 0 0% 98%; /* #FAFAFA */
   --border: 215 28% 17%; /* #1E293B */
   --input: 215 28% 17%; /* #1E293B */
-  --primary: 48 96% 53%; /* #FFD700 - Pure Gold */
+  --primary: 42 68% 55%; /* #d3a246 - Logo Gold */
   --primary-foreground: 0 0% 0%; /* #000000 */
-  --secondary: 45 100% 51%; /* #FFB000 - Rich Gold */
+  --secondary: 45 75% 60%; /* #e6b35a - Lighter Logo Gold */
   --secondary-foreground: 0 0% 0%; /* #000000 */
-  --accent: 51 100% 50%; /* #FFDF00 - Bright Gold */
+  --accent: 48 70% 65%; /* #f0c470 - Accent Gold */
   --accent-foreground: 0 0% 0%; /* #000000 */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 48 96% 53%; /* #FFD700 */
+  --ring: 42 68% 55%; /* #d3a246 */
   --radius: 0.5rem;
 }
 
@@ -60,9 +60,9 @@
     font-family: 'Inter', 'Space Grotesk', sans-serif;
     overflow-x: hidden;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(255, 176, 0, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 223, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(211, 162, 70, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(230, 179, 90, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(240, 196, 112, 0.03) 0%, transparent 50%),
       linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
     background-attachment: fixed;
   }
@@ -146,9 +146,9 @@
 
   .text-gradient {
     background: linear-gradient(135deg, 
-      #FFD700 0%, 
-      #FFB000 50%,
-      #FFDF00 100%);
+      #d3a246 0%, 
+      #e6b35a 50%,
+      #f0c470 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -169,14 +169,14 @@
     display: inline-block;
     background: linear-gradient(
       135deg,
-      #FFD700 0%,
-      #FFB000 50%,
-      #FFDF00 100%
+      #d3a246 0%,
+      #e6b35a 50%,
+      #f0c470 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.2));
+    filter: drop-shadow(0 0 8px rgba(211, 162, 70, 0.2));
   }
 
   /* Hero Section Background Effects */
