@@ -6,25 +6,25 @@ const securityFeatures = [
     title: "Bank-Level Encryption",
     description: "256-bit SSL encryption protects all your data and transactions",
     icon: Lock,
-    color: "from-amber-500 to-yellow-500"
+    color: "from-blue-900 to-blue-800"
   },
   {
     title: "Regulatory Compliance",
     description: "Fully licensed and regulated by top financial authorities worldwide",
     icon: Award,
-    color: "from-yellow-500 to-amber-500"
+    color: "from-blue-800 to-blue-700"
   },
   {
     title: "Two-Factor Authentication",
     description: "Advanced 2FA security ensures only you can access your account",
     icon: Shield,
-    color: "from-yellow-600 to-amber-500"
+    color: "from-blue-700 to-blue-600"
   },
   {
     title: "Real-Time Monitoring",
     description: "24/7 fraud detection and suspicious activity monitoring",
     icon: Eye,
-    color: "from-amber-400 to-yellow-500"
+    color: "from-blue-600 to-blue-500"
   },
 ];
 

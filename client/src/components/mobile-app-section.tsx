@@ -6,22 +6,22 @@ const features = [
   {
     icon: TrendingUp,
     text: "Real-time market data and charts",
-    color: "from-amber-500 to-yellow-500"
+    color: "from-blue-900 to-blue-800"
   },
   {
     icon: Bell,
     text: "Smart price alerts and notifications",
-    color: "from-yellow-500 to-amber-500"
+    color: "from-blue-800 to-blue-700"
   },
   {
     icon: Smartphone,
     text: "Touch-optimized trading interface",
-    color: "from-yellow-600 to-amber-500"
+    color: "from-blue-700 to-blue-600"
   },
   {
     icon: Shield,
     text: "Biometric security login",
-    color: "from-amber-400 to-yellow-500"
+    color: "from-blue-600 to-blue-500"
   },
 ];
 
