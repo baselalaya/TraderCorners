@@ -1,72 +1,200 @@
-import { Button } from "@/components/ui/button";
-import { Download, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { Check, Download, Monitor, Smartphone, Globe, TrendingUp, Zap, Shield } from "lucide-react";
 
 export default function PlatformsSection() {
-  const features = [
-    "Advanced technical analysis tools",
-    "Automated trading with Expert Advisors",
-    "Mobile, web, and desktop versions",
+  const platforms = [
+    {
+      name: "MetaTrader 4",
+      description: "Industry-leading platform with advanced charting and automated trading capabilities",
+      icon: Monitor,
+      color: "from-blue-500 to-cyan-500",
+      features: [
+        "Advanced charting tools",
+        "Expert Advisors (EAs)",
+        "One-click trading",
+        "Custom indicators"
+      ]
+    },
+    {
+      name: "Web Terminal",
+      description: "Trade directly from your browser with full platform functionality",
+      icon: Globe,
+      color: "from-green-500 to-emerald-500",
+      features: [
+        "No downloads required",
+        "Cross-platform compatibility",
+        "Real-time sync",
+        "Secure cloud trading"
+      ]
+    },
+    {
+      name: "Mobile App",
+      description: "Professional trading on-the-go with mobile-optimized interface",
+      icon: Smartphone,
+      color: "from-purple-500 to-pink-500",
+      features: [
+        "iOS & Android apps",
+        "Touch-friendly interface",
+        "Push notifications",
+        "Offline chart analysis"
+      ]
+    }
+  ];
+
+  const stats = [
+    { icon: TrendingUp, value: "99.9%", label: "Uptime" },
+    { icon: Zap, value: "<1ms", label: "Latency" },
+    { icon: Shield, value: "256-bit", label: "Encryption" }
   ];
 
   return (
-    <section id="platforms" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 scroll-reveal">
-          <h2 className="font-space text-4xl md:text-5xl font-bold mb-6">Trading Platforms</h2>
-          <p className="text-xl text-muted-foreground">Professional tools for every trading style</p>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="platforms" className="py-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
+      <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-tr from-secondary/10 to-primary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
           <motion.div 
-            className="scroll-reveal"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-semibold text-primary backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
-            <h3 className="font-space text-3xl font-bold mb-6">MetaTrader 4</h3>
-            <p className="text-lg text-muted-foreground mb-8">
-              The world's most popular trading platform, now optimized for modern traders. 
-              Advanced charting, automated trading, and seamless execution.
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature}
-                  className="flex items-center space-x-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Check className="text-primary flex-shrink-0" size={20} />
-                  <span>{feature}</span>
-                </motion.div>
-              ))}
-            </div>
-            
-            <button className="cta-button cta-lg" aria-label="Download MetaTrader 4 platform">
-              <Download className="mr-2" size={20} />
-              Download MT4
-            </button>
+            🚀 Advanced Technology
           </motion.div>
           
-          <motion.div 
-            className="scroll-reveal"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+          <motion.h2 
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
           >
-            <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-              alt="Trading platform on multiple devices" 
-              className="rounded-2xl shadow-2xl w-full hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
+            Trading Platforms
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            Professional-grade trading platforms designed for speed, reliability, and precision trading
+          </motion.p>
         </div>
+
+        {/* Platform Cards */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          {platforms.map((platform, index) => {
+            const IconComponent = platform.icon;
+            return (
+              <motion.div
+                key={platform.name}
+                className="group relative bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500"
+                initial={{ opacity: 0, y: 40, rotateY: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  rotateY: 5,
+                  transition: { duration: 0.4 }
+                }}
+              >
+                {/* Glow Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`} />
+                
+                {/* Icon */}
+                <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${platform.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <IconComponent className="text-white" size={32} />
+                </div>
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="font-display text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
+                    {platform.name}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {platform.description}
+                  </p>
+                  
+                  {/* Features */}
+                  <div className="space-y-3 mb-8">
+                    {platform.features.map((feature, featureIndex) => (
+                      <motion.div
+                        key={feature}
+                        className="flex items-center space-x-3"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.2 + featureIndex * 0.1 + 0.5 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="w-2 h-2 bg-primary rounded-full" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* CTA */}
+                  <motion.button 
+                    className={`w-full py-3 px-6 bg-gradient-to-r ${platform.color} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Download className="mr-2" size={16} />
+                      Get Started
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                  </motion.button>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Stats Section */}
+        <motion.div 
+          className="bg-card/30 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-xl"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid md:grid-cols-3 gap-8">
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  className="text-center group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="text-primary" size={24} />
+                  </div>
+                  <div className="font-display text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                    {stat.value}
+                  </div>
+                  <div className="text-muted-foreground font-medium">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
