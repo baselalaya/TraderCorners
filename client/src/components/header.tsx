@@ -130,7 +130,7 @@ export default function Header() {
               </div>
 
               {/* Navigation Links */}
-              <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-[#ffffffe8]">
+              <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-[#fff]">
                 <div className="space-y-8">
                   {[
                     { label: "Markets", href: "#markets", icon: BarChart3 },
