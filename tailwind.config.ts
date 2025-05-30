@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'],
+        'serif': ['Poppins', 'sans-serif'],
         'sans': ['DM Sans', 'sans-serif'],
-        'display': ['Playfair Display', 'serif'],
+        'display': ['Poppins', 'sans-serif'],
         'body': ['DM Sans', 'sans-serif'],
       },
       borderRadius: {
