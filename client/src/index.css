@@ -329,17 +329,15 @@
     animation-delay: -10s;
   }
 
-  /* Trading Chart Grid */
+  /* Trading Chart Element */
   .hero-geometry:nth-child(4) {
     bottom: 25%;
     left: 8%;
     width: 80px;
     height: 60px;
-    background: 
-      linear-gradient(90deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
-    background-size: 20px 15px;
-    border: 1px solid rgba(255, 176, 0, 0.12);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.08));
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    border-radius: 4px;
     animation-delay: -7s;
   }
 
@@ -427,25 +425,7 @@
     }
   }
 
-  /* Dynamic Grid Overlay */
-  .hero-grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
-    background-size: 80px 80px;
-    animation: gridShift 30s linear infinite;
-    opacity: 0.4;
-  }
 
-  @keyframes gridShift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(80px, 80px); }
-  }
 
   /* Prismatic Light Beams */
   .light-beam {
