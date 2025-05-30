@@ -53,7 +53,7 @@ export default function FeaturesSection() {
             ⚡ Next-Generation Features
           </motion.div>
           
-          <h2 className="font-space text-5xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+          <h2 className="font-space text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
             Why Trader Corners?
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
