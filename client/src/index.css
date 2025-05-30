@@ -98,7 +98,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.05),
+      rgba(217, 119, 6, 0.1),
       transparent
     );
     animation: shimmerSweep 6s ease-in-out infinite;
@@ -116,18 +116,18 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(45deg, rgba(0, 243, 200, 0.1), rgba(0, 163, 255, 0.1));
+    background: linear-gradient(45deg, rgba(217, 119, 6, 0.1), rgba(234, 179, 8, 0.1));
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
   }
 
   .glow-hover:hover {
-    transform: translateY(-12px) rotateX(8deg) rotateY(2deg) scale(1.02);
+    transform: translateY(-8px) rotateX(5deg) rotateY(1deg) scale(1.02);
     box-shadow: 
-      0 0 60px rgba(0, 243, 200, 0.6),
-      0 30px 60px rgba(0, 0, 0, 0.4),
-      0 0 100px rgba(0, 163, 255, 0.3);
+      0 0 40px rgba(217, 119, 6, 0.3),
+      0 20px 40px rgba(0, 0, 0, 0.15),
+      0 0 60px rgba(234, 179, 8, 0.2);
   }
 
   .glow-hover:hover::after {
