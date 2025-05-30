@@ -55,7 +55,7 @@ export default function AccountsSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            🎯 Perfect Fit
+            Perfect Fit
           </motion.div>
           
           <motion.h2 

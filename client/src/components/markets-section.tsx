@@ -26,7 +26,7 @@ export default function MarketsSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            📈 Real-Time Data
+            Real-Time Data
           </motion.div>
           
           <motion.h2 

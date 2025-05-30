@@ -48,7 +48,7 @@ export default function FeaturesSection() {
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            ⚡ Next-Generation Features
+            Next-Generation Features
           </motion.div>
           
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
