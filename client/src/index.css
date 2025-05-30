@@ -60,9 +60,9 @@
     font-family: 'Inter', 'Space Grotesk', sans-serif;
     overflow-x: hidden;
     background: 
-      radial-gradient(circle at 20% 80%, rgba(211, 162, 70, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(230, 179, 90, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(240, 196, 112, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(0, 31, 77, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 64, 128, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(0, 102, 204, 0.03) 0%, transparent 50%),
       linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
     background-attachment: fixed;
   }
@@ -78,10 +78,10 @@
     @apply bg-card/60 backdrop-blur-sm border border-border;
     background: 
       linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%),
-      linear-gradient(45deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 176, 0, 0.02) 100%);
+      linear-gradient(45deg, rgba(0, 31, 77, 0.03) 0%, rgba(0, 64, 128, 0.02) 100%);
     box-shadow: 
       0 4px 20px rgba(0, 0, 0, 0.08),
-      0 2px 8px rgba(255, 215, 0, 0.05),
+      0 2px 8px rgba(0, 31, 77, 0.05),
       inset 0 1px 1px rgba(255, 255, 255, 0.9),
       inset 0 -1px 1px rgba(0, 0, 0, 0.02);
     position: relative;
@@ -98,7 +98,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 215, 0, 0.1),
+      rgba(0, 31, 77, 0.1),
       transparent
     );
     animation: shimmerSweep 6s ease-in-out infinite;
@@ -116,7 +116,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 176, 0, 0.1));
+    background: linear-gradient(45deg, rgba(0, 31, 77, 0.1), rgba(0, 64, 128, 0.1));
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
@@ -169,14 +169,14 @@
     display: inline-block;
     background: linear-gradient(
       135deg,
-      #d3a246 0%,
-      #e6b35a 50%,
-      #f0c470 100%
+      #001f4d 0%,
+      #004080 50%,
+      #0066cc 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 8px rgba(211, 162, 70, 0.2));
+    filter: drop-shadow(0 0 8px rgba(0, 31, 77, 0.2));
   }
 
   /* Hero Section Background Effects */
@@ -1053,12 +1053,12 @@
     }
   }
 
-  /* Logo Gold CTA Buttons with Micro-interactions */
+  /* Navy Blue CTA Buttons with Micro-interactions */
   .cta-button {
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 600 !important;
-    background-color: #d3a246 !important;
-    color: #000000 !important;
+    background-color: #001f4d !important;
+    color: #ffffff !important;
     border: none !important;
     border-radius: 8px !important;
     padding: 12px 24px !important;
@@ -1074,7 +1074,7 @@
     justify-content: center !important;
     white-space: nowrap !important;
     transform: translateY(0) scale(1) !important;
-    box-shadow: 0 2px 8px rgba(211, 162, 70, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(0, 31, 77, 0.2) !important;
   }
 
   /* Micro-interaction: Ripple Effect */
