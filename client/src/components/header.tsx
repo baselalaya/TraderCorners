@@ -173,10 +173,10 @@ export default function Header() {
               </div>
 
               {/* Mobile Menu Footer */}
-              <div className="p-8 border-t border-border/20 bg-[#ffffff]">
+              <div className="p-8 border-t border-white/20">
                 <div className="space-y-4">
                   <motion.button 
-                    className="w-full border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
+                    className="w-full border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Login to your trading account"
@@ -189,7 +189,7 @@ export default function Header() {
                   </motion.button>
                   
                   <motion.button 
-                    className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                    className="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Start trading with Trader Corners"
@@ -219,7 +219,7 @@ export default function Header() {
                       key={index}
                       href={social.href}
                       aria-label={social.label}
-                      className="w-12 h-12 bg-card/50 border border-border/30 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                      className="w-12 h-12 bg-slate-800/80 border border-slate-600/50 rounded-xl flex items-center justify-center text-gray-400 hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
