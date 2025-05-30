@@ -109,8 +109,7 @@ export default function PlatformsSection() {
                   transition: { duration: 0.4 }
                 }}
               >
-                {/* Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${platform.glowColor} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500`} />
+                {/* External Glow Effect */}
                 <div className={`absolute -inset-2 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-20 rounded-3xl blur-xl transition-opacity duration-500`} />
                 
                 {/* Icon */}
