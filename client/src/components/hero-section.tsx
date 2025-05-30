@@ -27,20 +27,7 @@ export default function HeroSection() {
       
 
       
-      {/* Advanced Trading Chart Visualization */}
-      <div className="trading-chart-bg">
-        {[...Array(20)].map((_, i) => (
-          <div 
-            key={`bar-${i}`}
-            className="chart-bar"
-            style={{
-              left: `${5 + i * 4.5}%`,
-              height: `${Math.random() * 60 + 20}%`,
-              animationDelay: `${i * 0.1}s`
-            }}
-          />
-        ))}
-      </div>
+
       
       {/* Floating Financial Icons */}
       <div className="financial-icons">
@@ -87,10 +74,7 @@ export default function HeroSection() {
       
 
       
-      {/* Prismatic Light Beams */}
-      <div className="light-beam beam-1"></div>
-      <div className="light-beam beam-2"></div>
-      <div className="light-beam beam-3"></div>
+
       
       {/* Financial Data Streams */}
       <div className="absolute top-1/4 left-8 opacity-10 text-xs font-mono text-primary">
