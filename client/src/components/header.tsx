@@ -12,13 +12,11 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-11 h-11 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-              <TrendingUp className="text-white" size={22} />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-space text-xl font-bold text-gradient tracking-tight">Trader Corners</span>
-              <span className="text-xs text-muted-foreground/60 font-medium">Premium Trading</span>
-            </div>
+            <img 
+              src="/attached_assets/tradercorners-logo.jpg" 
+              alt="Trader Corners"
+              className="h-10 w-auto"
+            />
           </div>
           
           {/* Desktop Navigation */}
