@@ -109,8 +109,7 @@ export default function PlatformsSection() {
                   transition: { duration: 0.4 }
                 }}
               >
-                {/* External Glow Effect */}
-                <div className={`absolute -inset-2 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-20 rounded-3xl blur-xl transition-opacity duration-500`} />
+
                 
                 {/* Icon */}
                 <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${platform.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -159,8 +158,7 @@ export default function PlatformsSection() {
                 </div>
 
                 {/* Decorative Elements */}
-                <div className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br ${platform.color} rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
-                <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-br from-white/10 to-white/5 rounded-full blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+                <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-br from-white/10 to-white/5 rounded-full blur-sm opacity-50" />
               </motion.div>
             );
           })}
