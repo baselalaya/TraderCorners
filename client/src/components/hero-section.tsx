@@ -35,18 +35,40 @@ export default function HeroSection() {
       <div className="hero-geometry"></div>
       <div className="hero-geometry"></div>
       
-      {/* Floating Market Particles */}
-      {[...Array(8)].map((_, i) => (
+      {/* Enhanced Floating Orbs */}
+      {[...Array(6)].map((_, i) => (
         <div 
-          key={i}
-          className="hero-particle"
+          key={`orb-${i}`}
+          className="floating-orb"
           style={{
-            left: `${10 + i * 12}%`,
-            animationDelay: `${i * 1.5}s`,
-            animationDuration: `${12 + i * 2}s`
+            left: `${15 + i * 15}%`,
+            top: `${20 + (i % 3) * 25}%`,
+            animationDelay: `${i * 2}s`,
+            animationDuration: `${15 + i * 3}s`
           }}
         />
       ))}
+      
+      {/* Floating Market Particles */}
+      {[...Array(12)].map((_, i) => (
+        <div 
+          key={`particle-${i}`}
+          className="hero-particle"
+          style={{
+            left: `${5 + i * 8}%`,
+            animationDelay: `${i * 1.2}s`,
+            animationDuration: `${10 + i * 1.5}s`
+          }}
+        />
+      ))}
+      
+      {/* Dynamic Grid Lines */}
+      <div className="hero-grid-overlay"></div>
+      
+      {/* Prismatic Light Beams */}
+      <div className="light-beam beam-1"></div>
+      <div className="light-beam beam-2"></div>
+      <div className="light-beam beam-3"></div>
       
       {/* Financial Data Streams */}
       <div className="absolute top-1/4 left-8 opacity-10 text-xs font-mono text-primary">
