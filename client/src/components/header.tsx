@@ -43,7 +43,7 @@ export default function Header() {
                 onMouseLeave={() => setShowMarketsDropdown(false)}
               >
                 <div className="p-4 space-y-2">
-                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 hover:text-primary hover:bg-white/10 rounded-lg transition-all text-[#c7c7c7]">
+                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-primary hover:bg-white/10 rounded-lg transition-all">
                     <span className="text-lg">FX</span>
                     <span className="font-medium">Forex Trading</span>
                   </a>
