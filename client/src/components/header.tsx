@@ -105,7 +105,7 @@ export default function Header() {
         {/* Full-Screen Mobile Menu */}
         {isMenuOpen && (
           <motion.div 
-            className="lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl"
+            className="lg:hidden fixed inset-0 z-50 bg-background backdrop-blur-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
