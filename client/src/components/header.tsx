@@ -173,7 +173,7 @@ export default function Header() {
               </div>
 
               {/* Mobile Menu Footer */}
-              <div className="p-8 border-t border-border/20">
+              <div className="p-8 border-t border-border/20 bg-[#ffffff]">
                 <div className="space-y-4">
                   <motion.button 
                     className="w-full border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
