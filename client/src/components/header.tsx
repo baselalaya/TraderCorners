@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Menu, X, ChevronDown } from "lucide-react";
+import { TrendingUp, Menu, X, ChevronDown, BarChart3, Monitor, BookOpen, User, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram } from "react-icons/fa";
 
@@ -133,13 +133,15 @@ export default function Header() {
               <div className="flex-1 flex flex-col justify-center px-8 py-12">
                 <div className="space-y-8">
                   {[
-                    { label: "Markets", href: "#markets", icon: "📈" },
-                    { label: "Platforms", href: "#platforms", icon: "💻" },
-                    { label: "Education", href: "#education", icon: "📚" },
-                    { label: "Accounts", href: "#accounts", icon: "👤" },
-                    { label: "Contact", href: "#contact", icon: "📞" },
-                  ].map((item, index) => (
-                    <motion.a
+                    { label: "Markets", href: "#markets", icon: BarChart3 },
+                    { label: "Platforms", href: "#platforms", icon: Monitor },
+                    { label: "Education", href: "#education", icon: BookOpen },
+                    { label: "Accounts", href: "#accounts", icon: User },
+                    { label: "Contact", href: "#contact", icon: Phone },
+                  ].map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <motion.a
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
@@ -150,8 +152,8 @@ export default function Header() {
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        {item.icon}
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <IconComponent className="text-primary" size={24} />
                       </div>
                       <div className="flex-1">
                         <div className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -165,7 +167,8 @@ export default function Header() {
                         →
                       </div>
                     </motion.a>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
