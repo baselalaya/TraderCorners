@@ -228,10 +228,7 @@ export default function HeroSection() {
                         </div>
                       </div>
 
-                      {/* Animated Border */}
-                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/50 via-transparent to-primary/50 animate-pulse"></div>
-                      </div>
+
                     </div>
                   </motion.div>
                 ))}
