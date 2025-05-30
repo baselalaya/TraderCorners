@@ -19,58 +19,64 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background via-background/98 to-background/90">
-      <div className="hero-bg-effect" />
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      {/* Modern Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
       
-      {/* 3D Morphing Background */}
-      <div className="morphing-backdrop"></div>
-      
-
-      
-
-      
-      {/* Floating Financial Icons */}
-      <div className="financial-icons">
-        <div className="fin-icon icon-1">₿</div>
-        <div className="fin-icon icon-2">€</div>
-        <div className="fin-icon icon-3">$</div>
-        <div className="fin-icon icon-4">¥</div>
-        <div className="fin-icon icon-5">£</div>
-        <div className="fin-icon icon-6">₹</div>
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          animation: 'gridFloat 20s ease-in-out infinite'
+        }}></div>
       </div>
       
-      {/* Trading-themed Background Elements */}
-      <div className="hero-geometry"></div>
-      <div className="hero-geometry"></div>
-      <div className="hero-geometry"></div>
-      <div className="hero-geometry"></div>
+      {/* Floating Geometric Shapes */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-20 h-20 border border-primary/10 rounded-full"
+            style={{
+              left: `${10 + i * 12}%`,
+              top: `${15 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [-20, 20, -20],
+              rotate: [0, 360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 15 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5
+            }}
+          />
+        ))}
+      </div>
       
-      {/* Enhanced Floating Orbs */}
-      {[...Array(6)].map((_, i) => (
-        <div 
-          key={`orb-${i}`}
-          className="floating-orb"
-          style={{
-            left: `${15 + i * 15}%`,
-            top: `${20 + (i % 3) * 25}%`,
-            animationDelay: `${i * 2}s`,
-            animationDuration: `${15 + i * 3}s`
-          }}
-        />
-      ))}
+      {/* Financial Data Streams */}
+      <div className="absolute top-20 left-4 opacity-5 text-xs font-mono text-primary space-y-1">
+        <div>BTC: 42851.20 ↑</div>
+        <div>EUR: 1.0842 ↓</div>
+        <div>GOLD: 2048.30 ↑</div>
+        <div>ETH: 2651.80 ↑</div>
+      </div>
       
-      {/* Floating Market Particles */}
-      {[...Array(12)].map((_, i) => (
-        <div 
-          key={`particle-${i}`}
-          className="hero-particle"
-          style={{
-            left: `${5 + i * 8}%`,
-            animationDelay: `${i * 1.2}s`,
-            animationDuration: `${10 + i * 1.5}s`
-          }}
-        />
-      ))}
+      <div className="absolute bottom-20 right-4 opacity-5 text-xs font-mono text-primary space-y-1">
+        <div>NASDAQ: 15847.23 ↑</div>
+        <div>S&P 500: 4567.89 ↑</div>
+        <div>DOW: 34892.45 ↑</div>
+        <div>FTSE: 7651.32 ↓</div>
+      </div>
+      
+      {/* Subtle Glow Effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      
+
       
 
       
