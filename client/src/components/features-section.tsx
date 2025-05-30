@@ -30,11 +30,9 @@ export default function FeaturesSection() {
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background to-background/95"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/[0.02] to-transparent"></div>
-      
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-24 h-24 bg-secondary/5 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-20 scroll-reveal"
@@ -101,7 +99,7 @@ export default function FeaturesSection() {
                   </div>
                   
                   {/* Enhanced Typography */}
-                  <h3 className="font-display text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-xl font-bold mb-4 group-hover:text-primary transition-colors duration-300 text-center">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground text-balance group-hover:text-foreground transition-colors duration-300 leading-relaxed">
