@@ -162,7 +162,7 @@
     line-height: 0.9;
     font-weight: 900;
     letter-spacing: -0.04em;
-    text-shadow: 0 0 20px rgba(0, 243, 200, 0.08);
+    text-shadow: none;
   }
 
   .hero-word {
