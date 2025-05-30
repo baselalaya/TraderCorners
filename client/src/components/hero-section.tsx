@@ -107,65 +107,168 @@ export default function HeroSection() {
         <div className="animate-pulse" style={{ animationDelay: '2.5s' }}>OIL: $78.42</div>
       </div>
       
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <motion.div 
-          className="scroll-reveal max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 60, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
-        >
-          <h1 className="font-space text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance text-foreground leading-tight relative">
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
-            <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:rotate-1">Bold.</span>
-            <br />
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300">Win</span>{" "}
-            <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:-rotate-1">Smart.</span>
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Split Layout Design */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[60vh]">
+          {/* Left Side - Hero Content */}
+          <motion.div 
+            className="scroll-reveal space-y-8"
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
+          >
+            <div className="space-y-4">
+              <motion.div 
+                className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm font-semibold text-primary backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                ✨ Award-Winning Platform
+              </motion.div>
+              
+              <h1 className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+                <div className="relative">
+                  <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
+                  <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:rotate-1 hero-highlight">Bold.</span>
+                </div>
+                <div className="relative mt-2">
+                  <span className="inline-block transform hover:scale-105 transition-transform duration-300">Win</span>{" "}
+                  <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:-rotate-1 hero-highlight">Smart.</span>
+                </div>
+              </h1>
+            </div>
             
-            {/* Interactive Typography Effects */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
-            Unlock global markets with lightning-fast execution and real-time insights.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <button className="cta-button cta-lg" aria-label="Start trading with premium features">
-              <Rocket className="mr-2" size={20} />
-              Start Trading
-            </button>
-            <button className="cta-button cta-outline cta-lg" aria-label="Try our trading demo">
-              <Play className="mr-2" size={20} />
-              Try Demo
-            </button>
-          </div>
-        </motion.div>
-        
-        {/* Live Ticker with Advanced Effects */}
-        <motion.div 
-          className="neumorphic rounded-2xl p-6 max-w-4xl mx-auto scroll-reveal"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-        >
-          <div className="overflow-hidden">
-            <div className="flex space-x-12 ticker-animation">
-              {tickerData.concat(tickerData).map((item, index) => (
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              Experience next-generation trading with our revolutionary platform. Lightning-fast execution, 
+              real-time insights, and award-winning technology at your fingertips.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <button className="cta-button cta-lg group" aria-label="Start trading with premium features">
+                <Rocket className="mr-2 group-hover:translate-x-1 transition-transform" size={20} />
+                Start Trading
+              </button>
+              <button className="cta-button cta-outline cta-lg group" aria-label="Try our trading demo">
+                <Play className="mr-2 group-hover:scale-110 transition-transform" size={20} />
+                Try Demo
+              </button>
+            </motion.div>
+            
+            {/* Trust Indicators */}
+            <motion.div 
+              className="flex items-center gap-6 pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                500K+ Active Traders
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                $2.5B+ Daily Volume
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Side - Interactive Market Visualization */}
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+          >
+            {/* Floating Market Cards */}
+            <div className="relative h-64 market-constellation">
+              {tickerData.map((item, index) => (
                 <motion.div 
-                  key={index} 
-                  className="flex items-center space-x-4 whitespace-nowrap group"
-                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                  key={item.symbol} 
+                  className="market-card absolute"
+                  style={{
+                    left: `${15 + index * 18}%`,
+                    top: `${20 + (index % 2) * 40}%`,
+                    zIndex: 10 + index
+                  }}
+                  initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.2 * index,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    scale: 1.15,
+                    rotateY: 10,
+                    rotateX: 5,
+                    zIndex: 50,
+                    transition: { duration: 0.3 }
+                  }}
                 >
-                  <span className="font-semibold group-hover:text-primary transition-colors">{item.symbol}</span>
-                  <span className="text-primary font-mono">{item.price}</span>
-                  <span className={`font-semibold ${item.isPositive ? "text-green-400" : "text-red-400"} group-hover:scale-110 transition-transform`}>
-                    {item.change}
-                  </span>
+                  <div className="market-card-inner">
+                    <div className="market-card-front">
+                      <div className="symbol-badge">{item.symbol}</div>
+                      <div className="price-display">{item.price}</div>
+                      <div className={`change-indicator ${item.isPositive ? 'positive' : 'negative'}`}>
+                        <span className="change-arrow">{item.isPositive ? '↗' : '↘'}</span>
+                        {item.change}
+                      </div>
+                      <div className="market-pulse"></div>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
+              
+              {/* Connecting Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                <defs>
+                  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgba(255, 215, 0, 0.6)" />
+                    <stop offset="50%" stopColor="rgba(255, 176, 0, 0.3)" />
+                    <stop offset="100%" stopColor="rgba(255, 223, 0, 0.1)" />
+                  </linearGradient>
+                </defs>
+                {tickerData.map((_, index) => {
+                  if (index < tickerData.length - 1) {
+                    const x1 = (15 + index * 18) + 8;
+                    const y1 = (20 + (index % 2) * 40) + 12;
+                    const x2 = (15 + (index + 1) * 18) + 8;
+                    const y2 = (20 + ((index + 1) % 2) * 40) + 12;
+                    return (
+                      <motion.line
+                        key={`line-${index}`}
+                        x1={`${x1}%`}
+                        y1={`${y1}%`}
+                        x2={`${x2}%`}
+                        y2={`${y2}%`}
+                        stroke="url(#connectionGradient)"
+                        strokeWidth="2"
+                        strokeDasharray="5,5"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 2, delay: 0.5 + index * 0.3 }}
+                        className="connection-line"
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </svg>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
       
       {/* Premium Scroll Indicator */}
