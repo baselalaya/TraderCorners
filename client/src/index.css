@@ -187,9 +187,9 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(ellipse at 20% 50%, rgba(0, 243, 200, 0.02) 0%, transparent 70%),
-      radial-gradient(ellipse at 80% 20%, rgba(0, 163, 255, 0.025) 0%, transparent 70%),
-      radial-gradient(ellipse at 40% 80%, rgba(0, 243, 200, 0.015) 0%, transparent 70%);
+      radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse at 80% 20%, rgba(255, 176, 0, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse at 40% 80%, rgba(255, 223, 0, 0.05) 0%, transparent 70%);
     animation: heroBackgroundPulse 15s ease-in-out infinite;
   }
 
@@ -201,7 +201,7 @@
   /* Trading-themed Background Elements */
   .hero-geometry {
     position: absolute;
-    opacity: 0.03;
+    opacity: 0.15;
     animation: geometryFloat 15s ease-in-out infinite;
   }
 
@@ -212,12 +212,12 @@
     width: 4px;
     height: 80px;
     background: linear-gradient(to bottom, 
-      rgba(0, 243, 200, 0.08) 0%, 
-      rgba(0, 243, 200, 0.08) 30%,
-      rgba(0, 243, 200, 0.12) 30%,
-      rgba(0, 243, 200, 0.12) 70%,
-      rgba(0, 243, 200, 0.08) 70%,
-      rgba(0, 243, 200, 0.08) 100%
+      rgba(255, 215, 0, 0.15) 0%, 
+      rgba(255, 215, 0, 0.15) 30%,
+      rgba(255, 176, 0, 0.2) 30%,
+      rgba(255, 176, 0, 0.2) 70%,
+      rgba(255, 215, 0, 0.15) 70%,
+      rgba(255, 215, 0, 0.15) 100%
     );
     animation-delay: 0s;
   }
@@ -228,7 +228,7 @@
     right: 15%;
     width: 60px;
     height: 60px;
-    border: 1px solid rgba(0, 163, 255, 0.12);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     border-radius: 50%;
     position: relative;
     animation-delay: -5s;
@@ -241,7 +241,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
-    color: rgba(0, 163, 255, 0.15);
+    color: rgba(255, 176, 0, 0.25);
     font-weight: bold;
   }
 
@@ -253,7 +253,7 @@
     height: 0;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 40px solid rgba(0, 243, 200, 0.06);
+    border-bottom: 40px solid rgba(255, 176, 0, 0.12);
     transform: rotate(45deg);
     animation-delay: -10s;
   }
@@ -265,10 +265,10 @@
     width: 80px;
     height: 60px;
     background: 
-      linear-gradient(90deg, rgba(0, 163, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(0, 163, 255, 0.08) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
     background-size: 20px 15px;
-    border: 1px solid rgba(0, 163, 255, 0.08);
+    border: 1px solid rgba(255, 176, 0, 0.12);
     animation-delay: -7s;
   }
 
