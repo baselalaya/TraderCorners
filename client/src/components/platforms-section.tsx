@@ -7,7 +7,8 @@ export default function PlatformsSection() {
       name: "MetaTrader 4",
       description: "Industry-leading platform with advanced charting and automated trading capabilities",
       icon: Monitor,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-amber-500 via-yellow-500 to-orange-500",
+      glowColor: "from-amber-500/20 to-orange-500/20",
       features: [
         "Advanced charting tools",
         "Expert Advisors (EAs)",
@@ -19,7 +20,8 @@ export default function PlatformsSection() {
       name: "Web Terminal",
       description: "Trade directly from your browser with full platform functionality",
       icon: Globe,
-      color: "from-green-500 to-emerald-500",
+      color: "from-yellow-500 via-amber-400 to-orange-400",
+      glowColor: "from-yellow-500/20 to-orange-400/20",
       features: [
         "No downloads required",
         "Cross-platform compatibility",
@@ -31,7 +33,8 @@ export default function PlatformsSection() {
       name: "Mobile App",
       description: "Professional trading on-the-go with mobile-optimized interface",
       icon: Smartphone,
-      color: "from-purple-500 to-pink-500",
+      color: "from-orange-500 via-amber-500 to-yellow-500",
+      glowColor: "from-orange-500/20 to-yellow-500/20",
       features: [
         "iOS & Android apps",
         "Touch-friendly interface",
@@ -107,7 +110,8 @@ export default function PlatformsSection() {
                 }}
               >
                 {/* Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${platform.glowColor} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500`} />
+                <div className={`absolute -inset-2 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-20 rounded-3xl blur-xl transition-opacity duration-500`} />
                 
                 {/* Icon */}
                 <div className={`relative z-10 w-16 h-16 bg-gradient-to-br ${platform.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -142,20 +146,22 @@ export default function PlatformsSection() {
                   
                   {/* CTA */}
                   <motion.button 
-                    className={`w-full py-3 px-6 bg-gradient-to-r ${platform.color} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn`}
-                    whileHover={{ scale: 1.02 }}
+                    className={`w-full py-4 px-6 bg-gradient-to-r ${platform.color} text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group/btn border border-white/20`}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <span className="relative z-10 flex items-center justify-center">
-                      <Download className="mr-2" size={16} />
+                    <span className="relative z-10 flex items-center justify-center font-bold">
+                      <Download className="mr-2" size={18} />
                       Get Started
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                    <div className={`absolute -inset-1 bg-gradient-to-r ${platform.color} opacity-0 group-hover/btn:opacity-30 blur-lg transition-opacity duration-300`} />
                   </motion.button>
                 </div>
 
                 {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+                <div className={`absolute top-4 right-4 w-16 h-16 bg-gradient-to-br ${platform.color} rounded-full blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
+                <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-br from-white/10 to-white/5 rounded-full blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
               </motion.div>
             );
           })}
