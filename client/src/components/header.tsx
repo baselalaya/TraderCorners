@@ -15,7 +15,7 @@ export default function Header() {
             <img 
               src="/logo-trader.png" 
               alt="Trader Corners"
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </div>
           
