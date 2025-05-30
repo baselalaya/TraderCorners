@@ -491,6 +491,158 @@
     }
   }
 
+  /* 3D Morphing Background */
+  .morphing-backdrop {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: 
+      radial-gradient(ellipse at 30% 40%, rgba(255, 215, 0, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 60%, rgba(255, 176, 0, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 20%, rgba(255, 193, 7, 0.06) 0%, transparent 40%);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morphingBackdrop 25s ease-in-out infinite;
+    filter: blur(2px);
+    opacity: 0.7;
+  }
+
+  @keyframes morphingBackdrop {
+    0%, 100% { 
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      transform: scale(1) rotate(0deg);
+    }
+    25% { 
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      transform: scale(1.05) rotate(2deg);
+    }
+    50% { 
+      border-radius: 50% 40% 50% 60% / 30% 50% 60% 40%;
+      transform: scale(0.95) rotate(-1deg);
+    }
+    75% { 
+      border-radius: 40% 70% 60% 30% / 60% 40% 50% 30%;
+      transform: scale(1.02) rotate(1deg);
+    }
+  }
+
+  /* Holographic Grid */
+  .holographic-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 215, 0, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 25% 25%, rgba(255, 176, 0, 0.05) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 223, 0, 0.05) 2px, transparent 2px);
+    background-size: 100px 100px, 100px 100px, 50px 50px, 70px 70px;
+    animation: holographicShift 20s linear infinite;
+    opacity: 0.3;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes holographicShift {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(50px, 25px) scale(1.02); }
+    50% { transform: translate(100px, 50px) scale(0.98); }
+    75% { transform: translate(75px, 75px) scale(1.01); }
+    100% { transform: translate(100px, 100px) scale(1); }
+  }
+
+  /* Advanced Trading Chart Visualization */
+  .trading-chart-bg {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    opacity: 0.4;
+    filter: blur(0.5px);
+  }
+
+  .chart-bar {
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to top,
+      rgba(255, 176, 0, 0.8) 0%,
+      rgba(255, 215, 0, 0.6) 50%,
+      rgba(255, 223, 0, 0.4) 100%);
+    border-radius: 2px 2px 0 0;
+    animation: chartPulse 4s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  @keyframes chartPulse {
+    0%, 100% { 
+      transform: scaleY(1) scaleX(1);
+      opacity: 0.6;
+    }
+    25% { 
+      transform: scaleY(1.2) scaleX(1.1);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: scaleY(0.8) scaleX(0.9);
+      opacity: 0.4;
+    }
+    75% { 
+      transform: scaleY(1.1) scaleX(1.05);
+      opacity: 0.7;
+    }
+  }
+
+  /* Floating Financial Icons */
+  .financial-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .fin-icon {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(255, 176, 0, 0.6);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    animation: iconFloat 15s ease-in-out infinite;
+  }
+
+  .icon-1 { top: 15%; left: 8%; animation-delay: 0s; }
+  .icon-2 { top: 25%; right: 12%; animation-delay: -2s; }
+  .icon-3 { top: 40%; left: 15%; animation-delay: -4s; }
+  .icon-4 { top: 60%; right: 8%; animation-delay: -6s; }
+  .icon-5 { top: 75%; left: 12%; animation-delay: -8s; }
+  .icon-6 { top: 35%; right: 20%; animation-delay: -10s; }
+
+  @keyframes iconFloat {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) scale(1);
+      opacity: 0.6;
+    }
+    25% { 
+      transform: translateY(-20px) rotate(5deg) scale(1.1);
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translateY(-40px) rotate(-3deg) scale(0.9);
+      opacity: 0.4;
+    }
+    75% { 
+      transform: translateY(-15px) rotate(2deg) scale(1.05);
+      opacity: 0.7;
+    }
+  }
+
   /* Premium Scroll Indicator */
   .scroll-indicator {
     position: absolute;

@@ -19,15 +19,39 @@ export default function HeroSection() {
   ]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-background/95 via-background/90 to-background/85">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-br from-background via-background/98 to-background/95">
       <div className="hero-bg-effect" />
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
       
-      {/* Simple Background Elements */}
-      <div className="absolute top-1/3 left-1/4 w-1 h-32 bg-gradient-to-b from-primary/10 to-transparent opacity-30"></div>
-      <div className="absolute top-1/2 right-1/3 w-24 h-24 border border-primary/8 rounded-full opacity-20"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-16 h-1 bg-gradient-to-r from-secondary/10 to-transparent opacity-25"></div>
-      <div className="absolute top-1/4 right-1/4 w-2 h-20 bg-gradient-to-b from-secondary/8 to-transparent opacity-30 transform rotate-45"></div>
+      {/* 3D Morphing Background */}
+      <div className="morphing-backdrop"></div>
+      
+      {/* Holographic Grid */}
+      <div className="holographic-grid"></div>
+      
+      {/* Advanced Trading Chart Visualization */}
+      <div className="trading-chart-bg">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={`bar-${i}`}
+            className="chart-bar"
+            style={{
+              left: `${5 + i * 4.5}%`,
+              height: `${Math.random() * 60 + 20}%`,
+              animationDelay: `${i * 0.1}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Floating Financial Icons */}
+      <div className="financial-icons">
+        <div className="fin-icon icon-1">₿</div>
+        <div className="fin-icon icon-2">€</div>
+        <div className="fin-icon icon-3">$</div>
+        <div className="fin-icon icon-4">¥</div>
+        <div className="fin-icon icon-5">£</div>
+        <div className="fin-icon icon-6">₹</div>
+      </div>
       
       {/* Trading-themed Background Elements */}
       <div className="hero-geometry"></div>
@@ -90,9 +114,15 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
         >
-          <h1 className="font-space text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance text-foreground leading-tight">
-            Trade <span className="text-primary font-bold">Bold.</span><br />
-            Win <span className="text-primary font-bold">Smart.</span>
+          <h1 className="font-space text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance text-foreground leading-tight relative">
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
+            <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:rotate-1">Bold.</span>
+            <br />
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300">Win</span>{" "}
+            <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:-rotate-1">Smart.</span>
+            
+            {/* Interactive Typography Effects */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
             Unlock global markets with lightning-fast execution and real-time insights.
