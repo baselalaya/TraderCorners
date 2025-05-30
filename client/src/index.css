@@ -15,15 +15,15 @@
   --card-foreground: 222 84% 5%; /* #0A0A0B */
   --border: 214 32% 91%; /* #E2E8F0 */
   --input: 214 32% 91%; /* #E2E8F0 */
-  --primary: 42 68% 55%; /* #d3a246 - Logo Gold */
-  --primary-foreground: 0 0% 0%; /* #000000 */
-  --secondary: 45 75% 60%; /* #e6b35a - Lighter Logo Gold */
-  --secondary-foreground: 0 0% 0%; /* #000000 */
-  --accent: 48 70% 65%; /* #f0c470 - Accent Gold */
-  --accent-foreground: 0 0% 0%; /* #000000 */
+  --primary: 210 100% 15%; /* #001f4d - Deep Navy Blue matching logo */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 210 100% 25%; /* #004080 - Lighter Navy Blue */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 210 100% 35%; /* #0066cc - Accent Blue */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 42 68% 55%; /* #d3a246 */
+  --ring: 210 100% 15%; /* #001f4d - Navy Blue */
   --radius: 0.5rem;
 }
 
@@ -38,15 +38,15 @@
   --card-foreground: 0 0% 98%; /* #FAFAFA */
   --border: 215 28% 17%; /* #1E293B */
   --input: 215 28% 17%; /* #1E293B */
-  --primary: 42 68% 55%; /* #d3a246 - Logo Gold */
-  --primary-foreground: 0 0% 0%; /* #000000 */
-  --secondary: 45 75% 60%; /* #e6b35a - Lighter Logo Gold */
-  --secondary-foreground: 0 0% 0%; /* #000000 */
-  --accent: 48 70% 65%; /* #f0c470 - Accent Gold */
-  --accent-foreground: 0 0% 0%; /* #000000 */
+  --primary: 210 100% 15%; /* #001f4d - Deep Navy Blue matching logo */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 210 100% 25%; /* #004080 - Lighter Navy Blue */
+  --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+  --accent: 210 100% 35%; /* #0066cc - Accent Blue */
+  --accent-foreground: 0 0% 100%; /* #FFFFFF */
   --destructive: 0 84% 60%; /* #EF4444 */
   --destructive-foreground: 0 0% 98%; /* #FAFAFA */
-  --ring: 42 68% 55%; /* #d3a246 */
+  --ring: 210 100% 15%; /* #001f4d - Navy Blue */
   --radius: 0.5rem;
 }
 
@@ -125,9 +125,9 @@
   .glow-hover:hover {
     transform: translateY(-8px) rotateX(5deg) rotateY(1deg) scale(1.02);
     box-shadow: 
-      0 0 40px rgba(255, 215, 0, 0.3),
+      0 0 40px rgba(0, 31, 77, 0.3),
       0 20px 40px rgba(0, 0, 0, 0.15),
-      0 0 60px rgba(255, 176, 0, 0.2);
+      0 0 60px rgba(0, 64, 128, 0.2);
   }
 
   .glow-hover:hover::after {
@@ -146,9 +146,9 @@
 
   .text-gradient {
     background: linear-gradient(135deg, 
-      #d3a246 0%, 
-      #e6b35a 50%,
-      #f0c470 100%);
+      #001f4d 0%, 
+      #004080 50%,
+      #0066cc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
