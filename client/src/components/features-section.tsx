@@ -123,10 +123,17 @@ export default function FeaturesSection() {
           viewport={{ once: true }}
         >
           <p className="text-muted-foreground mb-6">Ready to experience the future of trading?</p>
-          <button className="cta-button cta-lg group">
-            <span className="mr-2 group-hover:translate-x-1 transition-transform">Get Started Today</span>
-            →
-          </button>
+          <motion.button 
+            className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10 flex items-center justify-center font-bold">
+              <span className="mr-2 group-hover:translate-x-1 transition-transform">Get Started Today</span>
+              →
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
         </motion.div>
       </div>
     </section>
