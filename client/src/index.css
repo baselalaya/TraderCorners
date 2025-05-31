@@ -1192,11 +1192,11 @@
   }
 
   .cta-button.cta-secondary::before {
-    background: rgba(255, 215, 0, 0.1) !important;
+    background: rgba(239, 15, 18, 0.1) !important;
   }
 
   .cta-button.cta-secondary:hover {
-    background-color: #d3a246 !important;
+    background-color: #ef0f12 !important;
     color: #000000 !important;
     border-color: #e6b35a !important;
     box-shadow: 
@@ -1208,8 +1208,8 @@
   /* Outline variant with enhanced micro-interactions */
   .cta-button.cta-outline {
     background-color: transparent !important;
-    color: #d3a246 !important;
-    border: 2px solid #d3a246 !important;
+    color: #ef0f12 !important;
+    border: 2px solid #ef0f12 !important;
     position: relative !important;
   }
 
@@ -1227,7 +1227,7 @@
   }
 
   .cta-button.cta-outline:hover {
-    background-color: #d3a246 !important;
+    background-color: #ef0f12 !important;
     color: #000000 !important;
     box-shadow: 
       0 8px 25px rgba(211, 162, 70, 0.3),
