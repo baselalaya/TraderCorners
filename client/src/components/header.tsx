@@ -23,41 +23,38 @@ export default function Header() {
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <div className="relative">
+            <div className="nav-dropdown">
               <button 
-                className="flex items-center space-x-1 hover:text-primary transition-colors font-medium py-2"
+                className="nav-link"
                 onMouseEnter={() => setShowMarketsDropdown(true)}
                 onMouseLeave={() => setShowMarketsDropdown(false)}
               >
                 <span>Markets</span>
-                <ChevronDown size={14} className={`transition-transform ${showMarketsDropdown ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`ml-1 transition-transform ${showMarketsDropdown ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Dropdown Menu */}
-              <div 
-                className={`absolute top-full left-0 w-64 bg-slate-800/95 backdrop-blur-xl rounded-xl shadow-2xl border border-slate-600/50 transition-all duration-300 ${
-                  showMarketsDropdown ? 'opacity-100 visible translate-y-2' : 'opacity-0 invisible translate-y-0'
-                }`}
-                style={{ zIndex: 1000 }}
-                onMouseEnter={() => setShowMarketsDropdown(true)}
-                onMouseLeave={() => setShowMarketsDropdown(false)}
-              >
-                <div className="p-4 space-y-2">
-                  <a href="#forex" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">FX</span>
-                    <span className="font-medium">Forex Trading</span>
+              <div className="submenu">
+                <div 
+                  className="submenu-content markets-dropdown"
+                  onMouseEnter={() => setShowMarketsDropdown(true)}
+                  onMouseLeave={() => setShowMarketsDropdown(false)}
+                >
+                  <a href="#forex" className="markets-dropdown-item">
+                    <span className="market-icon">FX</span>
+                    <span className="market-label">Forex Trading</span>
                   </a>
-                  <a href="#crypto" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">₿</span>
-                    <span className="font-medium">Cryptocurrency</span>
+                  <a href="#crypto" className="markets-dropdown-item">
+                    <span className="market-icon">₿</span>
+                    <span className="market-label">Cryptocurrency</span>
                   </a>
-                  <a href="#stocks" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">STK</span>
-                    <span className="font-medium">Stock Markets</span>
+                  <a href="#stocks" className="markets-dropdown-item">
+                    <span className="market-icon">STK</span>
+                    <span className="market-label">Stock Markets</span>
                   </a>
-                  <a href="#commodities" className="flex items-center space-x-3 px-4 py-3 text-white hover:text-blue-200 hover:bg-white/10 rounded-lg transition-all">
-                    <span className="text-lg">OIL</span>
-                    <span className="font-medium">Commodities</span>
+                  <a href="#commodities" className="markets-dropdown-item">
+                    <span className="market-icon">OIL</span>
+                    <span className="market-label">Commodities</span>
                   </a>
                 </div>
               </div>
