@@ -184,8 +184,40 @@ export default function HeroSection() {
                 <span className="text-xs lg:text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
               </motion.div>
 
-              {/* Market Grid - Mobile Optimized */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-md mx-auto lg:max-w-none">
+              {/* Mobile Marquee */}
+              <div className="block sm:hidden overflow-hidden">
+                <div className="flex space-x-4 animate-marquee">
+                  {[...tickerData, ...tickerData].map((item, index) => (
+                    <div
+                      key={`${item.symbol}-${index}`}
+                      className="flex-shrink-0 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-3 min-w-[140px]"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-semibold text-primary tracking-wider uppercase">
+                          {item.symbol}
+                        </span>
+                        <div className={`w-1.5 h-1.5 rounded-full ${item.isPositive ? 'bg-emerald-400' : 'bg-red-400'} animate-pulse`}></div>
+                      </div>
+                      
+                      <div className="text-sm font-bold text-foreground mb-1 font-mono">
+                        {item.price}
+                      </div>
+                      
+                      <div className={`inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                        item.isPositive 
+                          ? 'bg-emerald-500/20 text-emerald-400' 
+                          : 'bg-red-500/20 text-red-400'
+                      }`}>
+                        <span className="text-xs">{item.isPositive ? '↗' : '↘'}</span>
+                        <span>{item.change}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Grid */}
+              <div className="hidden sm:grid grid-cols-2 gap-3 lg:gap-4 max-w-md mx-auto lg:max-w-none">
                 {tickerData.map((item, index) => (
                   <motion.div
                     key={item.symbol}
@@ -227,8 +259,6 @@ export default function HeroSection() {
                           <span>{item.change}</span>
                         </div>
                       </div>
-
-
                     </div>
                   </motion.div>
                 ))}
