@@ -63,15 +63,48 @@ export default function Header() {
               </div>
             </div>
             
-            <a href="#platforms" className="nav-link">
-              <span>Platforms</span>
-            </a>
-            <a href="#education" className="nav-link">
-              <span>Education</span>
-            </a>
-            <a href="#accounts" className="nav-link">
-              <span>Accounts</span>
-            </a>
+            <div className="nav-dropdown">
+              <a href="#platforms" className="nav-link">
+                <span>Platforms</span>
+              </a>
+              <div className="submenu">
+                <div className="submenu-content">
+                  <a href="#mt4" className="submenu-item">MetaTrader 4</a>
+                  <a href="#mt5" className="submenu-item">MetaTrader 5</a>
+                  <a href="#web" className="submenu-item">Web Platform</a>
+                  <a href="#mobile" className="submenu-item">Mobile Apps</a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="nav-dropdown">
+              <a href="#education" className="nav-link">
+                <span>Education</span>
+              </a>
+              <div className="submenu">
+                <div className="submenu-content">
+                  <a href="#tutorials" className="submenu-item">Tutorials</a>
+                  <a href="#webinars" className="submenu-item">Webinars</a>
+                  <a href="#analysis" className="submenu-item">Market Analysis</a>
+                  <a href="#glossary" className="submenu-item">Trading Glossary</a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="nav-dropdown">
+              <a href="#accounts" className="nav-link">
+                <span>Accounts</span>
+              </a>
+              <div className="submenu">
+                <div className="submenu-content">
+                  <a href="#demo" className="submenu-item">Demo Account</a>
+                  <a href="#standard" className="submenu-item">Standard Account</a>
+                  <a href="#premium" className="submenu-item">Premium Account</a>
+                  <a href="#vip" className="submenu-item">VIP Account</a>
+                </div>
+              </div>
+            </div>
+            
             <a href="#contact" className="nav-link">
               <span>Contact</span>
             </a>

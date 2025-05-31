@@ -396,6 +396,99 @@
     color: #4b5563;
   }
 
+  /* Dropdown Navigation Styles */
+  .nav-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    margin-top: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+  }
+
+  .submenu-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(229, 231, 235, 0.2);
+    border-radius: 1rem;
+    padding: 0.75rem;
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    min-width: 200px;
+    position: relative;
+  }
+
+  .submenu-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(229, 231, 235, 0.2);
+    border-bottom: none;
+    border-right: none;
+    transform: translateX(-50%) rotate(45deg);
+    backdrop-filter: blur(20px);
+  }
+
+  .submenu-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.875rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submenu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(239, 15, 18, 0.08) 50%, 
+      transparent 100%);
+    transition: left 0.4s ease;
+    z-index: -1;
+  }
+
+  .submenu-item:hover {
+    color: #ef0f12;
+    background: rgba(239, 15, 18, 0.05);
+    transform: translateX(4px);
+  }
+
+  .submenu-item:hover::before {
+    left: 100%;
+  }
+
+  .nav-dropdown:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
   /* Trading-themed Background Elements */
   .hero-geometry {
     position: absolute;
