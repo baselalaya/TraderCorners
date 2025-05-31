@@ -50,19 +50,19 @@ export default function MarketsSection() {
         </div>
         
         <motion.div 
-          className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-8 shadow-2xl"
+          className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-4 md:p-8 shadow-2xl"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
           {/* Market Tabs */}
-          <div className="flex flex-wrap justify-center mb-12">
+          <div className="flex flex-wrap justify-center mb-8 md:mb-12 gap-2">
             {tabs.map((tab, index) => (
               <motion.button
                 key={tab.id}
                 onClick={() => setActiveMarket(tab.id)}
-                className={`relative mx-2 mb-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 md:px-6 md:py-3 rounded-full font-medium transition-all duration-300 text-sm md:text-base ${
                   activeMarket === tab.id
                     ? 'bg-primary text-primary-foreground shadow-lg'
                     : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -88,11 +88,11 @@ export default function MarketsSection() {
           </div>
           
           {/* Market Data Cards */}
-          <div className="grid gap-4">
+          <div className="grid gap-3 md:gap-4">
             {currentData.map((item, index) => (
               <motion.div
                 key={item.symbol}
-                className="group relative bg-card/30 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:bg-card/50 hover:border-primary/30 transition-all duration-300"
+                className="group relative bg-card/30 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-6 hover:bg-card/50 hover:border-primary/30 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -101,7 +101,56 @@ export default function MarketsSection() {
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
-                <div className="relative z-10 grid grid-cols-2 md:grid-cols-5 gap-4 items-center">
+                {/* Mobile Layout */}
+                <div className="relative z-10 md:hidden">
+                  {/* Top Row - Asset and Action */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center text-sm font-bold text-primary shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <span className="font-display font-semibold text-base text-foreground">{item.symbol}</span>
+                        <div className="text-xs text-muted-foreground">
+                          {activeMarket.charAt(0).toUpperCase() + activeMarket.slice(1)}
+                        </div>
+                      </div>
+                    </div>
+                    <motion.button
+                      className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-4 py-2 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Trade
+                    </motion.button>
+                  </div>
+                  
+                  {/* Bottom Row - Data */}
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-xs text-muted-foreground mb-1">Price</div>
+                      <div className="font-mono text-sm font-bold text-foreground">{item.price}</div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground mb-1">24h Change</div>
+                      <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${
+                        item.isPositive 
+                          ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                          : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                      }`}>
+                        <span className="text-xs">{item.isPositive ? '↗' : '↘'}</span>
+                        {item.change}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground mb-1">Volume</div>
+                      <div className="font-medium text-sm text-foreground">{item.volume}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop Layout */}
+                <div className="relative z-10 hidden md:grid grid-cols-5 gap-4 items-center">
                   {/* Asset */}
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center text-lg font-bold text-primary shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -116,13 +165,13 @@ export default function MarketsSection() {
                   </div>
 
                   {/* Price */}
-                  <div className="text-right md:text-left">
+                  <div className="text-left">
                     <div className="text-sm text-muted-foreground mb-1">Price</div>
                     <div className="font-mono text-xl font-bold text-foreground">{item.price}</div>
                   </div>
 
                   {/* Change */}
-                  <div className="text-right md:text-left">
+                  <div className="text-left">
                     <div className="text-sm text-muted-foreground mb-1">24h Change</div>
                     <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold ${
                       item.isPositive 
@@ -135,13 +184,13 @@ export default function MarketsSection() {
                   </div>
 
                   {/* Volume */}
-                  <div className="text-right md:text-left">
+                  <div className="text-left">
                     <div className="text-sm text-muted-foreground mb-1">Volume</div>
                     <div className="font-medium text-foreground">{item.volume}</div>
                   </div>
 
                   {/* Action */}
-                  <div className="col-span-2 md:col-span-1 flex justify-center md:justify-end">
+                  <div className="flex justify-end">
                     <motion.button
                       className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
                       whileHover={{ scale: 1.05 }}
@@ -153,7 +202,7 @@ export default function MarketsSection() {
                 </div>
 
                 {/* Pulse Animation */}
-                <div className="absolute top-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-80" />
+                <div className="absolute top-3 right-3 md:top-4 md:right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-80" />
               </motion.div>
             ))}
           </div>
