@@ -63,10 +63,10 @@ export default function Header() {
               </div>
             </div>
             
-            <a href="#platforms" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Platforms</a>
-            <a href="#education" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Education</a>
-            <a href="#accounts" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Accounts</a>
-            <a href="#contact" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+            <a href="#platforms" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Platforms</a>
+            <a href="#education" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Education</a>
+            <a href="#accounts" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Accounts</a>
+            <a href="#contact" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Contact</a>
           </nav>
           
           {/* Desktop CTA */}
