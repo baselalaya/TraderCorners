@@ -324,7 +324,7 @@
     height: 0;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 40px solid rgba(255, 176, 0, 0.12);
+    border-bottom: 40px solid rgba(239, 15, 18, 0.1);
     transform: rotate(45deg);
     animation-delay: -10s;
   }
@@ -367,15 +367,15 @@
     height: 120px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, 
-      rgba(255, 215, 0, 0.15) 0%, 
-      rgba(255, 176, 0, 0.08) 40%, 
-      rgba(255, 223, 0, 0.05) 70%, 
+      rgba(239, 15, 18, 0.1) 0%, 
+      rgba(239, 15, 18, 0.1) 40%, 
+      rgba(239, 15, 18, 0.1) 70%, 
       transparent 100%);
     filter: blur(1px);
     animation: orbFloat 20s ease-in-out infinite;
     box-shadow: 
-      0 0 60px rgba(255, 215, 0, 0.2),
-      inset 0 0 60px rgba(255, 176, 0, 0.1);
+      0 0 60px rgba(239, 15, 18, 0.1),
+      inset 0 0 60px rgba(239, 15, 18, 0.1);
   }
 
   @keyframes orbFloat {
@@ -434,9 +434,9 @@
     height: 100vh;
     background: linear-gradient(to bottom,
       transparent 0%,
-      rgba(255, 215, 0, 0.15) 20%,
-      rgba(255, 176, 0, 0.25) 50%,
-      rgba(255, 223, 0, 0.15) 80%,
+      rgba(239, 15, 18, 0.1) 20%,
+      rgba(239, 15, 18, 0.1) 50%,
+      rgba(239, 15, 18, 0.1) 80%,
       transparent 100%);
     filter: blur(1px);
     animation: beamPulse 8s ease-in-out infinite;
@@ -479,8 +479,8 @@
     right: 10%;
     bottom: 10%;
     background: 
-      radial-gradient(ellipse at 30% 40%, rgba(255, 215, 0, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 60%, rgba(255, 176, 0, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 40%, rgba(239, 15, 18, 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 60%, rgba(239, 15, 18, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 50% 20%, rgba(255, 193, 7, 0.06) 0%, transparent 40%);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation: morphingBackdrop 25s ease-in-out infinite;
@@ -515,10 +515,10 @@
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 215, 0, 0.08) 1px, transparent 1px),
-      radial-gradient(circle at 25% 25%, rgba(255, 176, 0, 0.05) 2px, transparent 2px),
-      radial-gradient(circle at 75% 75%, rgba(255, 223, 0, 0.05) 2px, transparent 2px);
+      linear-gradient(rgba(239, 15, 18, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239, 15, 18, 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 25% 25%, rgba(239, 15, 18, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(239, 15, 18, 0.1) 2px, transparent 2px);
     background-size: 100px 100px, 100px 100px, 50px 50px, 70px 70px;
     animation: holographicShift 20s linear infinite;
     opacity: 0.3;
@@ -551,12 +551,12 @@
     position: absolute;
     width: 3px;
     background: linear-gradient(to top,
-      rgba(255, 176, 0, 0.8) 0%,
-      rgba(255, 215, 0, 0.6) 50%,
-      rgba(255, 223, 0, 0.4) 100%);
+      rgba(239, 15, 18, 0.1) 0%,
+      rgba(239, 15, 18, 0.1) 50%,
+      rgba(239, 15, 18, 0.1) 100%);
     border-radius: 2px 2px 0 0;
     animation: chartPulse 4s ease-in-out infinite;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 10px rgba(239, 15, 18, 0.1);
   }
 
   @keyframes chartPulse {
@@ -634,7 +634,7 @@
     height: 100px;
     perspective: 1000px;
     cursor: pointer;
-    filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.15));
+    filter: drop-shadow(0 10px 20px rgba(239, 15, 18, 0.1));
   }
 
   .market-card-inner {
@@ -1013,21 +1013,21 @@
   @keyframes focusPulse {
     0% { 
       box-shadow: 
-        0 0 0 3px rgba(255, 215, 0, 0.3),
-        0 0 0 6px rgba(255, 215, 0, 0.1),
-        0 4px 12px rgba(255, 215, 0, 0.2);
+        0 0 0 3px rgba(239, 15, 18, 0.1),
+        0 0 0 6px rgba(239, 15, 18, 0.1),
+        0 4px 12px rgba(239, 15, 18, 0.1);
     }
     50% { 
       box-shadow: 
-        0 0 0 5px rgba(255, 215, 0, 0.4),
-        0 0 0 10px rgba(255, 215, 0, 0.15),
-        0 6px 16px rgba(255, 215, 0, 0.3);
+        0 0 0 5px rgba(239, 15, 18, 0.1),
+        0 0 0 10px rgba(239, 15, 18, 0.1),
+        0 6px 16px rgba(239, 15, 18, 0.1);
     }
     100% { 
       box-shadow: 
-        0 0 0 3px rgba(255, 215, 0, 0.3),
-        0 0 0 6px rgba(255, 215, 0, 0.1),
-        0 4px 12px rgba(255, 215, 0, 0.2);
+        0 0 0 3px rgba(239, 15, 18, 0.1),
+        0 0 0 6px rgba(239, 15, 18, 0.1),
+        0 4px 12px rgba(239, 15, 18, 0.1);
     }
   }
 
@@ -1164,9 +1164,9 @@
   button.cta-button.cta-lg:focus {
     outline: none !important;
     box-shadow: 
-      0 0 0 3px rgba(255, 215, 0, 0.3),
-      0 0 0 6px rgba(255, 215, 0, 0.1),
-      0 4px 12px rgba(255, 215, 0, 0.2) !important;
+      0 0 0 3px rgba(239, 15, 18, 0.1),
+      0 0 0 6px rgba(239, 15, 18, 0.1),
+      0 4px 12px rgba(239, 15, 18, 0.1) !important;
     animation: focusPulse 2s ease-in-out infinite !important;
   }
 
@@ -1248,7 +1248,7 @@
     transform: translateY(-4px) rotateX(2deg) rotateY(1deg);
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.12),
-      0 4px 16px rgba(255, 215, 0, 0.08),
+      0 4px 16px rgba(239, 15, 18, 0.1),
       inset 0 1px 1px rgba(255, 255, 255, 0.95),
       inset 0 -1px 1px rgba(0, 0, 0, 0.03);
   }
@@ -1285,7 +1285,7 @@
 
   .icon-hover:hover, svg:hover {
     transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.2));
+    filter: drop-shadow(0 4px 8px rgba(239, 15, 18, 0.1));
   }
 
   /* Text Hover Effects */
