@@ -410,7 +410,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 50;
   }
@@ -482,11 +482,24 @@
     left: 100%;
   }
 
-  .nav-dropdown:hover .submenu {
+  .nav-dropdown:hover .submenu,
+  .submenu:hover {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
+  }
+
+  /* Add invisible bridge to connect parent and submenu */
+  .nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0.5rem;
+    background: transparent;
+    z-index: 49;
   }
 
   /* Markets Dropdown Specific Styles */

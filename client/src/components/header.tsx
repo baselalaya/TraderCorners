@@ -63,6 +63,7 @@ export default function Header() {
             <div className="nav-dropdown">
               <a href="#platforms" className="nav-link">
                 <span>Platforms</span>
+                <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
@@ -77,6 +78,7 @@ export default function Header() {
             <div className="nav-dropdown">
               <a href="#education" className="nav-link">
                 <span>Education</span>
+                <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
@@ -91,6 +93,7 @@ export default function Header() {
             <div className="nav-dropdown">
               <a href="#accounts" className="nav-link">
                 <span>Accounts</span>
+                <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
