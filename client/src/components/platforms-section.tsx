@@ -7,8 +7,8 @@ export default function PlatformsSection() {
       name: "MetaTrader 4",
       description: "Industry-leading platform with advanced charting and automated trading capabilities",
       icon: Monitor,
-      color: "from-blue-900 via-blue-800 to-blue-700",
-      glowColor: "from-blue-900/20 to-blue-700/20",
+      color: "from-red-900 via-red-800 to-red-700",
+      glowColor: "from-red-900/20 to-red-700/20",
       features: [
         "Advanced charting tools",
         "Expert Advisors (EAs)",
@@ -20,8 +20,8 @@ export default function PlatformsSection() {
       name: "Web Terminal",
       description: "Trade directly from your browser with full platform functionality",
       icon: Globe,
-      color: "from-blue-800 via-blue-700 to-blue-600",
-      glowColor: "from-blue-800/20 to-blue-600/20",
+      color: "from-red-800 via-red-700 to-red-600",
+      glowColor: "from-red-800/20 to-red-600/20",
       features: [
         "No downloads required",
         "Cross-platform compatibility",
@@ -33,8 +33,8 @@ export default function PlatformsSection() {
       name: "Mobile App",
       description: "Professional trading on-the-go with mobile-optimized interface",
       icon: Smartphone,
-      color: "from-blue-700 via-blue-600 to-blue-500",
-      glowColor: "from-blue-700/20 to-blue-500/20",
+      color: "from-red-700 via-red-600 to-red-500",
+      glowColor: "from-red-700/20 to-red-500/20",
       features: [
         "iOS & Android apps",
         "Touch-friendly interface",
