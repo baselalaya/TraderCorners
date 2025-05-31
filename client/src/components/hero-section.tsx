@@ -88,10 +88,10 @@ export default function HeroSection() {
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Mobile-Optimized Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[60vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[80vh] lg:min-h-[60vh]">
           {/* Left Side - Hero Content */}
           <motion.div 
-            className="scroll-reveal space-y-6 lg:space-y-8 text-center lg:text-left"
+            className="scroll-reveal space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1"
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
@@ -166,58 +166,68 @@ export default function HeroSection() {
 
           {/* Right Side - Interactive Market Visualization */}
           <motion.div 
-            className="relative mt-8 lg:mt-0 order-first lg:order-last"
+            className="relative w-full order-1 lg:order-2"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
           >
             {/* Modern Market Display */}
-            <div className="relative space-y-4 lg:space-y-6 px-4 lg:px-0">
-              {/* Live Market Header */}
+            <div className="relative space-y-3 lg:space-y-6">
+              {/* Live Market Header - Mobile Only */}
               <motion.div 
-                className="flex items-center justify-center lg:justify-start space-x-3 mb-4 lg:mb-6"
+                className="flex items-center justify-center space-x-2 mb-3 lg:hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-xs lg:text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-xs font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
               </motion.div>
 
-              {/* Mobile Marquee */}
-              <div className="block sm:hidden overflow-hidden">
-                <div className="flex space-x-4 animate-marquee">
+              {/* Mobile Marquee - Ultra Compact */}
+              <div className="block lg:hidden overflow-hidden -mx-6">
+                <div className="flex space-x-2 animate-marquee px-6">
                   {[...tickerData, ...tickerData].map((item, index) => (
                     <div
                       key={`${item.symbol}-${index}`}
-                      className="flex-shrink-0 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-3 min-w-[140px]"
+                      className="flex-shrink-0 bg-white/8 backdrop-blur-xl border border-white/15 rounded-lg p-2 min-w-[100px]"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-primary tracking-wider uppercase">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-semibold text-primary">
                           {item.symbol}
                         </span>
-                        <div className={`w-1.5 h-1.5 rounded-full ${item.isPositive ? 'bg-emerald-400' : 'bg-red-400'} animate-pulse`}></div>
+                        <div className={`w-1 h-1 rounded-full ${item.isPositive ? 'bg-emerald-400' : 'bg-red-400'}`}></div>
                       </div>
                       
-                      <div className="text-sm font-bold text-foreground mb-1 font-mono">
+                      <div className="text-xs font-bold text-foreground font-mono mb-1">
                         {item.price}
                       </div>
                       
-                      <div className={`inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                      <div className={`text-xs font-medium ${
                         item.isPositive 
-                          ? 'bg-emerald-500/20 text-emerald-400' 
-                          : 'bg-red-500/20 text-red-400'
+                          ? 'text-emerald-400' 
+                          : 'text-red-400'
                       }`}>
-                        <span className="text-xs">{item.isPositive ? '↗' : '↘'}</span>
-                        <span>{item.change}</span>
+                        {item.isPositive ? '↗' : '↘'} {item.change}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
+              {/* Desktop Header */}
+              <motion.div 
+                className="hidden lg:flex items-center justify-start space-x-3 mb-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
+              </motion.div>
+
               {/* Desktop Grid */}
-              <div className="hidden sm:grid grid-cols-2 gap-3 lg:gap-4 max-w-md mx-auto lg:max-w-none">
+              <div className="hidden lg:grid grid-cols-2 gap-4 max-w-none">
                 {tickerData.map((item, index) => (
                   <motion.div
                     key={item.symbol}
