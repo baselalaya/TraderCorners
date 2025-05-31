@@ -220,6 +220,76 @@
     }
   }
 
+  /* Navigation Link Styles */
+  .nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    color: rgb(71, 85, 105);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(239, 15, 18, 0.1) 50%, 
+      transparent 100%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ef0f12, #ff4a4d);
+    border-radius: 1px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+
+  .nav-link span {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-link:hover {
+    color: #ef0f12;
+    transform: translateY(-2px);
+    background: rgba(239, 15, 18, 0.05);
+    box-shadow: 
+      0 4px 12px rgba(239, 15, 18, 0.1),
+      0 2px 6px rgba(239, 15, 18, 0.05);
+  }
+
+  .nav-link:hover::before {
+    left: 100%;
+  }
+
+  .nav-link:hover::after {
+    width: 60%;
+  }
+
+  .nav-link:hover span {
+    transform: translateY(-1px);
+    text-shadow: 0 1px 2px rgba(239, 15, 18, 0.1);
+  }
+
   /* Trading-themed Background Elements */
   .hero-geometry {
     position: absolute;

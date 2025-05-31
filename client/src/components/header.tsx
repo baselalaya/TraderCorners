@@ -63,10 +63,18 @@ export default function Header() {
               </div>
             </div>
             
-            <a href="#platforms" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Platforms</a>
-            <a href="#education" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Education</a>
-            <a href="#accounts" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Accounts</a>
-            <a href="#contact" className="relative font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105">Contact</a>
+            <a href="#platforms" className="nav-link">
+              <span>Platforms</span>
+            </a>
+            <a href="#education" className="nav-link">
+              <span>Education</span>
+            </a>
+            <a href="#accounts" className="nav-link">
+              <span>Accounts</span>
+            </a>
+            <a href="#contact" className="nav-link">
+              <span>Contact</span>
+            </a>
           </nav>
           
           {/* Desktop CTA */}
