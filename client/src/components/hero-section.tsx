@@ -87,22 +87,22 @@ export default function HeroSection() {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        {/* Split Layout Design */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[60vh]">
+        {/* Mobile-Optimized Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] lg:min-h-[60vh]">
           {/* Left Side - Hero Content */}
           <motion.div 
-            className="scroll-reveal space-y-8"
+            className="scroll-reveal space-y-6 lg:space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
           >
-            <div className="space-y-4">
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+            <div className="space-y-3 lg:space-y-4">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
                 <div className="relative">
                   <span className="inline-block transform hover:scale-105 transition-transform duration-300">Trade</span>{" "}
                   <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:rotate-1 hero-highlight">Bold.</span>
                 </div>
-                <div className="relative mt-2">
+                <div className="relative mt-1 lg:mt-2">
                   <span className="inline-block transform hover:scale-105 transition-transform duration-300">Win</span>{" "}
                   <span className="text-primary font-bold inline-block transform hover:scale-110 transition-transform duration-300 hover:-rotate-1 hero-highlight">Smart.</span>
                 </div>
@@ -110,54 +110,54 @@ export default function HeroSection() {
             </div>
             
             <motion.p 
-              className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-md lg:max-w-lg mx-auto lg:mx-0 leading-relaxed px-4 lg:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
               Experience next-generation trading with our revolutionary platform. Lightning-fast execution, 
-              real-time insights, and award-winning technology at your fingertips.
+              real-time insights, and award-winning technology.
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 lg:gap-4 px-4 lg:px-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
               <motion.button 
-                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-8 py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex items-center justify-center"
+                className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 aria-label="Start trading with premium features"
               >
-                <Rocket className="mr-2 group-hover:translate-x-1 transition-transform" size={20} />
+                <Rocket className="mr-2 group-hover:translate-x-1 transition-transform" size={18} />
                 <span className="relative z-10 font-bold">Start Trading</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.button>
               <motion.button 
-                className="border-2 border-primary text-primary bg-transparent px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group flex items-center justify-center"
+                className="border-2 border-primary text-primary bg-transparent px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 aria-label="Try our trading demo"
               >
-                <Play className="mr-2 group-hover:scale-110 transition-transform" size={20} />
+                <Play className="mr-2 group-hover:scale-110 transition-transform" size={18} />
                 <span className="relative z-10 font-bold">Try Demo</span>
               </motion.button>
             </motion.div>
             
             {/* Trust Indicators */}
             <motion.div 
-              className="flex items-center gap-6 pt-4"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pt-4 text-center lg:text-left"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 500K+ Active Traders
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 $2.5B+ Daily Volume
               </div>
@@ -166,26 +166,26 @@ export default function HeroSection() {
 
           {/* Right Side - Interactive Market Visualization */}
           <motion.div 
-            className="relative"
+            className="relative mt-8 lg:mt-0 order-first lg:order-last"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
           >
             {/* Modern Market Display */}
-            <div className="relative space-y-6">
+            <div className="relative space-y-4 lg:space-y-6 px-4 lg:px-0">
               {/* Live Market Header */}
               <motion.div 
-                className="flex items-center space-x-3 mb-6"
+                className="flex items-center justify-center lg:justify-start space-x-3 mb-4 lg:mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
+                <span className="text-xs lg:text-sm font-medium text-muted-foreground tracking-wider uppercase">Live Markets</span>
               </motion.div>
 
-              {/* Market Grid */}
-              <div className="grid grid-cols-2 gap-4">
+              {/* Market Grid - Mobile Optimized */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 max-w-md mx-auto lg:max-w-none">
                 {tickerData.map((item, index) => (
                   <motion.div
                     key={item.symbol}
@@ -196,14 +196,14 @@ export default function HeroSection() {
                     whileHover={{ scale: 1.02 }}
                   >
                     {/* Glass Card */}
-                    <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/20">
+                    <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl lg:rounded-2xl p-4 lg:p-6 hover:bg-white/15 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary/20">
                       {/* Glow Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
                       {/* Content */}
                       <div className="relative z-10">
                         {/* Symbol */}
-                        <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center justify-between mb-2 lg:mb-3">
                           <span className="text-xs font-semibold text-primary tracking-wider uppercase">
                             {item.symbol}
                           </span>
@@ -211,12 +211,12 @@ export default function HeroSection() {
                         </div>
                         
                         {/* Price */}
-                        <div className="text-2xl font-bold text-foreground mb-2 font-mono">
+                        <div className="text-lg lg:text-2xl font-bold text-foreground mb-2 font-mono">
                           {item.price}
                         </div>
                         
                         {/* Change */}
-                        <div className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold ${
+                        <div className={`inline-flex items-center space-x-1 px-2 lg:px-3 py-1 rounded-full text-xs font-semibold ${
                           item.isPositive 
                             ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
                             : 'bg-red-500/20 text-red-400 border border-red-500/30'
@@ -236,14 +236,14 @@ export default function HeroSection() {
 
               {/* Market Trend Indicator */}
               <motion.div 
-                className="mt-8 text-center"
+                className="mt-6 lg:mt-8 text-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
               >
-                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                <div className="inline-flex items-center space-x-2 px-3 lg:px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce"></div>
-                  <span className="text-sm text-emerald-400 font-medium">Markets are up 2.3% today</span>
+                  <span className="text-xs lg:text-sm text-emerald-400 font-medium">Markets are up 2.3% today</span>
                 </div>
               </motion.div>
               
