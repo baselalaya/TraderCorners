@@ -31,21 +31,13 @@ export default function HeroSection() {
         }}></div>
       </div>
       
-      {/* Minimal Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Small Corner Accents */}
-        <div className="absolute top-20 left-20 w-3 h-3 bg-primary/40 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-32 w-2 h-2 bg-primary/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-32 left-40 w-2.5 h-2.5 bg-primary/45 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 right-20 w-3 h-3 bg-primary/40 rounded-full animate-pulse" style={{ animationDelay: '3s' }}></div>
-        
-        {/* Subtle Lines */}
-        <div className="absolute top-1/3 left-8 w-20 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent rounded-full"></div>
-        <div className="absolute bottom-1/3 right-8 w-16 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent rounded-full"></div>
-        
-        {/* Additional Decorative Elements */}
-        <div className="absolute top-1/4 right-1/4 w-1 h-8 bg-gradient-to-b from-primary/30 to-transparent rounded-full"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-1 h-6 bg-gradient-to-t from-primary/30 to-transparent rounded-full"></div>
+      {/* Minimal Static Elements */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block">
+        {/* Small Corner Accents - Static */}
+        <div className="absolute top-20 left-20 w-3 h-3 bg-primary/30 rounded-full"></div>
+        <div className="absolute top-40 right-32 w-2 h-2 bg-primary/40 rounded-full"></div>
+        <div className="absolute bottom-32 left-40 w-2.5 h-2.5 bg-primary/35 rounded-full"></div>
+        <div className="absolute bottom-20 right-20 w-3 h-3 bg-primary/30 rounded-full"></div>
       </div>
       
       {/* Financial Data Streams */}
