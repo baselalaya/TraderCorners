@@ -153,21 +153,21 @@ export default function Header() {
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="group flex items-center space-x-4 py-4 px-6 rounded-2xl bg-card/30 border border-border/20 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                      className="mobile-nav-link"
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.4 }}
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="icon-container">
                         <IconComponent className="text-primary" size={24} />
                       </div>
-                      <div className="flex-1">
-                        <div className="font-display text-xl font-semibold text-black group-hover:text-primary transition-colors">
+                      <div className="link-content">
+                        <div className="link-title">
                           {item.label}
                         </div>
-                        <div className="text-sm text-gray-600">
+                        <div className="link-description">
                           Explore {item.label.toLowerCase()}
                         </div>
                       </div>
