@@ -11,17 +11,17 @@ const features = [
   {
     icon: Bell,
     text: "Smart price alerts and notifications",
-    color: "from-blue-800 to-blue-700"
+    color: "from-red-800 to-red-700"
   },
   {
     icon: Smartphone,
     text: "Touch-optimized trading interface",
-    color: "from-blue-700 to-blue-600"
+    color: "from-red-700 to-red-600"
   },
   {
     icon: Shield,
     text: "Biometric security login",
-    color: "from-blue-600 to-blue-500"
+    color: "from-red-600 to-red-500"
   },
 ];
 
