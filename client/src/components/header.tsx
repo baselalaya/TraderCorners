@@ -63,10 +63,10 @@ export default function Header() {
               </div>
             </div>
             
-            <a href="#platforms" className="hover:text-primary transition-colors font-medium">Platforms</a>
-            <a href="#education" className="hover:text-primary transition-colors font-medium">Education</a>
-            <a href="#accounts" className="hover:text-primary transition-colors font-medium">Accounts</a>
-            <a href="#contact" className="hover:text-primary transition-colors font-medium">Contact</a>
+            <a href="#platforms" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Platforms</a>
+            <a href="#education" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Education</a>
+            <a href="#accounts" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Accounts</a>
+            <a href="#contact" className="relative font-medium transition-colors hover:text-primary after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:bottom-0 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
           </nav>
           
           {/* Desktop CTA */}
