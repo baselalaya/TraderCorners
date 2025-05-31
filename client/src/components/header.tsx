@@ -15,7 +15,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img 
-              src="/logo-trader.png" 
+              src="/logo.png" 
               alt="Trader Corners"
               className="h-12 w-auto"
             />
@@ -115,7 +115,7 @@ export default function Header() {
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-border/20 bg-[#ffffff]">
                 <img 
-                  src="/logo-trader.png" 
+                  src="/logo.png" 
                   alt="Trader Corners"
                   className="h-10 w-auto"
                 />
