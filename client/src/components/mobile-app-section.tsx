@@ -6,7 +6,7 @@ const features = [
   {
     icon: TrendingUp,
     text: "Real-time market data and charts",
-    color: "from-blue-900 to-blue-800"
+    color: "from-red-900 to-red-800"
   },
   {
     icon: Bell,

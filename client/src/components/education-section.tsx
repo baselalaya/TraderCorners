@@ -7,7 +7,7 @@ const resources = [
     title: "Trading Courses",
     description: "Comprehensive courses from beginner to advanced trading strategies",
     icon: BookOpen,
-    color: "from-blue-900 to-blue-800",
+    color: "from-red-900 to-red-800",
     action: "Start Learning",
     stats: "50+ Courses"
   },
@@ -15,7 +15,7 @@ const resources = [
     title: "Market Analysis",
     description: "Daily market insights and technical analysis from expert traders",
     icon: TrendingUp,
-    color: "from-blue-800 to-blue-700",
+    color: "from-red-800 to-red-700",
     action: "View Analysis",
     stats: "Daily Updates"
   },
@@ -23,7 +23,7 @@ const resources = [
     title: "Trading Community",
     description: "Connect with traders worldwide and share strategies",
     icon: Users,
-    color: "from-blue-700 to-blue-600",
+    color: "from-red-700 to-red-600",
     action: "Join Community",
     stats: "10K+ Members"
   },
@@ -31,7 +31,7 @@ const resources = [
     title: "Live Webinars",
     description: "Interactive sessions with professional trading experts",
     icon: Video,
-    color: "from-blue-600 to-blue-500",
+    color: "from-red-600 to-red-500",
     action: "Register Now",
     stats: "Weekly Sessions"
   },
