@@ -188,7 +188,7 @@ export default function FAQSection() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-10 h-10 bg-gradient-to-br from-red-900 to-red-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="text-white" size={18} />
                         </div>
                         <div className="flex-1">
