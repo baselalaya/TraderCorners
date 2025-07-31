@@ -41,6 +41,10 @@ export default function Footer() {
       title: "Legal",
       links: ["Terms of Service", "Privacy Policy", "Risk Disclosure", "Compliance", "Licenses"],
     },
+    {
+      title: "Developers",
+      links: ["Design System", "API Documentation", "Component Library", "Brand Guidelines"],
+    },
   ];
 
   const contactInfo = [
@@ -136,7 +140,7 @@ export default function Footer() {
                       {section.links.map((link) => (
                         <li key={link}>
                           <motion.a 
-                            href="#" 
+                            href={link === "Design System" ? "/design-system" : "#"} 
                             className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                             whileHover={{ x: 3 }}
                           >
