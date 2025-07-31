@@ -218,9 +218,46 @@ export default function DesignSystemPage() {
                 </div>
               </div>
 
-              {/* CTA Buttons */}
+              {/* Header CTA Buttons */}
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-6">CTA Button Pattern</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-6">Header CTA Pattern</h3>
+                <div className="bg-white border border-border rounded-2xl p-8 mb-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <img 
+                        src="/logo-trader.png" 
+                        alt="Trader Corners"
+                        className="h-10 w-auto"
+                      />
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <motion.button 
+                        className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="relative z-10 font-bold">Login</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </motion.button>
+                      <motion.button 
+                        className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="relative z-10 font-bold">Start Trading</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </motion.button>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Header navigation buttons: Outline style for login (secondary action) and gradient fill for primary CTA
+                  </p>
+                </div>
+              </div>
+
+              {/* Page CTA Buttons */}
+              <div>
+                <h3 className="text-xl font-semibold text-foreground mb-6">Page CTA Section Pattern</h3>
                 <div className="bg-gradient-to-br from-primary via-primary to-secondary p-12 rounded-2xl relative overflow-hidden">
                   {/* Background decorative elements */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
@@ -265,6 +302,34 @@ export default function DesignSystemPage() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Footer Newsletter CTA */}
+              <div>
+                <h3 className="text-xl font-semibold text-foreground mb-6">Footer Newsletter Pattern</h3>
+                <div className="bg-gradient-to-b from-background to-muted/20 border border-border rounded-2xl p-8">
+                  <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-6 max-w-md">
+                    <h4 className="font-display text-lg font-bold mb-3 text-foreground">Stay Updated</h4>
+                    <p className="text-sm text-muted-foreground mb-4">Get market insights and platform updates</p>
+                    <div className="space-y-3">
+                      <Input
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="bg-background/50 border-border/50 focus:border-primary"
+                      />
+                      <motion.button
+                        className="w-full py-3 px-6 rounded-xl font-semibold bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg transition-all duration-300"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Subscribe to Updates
+                      </motion.button>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-4">
+                    Footer newsletter signup: Glass morphism card with email input and gradient button
+                  </p>
                 </div>
               </div>
             </div>
