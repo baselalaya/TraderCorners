@@ -61,46 +61,46 @@ export default function Header() {
             </div>
             
             <div className="nav-dropdown">
-              <a href="#platforms" className="nav-link">
+              <a href="/platforms" className="nav-link">
                 <span>Platforms</span>
                 <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="#mt4" className="submenu-item">MetaTrader 4</a>
-                  <a href="#mt5" className="submenu-item">MetaTrader 5</a>
-                  <a href="#web" className="submenu-item">Web Platform</a>
-                  <a href="#mobile" className="submenu-item">Mobile Apps</a>
+                  <a href="/platforms#mt4" className="submenu-item">MetaTrader 4</a>
+                  <a href="/platforms#mt5" className="submenu-item">MetaTrader 5</a>
+                  <a href="/platforms#web" className="submenu-item">Web Platform</a>
+                  <a href="/platforms#mobile" className="submenu-item">Mobile Apps</a>
                 </div>
               </div>
             </div>
             
             <div className="nav-dropdown">
-              <a href="#education" className="nav-link">
+              <a href="/education" className="nav-link">
                 <span>Education</span>
                 <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="#tutorials" className="submenu-item">Tutorials</a>
-                  <a href="#webinars" className="submenu-item">Webinars</a>
-                  <a href="#analysis" className="submenu-item">Market Analysis</a>
-                  <a href="#glossary" className="submenu-item">Trading Glossary</a>
+                  <a href="/education#beginner" className="submenu-item">Beginner Courses</a>
+                  <a href="/education#intermediate" className="submenu-item">Advanced Training</a>
+                  <a href="/education#webinars" className="submenu-item">Live Webinars</a>
+                  <a href="/education#resources" className="submenu-item">Free Resources</a>
                 </div>
               </div>
             </div>
             
             <div className="nav-dropdown">
-              <a href="#accounts" className="nav-link">
+              <a href="/accounts" className="nav-link">
                 <span>Accounts</span>
                 <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="#demo" className="submenu-item">Demo Account</a>
-                  <a href="#standard" className="submenu-item">Standard Account</a>
-                  <a href="#premium" className="submenu-item">Premium Account</a>
-                  <a href="#vip" className="submenu-item">VIP Account</a>
+                  <a href="/accounts#starter" className="submenu-item">Starter Account</a>
+                  <a href="/accounts#standard" className="submenu-item">Standard Account</a>
+                  <a href="/accounts#professional" className="submenu-item">Professional Account</a>
+                  <a href="/accounts#vip" className="submenu-item">VIP Account</a>
                 </div>
               </div>
             </div>
