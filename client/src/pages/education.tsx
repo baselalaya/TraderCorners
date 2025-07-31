@@ -384,15 +384,14 @@ export default function EducationPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                variant="secondary"
-                className="bg-white text-primary hover:bg-white/90"
+                className="bg-white text-primary hover:bg-gray-100 font-semibold"
               >
                 Start Free Course
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
               >
                 Explore All Courses
               </Button>
