@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Video, Users, Award, Clock, TrendingUp, BarChart3, PieChart } from "lucide-react";
+import { BookOpen, Video, Users, Award, Clock, TrendingUp, BarChart3, PieChart, Check } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -368,33 +368,60 @@ export default function EducationPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-20 bg-gradient-to-br from-primary via-primary to-secondary">
+        <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              Ready to Begin Your Trading Journey?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Join thousands of successful traders who started their journey with our education platform
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-gray-100 font-semibold"
-              >
-                Start Free Course
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
-              >
-                Explore All Courses
-              </Button>
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
+            
+            <div className="relative z-10 text-center">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Ready to Begin Your Trading Journey?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Join thousands of successful traders who started their journey with our education platform
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <motion.button 
+                  className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">Start Free Course</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
+                
+                <motion.button 
+                  className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">Explore All Courses</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
+              </div>
+              
+              <div className="flex items-center justify-center space-x-6 text-white/70 text-sm">
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>Free Learning Path</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>Expert Instructors</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>Certification Available</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

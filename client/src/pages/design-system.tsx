@@ -221,14 +221,49 @@ export default function DesignSystemPage() {
               {/* CTA Buttons */}
               <div>
                 <h3 className="text-xl font-semibold text-foreground mb-6">CTA Button Pattern</h3>
-                <div className="bg-primary p-8 rounded-2xl">
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button className="bg-white text-primary hover:bg-gray-100 font-semibold">
-                      Primary CTA
-                    </Button>
-                    <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold">
-                      Secondary CTA
-                    </Button>
+                <div className="bg-gradient-to-br from-primary via-primary to-secondary p-12 rounded-2xl relative overflow-hidden">
+                  {/* Background decorative elements */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
+                  
+                  <div className="relative z-10 text-center">
+                    <h4 className="text-white text-xl font-bold mb-2">Ready to Start Trading?</h4>
+                    <p className="text-white/90 mb-8">Join thousands of successful traders worldwide</p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <motion.button 
+                        className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="relative z-10">Open Live Account</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </motion.button>
+                      
+                      <motion.button 
+                        className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className="relative z-10">Try Demo First</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </motion.button>
+                    </div>
+                    
+                    <div className="mt-6 flex items-center justify-center space-x-4 text-white/70 text-sm">
+                      <div className="flex items-center space-x-1">
+                        <Check className="w-4 h-4" />
+                        <span>No hidden fees</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Check className="w-4 h-4" />
+                        <span>24/7 support</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Check className="w-4 h-4" />
+                        <span>Instant setup</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

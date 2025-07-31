@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, Monitor, Smartphone, Globe, BarChart3, Zap, Shield, Users } from "lucide-react";
+import { Download, Monitor, Smartphone, Globe, BarChart3, Zap, Shield, Users, Check } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -261,33 +261,60 @@ export default function PlatformsPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-20 bg-gradient-to-br from-primary via-primary to-secondary">
+        <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="relative overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              Ready to Start Trading?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Choose your preferred platform and join millions of traders worldwide
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-gray-100 font-semibold"
-              >
-                Open Demo Account
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold"
-              >
-                Start Live Trading
-              </Button>
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-xl"></div>
+            
+            <div className="relative z-10 text-center">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Ready to Start Trading?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Choose your preferred platform and join millions of traders worldwide
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <motion.button 
+                  className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">Open Demo Account</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
+                
+                <motion.button 
+                  className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10">Start Live Trading</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.button>
+              </div>
+              
+              <div className="flex items-center justify-center space-x-6 text-white/70 text-sm">
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>All Platforms Available</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>Advanced Charting</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Check className="w-4 h-4" />
+                  <span>Expert Advisors</span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
