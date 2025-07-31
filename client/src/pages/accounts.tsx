@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Star, TrendingUp, Shield, Users, Zap } from "lucide-react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const accountTypes = [
   {
@@ -21,7 +23,7 @@ const accountTypes = [
       "Risk management tools"
     ],
     recommended: false,
-    color: "from-blue-500 to-blue-600"
+    color: "from-muted to-secondary"
   },
   {
     id: "standard",
@@ -62,7 +64,7 @@ const accountTypes = [
       "Priority execution"
     ],
     recommended: false,
-    color: "from-purple-500 to-purple-600"
+    color: "from-secondary to-accent"
   },
   {
     id: "vip",
@@ -83,7 +85,7 @@ const accountTypes = [
       "White-glove service"
     ],
     recommended: false,
-    color: "from-amber-500 to-yellow-600"
+    color: "from-accent to-primary"
   }
 ];
 
@@ -104,7 +106,9 @@ const comparisonFeatures = [
 
 export default function AccountsPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="container mx-auto px-6">
@@ -369,6 +373,8 @@ export default function AccountsPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }

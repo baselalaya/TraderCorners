@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Monitor, Smartphone, Globe, BarChart3, Zap, Shield, Users } from "lucide-react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const platforms = [
   {
@@ -95,7 +97,9 @@ const stats = [
 
 export default function PlatformsPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="container mx-auto px-6">
@@ -289,6 +293,8 @@ export default function PlatformsPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }

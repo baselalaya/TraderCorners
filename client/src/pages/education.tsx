@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Video, Users, Award, Clock, TrendingUp, BarChart3, PieChart } from "lucide-react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const courses = [
   {
@@ -22,7 +24,7 @@ const courses = [
       "Trading Psychology",
       "Platform Navigation"
     ],
-    color: "from-blue-500 to-blue-600"
+    color: "from-muted to-secondary"
   },
   {
     id: "intermediate",
@@ -46,7 +48,7 @@ const courses = [
       "Price Action Trading",
       "Risk-Reward Ratios"
     ],
-    color: "from-green-500 to-green-600"
+    color: "from-primary to-accent"
   },
   {
     id: "advanced",
@@ -74,7 +76,7 @@ const courses = [
       "Building Trading Systems",
       "Institutional Trading Methods"
     ],
-    color: "from-purple-500 to-purple-600"
+    color: "from-secondary to-primary"
   }
 ];
 
@@ -114,7 +116,9 @@ const achievements = [
 
 export default function EducationPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="container mx-auto px-6">
@@ -396,6 +400,8 @@ export default function EducationPage() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
