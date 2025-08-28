@@ -146,7 +146,7 @@ export default function Header() {
         {/* Full-Screen Mobile Menu */}
         {isMenuOpen && (
           <motion.div 
-            className="lg:hidden fixed inset-0 z-50 bg-slate-900/98 backdrop-blur-3xl"
+            className="lg:hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -154,7 +154,7 @@ export default function Header() {
           >
             <div className="flex flex-col h-full">
               {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border/20 bg-[#ffffff]">
+              <div className="flex items-center justify-between p-6 border-b border-white/20 bg-white">
                 <img 
                   src="/logo.png" 
                   alt="Trader Corners"
@@ -162,7 +162,7 @@ export default function Header() {
                 />
                 <motion.button
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-10 h-10 rounded-xl bg-card/50 border border-border/30 flex items-center justify-center text-muted-foreground hover:text-primary transition-colors"
+                  className="w-10 h-10 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -171,14 +171,14 @@ export default function Header() {
               </div>
 
               {/* Navigation Links */}
-              <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-[#fff]">
+              <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-white">
                 <div className="space-y-8">
                   {[
-                    { label: "Markets", href: "#markets", icon: BarChart3 },
-                    { label: "Platforms", href: "#platforms", icon: Monitor },
-                    { label: "Education", href: "#education", icon: BookOpen },
-                    { label: "Accounts", href: "#accounts", icon: User },
-                    { label: "Contact", href: "#contact", icon: Phone },
+                    { label: "Home", href: "/", icon: BarChart3 },
+                    { label: "Platforms", href: "/platforms", icon: Monitor },
+                    { label: "Accounts", href: "/accounts", icon: User },
+                    { label: "Education", href: "/education", icon: BookOpen },
+                    { label: "Contact", href: "/contact", icon: Phone },
                   ].map((item, index) => {
                     const IconComponent = item.icon;
                     return (
@@ -230,7 +230,7 @@ export default function Header() {
                   </motion.button>
                   
                   <motion.button 
-                    className="w-full bg-gradient-to-r from-primary to-secondary text-black px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                    className="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Start trading with Trader Corners"
