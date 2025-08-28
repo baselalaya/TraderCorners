@@ -4,7 +4,6 @@ import HeroSection from "@/components/hero-section";
 import MarketsSection from "@/components/markets-section";
 import AccountTypesSection from "@/components/account-types-section";
 import TradingProductsSection from "@/components/trading-products-section";
-import ContactBanner from "@/components/contact-banner";
 import FAQSection from "@/components/faq-section";
 import Footer from "@/components/footer";
 import InteractiveCursor from "@/components/interactive-cursor";
@@ -42,7 +41,6 @@ export default function Home() {
       <MarketsSection />
       <AccountTypesSection />
       <TradingProductsSection />
-      <ContactBanner />
       <FAQSection />
       <Footer />
     </div>

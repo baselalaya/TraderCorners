@@ -29,7 +29,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 
 ### Pages Structure
 ```
-├── Home (/) - Hero + Markets + Account Types + Trading Products + Contact + FAQ
+├── Home (/) - Hero + Markets + Account Types + Trading Products + FAQ
 ├── Platforms (/platforms) - Trading platform comparison with MT5 details
 ├── Accounts (/accounts) - Account types with pricing
 ├── Education (/education) - Learning resources and courses
@@ -52,6 +52,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Removed duplicate ContactBanner from homepage (contact info already available in footer)
 - **2025-01-31**: Optimized homepage by removing unnecessary sections (Features, Education, Security, Mobile App) for better focus
 - **2025-01-31**: Removed all MT4 references, website now exclusively features MetaTrader 5
 - **2025-01-31**: Fixed mobile menu with proper navigation links and brand styling
@@ -70,7 +71,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - **2025-01-30**: Comprehensive README with deployment instructions
 
 ## Current State
-- ✅ Optimized homepage with focused sections: Hero + Markets + Account Types + Trading Products + Contact + FAQ
+- ✅ Optimized homepage with focused sections: Hero + Markets + Account Types + Trading Products + FAQ
 - ✅ Five inner pages with authentic trading content (Platforms, Accounts, Education, Contact, Design System)
 - ✅ Complete contact information integrated (email: info@tradercorners.com, phone: +41 44 707 83 88, location: Comoros Anjouan)
 - ✅ Exclusive MetaTrader 5 platform integration (removed all MT4 references)
