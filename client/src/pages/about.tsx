@@ -9,10 +9,8 @@ import {
   Users, 
   Globe, 
   Shield, 
-  Award, 
   TrendingUp,
   Target,
-  Heart,
   Zap,
   CheckCircle
 } from "lucide-react";
@@ -48,56 +46,7 @@ export default function About() {
     }
   ];
 
-  const milestones = [
-    {
-      year: "2018",
-      title: "Company Founded",
-      description: "Trader Corners was established with a vision to democratize access to global markets"
-    },
-    {
-      year: "2019",
-      title: "Platform Launch",
-      description: "Launched our first trading platform with advanced MT5 integration"
-    },
-    {
-      year: "2021",
-      title: "Global Expansion",
-      description: "Expanded services to over 100 countries with multi-regulatory compliance"
-    },
-    {
-      year: "2023",
-      title: "500K+ Traders",
-      description: "Reached milestone of serving over 500,000 active traders globally"
-    },
-    {
-      year: "2025",
-      title: "Next Generation",
-      description: "Launching next-generation platform with AI-powered trading tools"
-    }
-  ];
 
-  const team = [
-    {
-      name: "Michael Johnson",
-      role: "Chief Executive Officer",
-      description: "20+ years in financial markets and fintech leadership"
-    },
-    {
-      name: "Sarah Chen",
-      role: "Chief Technology Officer",
-      description: "Former tech lead at major financial institutions"
-    },
-    {
-      name: "David Rodriguez",
-      role: "Head of Compliance",
-      description: "Expert in global financial regulations and compliance"
-    },
-    {
-      name: "Emily Watson",
-      role: "Head of Client Services",
-      description: "Dedicated to delivering exceptional client experiences"
-    }
-  ];
 
   return (
     <>
@@ -257,93 +206,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Company Timeline */}
-        <section className="py-20 bg-muted/20">
-          <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-6">
-                Our Journey
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Key milestones in our mission to revolutionize global trading
-              </p>
-            </motion.div>
 
-            <div className="max-w-4xl mx-auto">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex items-center mb-12 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-primary text-primary-foreground inline-block px-4 py-2 rounded-full font-bold text-sm mb-3">
-                      {milestone.year}
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">{milestone.title}</h3>
-                    <p className="text-muted-foreground">{milestone.description}</p>
-                  </div>
-                  <div className="w-4 h-4 bg-primary rounded-full flex-shrink-0 relative">
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div className="w-1/2"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Leadership Team */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-6">
-                Leadership Team
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Meet the experienced professionals driving Trader Corners forward
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="backdrop-blur-xl bg-card/30 border border-border/30 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 text-center">
-                    <CardHeader>
-                      <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Users className="text-primary" size={28} />
-                      </div>
-                      <CardTitle className="text-xl">{member.name}</CardTitle>
-                      <CardDescription className="font-semibold text-primary">{member.role}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground text-sm">{member.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="py-20 bg-muted/20">

@@ -54,6 +54,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Removed team section and timeline from About Us page
 - **2025-01-31**: Removed Multi-Regulated certifications section from footer (removed Shield, Award, Users certifications)
 - **2025-01-31**: Created Products and About Us pages with authentic content from tradercorners.com
 - **2025-01-31**: Updated navigation to include new pages (About, Products) in header and footer
