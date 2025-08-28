@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, Mail, Phone, MapPin, Globe, Shield, Award, Users, AlertTriangle } from "lucide-react";
+import { TrendingUp, Mail, Phone, MapPin, Globe, Shield, AlertTriangle } from "lucide-react";
 import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -55,11 +55,7 @@ export default function Footer() {
     { icon: Globe, text: "24/7 Global Support", href: "#" },
   ];
 
-  const certifications = [
-    { icon: Shield, text: "Multi-Regulated" },
-    { icon: Award, text: "ISO 27001 Certified" },
-    { icon: Users, text: "500K+ Traders" },
-  ];
+  const certifications = [];
 
   const regulatoryInfo = [
     {
@@ -182,20 +178,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
-              {certifications.map((cert, index) => {
-                const IconComponent = cert.icon;
-                return (
-                  <div key={index} className="flex items-center justify-center space-x-3 group">
-                    <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="text-primary" size={20} />
-                    </div>
-                    <span className="font-semibold text-foreground">{cert.text}</span>
-                  </div>
-                );
-              })}
-            </div>
+
 
             {/* Regulatory Information */}
             <div className="border-t border-border/30 pt-6">

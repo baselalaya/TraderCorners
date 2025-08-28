@@ -54,6 +54,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Removed Multi-Regulated certifications section from footer (removed Shield, Award, Users certifications)
 - **2025-01-31**: Created Products and About Us pages with authentic content from tradercorners.com
 - **2025-01-31**: Updated navigation to include new pages (About, Products) in header and footer
 - **2025-01-31**: Streamlined footer links to include only essential pages for MT5 licensing approval (Contact, Accounts, Platforms, Education, Legal pages)
