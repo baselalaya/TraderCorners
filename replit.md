@@ -52,6 +52,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Streamlined footer links to include only essential pages for MT5 licensing approval (Contact, Accounts, Platforms, Education, Legal pages)
 - **2025-01-31**: Added comprehensive regulatory compliance information in footer (FCA, CySEC, ASIC licenses with reference numbers)
 - **2025-01-31**: Enhanced footer with detailed regulatory information section and risk warnings
 - **2025-01-31**: Removed duplicate ContactBanner from homepage (contact info already available in footer)

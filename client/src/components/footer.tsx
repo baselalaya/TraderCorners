@@ -23,28 +23,27 @@ export default function Footer() {
   const footerSections = [
     {
       title: "Company",
-      links: ["About Us", "Careers", "Press", "Contact", "Partnerships"],
+      links: [
+        { text: "Contact", href: "/contact" }
+      ],
     },
     {
-      title: "Products",
-      links: ["Forex Trading", "Cryptocurrency", "CFDs", "Commodities", "Indices"],
+      title: "Trading",
+      links: [
+        { text: "Account Types", href: "/accounts" },
+        { text: "Trading Platforms", href: "/platforms" },
+        { text: "Education", href: "/education" }
+      ],
     },
     {
-      title: "Platforms",
-      links: ["MT5 Desktop", "Web Platform", "Mobile App", "API Trading", "Copy Trading"],
-    },
-    {
-      title: "Resources",
-      links: ["Education Hub", "Market Analysis", "Economic Calendar", "Trading Tools", "Help Center"],
-    },
-    {
-      title: "Legal",
-      links: ["Terms of Service", "Privacy Policy", "Risk Disclosure", "Compliance", "Licenses"],
-    },
-    {
-      title: "Developers",
-      links: ["Design System", "API Documentation", "Component Library", "Brand Guidelines"],
-    },
+      title: "Legal & Compliance",
+      links: [
+        { text: "Terms of Service", href: "#" },
+        { text: "Privacy Policy", href: "#" },
+        { text: "Risk Disclosure", href: "#" },
+        { text: "Client Agreement", href: "#" }
+      ],
+    }
   ];
 
   const contactInfo = [
@@ -144,7 +143,7 @@ export default function Footer() {
 
             {/* Footer Links */}
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 {footerSections.map((section, index) => (
                   <motion.div
                     key={section.title}
@@ -156,13 +155,13 @@ export default function Footer() {
                     <h4 className="font-display font-bold mb-4 md:mb-6 text-foreground text-sm md:text-base">{section.title}</h4>
                     <ul className="space-y-2 md:space-y-3">
                       {section.links.map((link) => (
-                        <li key={link}>
+                        <li key={link.text}>
                           <motion.a 
-                            href={link === "Design System" ? "/design-system" : "#"} 
+                            href={link.href} 
                             className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                             whileHover={{ x: 3 }}
                           >
-                            {link}
+                            {link.text}
                           </motion.a>
                         </li>
                       ))}
