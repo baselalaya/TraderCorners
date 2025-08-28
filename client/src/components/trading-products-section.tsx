@@ -171,8 +171,8 @@ export default function TradingProductsSection() {
                   )}
                   
                   <CardHeader className="pb-6">
-                    <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center mx-auto mb-6 shadow-xl shadow-black/20 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500`}>
-                      <IconComponent className="text-white group-hover:scale-110 transition-transform duration-300" size={28} />
+                    <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-all duration-500">
+                      <IconComponent className="text-primary group-hover:scale-110 transition-transform duration-300" size={32} />
                     </div>
                     <CardTitle className="text-2xl text-center font-bold">{product.name}</CardTitle>
                     <CardDescription className="text-center text-base">{product.description}</CardDescription>

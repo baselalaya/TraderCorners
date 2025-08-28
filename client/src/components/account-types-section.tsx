@@ -123,8 +123,8 @@ export default function AccountTypesSection() {
                 )}
                 
                 <CardHeader className={`${account.popular ? 'pt-16' : 'pt-8'} pb-6`}>
-                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${account.color} flex items-center justify-center mx-auto mb-6 shadow-xl shadow-black/20 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500`}>
-                    <TrendingUp className="text-white group-hover:scale-110 transition-transform duration-300" size={28} />
+                  <div className="w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-all duration-500">
+                    <TrendingUp className="text-primary group-hover:scale-110 transition-transform duration-300" size={32} />
                   </div>
                   <CardTitle className="text-2xl text-center font-bold">{account.name}</CardTitle>
                   <CardDescription className="text-center text-base">{account.description}</CardDescription>
