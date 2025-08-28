@@ -108,7 +108,7 @@ export default function ContactPage() {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -8 }}
                   >
-                    <Card className="h-full border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                    <Card className="h-full backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                       <CardHeader className="text-center pb-4">
                         <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                           <IconComponent className="text-primary" size={24} />
@@ -134,7 +134,7 @@ export default function ContactPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <Card>
+                  <Card className="backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="text-2xl">Send us a Message</CardTitle>
                       <CardDescription>
@@ -214,7 +214,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="space-y-6"
                 >
-                  <Card className="bg-primary/5 border-primary/20">
+                  <Card className="backdrop-blur-sm bg-primary/5 border border-primary/20 hover:border-primary/30 transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="text-primary">Why Choose Trader Corners?</CardTitle>
                     </CardHeader>
@@ -249,7 +249,7 @@ export default function ContactPage() {
                     </CardContent>
                   </Card>
 
-                  <Card>
+                  <Card className="backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>Frequently Asked</CardTitle>
                     </CardHeader>

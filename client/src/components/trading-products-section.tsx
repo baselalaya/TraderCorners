@@ -161,7 +161,7 @@ export default function TradingProductsSection() {
                 whileHover={{ y: -8 }}
                 className="h-full"
               >
-                <Card className={`h-full relative overflow-hidden ${product.popular ? 'border-primary shadow-lg' : 'border-border'} hover:shadow-xl transition-all duration-300`}>
+                <Card className={`h-full relative overflow-hidden backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/30 ${product.popular ? 'border-primary/50 shadow-lg shadow-primary/10' : ''} hover:shadow-xl hover:shadow-primary/5 transition-all duration-300`}>
                   {product.popular && (
                     <div className="absolute top-4 right-4">
                       <div className="bg-primary text-primary-foreground rounded-full p-1">
@@ -232,7 +232,7 @@ export default function TradingProductsSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 border border-primary/20 rounded-2xl p-8 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-br from-primary/5 via-card/50 to-secondary/5 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 max-w-3xl mx-auto hover:border-primary/30 transition-all duration-300">
             <h3 className="text-2xl font-bold mb-4">Ready to Explore All Markets?</h3>
             <p className="text-muted-foreground mb-6 text-lg">
               Access global markets with institutional-grade execution and competitive pricing. Start with a demo account to explore our full range of trading products.

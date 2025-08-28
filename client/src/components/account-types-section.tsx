@@ -111,7 +111,7 @@ export default function AccountTypesSection() {
               whileHover={{ y: -8 }}
               className="h-full"
             >
-              <Card className={`h-full relative overflow-hidden ${account.popular ? 'border-primary shadow-lg' : 'border-border'} hover:shadow-xl transition-all duration-300`}>
+              <Card className={`h-full relative overflow-hidden backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/30 ${account.popular ? 'border-primary/50 shadow-lg shadow-primary/10' : ''} hover:shadow-xl hover:shadow-primary/5 transition-all duration-300`}>
                 {account.popular && (
                   <div className="absolute top-0 left-0 right-0">
                     <div className="bg-primary text-primary-foreground text-center py-2 text-sm font-semibold">
@@ -178,7 +178,7 @@ export default function AccountTypesSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-card border border-border rounded-2xl p-8 max-w-2xl mx-auto">
+          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto hover:border-primary/30 transition-all duration-300">
             <h3 className="text-xl font-bold mb-4">Not sure which account is right for you?</h3>
             <p className="text-muted-foreground mb-6">
               Our account specialists can help you choose the perfect trading account based on your experience and goals.
