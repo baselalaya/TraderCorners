@@ -48,9 +48,9 @@ export default function Footer() {
   ];
 
   const contactInfo = [
-    { icon: Mail, text: "support@traderCorners.com", href: "mailto:support@traderCorners.com" },
-    { icon: Phone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: MapPin, text: "New York, London, Singapore", href: "#" },
+    { icon: Mail, text: "info@tradercorners.com", href: "mailto:info@tradercorners.com" },
+    { icon: Phone, text: "+41 44 707 83 88", href: "tel:+41447078388" },
+    { icon: MapPin, text: "Comoros, Anjouan", href: "#" },
     { icon: Globe, text: "24/7 Global Support", href: "#" },
   ];
 

@@ -105,7 +105,7 @@ export default function Header() {
               </div>
             </div>
             
-            <a href="#contact" className="nav-link">
+            <a href="/contact" className="nav-link">
               <span>Contact</span>
             </a>
           </nav>

@@ -4,6 +4,9 @@ import HeroSection from "@/components/hero-section";
 import FeaturesSection from "@/components/features-section";
 import MarketsSection from "@/components/markets-section";
 import PlatformsSection from "@/components/platforms-section";
+import AccountTypesSection from "@/components/account-types-section";
+import TradingProductsSection from "@/components/trading-products-section";
+import ContactBanner from "@/components/contact-banner";
 import AccountsSection from "@/components/accounts-section";
 import EducationSection from "@/components/education-section";
 import SecuritySection from "@/components/security-section";
@@ -44,7 +47,10 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <MarketsSection />
+      <AccountTypesSection />
+      <TradingProductsSection />
       <PlatformsSection />
+      <ContactBanner />
       <AccountsSection />
       <EducationSection />
       <SecuritySection />

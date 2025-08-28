@@ -30,23 +30,27 @@ const platforms = [
   {
     id: "mt5",
     name: "MetaTrader 5",
-    description: "Next-generation platform with enhanced features for modern traders and multi-asset trading.",
+    description: "The most advanced multi-asset platform with enhanced capabilities for professional trading across Forex, stocks, commodities, and futures.",
     features: [
-      "Multi-asset trading",
-      "Advanced order types",
-      "Economic calendar",
-      "Market depth",
-      "Algorithmic trading",
-      "Real-time quotes"
+      "Multi-asset trading (Forex, Stocks, Futures)",
+      "80+ built-in technical indicators",
+      "21 timeframes for analysis",
+      "Depth of Market (DOM)",
+      "Economic calendar integration",
+      "MQL5 algorithmic trading",
+      "Strategy backtesting",
+      "Copy trading signals",
+      "Advanced order management",
+      "Market screener and scanner"
     ],
     devices: ["Windows", "Mac", "iOS", "Android", "Web"],
     image: "/api/placeholder/400/300",
     downloadLinks: {
-      windows: "#",
-      mac: "#",
-      ios: "#",
-      android: "#",
-      web: "#"
+      windows: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5setup.exe",
+      mac: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5.dmg",
+      ios: "https://apps.apple.com/app/metatrader-5/id413251709",
+      android: "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5",
+      web: "https://trade.tradercorners.com/terminal"
     }
   },
   {

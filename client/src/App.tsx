@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import Platforms from "@/pages/platforms";
 import Accounts from "@/pages/accounts";
 import Education from "@/pages/education";
+import Contact from "@/pages/contact";
 import DesignSystem from "@/pages/design-system";
 import NotFound from "@/pages/not-found";
 
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/platforms" component={Platforms} />
       <Route path="/accounts" component={Accounts} />
       <Route path="/education" component={Education} />
+      <Route path="/contact" component={Contact} />
       <Route path="/design-system" component={DesignSystem} />
       <Route component={NotFound} />
     </Switch>
