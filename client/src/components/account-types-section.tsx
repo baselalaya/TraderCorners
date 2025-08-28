@@ -179,28 +179,7 @@ export default function AccountTypesSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto hover:border-primary/30 transition-all duration-300">
-            <h3 className="text-xl font-bold mb-4">Not sure which account is right for you?</h3>
-            <p className="text-muted-foreground mb-6">
-              Our account specialists can help you choose the perfect trading account based on your experience and goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" size="lg">
-                <Zap className="w-4 h-4 mr-2" />
-                Compare All Accounts
-              </Button>
-              <Button size="lg">
-                Get Expert Advice
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
