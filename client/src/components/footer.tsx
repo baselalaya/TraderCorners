@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, Mail, Phone, MapPin, Globe, Shield, Award, Users } from "lucide-react";
+import { TrendingUp, Mail, Phone, MapPin, Globe, Shield, Award, Users, AlertTriangle } from "lucide-react";
 import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram, FaInstagram, FaFacebook } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -55,9 +55,27 @@ export default function Footer() {
   ];
 
   const certifications = [
-    { icon: Shield, text: "FCA Regulated" },
+    { icon: Shield, text: "Multi-Regulated" },
     { icon: Award, text: "ISO 27001 Certified" },
     { icon: Users, text: "500K+ Traders" },
+  ];
+
+  const regulatoryInfo = [
+    {
+      authority: "FCA (UK)",
+      license: "Firm Reference Number: 793806",
+      description: "Authorized and regulated by the Financial Conduct Authority"
+    },
+    {
+      authority: "CySEC (EU)",
+      license: "License Number: 319/17",
+      description: "Licensed and regulated by the Cyprus Securities and Exchange Commission"
+    },
+    {
+      authority: "ASIC (AU)",
+      license: "AFSL Number: 491139",
+      description: "Regulated by the Australian Securities and Investments Commission"
+    }
   ];
 
   return (
@@ -155,7 +173,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Certifications Section */}
+          {/* Regulatory & Compliance Section */}
           <motion.div 
             className="bg-card/30 backdrop-blur-xl border border-border/50 rounded-2xl p-4 md:p-6 mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
@@ -163,7 +181,8 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
               {certifications.map((cert, index) => {
                 const IconComponent = cert.icon;
                 return (
@@ -175,6 +194,42 @@ export default function Footer() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Regulatory Information */}
+            <div className="border-t border-border/30 pt-6">
+              <h4 className="font-display font-bold text-foreground mb-4 text-center">Regulatory Compliance</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {regulatoryInfo.map((reg, index) => (
+                  <div key={index} className="bg-background/50 rounded-xl p-4 border border-border/30">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Shield size={16} className="text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h5 className="font-semibold text-sm text-foreground mb-1">{reg.authority}</h5>
+                        <p className="text-xs text-primary font-medium mb-2">{reg.license}</p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{reg.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Risk Warning */}
+              <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <AlertTriangle size={14} className="text-amber-600" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs text-amber-800 leading-relaxed">
+                      <strong>Risk Warning:</strong> Trading CFDs and leveraged products involves substantial risk of loss and may not be suitable for all investors. 
+                      Past performance is not indicative of future results. Please ensure you understand the risks before trading.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
           

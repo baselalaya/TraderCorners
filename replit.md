@@ -52,6 +52,8 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Added comprehensive regulatory compliance information in footer (FCA, CySEC, ASIC licenses with reference numbers)
+- **2025-01-31**: Enhanced footer with detailed regulatory information section and risk warnings
 - **2025-01-31**: Removed duplicate ContactBanner from homepage (contact info already available in footer)
 - **2025-01-31**: Optimized homepage by removing unnecessary sections (Features, Education, Security, Mobile App) for better focus
 - **2025-01-31**: Removed all MT4 references, website now exclusively features MetaTrader 5
