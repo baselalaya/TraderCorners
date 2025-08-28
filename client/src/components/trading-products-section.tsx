@@ -161,49 +161,49 @@ export default function TradingProductsSection() {
                 whileHover={{ y: -8 }}
                 className="h-full"
               >
-                <Card className={`h-full relative overflow-hidden backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/30 ${product.popular ? 'border-primary/50 shadow-lg shadow-primary/10' : ''} hover:shadow-xl hover:shadow-primary/5 transition-all duration-300`}>
+                <Card className={`h-full relative overflow-hidden backdrop-blur-xl bg-card/30 border ${product.popular ? 'border-primary/50 shadow-2xl shadow-primary/20 ring-2 ring-primary/10' : 'border-border/30'} hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group`}>
                   {product.popular && (
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-primary text-primary-foreground rounded-full p-1">
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className="bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-full p-2 shadow-lg">
                         <Star className="w-4 h-4" />
                       </div>
                     </div>
                   )}
                   
-                  <CardHeader>
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${product.color} flex items-center justify-center mx-auto mb-4`}>
-                      <IconComponent className="text-white" size={24} />
+                  <CardHeader className="pb-6">
+                    <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${product.color} flex items-center justify-center mx-auto mb-6 shadow-xl shadow-black/20 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500`}>
+                      <IconComponent className="text-white group-hover:scale-110 transition-transform duration-300" size={28} />
                     </div>
-                    <CardTitle className="text-xl text-center">{product.name}</CardTitle>
-                    <CardDescription className="text-center">{product.description}</CardDescription>
+                    <CardTitle className="text-2xl text-center font-bold">{product.name}</CardTitle>
+                    <CardDescription className="text-center text-base">{product.description}</CardDescription>
                   </CardHeader>
 
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-1 gap-2 text-center">
-                      <div className="bg-muted/50 rounded-lg p-2">
-                        <div className="font-semibold text-sm">{product.instruments}</div>
-                        <div className="text-xs text-muted-foreground">Available</div>
-                      </div>
+                  <CardContent className="space-y-6 px-6">
+                    <div className="text-center p-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
+                      <div className="font-bold text-lg text-primary mb-1">{product.instruments}</div>
+                      <div className="text-sm font-medium text-muted-foreground">Available Instruments</div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-center">
-                      <div className="bg-muted/30 rounded-lg p-2">
-                        <div className="font-semibold text-xs">{product.spread}</div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
+                        <div className="font-bold text-sm text-foreground">{product.spread}</div>
                         <div className="text-xs text-muted-foreground">Spreads</div>
                       </div>
-                      <div className="bg-muted/30 rounded-lg p-2">
-                        <div className="font-semibold text-xs">{product.leverage}</div>
+                      <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
+                        <div className="font-bold text-sm text-foreground">{product.leverage}</div>
                         <div className="text-xs text-muted-foreground">Leverage</div>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-sm">Key Features:</h4>
-                      <ul className="space-y-1">
+                    <div className="space-y-3">
+                      <h4 className="font-bold text-sm text-foreground">Key Features:</h4>
+                      <ul className="space-y-2">
                         {product.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-sm">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0"></div>
-                            <span className="text-muted-foreground">{feature}</span>
+                          <li key={idx} className="flex items-center text-sm group/item">
+                            <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 flex-shrink-0 group-hover/item:bg-primary/30 transition-colors">
+                              <div className="w-2 h-2 bg-primary rounded-full group-hover/item:scale-110 transition-transform"></div>
+                            </div>
+                            <span className="text-muted-foreground group-hover/item:text-foreground transition-colors">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -211,8 +211,11 @@ export default function TradingProductsSection() {
 
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                       <Button 
-                        variant={product.popular ? "default" : "outline"}
-                        className="w-full"
+                        className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
+                          product.popular 
+                            ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-xl hover:shadow-primary/25' 
+                            : 'bg-gradient-to-r from-muted to-muted/80 text-foreground hover:from-muted/90 hover:to-muted/70 hover:shadow-lg border-2 border-border/50 hover:border-primary/30'
+                        }`}
                         size="lg"
                       >
                         {product.popular ? 'Start Trading' : 'Learn More'}

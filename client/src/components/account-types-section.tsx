@@ -111,48 +111,51 @@ export default function AccountTypesSection() {
               whileHover={{ y: -8 }}
               className="h-full"
             >
-              <Card className={`h-full relative overflow-hidden backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/30 ${account.popular ? 'border-primary/50 shadow-lg shadow-primary/10' : ''} hover:shadow-xl hover:shadow-primary/5 transition-all duration-300`}>
+              <Card className={`h-full relative overflow-hidden backdrop-blur-xl bg-card/30 border ${account.popular ? 'border-primary/50 shadow-2xl shadow-primary/20 ring-2 ring-primary/10' : 'border-border/30'} hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group`}>
                 {account.popular && (
-                  <div className="absolute top-0 left-0 right-0">
-                    <div className="bg-primary text-primary-foreground text-center py-2 text-sm font-semibold">
-                      <Star className="w-4 h-4 inline mr-1" />
-                      Most Popular
+                  <div className="absolute top-0 left-0 right-0 z-10">
+                    <div className="bg-gradient-to-r from-primary via-primary to-secondary text-primary-foreground text-center py-3 text-sm font-bold relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 opacity-50"></div>
+                      <Star className="w-4 h-4 inline mr-1 relative z-10" />
+                      <span className="relative z-10">Most Popular</span>
                     </div>
                   </div>
                 )}
                 
-                <CardHeader className={account.popular ? 'pt-12' : ''}>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${account.color} flex items-center justify-center mx-auto mb-4`}>
-                    <TrendingUp className="text-white" size={24} />
+                <CardHeader className={`${account.popular ? 'pt-16' : 'pt-8'} pb-6`}>
+                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${account.color} flex items-center justify-center mx-auto mb-6 shadow-xl shadow-black/20 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500`}>
+                    <TrendingUp className="text-white group-hover:scale-110 transition-transform duration-300" size={28} />
                   </div>
-                  <CardTitle className="text-xl text-center">{account.name}</CardTitle>
-                  <CardDescription className="text-center">{account.description}</CardDescription>
+                  <CardTitle className="text-2xl text-center font-bold">{account.name}</CardTitle>
+                  <CardDescription className="text-center text-base">{account.description}</CardDescription>
                 </CardHeader>
 
-                <CardContent className="space-y-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-foreground">{account.minDeposit}</div>
-                    <div className="text-sm text-muted-foreground">Minimum Deposit</div>
+                <CardContent className="space-y-6 px-6">
+                  <div className="text-center p-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
+                    <div className="text-3xl font-bold text-primary mb-1">{account.minDeposit}</div>
+                    <div className="text-sm font-medium text-muted-foreground">Minimum Deposit</div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <div className="font-semibold text-sm">{account.spread}</div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
+                      <div className="font-bold text-sm text-foreground">{account.spread}</div>
                       <div className="text-xs text-muted-foreground">Spreads</div>
                     </div>
-                    <div>
-                      <div className="font-semibold text-sm">{account.leverage}</div>
+                    <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
+                      <div className="font-bold text-sm text-foreground">{account.leverage}</div>
                       <div className="text-xs text-muted-foreground">Leverage</div>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm">Features:</h4>
-                    <ul className="space-y-1">
+                  <div className="space-y-3">
+                    <h4 className="font-bold text-sm text-foreground">Key Features:</h4>
+                    <ul className="space-y-2">
                       {account.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm">
-                          <Check className="w-3 h-3 text-primary mr-2 flex-shrink-0" />
-                          <span className="text-muted-foreground">{feature}</span>
+                        <li key={idx} className="flex items-center text-sm group/item">
+                          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 flex-shrink-0 group-hover/item:bg-primary/30 transition-colors">
+                            <Check className="w-3 h-3 text-primary" />
+                          </div>
+                          <span className="text-muted-foreground group-hover/item:text-foreground transition-colors">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -160,10 +163,14 @@ export default function AccountTypesSection() {
 
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button 
-                      className={`w-full ${account.popular ? 'bg-primary hover:bg-primary/90' : 'bg-muted hover:bg-muted/80 text-foreground'}`}
+                      className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
+                        account.popular 
+                          ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-xl hover:shadow-primary/25' 
+                          : 'bg-gradient-to-r from-muted to-muted/80 text-foreground hover:from-muted/90 hover:to-muted/70 hover:shadow-lg'
+                      }`}
                       size="lg"
                     >
-                      {account.popular ? 'Get Started' : 'Choose Plan'}
+                      {account.popular ? 'Get Started Now' : 'Choose This Plan'}
                     </Button>
                   </motion.div>
                 </CardContent>
