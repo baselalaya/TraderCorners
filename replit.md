@@ -30,6 +30,8 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 ### Pages Structure
 ```
 ├── Home (/) - Hero + Markets + Account Types + Trading Products + FAQ
+├── About (/about) - Company mission, values, team, and journey
+├── Products (/products) - Trading instruments and platform features
 ├── Platforms (/platforms) - Trading platform comparison with MT5 details
 ├── Accounts (/accounts) - Account types with pricing
 ├── Education (/education) - Learning resources and courses
@@ -52,6 +54,8 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Created Products and About Us pages with authentic content from tradercorners.com
+- **2025-01-31**: Updated navigation to include new pages (About, Products) in header and footer
 - **2025-01-31**: Streamlined footer links to include only essential pages for MT5 licensing approval (Contact, Accounts, Platforms, Education, Legal pages)
 - **2025-01-31**: Added comprehensive regulatory compliance information in footer (FCA, CySEC, ASIC licenses with reference numbers)
 - **2025-01-31**: Enhanced footer with detailed regulatory information section and risk warnings
@@ -75,7 +79,7 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 
 ## Current State
 - ✅ Optimized homepage with focused sections: Hero + Markets + Account Types + Trading Products + FAQ
-- ✅ Five inner pages with authentic trading content (Platforms, Accounts, Education, Contact, Design System)
+- ✅ Seven inner pages with authentic trading content (About, Products, Platforms, Accounts, Education, Contact, Design System)
 - ✅ Complete contact information integrated (email: info@tradercorners.com, phone: +41 44 707 83 88, location: Comoros Anjouan)
 - ✅ Exclusive MetaTrader 5 platform integration (removed all MT4 references)
 - ✅ Account Types showcase (4 tier system: Starter, Standard, Professional, VIP)

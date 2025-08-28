@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Menu, X, ChevronDown, BarChart3, Monitor, BookOpen, User, Phone } from "lucide-react";
+import { TrendingUp, Menu, X, ChevronDown, BarChart3, Monitor, BookOpen, User, Phone, Building2, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram } from "react-icons/fa";
 
@@ -174,6 +174,8 @@ export default function Header() {
                 <div className="space-y-8">
                   {[
                     { label: "Home", href: "/", icon: BarChart3 },
+                    { label: "About", href: "/about", icon: Building2 },
+                    { label: "Products", href: "/products", icon: Globe },
                     { label: "Platforms", href: "/platforms", icon: Monitor },
                     { label: "Accounts", href: "/accounts", icon: User },
                     { label: "Education", href: "/education", icon: BookOpen },

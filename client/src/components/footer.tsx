@@ -24,12 +24,14 @@ export default function Footer() {
     {
       title: "Company",
       links: [
+        { text: "About Us", href: "/about" },
         { text: "Contact", href: "/contact" }
       ],
     },
     {
       title: "Trading",
       links: [
+        { text: "Trading Products", href: "/products" },
         { text: "Account Types", href: "/accounts" },
         { text: "Trading Platforms", href: "/platforms" },
         { text: "Education", href: "/education" }
