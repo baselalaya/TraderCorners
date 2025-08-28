@@ -36,6 +36,10 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 ├── Accounts (/accounts) - Account types with pricing
 ├── Education (/education) - Learning resources and courses
 ├── Contact (/contact) - Contact form with company information
+├── Terms of Service (/terms-of-service) - Legal terms and conditions
+├── Privacy Policy (/privacy-policy) - Data protection and privacy information
+├── Risk Disclosure (/risk-disclosure) - Trading risks and warnings
+├── Client Agreement (/client-agreement) - Business relationship terms
 ├── Design System (/design-system) - Complete design reference guide
 └── 404 (NotFound) - Error page
 ```
@@ -54,6 +58,8 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 - Optimized marquee effects with pause on hover
 
 ## Recent Changes
+- **2025-01-31**: Created four legal pages (Terms of Service, Privacy Policy, Risk Disclosure, Client Agreement)
+- **2025-01-31**: Updated footer links to point to actual legal pages instead of placeholder links
 - **2025-01-31**: Removed team section and timeline from About Us page
 - **2025-01-31**: Removed Multi-Regulated certifications section from footer (removed Shield, Award, Users certifications)
 - **2025-01-31**: Created Products and About Us pages with authentic content from tradercorners.com
@@ -81,7 +87,8 @@ A cutting-edge trading platform delivering an immersive, mobile-first digital tr
 
 ## Current State
 - ✅ Optimized homepage with focused sections: Hero + Markets + Account Types + Trading Products + FAQ
-- ✅ Seven inner pages with authentic trading content (About, Products, Platforms, Accounts, Education, Contact, Design System)
+- ✅ Eleven inner pages with authentic trading content (About, Products, Platforms, Accounts, Education, Contact, Legal pages, Design System)
+- ✅ Complete legal documentation (Terms of Service, Privacy Policy, Risk Disclosure, Client Agreement)
 - ✅ Complete contact information integrated (email: info@tradercorners.com, phone: +41 44 707 83 88, location: Comoros Anjouan)
 - ✅ Exclusive MetaTrader 5 platform integration (removed all MT4 references)
 - ✅ Account Types showcase (4 tier system: Starter, Standard, Professional, VIP)

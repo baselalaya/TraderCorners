@@ -10,6 +10,10 @@ import Education from "@/pages/education";
 import Contact from "@/pages/contact";
 import Products from "@/pages/products";
 import About from "@/pages/about";
+import TermsOfService from "@/pages/terms-of-service";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import RiskDisclosure from "@/pages/risk-disclosure";
+import ClientAgreement from "@/pages/client-agreement";
 import DesignSystem from "@/pages/design-system";
 import NotFound from "@/pages/not-found";
 
@@ -23,6 +27,10 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/products" component={Products} />
       <Route path="/about" component={About} />
+      <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/risk-disclosure" component={RiskDisclosure} />
+      <Route path="/client-agreement" component={ClientAgreement} />
       <Route path="/design-system" component={DesignSystem} />
       <Route component={NotFound} />
     </Switch>

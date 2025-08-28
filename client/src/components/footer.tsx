@@ -40,10 +40,10 @@ export default function Footer() {
     {
       title: "Legal & Compliance",
       links: [
-        { text: "Terms of Service", href: "#" },
-        { text: "Privacy Policy", href: "#" },
-        { text: "Risk Disclosure", href: "#" },
-        { text: "Client Agreement", href: "#" }
+        { text: "Terms of Service", href: "/terms-of-service" },
+        { text: "Privacy Policy", href: "/privacy-policy" },
+        { text: "Risk Disclosure", href: "/risk-disclosure" },
+        { text: "Client Agreement", href: "/client-agreement" }
       ],
     }
   ];
