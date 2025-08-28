@@ -67,7 +67,6 @@ export default function Header() {
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="/platforms#mt4" className="submenu-item">MetaTrader 4</a>
                   <a href="/platforms#mt5" className="submenu-item">MetaTrader 5</a>
                   <a href="/platforms#web" className="submenu-item">Web Platform</a>
                   <a href="/platforms#mobile" className="submenu-item">Mobile Apps</a>

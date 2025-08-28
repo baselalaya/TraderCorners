@@ -17,7 +17,7 @@ const faqData = [
   },
   {
     question: "What trading platforms do you offer?",
-    answer: "We offer MetaTrader 4, our proprietary web platform, and award-winning mobile apps for iOS and Android. All platforms feature real-time data, advanced charting tools, and seamless execution.",
+    answer: "We offer MetaTrader 5, our advanced web platform, and award-winning mobile apps for iOS and Android. All platforms feature real-time data, advanced charting tools, and seamless execution with multi-asset trading capabilities.",
   },
   {
     question: "Do you offer educational resources?",

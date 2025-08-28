@@ -31,7 +31,7 @@ export default function Footer() {
     },
     {
       title: "Platforms",
-      links: ["MT4 Desktop", "Web Platform", "Mobile App", "API Trading", "Copy Trading"],
+      links: ["MT5 Desktop", "Web Platform", "Mobile App", "API Trading", "Copy Trading"],
     },
     {
       title: "Resources",

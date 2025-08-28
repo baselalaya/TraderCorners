@@ -4,16 +4,16 @@ import { Check, Download, Monitor, Smartphone, Globe, TrendingUp, Zap, Shield } 
 export default function PlatformsSection() {
   const platforms = [
     {
-      name: "MetaTrader 4",
-      description: "Industry-leading platform with advanced charting and automated trading capabilities",
+      name: "MetaTrader 5",
+      description: "Advanced multi-asset platform with enhanced capabilities for professional trading",
       icon: Monitor,
       color: "from-red-900 via-red-800 to-red-700",
       glowColor: "from-red-900/20 to-red-700/20",
       features: [
-        "Advanced charting tools",
-        "Expert Advisors (EAs)",
-        "One-click trading",
-        "Custom indicators"
+        "Multi-asset trading",
+        "80+ technical indicators",
+        "MQL5 algorithmic trading",
+        "Strategy backtesting"
       ]
     },
     {
@@ -39,7 +39,7 @@ export default function PlatformsSection() {
         "iOS & Android apps",
         "Touch-friendly interface",
         "Push notifications",
-        "Offline chart analysis"
+        "MT5 mobile features"
       ]
     }
   ];

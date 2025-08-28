@@ -6,28 +6,6 @@ import Footer from "@/components/footer";
 
 const platforms = [
   {
-    id: "mt4",
-    name: "MetaTrader 4",
-    description: "The world's most popular trading platform with advanced charting and automated trading capabilities.",
-    features: [
-      "Advanced charting tools",
-      "Expert Advisors (EAs)",
-      "One-click trading",
-      "Market analysis tools",
-      "Custom indicators",
-      "Mobile trading"
-    ],
-    devices: ["Windows", "Mac", "iOS", "Android", "Web"],
-    image: "/api/placeholder/400/300",
-    downloadLinks: {
-      windows: "#",
-      mac: "#",
-      ios: "#",
-      android: "#",
-      web: "#"
-    }
-  },
-  {
     id: "mt5",
     name: "MetaTrader 5",
     description: "The most advanced multi-asset platform with enhanced capabilities for professional trading across Forex, stocks, commodities, and futures.",
