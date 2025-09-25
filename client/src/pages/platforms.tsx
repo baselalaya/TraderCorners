@@ -5,6 +5,7 @@ import { FaApple, FaGooglePlay, FaWindows } from "react-icons/fa";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 
 const platforms = [
   {
@@ -82,6 +83,7 @@ const stats = [
 export default function PlatformsPage() {
   return (
     <>
+      <SEO page="platforms" />
       <Header />
       <div className="min-h-screen py-20">
       {/* Hero Section */}

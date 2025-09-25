@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -63,6 +64,7 @@ export default function FxCalculatorPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/20 text-foreground">
+      <SEO page="fxCalculator" />
       <Header />
       <main className="container mx-auto px-6 py-28 md:py-32 flex-1">
         <section className="mb-8">
@@ -149,4 +151,3 @@ export default function FxCalculatorPage() {
     </div>
   );
 }
-

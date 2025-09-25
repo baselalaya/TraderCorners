@@ -4,85 +4,56 @@ import { Badge } from "@/components/ui/badge";
 import { Check, Star, TrendingUp, Shield, Users, Zap } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 
 const accountTypes = [
   {
-    id: "starter",
-    name: "Starter",
-    description: "Perfect for beginners starting their trading journey",
-    minDeposit: "$100",
+    id: "basic",
+    name: "Basic Account",
+    description: "Essential trading with low minimums and MT5 access",
+    minDeposit: "$20",
     maxLeverage: "1:100",
-    spreads: "From 1.8 pips",
-    commission: "Commission-free",
+    spreads: "From 1.2 pips",
+    commission: "$0.0",
     features: [
-      "Educational resources",
-      "Demo account included",
-      "Basic market analysis",
-      "Email support",
-      "Mobile trading app",
-      "Risk management tools"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     recommended: false,
     color: "bg-secondary"
   },
   {
-    id: "standard",
-    name: "Standard",
-    description: "Ideal for active traders seeking better conditions",
-    minDeposit: "$500",
-    maxLeverage: "1:200",
-    spreads: "From 1.2 pips",
-    commission: "Commission-free",
+    id: "premium",
+    name: "Premium Account",
+    description: "Tighter spreads and higher leverage for active traders",
+    minDeposit: "$10,000",
+    maxLeverage: "1:400",
+    spreads: "From 0.8 pips",
+    commission: "$0.0",
     features: [
-      "All Starter features",
-      "Advanced charting tools",
-      "Market news & analysis",
-      "Priority email support",
-      "Economic calendar",
-      "Custom indicators",
-      "Trading signals"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     recommended: true,
     color: "bg-secondary"
   },
   {
-    id: "professional",
-    name: "Professional",
-    description: "For experienced traders demanding premium features",
-    minDeposit: "$2,500",
-    maxLeverage: "1:300",
-    spreads: "From 0.8 pips",
-    commission: "From $3.5/lot",
-    features: [
-      "All Standard features",
-      "Raw spread pricing",
-      "VPS hosting included",
-      "Personal account manager",
-      "24/7 phone support",
-      "Institutional research",
-      "API access",
-      "Priority execution"
-    ],
-    recommended: false,
-    color: "bg-secondary"
-  },
-  {
-    id: "vip",
-    name: "VIP",
-    description: "Exclusive account for high-volume traders",
-    minDeposit: "$25,000",
+    id: "institutional",
+    name: "Institutional Account",
+    description: "Institutional-grade conditions with ultra-low spreads",
+    minDeposit: "$20",
     maxLeverage: "1:400",
-    spreads: "From 0.2 pips",
-    commission: "Negotiable",
+    spreads: "From 0.5 pips",
+    commission: "$0.0",
     features: [
-      "All Professional features",
-      "Ultra-tight spreads",
-      "Dedicated relationship manager",
-      "Custom trading conditions",
-      "Exclusive market insights",
-      "Priority order execution",
-      "Tailored risk management",
-      "White-glove service"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     recommended: false,
     color: "bg-secondary"
@@ -107,6 +78,7 @@ const comparisonFeatures = [
 export default function AccountsPage() {
   return (
     <>
+      <SEO page="accounts" />
       <Header />
       <div className="min-h-screen py-20">
       {/* Hero Section */}
@@ -136,7 +108,7 @@ export default function AccountsPage() {
       {/* Account Cards */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {accountTypes.map((account, index) => (
               <motion.div
                 key={account.id}

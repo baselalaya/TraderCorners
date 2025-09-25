@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { fetchEconomicEvents, Impact, Category, EconomicEvent } from "@/lib/economic-calendar";
 import CalendarFilters from "@/components/calendar/filters";
 import EventsTable from "@/components/calendar/events-table";
@@ -54,6 +55,7 @@ export default function EconomicCalendarPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/20 text-foreground">
+      <SEO page="economicCalendar" />
       <Header />
 
       <main className="container mx-auto px-6 py-28 md:py-32 flex-1">

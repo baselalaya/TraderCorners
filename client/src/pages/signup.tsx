@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,6 +22,7 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/20 text-foreground">
+      <SEO page="signup" />
       <Header />
       <main className="container mx-auto px-6 py-28 md:py-32 flex-1">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-md mx-auto">
@@ -57,4 +59,3 @@ export default function SignupPage() {
     </div>
   );
 }
-

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -89,6 +90,7 @@ export default function TermsOfService() {
 
   return (
     <>
+      <SEO page="terms" />
       <Header />
       <div className="min-h-screen pt-20">
         {/* Hero Section */}

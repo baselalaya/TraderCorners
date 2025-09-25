@@ -97,10 +97,9 @@ export default function Header() {
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="/accounts#starter" className="submenu-item">Starter Account</a>
-                  <a href="/accounts#standard" className="submenu-item">Standard Account</a>
-                  <a href="/accounts#professional" className="submenu-item">Professional Account</a>
-                  <a href="/accounts#vip" className="submenu-item">VIP Account</a>
+                  <a href="/accounts#basic" className="submenu-item">Basic Account</a>
+                  <a href="/accounts#premium" className="submenu-item">Premium Account</a>
+                  <a href="/accounts#institutional" className="submenu-item">Institutional Account</a>
                 </div>
               </div>
             </div>

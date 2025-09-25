@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { BookOpen, Video, Users, Award, Clock, TrendingUp, BarChart3, PieChart, Check } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 
 const courses = [
   {
@@ -117,6 +118,7 @@ const achievements = [
 export default function EducationPage() {
   return (
     <>
+      <SEO page="about" />
       <Header />
       <div className="min-h-screen">
       {/* Hero Section */}

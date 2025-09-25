@@ -3,41 +3,53 @@ import { motion } from "framer-motion";
 
 const accounts = [
   {
-    name: "Demo",
-    description: "Practice without risk",
+    name: "Basic Account",
+    description: "Essential trading with low minimums",
     features: [
-      { label: "Virtual Balance", value: "$100,000" },
-      { label: "Spreads", value: "From 0.1 pips" },
-      { label: "Leverage", value: "Up to 1:500" },
-      { label: "Commission", value: "$0" },
+      { label: "Minimum Initial Deposit", value: "$20" },
+      { label: "Spreads from", value: "1.2 pips" },
+      { label: "Minimum Lot Size", value: "0.01" },
+      { label: "Leverage up to", value: "1:100" },
+      { label: "Commission", value: "$0.0" },
+      { label: "Instruments", value: "28 FX pairs, Metals, CFD" },
+      { label: "Platforms", value: "MT5" },
+      { label: "Stop Out", value: "10%" },
     ],
     buttonText: "Open Demo",
     buttonVariant: "outline" as const,
     popular: false,
   },
   {
-    name: "Standard",
-    description: "For serious traders",
+    name: "Premium Account",
+    description: "Tighter spreads and higher leverage",
     features: [
-      { label: "Minimum Deposit", value: "$100" },
-      { label: "Spreads", value: "From 0.8 pips" },
-      { label: "Leverage", value: "Up to 1:500" },
-      { label: "Commission", value: "$0" },
+      { label: "Minimum Initial Deposit", value: "$10,000" },
+      { label: "Spreads from", value: "0.8 pips" },
+      { label: "Minimum Lot Size", value: "0.01" },
+      { label: "Leverage up to", value: "1:400" },
+      { label: "Commission", value: "$0.0" },
+      { label: "Instruments", value: "28 FX pairs, Metals, CFD" },
+      { label: "Platforms", value: "MT5" },
+      { label: "Stop Out", value: "10%" },
     ],
     buttonText: "Open Account",
     buttonVariant: "default" as const,
     popular: true,
   },
   {
-    name: "VIP",
-    description: "Premium experience",
+    name: "Institutional Account",
+    description: "Institutional-grade conditions",
     features: [
-      { label: "Minimum Deposit", value: "$10,000" },
-      { label: "Spreads", value: "From 0.0 pips" },
-      { label: "Leverage", value: "Up to 1:500" },
-      { label: "Commission", value: "$3.5/lot" },
+      { label: "Minimum Initial Deposit", value: "$20" },
+      { label: "Spreads from", value: "0.5 pips" },
+      { label: "Minimum Lot Size", value: "0.01" },
+      { label: "Leverage up to", value: "1:400" },
+      { label: "Commission", value: "$0.0" },
+      { label: "Instruments", value: "28 FX pairs, Metals, CFD" },
+      { label: "Platforms", value: "MT5" },
+      { label: "Stop Out", value: "10%" },
     ],
-    buttonText: "Contact VIP",
+    buttonText: "Contact Us",
     buttonVariant: "outline" as const,
     popular: false,
   },
@@ -78,7 +90,7 @@ export default function AccountsSection() {
           </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {accounts.map((account, index) => (
             <motion.div
               key={account.name}

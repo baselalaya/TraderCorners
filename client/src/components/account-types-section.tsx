@@ -6,74 +6,49 @@ import { Check, Star, Shield, Zap, TrendingUp } from "lucide-react";
 
 const accountTypes = [
   {
-    name: "Starter",
-    description: "Perfect for beginners starting their trading journey",
-    minDeposit: "$250",
-    spread: "From 1.8 pips",
+    name: "Basic Account",
+    description: "Essential trading with low minimums and MT5 access",
+    minDeposit: "$20",
+    spread: "From 1.2 pips",
     leverage: "1:100",
     features: [
-      "Basic Trading Platform",
-      "Educational Resources",
-      "Email Support",
-      "Market Analysis",
-      "Mobile Trading"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     popular: false,
     color: "from-slate-500 to-slate-600"
   },
   {
-    name: "Standard",
-    description: "Most popular choice for active traders",
-    minDeposit: "$1,000",
-    spread: "From 1.2 pips",
-    leverage: "1:200",
+    name: "Premium Account",
+    description: "Tighter spreads and higher leverage for active traders",
+    minDeposit: "$10,000",
+    spread: "From 0.8 pips",
+    leverage: "1:400",
     features: [
-      "Advanced Trading Platform",
-      "Priority Support",
-      "Daily Market Reports",
-      "Trading Signals",
-      "Expert Advisors",
-      "Risk Management Tools"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     popular: true,
     color: "from-primary to-secondary"
   },
   {
-    name: "Professional",
-    description: "Advanced features for experienced traders",
-    minDeposit: "$5,000",
-    spread: "From 0.8 pips",
-    leverage: "1:300",
+    name: "Institutional Account",
+    description: "Institutional-grade conditions with ultra-low spreads",
+    minDeposit: "$20",
+    spread: "From 0.5 pips",
+    leverage: "1:400",
     features: [
-      "Premium Trading Platform",
-      "Dedicated Account Manager",
-      "Advanced Analytics",
-      "Custom Trading Tools",
-      "VPS Hosting",
-      "Institutional Spreads",
-      "Priority Execution"
+      "Minimum Lot Size: 0.01",
+      "Instruments: 28 FX pairs, Metals, CFD",
+      "Platforms: MT5",
+      "Stop Out: 10%",
     ],
     popular: false,
     color: "from-yellow-500 to-yellow-600"
-  },
-  {
-    name: "VIP",
-    description: "Exclusive benefits for high-volume traders",
-    minDeposit: "$25,000",
-    spread: "From 0.3 pips",
-    leverage: "1:500",
-    features: [
-      "Elite Trading Platform",
-      "Personal Trading Coach",
-      "Exclusive Market Insights",
-      "Custom Development",
-      "Direct Market Access",
-      "Institutional Liquidity",
-      "White Glove Service",
-      "Private Events Access"
-    ],
-    popular: false,
-    color: "from-purple-500 to-purple-600"
   }
 ];
 
@@ -100,7 +75,7 @@ export default function AccountTypesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {accountTypes.map((account, index) => (
             <motion.div
               key={account.name}

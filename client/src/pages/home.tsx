@@ -8,6 +8,7 @@ import FAQSection from "@/components/faq-section";
 import Footer from "@/components/footer";
 import InteractiveCursor from "@/components/interactive-cursor";
 import ScrollProgress from "@/components/scroll-progress";
+import SEO from "@/components/seo";
 
 export default function Home() {
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO page="home" />
 
       
       <ScrollProgress />

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import SEO from "@/components/seo";
 import { useState } from "react";
 
 const contactInfo = [
@@ -64,6 +65,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <SEO page="about" />
       <Header />
       <div className="min-h-screen pt-20">
         {/* Hero Section */}
