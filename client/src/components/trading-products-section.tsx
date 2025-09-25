@@ -210,6 +210,7 @@ export default function TradingProductsSection() {
                     </div>
 
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <a href={product.popular ? "/signup" : "/products"}>
                       <Button 
                         className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
                           product.popular 
@@ -220,6 +221,7 @@ export default function TradingProductsSection() {
                       >
                         {product.popular ? 'Start Trading' : 'Learn More'}
                       </Button>
+                      </a>
                     </motion.div>
                   </CardContent>
                 </Card>
@@ -228,26 +230,34 @@ export default function TradingProductsSection() {
           })}
         </div>
 
-        {/* CTA Section */}
+        {/* CTA Section (aligned with section style) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="group relative overflow-hidden rounded-2xl border border-border/30 bg-card/30 backdrop-blur-xl px-6 py-10 sm:px-10 sm:py-14 mt-8"
         >
-          <div className="bg-gradient-to-br from-primary/5 via-card/50 to-secondary/5 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 max-w-3xl mx-auto hover:border-primary/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold mb-4">Ready to Explore All Markets?</h3>
-            <p className="text-muted-foreground mb-6 text-lg">
+          <div className="absolute -top-12 -right-12 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-secondary/10 blur-3xl" />
+
+          <div className="relative max-w-4xl mx-auto text-center">
+            <h3 className="font-display text-2xl lg:text-3xl font-bold tracking-tight mb-3 text-foreground">
+              Ready to Explore All Markets?
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl mx-auto">
               Access global markets with institutional-grade execution and competitive pricing. Start with a demo account to explore our full range of trading products.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8">
-                <Zap className="w-5 h-5 mr-2" />
-                Open Demo Account
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8">
-                View All Instruments
-              </Button>
+              <a href="/signup">
+                <Button size="lg" className="h-12 px-8 bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg">
+                  Open Demo Account
+                </Button>
+              </a>
+              <a href="/products">
+                <Button variant="outline" size="lg" className="h-12 px-8 border-border/50 hover:bg-card/60">
+                  View All Instruments
+                </Button>
+              </a>
             </div>
           </div>
         </motion.div>

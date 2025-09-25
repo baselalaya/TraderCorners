@@ -1,24 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, Mail, Phone, MapPin, Globe, Shield, AlertTriangle } from "lucide-react";
-import { FaTwitter, FaLinkedin, FaYoutube, FaTelegram, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaXTwitter, FaLinkedin, FaYoutube, FaTelegram, FaInstagram, FaFacebook } from "react-icons/fa6";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setTimeout(() => {
-        setIsSubscribed(false);
-        setEmail("");
-      }, 2000);
-    }
-  };
+  // Newsletter removed
 
   const footerSections = [
     {
@@ -33,12 +21,18 @@ export default function Footer() {
       links: [
         { text: "Trading Products", href: "/products" },
         { text: "Account Types", href: "/accounts" },
-        { text: "Trading Platforms", href: "/platforms" },
-        { text: "Education", href: "/education" }
+        { text: "Trading Platforms", href: "/platforms" }
       ],
     },
     {
-      title: "Legal & Compliance",
+      title: "Tools",
+      links: [
+        { text: "Economic Calendar", href: "/economic-calendar" },
+        { text: "FX Calculator", href: "/fx-calculator" }
+      ],
+    },
+    {
+      title: "Legal",
       links: [
         { text: "Terms of Service", href: "/terms-of-service" },
         { text: "Privacy Policy", href: "/privacy-policy" },
@@ -85,63 +79,10 @@ export default function Footer() {
       <div className="relative z-10 py-20 border-t border-border/50">
         <div className="container mx-auto px-6">
           {/* Main Footer Content */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-16">
-            {/* Brand & Newsletter Section */}
-            <div className="lg:col-span-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                {/* Logo */}
-                <div className="flex items-center space-x-3 mb-6">
-                  <img 
-                    src="/logo-trader.png" 
-                    alt="Trader Corners"
-                    className="h-12 w-auto"
-                  />
-                </div>
-                
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  The premier destination for digital-first trading. Experience the future of finance 
-                  with our cutting-edge platform, advanced analytics, and professional-grade tools.
-                </p>
-                
-                {/* Newsletter Signup */}
-                <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-6 mb-8">
-                  <h4 className="font-display text-lg font-bold mb-3 text-foreground">Stay Updated</h4>
-                  <p className="text-sm text-muted-foreground mb-4">Get market insights and platform updates</p>
-                  <form onSubmit={handleSubscribe} className="space-y-3">
-                    <Input
-                      type="email"
-                      placeholder="Enter your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="bg-background/50 border-border/50 focus:border-primary"
-                    />
-                    <motion.button
-                      type="submit"
-                      className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
-                        isSubscribed 
-                          ? 'bg-green-500 hover:bg-green-600 text-white' 
-                          : 'bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg'
-                      }`}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {isSubscribed ? 'Subscribed!' : 'Subscribe to Updates'}
-                    </motion.button>
-                  </form>
-                </div>
-
-
-              </motion.div>
-            </div>
-
-            {/* Footer Links */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12 mb-12 lg:mb-16">
+            {/* Footer Links - expanded to full width */}
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                 {footerSections.map((section, index) => (
                   <motion.div
                     key={section.title}
@@ -245,7 +186,7 @@ export default function Footer() {
                 viewport={{ once: true }}
               >
                 {[
-                  { icon: FaTwitter, href: "#", label: "Twitter" },
+                  { icon: FaXTwitter, href: "#", label: "X" },
                   { icon: FaLinkedin, href: "#", label: "LinkedIn" },
                   { icon: FaYoutube, href: "#", label: "YouTube" },
                   { icon: FaInstagram, href: "#", label: "Instagram" },
@@ -256,7 +197,7 @@ export default function Footer() {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 bg-card/50 border border-border/30 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+                    className="w-10 h-10 bg-card/50 border border-border/30 rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 no-underline hover:no-underline"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >

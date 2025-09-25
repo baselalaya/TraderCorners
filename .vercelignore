@@ -1,0 +1,10 @@
+# Ignore server directory
+server/
+
+# Ignore development files
+*.log
+.env*
+.DS_Store
+
+# Ignore node_modules
+node_modules/

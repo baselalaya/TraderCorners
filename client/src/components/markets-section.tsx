@@ -191,13 +191,13 @@ export default function MarketsSection() {
 
                   {/* Action */}
                   <div className="flex justify-end">
-                    <motion.button
+                    <motion.a href="/signup"
                       className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       Trade Now
-                    </motion.button>
+                    </motion.a>
                   </div>
                 </div>
 

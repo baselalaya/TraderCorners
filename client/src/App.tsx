@@ -15,7 +15,17 @@ import PrivacyPolicy from "@/pages/privacy-policy";
 import RiskDisclosure from "@/pages/risk-disclosure";
 import ClientAgreement from "@/pages/client-agreement";
 import DesignSystem from "@/pages/design-system";
+import EconomicCalendarPage from "@/pages/economic-calendar";
+import FxCalculatorPage from "@/pages/fx-calculator";
 import NotFound from "@/pages/not-found";
+import Markets from "@/pages/markets";
+import MarketsForex from "@/pages/markets-forex";
+import MarketsCrypto from "@/pages/markets-crypto";
+import MarketsStocks from "@/pages/markets-stocks";
+import MarketsCommodities from "@/pages/markets-commodities";
+import LoginPage from "@/pages/login";
+import SignupPage from "@/pages/signup";
+import ResetPasswordPage from "@/pages/reset-password";
 
 function Router() {
   return (
@@ -26,6 +36,16 @@ function Router() {
       <Route path="/education" component={Education} />
       <Route path="/contact" component={Contact} />
       <Route path="/products" component={Products} />
+      <Route path="/markets" component={Markets} />
+      <Route path="/markets/forex" component={MarketsForex} />
+      <Route path="/markets/crypto" component={MarketsCrypto} />
+      <Route path="/markets/stocks" component={MarketsStocks} />
+      <Route path="/markets/commodities" component={MarketsCommodities} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/signup" component={SignupPage} />
+      <Route path="/reset-password" component={ResetPasswordPage} />
+      <Route path="/economic-calendar" component={EconomicCalendarPage} />
+      <Route path="/fx-calculator" component={FxCalculatorPage} />
       <Route path="/about" component={About} />
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />

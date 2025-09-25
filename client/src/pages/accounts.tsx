@@ -23,7 +23,7 @@ const accountTypes = [
       "Risk management tools"
     ],
     recommended: false,
-    color: "from-muted to-secondary"
+    color: "bg-secondary"
   },
   {
     id: "standard",
@@ -43,7 +43,7 @@ const accountTypes = [
       "Trading signals"
     ],
     recommended: true,
-    color: "from-primary to-red-600"
+    color: "bg-secondary"
   },
   {
     id: "professional",
@@ -64,7 +64,7 @@ const accountTypes = [
       "Priority execution"
     ],
     recommended: false,
-    color: "from-secondary to-accent"
+    color: "bg-secondary"
   },
   {
     id: "vip",
@@ -85,7 +85,7 @@ const accountTypes = [
       "White-glove service"
     ],
     recommended: false,
-    color: "from-accent to-primary"
+    color: "bg-secondary"
   }
 ];
 
@@ -108,7 +108,7 @@ export default function AccountsPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen">
+      <div className="min-h-screen py-20">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="container mx-auto px-6">
@@ -159,7 +159,7 @@ export default function AccountsPage() {
                 )}
 
                 {/* Header */}
-                <div className={`bg-gradient-to-r ${account.color} p-6 text-white`}>
+                <div className={`${account.color} p-6 text-white`}>
                   <h3 className="text-2xl font-bold mb-2">{account.name}</h3>
                   <p className="text-white/90 text-sm">{account.description}</p>
                 </div>

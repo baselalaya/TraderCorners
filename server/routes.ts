@@ -4,6 +4,11 @@ import { createServer, type Server } from "http";
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoints for market data and other trading platform features
   
+  // Healthcheck
+  app.get("/api/health", (_req, res) => {
+    res.json({ ok: true, status: "healthy", timestamp: Date.now() });
+  });
+  
   // Mock market data endpoint
   app.get("/api/markets/:type", (req, res) => {
     const { type } = req.params;

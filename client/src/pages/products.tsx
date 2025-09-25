@@ -148,13 +148,17 @@ export default function Products() {
                   Access a comprehensive range of trading instruments across global markets with institutional-grade execution and competitive pricing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
-                    Start Trading Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                  <Button variant="outline" size="lg">
-                    View Demo Account
-                  </Button>
+                  <a href="/signup">
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                      Start Trading Now
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </a>
+                  <a href="/accounts">
+                    <Button variant="outline" size="lg">
+                      View Demo Account
+                    </Button>
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -241,6 +245,7 @@ export default function Products() {
                         </div>
 
                         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <a href="/signup">
                           <Button 
                             className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
                               product.popular 
@@ -251,6 +256,7 @@ export default function Products() {
                           >
                             Start Trading {product.name}
                           </Button>
+                          </a>
                         </motion.div>
                       </CardContent>
                     </Card>
@@ -326,12 +332,12 @@ export default function Products() {
                   Join thousands of traders who trust Trader Corners for their trading needs. Open your account today and access global markets.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  <a href="/signup"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                     Open Live Account
-                  </Button>
-                  <Button variant="outline" size="lg">
+                  </Button></a>
+                  <a href="/accounts"><Button variant="outline" size="lg">
                     Try Demo Account
-                  </Button>
+                  </Button></a>
                 </div>
               </div>
             </motion.div>

@@ -93,7 +93,7 @@ export default function About() {
                     <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="text-primary" size={24} />
                     </div>
-                    <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
                     <div className="text-muted-foreground">{stat.label}</div>
                   </div>
                 );
@@ -206,6 +206,40 @@ export default function About() {
           </div>
         </section>
 
+        {/* Timeline */}
+        <section className="py-20 bg-muted/20">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-14"
+            >
+              <h2 className="font-display text-3xl lg:text-5xl font-bold mb-4">Our Journey</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">Milestones that shaped Trader Corners into a global trading partner.</p>
+            </motion.div>
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute left-1/2 -translate-x-1/2 h-full w-px bg-border" />
+              {[
+                { year: "2019", text: "Founded with a vision to democratize access to global markets." },
+                { year: "2021", text: "Launched multi-asset connectivity and professional-grade platforms." },
+                { year: "2023", text: "Scaled to 150+ countries with 99.9% platform uptime." },
+              ].map((t, i) => (
+                <motion.div key={t.year} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative grid md:grid-cols-2 gap-6 py-6 ${i % 2 ? 'md:text-left' : 'md:text-right'}`}>
+                  <div className={`${i % 2 ? 'md:col-start-2' : ''}`}>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-card/60 border border-border text-sm font-medium">
+                      <span className="w-2 h-2 rounded-full bg-primary" />
+                      {t.year}
+                    </div>
+                    <p className="mt-3 text-foreground">{t.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
 
 
         {/* CTA Section */}
@@ -223,12 +257,12 @@ export default function About() {
                   Become part of our growing community of successful traders. Experience the difference of professional-grade trading technology.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  <a href="/signup"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                     Start Your Journey
-                  </Button>
-                  <Button variant="outline" size="lg">
+                  </Button></a>
+                  <a href="/contact"><Button variant="outline" size="lg">
                     Contact Our Team
-                  </Button>
+                  </Button></a>
                 </div>
               </div>
             </motion.div>

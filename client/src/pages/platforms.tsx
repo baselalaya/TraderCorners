@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, Monitor, Smartphone, Globe, BarChart3, Zap, Shield, Users, Check } from "lucide-react";
+import { Download, Monitor, Globe, BarChart3, Zap, Shield, Users, Check, Rocket, Play } from "lucide-react";
+import { FaApple, FaGooglePlay, FaWindows } from "react-icons/fa";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
@@ -22,7 +24,7 @@ const platforms = [
       "Market screener and scanner"
     ],
     devices: ["Windows", "Mac", "iOS", "Android", "Web"],
-    image: "/api/placeholder/400/300",
+    image: "/mt5-all.png",
     downloadLinks: {
       windows: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5setup.exe",
       mac: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5.dmg",
@@ -44,7 +46,7 @@ const platforms = [
       "Portfolio tracking"
     ],
     devices: ["Any Browser"],
-    image: "/api/placeholder/400/300",
+    image: "/webtrader.jpg",
     downloadLinks: {
       web: "#"
     }
@@ -62,7 +64,7 @@ const platforms = [
       "Account management"
     ],
     devices: ["iOS", "Android"],
-    image: "/api/placeholder/400/300",
+    image: "/mt5-mobile.webp",
     downloadLinks: {
       ios: "#",
       android: "#"
@@ -81,7 +83,7 @@ export default function PlatformsPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen">
+      <div className="min-h-screen py-20">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="container mx-auto px-6">
@@ -134,7 +136,7 @@ export default function PlatformsPage() {
       </section>
 
       {/* Platforms Grid */}
-      <section className="py-20 bg-gradient-to-b from-white to-muted/20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid gap-12">
             {platforms.map((platform, index) => (
@@ -189,31 +191,57 @@ export default function PlatformsPage() {
                     </div>
 
                     {/* Download Buttons */}
-                    <div className="flex flex-wrap gap-4">
-                      {Object.entries(platform.downloadLinks).map(([type, link]) => (
-                        <Button
-                          key={type}
-                          className="bg-primary hover:bg-primary/90"
-                          asChild
-                        >
-                          <a href={link} className="flex items-center space-x-2">
-                            {type === 'web' ? (
-                              <Globe size={18} />
-                            ) : type === 'ios' || type === 'android' ? (
-                              <Smartphone size={18} />
-                            ) : (
-                              <Monitor size={18} />
-                            )}
-                            <span>
-                              {type === 'web' 
-                                ? 'Launch WebTrader'
-                                : `Download for ${type.charAt(0).toUpperCase() + type.slice(1)}`
-                              }
-                            </span>
-                          </a>
-                        </Button>
-                      ))}
+                    <TooltipProvider>
+                    <div className="flex flex-wrap gap-3">
+                      {Object.entries(platform.downloadLinks).map(([type, link]) => {
+                        const isWeb = type === 'web';
+                        const isStore = type === 'ios' || type === 'android';
+                        const label = isWeb
+                          ? 'Launch WebTrader'
+                          : isStore
+                            ? `Get on ${type.charAt(0).toUpperCase() + type.slice(1)}`
+                            : `Download for ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+                        // Choose icon per platform
+                        const Icon = isWeb
+                          ? Globe
+                          : type === 'ios'
+                          ? FaApple
+                          : type === 'android'
+                          ? FaGooglePlay
+                          : type === 'windows'
+                          ? FaWindows
+                          : Monitor;
+                        const aria = `${label} - ${platform.name}`;
+
+                        return (
+                          <Tooltip key={type}>
+                            <TooltipTrigger asChild>
+                              <Button
+                            key={type}
+                            className={'bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-lg hover:shadow-xl'}
+                            variant={undefined}
+                            asChild
+                          >
+                            <a
+                              href={link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={aria}
+                              className="flex items-center justify-center w-12 h-12 rounded-full text-sm font-medium"
+                              {...(!isWeb && !isStore ? { download: true } : {})}
+                            >
+                              <Icon size={20} />
+                            </a>
+                          </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <span>{label}</span>
+                            </TooltipContent>
+                          </Tooltip>
+                        );
+                      })}
                     </div>
+                    </TooltipProvider>
                   </div>
                 </div>
 
@@ -224,14 +252,14 @@ export default function PlatformsPage() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 shadow-2xl">
-                      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <div className="h-64 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-                          <div className="text-center">
-                            <Monitor className="w-16 h-16 text-primary mx-auto mb-4" />
-                            <p className="text-muted-foreground font-medium">{platform.name} Interface</p>
-                          </div>
-                        </div>
+                    <div className="p-0 md:p-0">
+                      <div className="overflow-hidden">
+                        <img
+                          src={platform.image}
+                          alt={`${platform.name} screenshot`}
+                          className="w-full object-cover"
+                          loading="lazy"
+                        />
                       </div>
                     </div>
                   </motion.div>
@@ -263,24 +291,27 @@ export default function PlatformsPage() {
                 Choose your preferred platform and join millions of traders worldwide
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <motion.button 
-                  className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-                  whileHover={{ scale: 1.02, y: -2 }}
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center mb-8 px-4 sm:px-0">
+                <motion.a href="/signup"
+                  className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  aria-label="Start trading with premium features"
                 >
-                  <span className="relative z-10">Open Demo Account</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
+                  <Rocket className="mr-2 group-hover:translate-x-1 transition-transform" size={18} />
+                  <span className="relative z-10 font-bold">Start Trading</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.a>
                 
-                <motion.button 
-                  className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
-                  whileHover={{ scale: 1.02, y: -2 }}
+                <motion.a href="/accounts"
+                  className="border-2 border-white/80 text-white bg-transparent px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  aria-label="Try our trading demo"
                 >
-                  <span className="relative z-10">Start Live Trading</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
+                  <Play className="mr-2 group-hover:scale-110 transition-transform" size={18} />
+                  <span className="relative z-10 font-bold">Try Demo</span>
+                </motion.a>
               </div>
               
               <div className="flex items-center justify-center space-x-6 text-white/70 text-sm">

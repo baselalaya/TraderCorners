@@ -70,6 +70,11 @@
   .font-space {
     font-family: 'Space Grotesk', sans-serif;
   }
+
+  /* Remove underline on hover across site */
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 @layer components {
@@ -1672,29 +1677,21 @@
       inset 0 -1px 1px rgba(0, 0, 0, 0.03);
   }
 
-  /* Link Micro-interactions */
+  /* Link Micro-interactions (underline effect disabled) */
   a, .hover-link {
     position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
   }
 
   a:hover, .hover-link:hover {
-    transform: translateY(-1px);
+    transform: none;
+    text-decoration: none;
   }
 
+  /* Remove decorative underline pseudo-element */
   a::after, .hover-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #FFD700, #FFB000);
-    transition: width 0.3s ease;
-  }
-
-  a:hover::after, .hover-link:hover::after {
-    width: 100%;
+    content: none;
   }
 
   /* Icon Micro-interactions */

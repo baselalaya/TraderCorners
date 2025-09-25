@@ -13,13 +13,13 @@ export default function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <a href="/" className="flex items-center space-x-3">
             <img 
               src="/logo.png" 
               alt="Trader Corners"
               className="h-12 w-auto"
             />
-          </div>
+          </a>
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -40,19 +40,19 @@ export default function Header() {
                   onMouseEnter={() => setShowMarketsDropdown(true)}
                   onMouseLeave={() => setShowMarketsDropdown(false)}
                 >
-                  <a href="#forex" className="markets-dropdown-item">
+                  <a href="/markets/forex" className="markets-dropdown-item">
                     <span className="market-icon">FX</span>
                     <span className="market-label">Forex Trading</span>
                   </a>
-                  <a href="#crypto" className="markets-dropdown-item">
+                  <a href="/markets/crypto" className="markets-dropdown-item">
                     <span className="market-icon">₿</span>
                     <span className="market-label">Cryptocurrency</span>
                   </a>
-                  <a href="#stocks" className="markets-dropdown-item">
+                  <a href="/markets/stocks" className="markets-dropdown-item">
                     <span className="market-icon">STK</span>
                     <span className="market-label">Stock Markets</span>
                   </a>
-                  <a href="#commodities" className="markets-dropdown-item">
+                  <a href="/markets/commodities" className="markets-dropdown-item">
                     <span className="market-icon">OIL</span>
                     <span className="market-label">Commodities</span>
                   </a>
@@ -73,21 +73,22 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            
+
+            {/* Tools top-level menu */}
             <div className="nav-dropdown">
-              <a href="/education" className="nav-link">
-                <span>Education</span>
+              <a href="#" className="nav-link">
+                <span>Tools</span>
                 <ChevronDown size={14} className="ml-1 transition-transform" />
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="/education#beginner" className="submenu-item">Beginner Courses</a>
-                  <a href="/education#intermediate" className="submenu-item">Advanced Training</a>
-                  <a href="/education#webinars" className="submenu-item">Live Webinars</a>
-                  <a href="/education#resources" className="submenu-item">Free Resources</a>
+                  <a href="/economic-calendar" className="submenu-item">Economic Calendar</a>
+                  <a href="/fx-calculator" className="submenu-item">FX Calculator</a>
                 </div>
               </div>
             </div>
+            
+            {/* Education nav hidden per request */}
             
             <div className="nav-dropdown">
               <a href="/accounts" className="nav-link">
@@ -103,15 +104,12 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            
-            <a href="/contact" className="nav-link">
-              <span>Contact</span>
-            </a>
+            {/* Contact link hidden per request (kept in footer only) */}
           </nav>
           
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <motion.button 
+            <motion.a href="/login"
               className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -119,8 +117,8 @@ export default function Header() {
             >
               <span className="relative z-10 font-bold">Login</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
-            <motion.button 
+            </motion.a>
+            <motion.a href="/signup"
               className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -128,7 +126,7 @@ export default function Header() {
             >
               <span className="relative z-10 font-bold">Start Trading</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
+            </motion.a>
           </div>
           
           {/* Mobile Menu Button */}
@@ -170,27 +168,27 @@ export default function Header() {
               </div>
 
               {/* Navigation Links */}
-              <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-white">
-                <div className="space-y-8">
-                  {[
-                    { label: "Home", href: "/", icon: BarChart3 },
-                    { label: "About", href: "/about", icon: Building2 },
-                    { label: "Products", href: "/products", icon: Globe },
-                    { label: "Platforms", href: "/platforms", icon: Monitor },
-                    { label: "Accounts", href: "/accounts", icon: User },
-                    { label: "Education", href: "/education", icon: BookOpen },
-                    { label: "Contact", href: "/contact", icon: Phone },
-                  ].map((item, index) => {
+              <div className="flex-1 flex flex-col justify-center px-6 py-10 bg-white">
+              <div className="space-y-6">
+                {[
+                  { label: "About", href: "/about", icon: Building2 },
+                  { label: "Products", href: "/products", icon: Globe },
+                  { label: "Platforms", href: "/platforms", icon: Monitor },
+                  { label: "Tools", href: "/economic-calendar", icon: Globe },
+                  { label: "Accounts", href: "/accounts", icon: User },
+                  // Education hidden in mobile menu per request
+                  // Contact hidden in main nav per request
+                ].map((item, index) => {
                     const IconComponent = item.icon;
                     return (
                       <motion.a
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="mobile-nav-link"
-                      initial={{ opacity: 0, x: -50 }}
+                      className="mobile-nav-link min-h-[56px]"
+                      initial={{ opacity: 0, x: -40 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                      transition={{ delay: index * 0.08, duration: 0.3 }}
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -201,7 +199,7 @@ export default function Header() {
                         <div className="link-title">
                           {item.label}
                         </div>
-                        <div className="link-description">
+                        <div className="link-description hidden sm:block">
                           Explore {item.label.toLowerCase()}
                         </div>
                       </div>
@@ -215,10 +213,10 @@ export default function Header() {
               </div>
 
               {/* Mobile Menu Footer */}
-              <div className="p-8 border-t border-gray-300 bg-white">
-                <div className="space-y-4">
-                  <motion.button 
-                    className="w-full border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 relative overflow-hidden group"
+              <div className="p-6 border-t border-gray-300 bg-white">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <motion.a href="/login"
+                    className="w-full text-center border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Login to your trading account"
@@ -228,10 +226,10 @@ export default function Header() {
                   >
                     <span className="relative z-10 font-bold">Login to Account</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.button>
+                  </motion.a>
                   
-                  <motion.button 
-                    className="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                  <motion.a href="/signup"
+                    className="w-full text-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     aria-label="Start trading with Trader Corners"
@@ -241,7 +239,7 @@ export default function Header() {
                   >
                     <span className="relative z-10 font-bold">Start Trading Now</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.button>
+                  </motion.a>
                 </div>
 
                 {/* Social Links */}

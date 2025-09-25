@@ -126,20 +126,18 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="max-w-4xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12">
+            <div className="max-w-5xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-10">
                 {/* Form */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/20 transition-all duration-300">
+                  <Card className="backdrop-blur-xl bg-card/60 border border-border/50 shadow-xl hover:border-primary/30 transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="text-2xl">Send us a Message</CardTitle>
-                      <CardDescription>
-                        Fill out the form below and we'll get back to you within 24 hours.
-                      </CardDescription>
+                      <CardDescription>We usually reply within 24 hours on business days.</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <form onSubmit={handleSubmit} className="space-y-6">
@@ -192,16 +190,17 @@ export default function ContactPage() {
                             required
                           />
                         </div>
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                          <Button 
-                            type="submit" 
-                            className={`w-full ${isSubmitted ? 'bg-green-500 hover:bg-green-600' : ''}`}
-                            size="lg"
-                          >
-                            <Send className="w-4 h-4 mr-2" />
-                            {isSubmitted ? 'Message Sent!' : 'Send Message'}
-                          </Button>
-                        </motion.div>
+                        <div className="flex gap-3">
+                          <motion.div className="flex-1" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+                            <Button type="submit" className={`w-full ${isSubmitted ? 'bg-green-500 hover:bg-green-600' : 'bg-primary'} text-primary-foreground`} size="lg">
+                              <Send className="w-4 h-4 mr-2" />
+                              {isSubmitted ? 'Message Sent!' : 'Send Message'}
+                            </Button>
+                          </motion.div>
+                          <motion.a href="tel:+41447078388" className="hidden sm:block" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+                            <Button variant="outline" size="lg">Call Us</Button>
+                          </motion.a>
+                        </div>
                       </form>
                     </CardContent>
                   </Card>
@@ -214,7 +213,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="space-y-6"
                 >
-                  <Card className="backdrop-blur-sm bg-primary/5 border border-primary/20 hover:border-primary/30 transition-all duration-300">
+                  <Card className="backdrop-blur-xl bg-primary/5 border border-primary/20 hover:border-primary/30 transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="text-primary">Why Choose Trader Corners?</CardTitle>
                     </CardHeader>
@@ -249,7 +248,7 @@ export default function ContactPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/20 transition-all duration-300">
+                  <Card className="backdrop-blur-xl bg-card/60 border border-border/50 hover:border-primary/20 transition-all duration-300">
                     <CardHeader>
                       <CardTitle>Frequently Asked</CardTitle>
                     </CardHeader>
@@ -296,23 +295,23 @@ export default function ContactPage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                  <motion.button 
+                  <motion.a href="/signup"
                     className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span className="relative z-10">Open Live Account</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.button>
+                  </motion.a>
                   
-                  <motion.button 
+                  <motion.a href="/accounts"
                     className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span className="relative z-10">Try Demo Account</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
