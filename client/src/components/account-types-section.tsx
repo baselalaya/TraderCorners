@@ -163,6 +163,7 @@ export default function AccountTypesSection() {
 
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button 
+                      asChild
                       className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
                         account.popular 
                           ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-xl hover:shadow-primary/25' 
@@ -170,7 +171,9 @@ export default function AccountTypesSection() {
                       }`}
                       size="lg"
                     >
-                      {account.popular ? 'Get Started Now' : 'Choose This Plan'}
+                      <a href="https://my.tradercorners.com/en/register/account-types">
+                        {account.popular ? 'Get Started Now' : 'Choose This Plan'}
+                      </a>
                     </Button>
                   </motion.div>
                 </CardContent>

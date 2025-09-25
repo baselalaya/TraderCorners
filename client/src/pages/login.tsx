@@ -14,8 +14,7 @@ export default function LoginPage() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
+    window.location.href = "https://my.tradercorners.com/en/login";
   };
 
   return (
@@ -37,12 +36,12 @@ export default function LoginPage() {
                   <Label htmlFor="password">Password</Label>
                   <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
                 </div>
-                <Button type="submit" className="w-full bg-primary text-primary-foreground" disabled={loading}>
-                  {loading ? "Logging in…" : "Log In"}
+                <Button type="submit" className="w-full bg-primary text-primary-foreground">
+                  Log In
                 </Button>
                 <div className="flex items-center justify-between text-sm">
-                  <a href="/reset-password" className="text-primary hover:underline">Forgot password?</a>
-                  <span className="text-muted-foreground">Don’t have an account? <a href="/signup" className="text-primary hover:underline">Sign up</a></span>
+                  <a href="https://my.tradercorners.com/en/login" className="text-primary hover:underline">Forgot password?</a>
+                  <span className="text-muted-foreground">Don’t have an account? <a href="https://my.tradercorners.com/en/register/account-types" className="text-primary hover:underline">Sign up</a></span>
                 </div>
               </form>
             </CardContent>
