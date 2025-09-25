@@ -129,10 +129,12 @@ export default function Header() {
             </motion.a>
           </div>
           
-          {/* Desktop CTAs */}
+          {/* Desktop CTAs (external) */}
           <div className="hidden lg:flex items-center space-x-4">
             <motion.a
               href="https://my.tradercorners.com/en/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 relative overflow-hidden group"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -143,6 +145,8 @@ export default function Header() {
             </motion.a>
             <motion.a
               href="https://my.tradercorners.com/en/register/account-types"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -239,7 +243,7 @@ export default function Header() {
               {/* Mobile Menu Footer */}
               <div className="p-6 border-t border-gray-300 bg-white">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <motion.a href="https://my.tradercorners.com/en/login"
+                  <motion.a href="https://my.tradercorners.com/en/login" target="_blank" rel="noopener noreferrer"
                     className="w-full text-center border-2 border-primary text-primary bg-transparent px-6 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -252,7 +256,7 @@ export default function Header() {
                     <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                   
-                  <motion.a href="https://my.tradercorners.com/en/register/account-types"
+                  <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
                     className="w-full text-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
