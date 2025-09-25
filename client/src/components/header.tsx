@@ -107,27 +107,6 @@ export default function Header() {
             {/* Contact link hidden per request (kept in footer only) */}
           </nav>
           
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <motion.a href="/login"
-              className="border-2 border-primary text-primary bg-transparent px-6 py-3 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label="Login to your trading account"
-            >
-              <span className="relative z-10 font-bold">Login</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.a>
-            <motion.a href="/signup"
-              className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label="Start trading with Trader Corners"
-            >
-              <span className="relative z-10 font-bold">Start Trading</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.a>
-          </div>
           
           {/* Desktop CTAs (external) */}
           <div className="hidden lg:flex items-center space-x-4">
