@@ -297,7 +297,7 @@ export default function ContactPage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                  <motion.a href="/signup"
+                  <motion.a href="https://my.tradercorners.com/en/register/account-types"
                     className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}

@@ -259,7 +259,7 @@ export default function About() {
                   Become part of our growing community of successful traders. Experience the difference of professional-grade trading technology.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="/signup"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  <a href="https://my.tradercorners.com/en/register/account-types"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                     Start Your Journey
                   </Button></a>
                   <a href="/contact"><Button variant="outline" size="lg">

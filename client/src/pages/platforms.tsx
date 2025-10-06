@@ -144,6 +144,7 @@ export default function PlatformsPage() {
             {platforms.map((platform, index) => (
               <motion.div
                 key={platform.id}
+                id={platform.id}
                 className={`grid lg:grid-cols-2 gap-12 items-center ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}

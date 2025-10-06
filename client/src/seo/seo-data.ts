@@ -152,15 +152,5 @@ export const SEO_DATA: Record<PageKey, SEOEntry> = {
       { name: "Login", url: "/login" },
     ],
   },
-  signup: {
-    path: "/signup",
-    title: "Create Account | Trader Corners",
-    description: "Open your Trader Corners trading account.",
-    ogImage: "/logo.png",
-    type: "website",
-    breadcrumb: [
-      { name: "Home", url: "/" },
-      { name: "Sign Up", url: "/signup" },
-    ],
-  },
+  // signup page disabled; handled via redirect in router
 };

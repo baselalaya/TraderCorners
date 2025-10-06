@@ -191,7 +191,7 @@ export default function MarketsSection() {
 
                   {/* Action */}
                   <div className="flex justify-end">
-                    <motion.a href="/signup"
+                    <motion.a href="https://my.tradercorners.com/en/register/account-types"
                       className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

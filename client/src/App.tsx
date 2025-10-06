@@ -24,7 +24,7 @@ import MarketsCrypto from "@/pages/markets-crypto";
 import MarketsStocks from "@/pages/markets-stocks";
 import MarketsCommodities from "@/pages/markets-commodities";
 import LoginPage from "@/pages/login";
-import SignupPage from "@/pages/signup";
+// import SignupPage from "@/pages/signup";
 import ResetPasswordPage from "@/pages/reset-password";
 
 function Router() {
@@ -42,7 +42,12 @@ function Router() {
       <Route path="/markets/stocks" component={MarketsStocks} />
       <Route path="/markets/commodities" component={MarketsCommodities} />
       <Route path="/login" component={LoginPage} />
-      <Route path="/signup" component={SignupPage} />
+      <Route path="/signup" component={() => {
+        if (typeof window !== 'undefined') {
+          window.location.replace('https://my.tradercorners.com/en/register/account-types');
+        }
+        return null;
+      }} />
       <Route path="/reset-password" component={ResetPasswordPage} />
       <Route path="/economic-calendar" component={EconomicCalendarPage} />
       <Route path="/fx-calculator" component={FxCalculatorPage} />

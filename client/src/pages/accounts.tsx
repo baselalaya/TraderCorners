@@ -112,6 +112,7 @@ export default function AccountsPage() {
             {accountTypes.map((account, index) => (
               <motion.div
                 key={account.id}
+                id={account.id}
                 className={`relative bg-white rounded-3xl shadow-xl border-2 ${
                   account.recommended ? 'border-primary shadow-primary/10' : 'border-border'
                 } overflow-hidden`}
@@ -176,8 +177,9 @@ export default function AccountsPage() {
                         : 'bg-secondary hover:bg-secondary/90'
                     }`}
                     size="lg"
+                    asChild
                   >
-                    Open {account.name} Account
+                    <a href="https://my.tradercorners.com/en/register/account-types">Open {account.name} Account</a>
                   </Button>
                 </div>
               </motion.div>
