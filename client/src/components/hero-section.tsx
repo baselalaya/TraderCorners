@@ -22,8 +22,19 @@ export default function HeroSection() {
   const [map, setMap] = useState<Record<string, {symbol:string; price:number; change:number; isPositive:boolean}>>({});
   const wsRef = useRef<WebSocket|null>(null);
   const pollRef = useRef<any>(null);
+  const prevPriceRef = useRef<Record<string, number>>({});
+  const ORDER = ["EURUSD","GBPUSD","USDJPY","XAUUSD"];
 
-  const tickerData: TickerData[] = useMemo(() => Object.values(map), [map]);
+  const tickerData: TickerData[] = useMemo(() => {
+    const vals = Object.values(map);
+    const by = Object.fromEntries(vals.map(v => [v.symbol, v]));
+    const ordered: TickerData[] = [];
+    for (const s of ["EURUSD","GBPUSD","USDJPY","XAUUSD"]) {
+      if (by[s]) ordered.push(by[s] as TickerData);
+    }
+    for (const v of vals) if (!ordered.find(o => o.symbol === v.symbol)) ordered.push(v as TickerData);
+    return ordered;
+  }, [map]);
   const feedConnected = tickerData.length > 0;
 
   useEffect(() => {
@@ -45,12 +56,15 @@ export default function HeroSection() {
           setMap((prev) => {
             const next = { ...prev } as any;
             for (const it of arr) {
-              const sym = it.symbol || it.display || '';
+              const sym = (it.symbol || it.display || '').toString();
               const price = Number(it.price ?? NaN);
-              const change = Number(it.change ?? 0);
-              const isPositive = change >= 0;
+              const prev = prevPriceRef.current[sym];
+              const diff = prev != null ? price - prev : 0;
+              const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
+              const isPositive = diff >= 0;
               if (!sym) continue;
               next[sym] = { symbol: sym, price, change, isPositive };
+              if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
             }
             return next;
           });
@@ -69,12 +83,15 @@ export default function HeroSection() {
             setMap((prev) => {
               const next = { ...prev } as any;
               for (const it of arr) {
-                const sym = it.symbol || it.display || '';
+                const sym = (it.symbol || it.display || '').toString();
                 const price = Number(it.price ?? NaN);
-                const change = Number(it.change ?? 0);
-                const isPositive = change >= 0;
+                const prev = prevPriceRef.current[sym];
+                const diff = prev != null ? price - prev : 0;
+                const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
+                const isPositive = diff >= 0;
                 if (!sym) continue;
                 next[sym] = { symbol: sym, price, change, isPositive };
+                if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
               }
               return next;
             });
@@ -95,12 +112,15 @@ export default function HeroSection() {
                 setMap((prev) => {
                   const next = { ...prev } as any;
                   for (const it of arr) {
-                    const sym = it.symbol || it.display || '';
+                    const sym = (it.symbol || it.display || '').toString();
                     const price = Number(it.price ?? NaN);
-                    const change = Number(it.change ?? 0);
-                    const isPositive = change >= 0;
+                    const prev = prevPriceRef.current[sym];
+                    const diff = prev != null ? price - prev : 0;
+                    const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
+                    const isPositive = diff >= 0;
                     if (!sym) continue;
                     next[sym] = { symbol: sym, price, change, isPositive };
+                    if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
                   }
                   return next;
                 });
