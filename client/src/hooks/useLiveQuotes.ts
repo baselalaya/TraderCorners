@@ -31,9 +31,22 @@ export function useLiveQuotes() {
   const wsSymbols = useMemo(() => Object.keys(mapWsToKey), [mapWsToKey]);
 
   const hasTD = Boolean(import.meta.env.VITE_TWELVEDATA_API_KEY);
-  const tdWsUrl = import.meta.env.VITE_TWELVEDATA_WS as string | undefined;
+  const tdWsUrlOrig = import.meta.env.VITE_TWELVEDATA_WS as string | undefined;
+  // Diagnostics + ability to force REST in production if needed
+  const forceRest = Boolean(import.meta.env.VITE_QUOTES_FORCE_REST);
+  const tdWsUrl = forceRest ? undefined : tdWsUrlOrig;
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Minimal one-time diagnostics (also useful in production)
+      // eslint-disable-next-line no-console
+      console.log('[quotes] hook mount', {
+        hasTD,
+        wsConfigured: Boolean(tdWsUrlOrig),
+        forceRest,
+        provider: tdWsUrl ? 'ws' : 'rest'
+      });
+    }
     setLoading(true);
     if (!hasTD) {
       setStatus('no-key');
