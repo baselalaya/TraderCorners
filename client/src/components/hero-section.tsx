@@ -59,29 +59,55 @@ export default function HeroSection() {
       ws.onerror = () => setStatus("error");
       ws.onclose = () => {
         setStatus("polling");
-        if (!pollRef.current) {
-          pollRef.current = setInterval(async () => {
-            try {
-              const res = await fetch(`/quotes`);
-              if (!res.ok) return;
-              const data = await res.json();
-              const arr = Array.isArray(data?.items) ? data.items : [];
-              setMap((prev) => {
-                const next = { ...prev } as any;
-                for (const it of arr) {
-                  const sym = it.symbol || it.display || '';
-                  const price = Number(it.price ?? NaN);
-                  const change = Number(it.change ?? 0);
-                  const isPositive = change >= 0;
-                  if (!sym) continue;
-                  next[sym] = { symbol: sym, price, change, isPositive };
-                }
-                return next;
-              });
-              setLastUpdated(new Date().toLocaleTimeString());
-            } catch {}
-          }, 5000);
-        }
+        // Try SSE fallback first
+        const es = new EventSource(`/quotes/events`);
+        es.onmessage = (ev) => {
+          try {
+            const data = JSON.parse(ev.data);
+            const arr = Array.isArray(data?.items) ? data.items : [];
+            setMap((prev) => {
+              const next = { ...prev } as any;
+              for (const it of arr) {
+                const sym = it.symbol || it.display || '';
+                const price = Number(it.price ?? NaN);
+                const change = Number(it.change ?? 0);
+                const isPositive = change >= 0;
+                if (!sym) continue;
+                next[sym] = { symbol: sym, price, change, isPositive };
+              }
+              return next;
+            });
+            setStatus('ok');
+            setLastUpdated(new Date().toLocaleTimeString());
+          } catch {}
+        };
+        es.onerror = () => {
+          es.close();
+          // fallback to REST polling
+          if (!pollRef.current) {
+            pollRef.current = setInterval(async () => {
+              try {
+                const res = await fetch(`/quotes`);
+                if (!res.ok) return;
+                const data = await res.json();
+                const arr = Array.isArray(data?.items) ? data.items : [];
+                setMap((prev) => {
+                  const next = { ...prev } as any;
+                  for (const it of arr) {
+                    const sym = it.symbol || it.display || '';
+                    const price = Number(it.price ?? NaN);
+                    const change = Number(it.change ?? 0);
+                    const isPositive = change >= 0;
+                    if (!sym) continue;
+                    next[sym] = { symbol: sym, price, change, isPositive };
+                  }
+                  return next;
+                });
+                setLastUpdated(new Date().toLocaleTimeString());
+              } catch {}
+            }, 5000);
+          }
+        };
         if (triedOnce) setTimeout(openWS, 1500);
         triedOnce = true;
       };
