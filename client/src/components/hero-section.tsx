@@ -1,15 +1,9 @@
 // client/src/components/hero-section.tsx
-import React, { useMemo } from "react";
-import { useLiveQuotes } from "@/hooks/useLiveQuotes";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface TickerData {
-  symbol: string;
-  price: number;
-  change: number; // percentage change if available; otherwise absolute
-  isPositive: boolean;
-}
+interface TickerData { symbol: string; price: number; change: number; isPositive: boolean }
 
 const formatNumber = (n: number) => {
   if (Number.isNaN(n)) return "--";
@@ -23,38 +17,71 @@ const formatChange = (c: number) => {
 };
 
 export default function HeroSection() {
-  // If your hook doesn't expose `status`, it's fine—`status` will be undefined.
-  const { items: liveItems, lastUpdated, status }: any = useLiveQuotes();
+  const symbols = useMemo(() => (["EURUSD","GBPUSD","USDJPY","XAUUSD"] as const), []);
+  const [data, setData] = useState<Record<string, { price: number; changePct: number; isUp: boolean }>>({});
+  const [lastUpdated, setLastUpdated] = useState<string>("");
+  const [status, setStatus] = useState<'idle'|'ok'|'rate_limited'|'error'|'no_key'|'polling'>("idle");
+  const firstSeen = useRef<Record<string, number>>({});
 
-  // Normalize whatever the hook returns into a consistent shape.
-  const tickerData: TickerData[] = useMemo(() => {
-    if (!Array.isArray(liveItems)) return [];
-    return liveItems
-      .map((i: any) => {
-        const symbol = i?.symbol ?? i?.display ?? i?.name ?? "";
-        const rawPrice = typeof i?.price === "number" ? i.price : Number(i?.price);
-        // Try percentage first (changePct), then absolute change, else 0
-        const rawChange =
-          typeof i?.changePct === "number"
-            ? i.changePct
-            : typeof i?.change === "number"
-              ? i.change
-              : Number(i?.changePct ?? i?.change ?? 0);
-        const isPositive =
-          typeof i?.isUp === "boolean" ? i.isUp : (Number.isFinite(rawChange) ? rawChange >= 0 : false);
+  useEffect(() => {
+    const key = import.meta.env.VITE_MASSIVE_API_KEY as string | undefined;
+    if (!key) { setStatus('no_key'); return; }
 
-        if (!symbol) return null;
-        return {
-          symbol,
-          price: Number.isFinite(rawPrice) ? rawPrice : NaN,
-          change: Number.isFinite(rawChange) ? rawChange : NaN,
-          isPositive,
-        } as TickerData;
-      })
-      .filter(Boolean) as TickerData[];
-  }, [liveItems]);
+    let stopped = false;
+    let timer: any = null;
 
-  const feedConnected = tickerData.length > 0;
+    const fetchOnce = async () => {
+      try {
+        setStatus(prev => prev === 'ok' ? prev : 'polling');
+        const url = new URL('https://api.massive.com/v1/quotes');
+        url.searchParams.set('symbols', symbols.join(','));
+        const res = await fetch(url.toString(), {
+          headers: { Authorization: `Bearer ${key}` }
+        });
+        if (res.status === 429) { setStatus('rate_limited'); return; }
+        if (!res.ok) { setStatus('error'); return; }
+        const json = await res.json();
+        // Expected shape: { data: [{ symbol, price, change_percent }] }
+        const arr = Array.isArray(json?.data) ? json.data : json;
+        const next: Record<string, { price: number; changePct: number; isUp: boolean }> = { ...data };
+        for (const row of arr) {
+          const sym = (row.symbol || row.ticker || '').replace('/', '') as string;
+          if (!sym) continue;
+          const price = Number(row.price ?? row.last ?? row.close);
+          if (!Number.isFinite(price)) continue;
+          if (firstSeen.current[sym] === undefined) firstSeen.current[sym] = price;
+          const base = firstSeen.current[sym] || price;
+          const diff = price - base;
+          const pct = base ? (diff / base) * 100 : 0;
+          next[sym] = { price, changePct: pct, isUp: diff >= 0 };
+        }
+        if (!stopped) {
+          setData(next);
+          setLastUpdated(new Date().toLocaleTimeString());
+          setStatus('ok');
+        }
+      } catch {
+        if (!stopped) setStatus('error');
+      }
+    };
+
+    const loop = async () => {
+      await fetchOnce();
+      if (stopped) return;
+      const jitter = Math.floor(Math.random() * 3000);
+      timer = setTimeout(loop, 15000 + jitter);
+    };
+    loop();
+    return () => { stopped = true; if (timer) clearTimeout(timer); };
+  }, [symbols]);
+
+  const tickerData: TickerData[] = symbols.map((s) => {
+    const v = data[s];
+    if (!v) return { symbol: s, price: NaN, change: NaN, isPositive: true };
+    return { symbol: s, price: v.price, change: v.changePct, isPositive: v.isUp };
+  });
+
+  const feedConnected = Object.keys(data).length > 0;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -92,13 +119,12 @@ export default function HeroSection() {
             className={`w-2 h-2 rounded-full mr-2 ${feedConnected ? "bg-green-500 animate-pulse" : "bg-red-500"}`}
           />
           <span>
-            {feedConnected
-              ? lastUpdated
-                ? `Live quotes updated ${lastUpdated}`
-                : "Live quotes connected"
-              : status === "connecting"
-                ? "Connecting to live quotes..."
-                : "Live quotes unavailable"}
+            {status === 'ok' && lastUpdated && `Live quotes updated ${lastUpdated}`}
+            {status === 'polling' && 'Fetching live quotes…'}
+            {status === 'rate_limited' && 'Rate-limited, retrying shortly…'}
+            {status === 'no_key' && 'API key missing'}
+            {status === 'error' && 'Live quotes error'}
+            {status === 'idle' && 'Initializing…'}
           </span>
         </div>
 

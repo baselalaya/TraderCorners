@@ -21,6 +21,14 @@ export function useLiveQuotes() {
 
   // Track first observed prices to compute % change
   const base = useRef<Record<string, number>>({});
+  const latestRef = useRef<Record<string, { price: number; changePct: number; isUp: boolean }>>({});
+  const mapWsToKey = useMemo(() => ({
+    "EUR/USD": "EURUSD",
+    "GBP/USD": "GBPUSD",
+    "USD/JPY": "USDJPY",
+    "XAU/USD": "XAUUSD",
+  } as Record<string,string>), []);
+  const wsSymbols = useMemo(() => Object.keys(mapWsToKey), [mapWsToKey]);
 
   const hasTD = Boolean(import.meta.env.VITE_TWELVEDATA_API_KEY);
   const tdWsUrl = import.meta.env.VITE_TWELVEDATA_WS as string | undefined;
@@ -35,16 +43,6 @@ export function useLiveQuotes() {
     // Prefer WebSocket if WS URL is set, with REST backfill safety net
     if (tdWsUrl && hasTD) {
       const baseMap = base.current; // baseline per symbol for % calc
-      const latest = useRef<Record<string, { price: number; changePct: number; isUp: boolean }>>({}).current;
-
-      const mapWsToKey: Record<string, string> = {
-        "EUR/USD": "EURUSD",
-        "GBP/USD": "GBPUSD",
-        "USD/JPY": "USDJPY",
-        "XAU/USD": "XAUUSD",
-      };
-      const wsSymbols = Object.keys(mapWsToKey);
-
       const stopWs = startTDWebSocket(wsSymbols, (q) => {
         const key = mapWsToKey[q.symbol];
         if (!key) return;
@@ -52,10 +50,10 @@ export function useLiveQuotes() {
         if (baseMap[key] === undefined) baseMap[key] = q.price;
         const diff = q.price - prev;
         const pct = prev ? (diff / prev) * 100 : 0;
-        latest[key] = { price: q.price, changePct: pct, isUp: diff >= 0 };
+        latestRef.current[key] = { price: q.price, changePct: pct, isUp: diff >= 0 };
         setItems(prevItems => {
           const next = CONFIG.map(({ sym, dp, display }) => {
-            const l = latest[sym];
+            const l = latestRef.current[sym];
             if (!l) {
               const existing = prevItems.find(it => it.display === display);
               return existing ?? { display, price: "—", change: "", isUp: true };
@@ -78,12 +76,12 @@ export function useLiveQuotes() {
           if (baseMap[sym] === undefined) baseMap[sym] = q.price;
           const diff = q.price - prev;
           const pct = prev ? (diff / prev) * 100 : 0;
-          latest[sym] = { price: q.price, changePct: pct, isUp: diff >= 0 };
+          latestRef.current[sym] = { price: q.price, changePct: pct, isUp: diff >= 0 };
           changed = true;
         });
         if (changed) {
           setItems(prevItems => CONFIG.map(({ sym, dp, display }) => {
-            const l = latest[sym];
+            const l = latestRef.current[sym];
             if (!l) {
               const existing = prevItems.find(it => it.display === display);
               return existing ?? { display, price: "—", change: "", isUp: true };
