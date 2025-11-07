@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { mountQuotesRoutes } from "./routes/quotes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoints for market data and other trading platform features
@@ -102,5 +103,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   const httpServer = createServer(app);
+  // Mount quotes HTTP + WS
+  mountQuotesRoutes(app, httpServer);
   return httpServer;
 }

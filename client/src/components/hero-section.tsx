@@ -1,6 +1,5 @@
 // client/src/components/hero-section.tsx
-import React, { useMemo } from "react";
-import { useLiveQuotes } from "@/hooks/useLiveQuotes";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -18,17 +17,81 @@ const formatChange = (c: number) => {
 };
 
 export default function HeroSection() {
-  const { items: liveItems, lastUpdated, status } = useLiveQuotes() as any;
-  const tickerData: TickerData[] = useMemo(() => {
-    if (!Array.isArray(liveItems)) return [];
-    return liveItems.map((i: any) => ({
-      symbol: i.display ?? i.symbol ?? '',
-      price: Number(i.price ?? NaN),
-      change: Number((i.change ?? i.changePct) ?? NaN),
-      isPositive: Boolean(i.isUp ?? (Number(i.change ?? i.changePct) >= 0)),
-    }));
-  }, [liveItems]);
+  const [status, setStatus] = useState<"idle"|"ok"|"polling"|"error">("idle");
+  const [lastUpdated, setLastUpdated] = useState<string>("");
+  const [map, setMap] = useState<Record<string, {symbol:string; price:number; change:number; isPositive:boolean}>>({});
+  const wsRef = useRef<WebSocket|null>(null);
+  const pollRef = useRef<any>(null);
+
+  const tickerData: TickerData[] = useMemo(() => Object.values(map), [map]);
   const feedConnected = tickerData.length > 0;
+
+  useEffect(() => {
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const wsUrl = `${proto}://${window.location.host}/quotes`;
+    let triedOnce = false;
+    const openWS = () => {
+      const ws = new WebSocket(wsUrl);
+      wsRef.current = ws;
+      ws.onopen = () => {
+        setStatus("ok");
+        if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
+      };
+      ws.onmessage = (ev) => {
+        try {
+          const data = JSON.parse((ev as MessageEvent).data as any);
+          const arr = Array.isArray(data?.items) ? data.items : [];
+          setMap((prev) => {
+            const next = { ...prev } as any;
+            for (const it of arr) {
+              const sym = it.symbol || it.display || '';
+              const price = Number(it.price ?? NaN);
+              const change = Number(it.change ?? 0);
+              const isPositive = change >= 0;
+              if (!sym) continue;
+              next[sym] = { symbol: sym, price, change, isPositive };
+            }
+            return next;
+          });
+          setLastUpdated(new Date().toLocaleTimeString());
+        } catch {}
+      };
+      ws.onerror = () => setStatus("error");
+      ws.onclose = () => {
+        setStatus("polling");
+        if (!pollRef.current) {
+          pollRef.current = setInterval(async () => {
+            try {
+              const res = await fetch(`/quotes`);
+              if (!res.ok) return;
+              const data = await res.json();
+              const arr = Array.isArray(data?.items) ? data.items : [];
+              setMap((prev) => {
+                const next = { ...prev } as any;
+                for (const it of arr) {
+                  const sym = it.symbol || it.display || '';
+                  const price = Number(it.price ?? NaN);
+                  const change = Number(it.change ?? 0);
+                  const isPositive = change >= 0;
+                  if (!sym) continue;
+                  next[sym] = { symbol: sym, price, change, isPositive };
+                }
+                return next;
+              });
+              setLastUpdated(new Date().toLocaleTimeString());
+            } catch {}
+          }, 5000);
+        }
+        if (triedOnce) setTimeout(openWS, 1500);
+        triedOnce = true;
+      };
+    };
+    openWS();
+    return () => {
+      if (wsRef.current) wsRef.current.close();
+      if (pollRef.current) clearInterval(pollRef.current);
+    };
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -68,8 +131,6 @@ export default function HeroSection() {
           <span>
             {status === 'ok' && lastUpdated && `Live quotes updated ${lastUpdated}`}
             {status === 'polling' && 'Fetching live quotes…'}
-            {status === 'rate_limited' && 'Rate-limited, retrying shortly…'}
-            {status === 'no_key' && 'API key missing'}
             {status === 'error' && 'Live quotes error'}
             {status === 'idle' && 'Initializing…'}
           </span>
