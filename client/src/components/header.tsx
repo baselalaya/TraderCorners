@@ -97,9 +97,9 @@ export default function Header() {
               </a>
               <div className="submenu">
                 <div className="submenu-content">
-                  <a href="/accounts#basic" className="submenu-item">Basic Account</a>
-                  <a href="/accounts#premium" className="submenu-item">Premium Account</a>
-                  <a href="/accounts#institutional" className="submenu-item">Institutional Account</a>
+                  <a href="https://my.tradercorners.com/en/register/basic" target="_blank" rel="noopener noreferrer" className="submenu-item">Basic Account</a>
+                  <a href="https://my.tradercorners.com/en/register/premium" target="_blank" rel="noopener noreferrer" className="submenu-item">Premium Account</a>
+                  <a href="https://my.tradercorners.com/en/register/institutional" target="_blank" rel="noopener noreferrer" className="submenu-item">Institutional Account</a>
                 </div>
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function Header() {
                     <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                   
-                  <motion.a href="https://my.tradercorners.com/en/register/account-types" 
+                  <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
                     className="w-full text-center bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

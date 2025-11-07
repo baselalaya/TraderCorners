@@ -88,6 +88,9 @@ export default function ContactPage() {
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                   Ready to start your trading journey? Our expert team is here to help you every step of the way.
                 </p>
+                <p className="mt-4 text-muted-foreground">
+                  Registered Address: HAMCHAKO, MUTSAMUDU, ANGOUAN, UNION OF COMOROS
+                </p>
               </motion.div>
             </div>
           </div>
@@ -297,7 +300,7 @@ export default function ContactPage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                  <motion.a href="https://my.tradercorners.com/en/register/account-types"
+                  <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
                     className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}

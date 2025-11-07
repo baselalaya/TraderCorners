@@ -179,7 +179,7 @@ export default function AccountsPage() {
                     size="lg"
                     asChild
                   >
-                    <a href="https://my.tradercorners.com/en/register/account-types">Open {account.name} Account</a>
+                    <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">Open {account.name} Account</a>
                   </Button>
                 </div>
               </motion.div>
@@ -336,23 +336,27 @@ export default function AccountsPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <motion.button 
+                <motion.a 
+                  href="https://my.tradercorners.com/en/register/account-types"
+                  target="_blank" rel="noopener noreferrer"
                   className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10">Open Live Account</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
+                </motion.a>
                 
-                <motion.button 
+                <motion.a 
+                  href="https://my.tradercorners.com/en/register/account-types"
+                  target="_blank" rel="noopener noreferrer"
                   className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span className="relative z-10">Try Demo First</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
+                </motion.a>
               </div>
               
               <div className="flex items-center justify-center space-x-6 text-white/70 text-sm">

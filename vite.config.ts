@@ -16,6 +16,15 @@ export default defineConfig({
         ]
       : []),
   ],
+  server: {
+    proxy: {
+      "/api/yahoo-spark": {
+        target: "https://query1.finance.yahoo.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/yahoo-spark/, "/v7/finance/spark"),
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

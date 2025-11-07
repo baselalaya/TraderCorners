@@ -245,6 +245,15 @@ export default function About() {
 
 
         {/* CTA Section */}
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="text-center text-muted-foreground">
+              Registered Address: HAMCHAKO, MUTSAMUDU, ANGOUAN, UNION OF COMOROS
+            </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
         <section className="py-20 bg-muted/20">
           <div className="container mx-auto px-6">
             <motion.div
@@ -259,7 +268,7 @@ export default function About() {
                   Become part of our growing community of successful traders. Experience the difference of professional-grade trading technology.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://my.tradercorners.com/en/register/account-types"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                     Start Your Journey
                   </Button></a>
                   <a href="/contact"><Button variant="outline" size="lg">

@@ -170,7 +170,7 @@ export default function AccountsSection() {
                 
                 {/* CTA Button */}
                 <motion.button 
-                  onClick={() => { window.location.href = 'https://my.tradercorners.com/en/register/account-types'; }}
+                  onClick={() => { window.open('https://my.tradercorners.com/en/register/account-types', '_blank', 'noopener,noreferrer'); }}
                   className={`w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 relative overflow-hidden group/btn ${
                     account.buttonVariant === 'default' 
                       ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-lg hover:shadow-xl' 

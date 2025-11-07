@@ -43,7 +43,7 @@ export default function LoginPage() {
                 </Button>
                 <div className="flex items-center justify-between text-sm">
                   <a href="https://my.tradercorners.com/en/login" className="text-primary hover:underline">Forgot password?</a>
-                  <span className="text-muted-foreground">Don’t have an account? <a href="https://my.tradercorners.com/en/register/account-types" className="text-primary hover:underline">Sign up</a></span>
+                  <span className="text-muted-foreground">Don’t have an account? <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Sign up</a></span>
                 </div>
               </form>
             </CardContent>

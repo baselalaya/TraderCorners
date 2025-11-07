@@ -28,7 +28,7 @@ const platforms = [
     image: "/mt5-all.png",
     downloadLinks: {
       windows: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5setup.exe",
-      mac: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5.dmg",
+      mac: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/tradercorners5.dmg",
       ios: "https://apps.apple.com/app/metatrader-5/id413251709",
       android: "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5",
       web: "https://trade.tradercorners.com/terminal"
@@ -295,7 +295,7 @@ export default function PlatformsPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center mb-8 px-4 sm:px-0">
-                <motion.a href="https://my.tradercorners.com/en/register/account-types"
+                <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
                   className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
@@ -306,7 +306,7 @@ export default function PlatformsPage() {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.a>
                 
-                <motion.a href="https://my.tradercorners.com/en/register/account-types"
+                <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
                   className="border-2 border-white/80 text-white bg-transparent px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}

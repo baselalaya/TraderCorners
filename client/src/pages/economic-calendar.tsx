@@ -59,6 +59,11 @@ export default function EconomicCalendarPage() {
       <Header />
 
       <main className="container mx-auto px-6 py-28 md:py-32 flex-1">
+        {!import.meta.env.VITE_TE_API_KEY && (
+          <div className="mb-4 p-4 rounded-xl border border-amber-300 bg-amber-50 text-amber-800 text-sm">
+            Live calendar requires an API key. Set VITE_TE_API_KEY in your .env and restart the server.
+          </div>
+        )}
         <section className="mb-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-border/50 bg-card/60 backdrop-blur-xl p-8 md:p-12 relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-primary/10 blur-2xl" />

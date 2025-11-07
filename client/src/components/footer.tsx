@@ -45,27 +45,18 @@ export default function Footer() {
   const contactInfo = [
     { icon: Mail, text: "info@tradercorners.com", href: "mailto:info@tradercorners.com" },
     { icon: Phone, text: "+41 44 707 83 88", href: "tel:+41447078388" },
-    { icon: MapPin, text: "Comoros, Anjouan", href: "#" },
+    { icon: MapPin, text: "HAMCHAKO, MUTSAMUDU, ANGOUAN, UNION OF COMOROS", href: "#" },
     { icon: Globe, text: "24/7 Global Support", href: "#" },
   ];
 
   const certifications = [];
 
+  // Note: Replace the below with actual regulatory details, if any.
   const regulatoryInfo = [
     {
-      authority: "FCA (UK)",
-      license: "Firm Reference Number: 793806",
-      description: "Authorized and regulated by the Financial Conduct Authority"
-    },
-    {
-      authority: "CySEC (EU)",
-      license: "License Number: 319/17",
-      description: "Licensed and regulated by the Cyprus Securities and Exchange Commission"
-    },
-    {
-      authority: "ASIC (AU)",
-      license: "AFSL Number: 491139",
-      description: "Regulated by the Australian Securities and Investments Commission"
+      authority: "Disclosure",
+      license: "",
+      description: "Trader Corners is not currently listing specific license numbers on this site. Services are provided subject to applicable laws and client eligibility."
     }
   ];
 

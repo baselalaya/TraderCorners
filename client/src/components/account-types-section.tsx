@@ -146,7 +146,7 @@ export default function AccountTypesSection() {
                       }`}
                       size="lg"
                     >
-                      <a href="https://my.tradercorners.com/en/register/account-types">
+                      <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
                         {account.popular ? 'Get Started Now' : 'Choose This Plan'}
                       </a>
                     </Button>

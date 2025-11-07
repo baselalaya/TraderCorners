@@ -148,7 +148,7 @@ export default function Products() {
                   Access a comprehensive range of trading instruments across global markets with institutional-grade execution and competitive pricing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://my.tradercorners.com/en/register/account-types">
+                  <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                       Start Trading Now
                       <ArrowRight className="w-4 h-4 ml-2" />
@@ -245,7 +245,7 @@ export default function Products() {
                         </div>
 
                         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                          <a href="https://my.tradercorners.com/en/register/account-types">
+                          <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
                           <Button 
                             className={`w-full h-12 text-base font-bold rounded-xl shadow-lg transition-all duration-300 ${
                               product.popular 
@@ -332,7 +332,7 @@ export default function Products() {
                   Join thousands of traders who trust Trader Corners for their trading needs. Open your account today and access global markets.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://my.tradercorners.com/en/register/account-types"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
                     Open Live Account
                   </Button></a>
                   <a href="/accounts"><Button variant="outline" size="lg">
