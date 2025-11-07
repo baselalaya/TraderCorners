@@ -1,5 +1,6 @@
 // client/src/components/hero-section.tsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo } from "react";
+import { useLiveQuotes } from "@/hooks/useLiveQuotes";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -17,71 +18,17 @@ const formatChange = (c: number) => {
 };
 
 export default function HeroSection() {
-  const symbols = useMemo(() => (["EURUSD","GBPUSD","USDJPY","XAUUSD"] as const), []);
-  const [data, setData] = useState<Record<string, { price: number; changePct: number; isUp: boolean }>>({});
-  const [lastUpdated, setLastUpdated] = useState<string>("");
-  const [status, setStatus] = useState<'idle'|'ok'|'rate_limited'|'error'|'no_key'|'polling'>("idle");
-  const firstSeen = useRef<Record<string, number>>({});
-
-  useEffect(() => {
-    const key = import.meta.env.VITE_MASSIVE_API_KEY as string | undefined;
-    if (!key) { setStatus('no_key'); return; }
-
-    let stopped = false;
-    let timer: any = null;
-
-    const fetchOnce = async () => {
-      try {
-        setStatus(prev => prev === 'ok' ? prev : 'polling');
-        const url = new URL('https://api.massive.com/v1/quotes');
-        url.searchParams.set('symbols', symbols.join(','));
-        const res = await fetch(url.toString(), {
-          headers: { Authorization: `Bearer ${key}` }
-        });
-        if (res.status === 429) { setStatus('rate_limited'); return; }
-        if (!res.ok) { setStatus('error'); return; }
-        const json = await res.json();
-        // Expected shape: { data: [{ symbol, price, change_percent }] }
-        const arr = Array.isArray(json?.data) ? json.data : json;
-        const next: Record<string, { price: number; changePct: number; isUp: boolean }> = { ...data };
-        for (const row of arr) {
-          const sym = (row.symbol || row.ticker || '').replace('/', '') as string;
-          if (!sym) continue;
-          const price = Number(row.price ?? row.last ?? row.close);
-          if (!Number.isFinite(price)) continue;
-          if (firstSeen.current[sym] === undefined) firstSeen.current[sym] = price;
-          const base = firstSeen.current[sym] || price;
-          const diff = price - base;
-          const pct = base ? (diff / base) * 100 : 0;
-          next[sym] = { price, changePct: pct, isUp: diff >= 0 };
-        }
-        if (!stopped) {
-          setData(next);
-          setLastUpdated(new Date().toLocaleTimeString());
-          setStatus('ok');
-        }
-      } catch {
-        if (!stopped) setStatus('error');
-      }
-    };
-
-    const loop = async () => {
-      await fetchOnce();
-      if (stopped) return;
-      const jitter = Math.floor(Math.random() * 3000);
-      timer = setTimeout(loop, 15000 + jitter);
-    };
-    loop();
-    return () => { stopped = true; if (timer) clearTimeout(timer); };
-  }, [symbols]);
-
-  const tickerData: TickerData[] = symbols.map((s) => {
-    const v = data[s];
-    if (!v) return { symbol: s, price: NaN, change: NaN, isPositive: true };
-    return { symbol: s, price: v.price, change: v.changePct, isPositive: v.isUp };
-  });
-
-  const feedConnected = Object.keys(data).length > 0;
+  const { items: liveItems, lastUpdated, status } = useLiveQuotes() as any;
+  const tickerData: TickerData[] = useMemo(() => {
+    if (!Array.isArray(liveItems)) return [];
+    return liveItems.map((i: any) => ({
+      symbol: i.display ?? i.symbol ?? '',
+      price: Number(i.price ?? NaN),
+      change: Number((i.change ?? i.changePct) ?? NaN),
+      isPositive: Boolean(i.isUp ?? (Number(i.change ?? i.changePct) >= 0)),
+    }));
+  }, [liveItems]);
+  const feedConnected = tickerData.length > 0;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
