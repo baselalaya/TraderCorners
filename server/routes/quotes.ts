@@ -19,7 +19,7 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
     });
   }
 
-  app.get("/quotes", async (_req, res) => {
+  app.get("/api/quotes", async (_req, res) => {
     const latest = quotesHub.getLatestArray();
     if (latest.length === 0) {
       try {
@@ -35,7 +35,7 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
   });
 
   // SSE fallback for environments without WS upgrade support
-  app.get('/quotes/events', async (req, res) => {
+  app.get('/api/quotes/events', async (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
@@ -67,7 +67,7 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
 
   const wss = new WebSocketServer({ noServer: true });
   server.on("upgrade", async (request, socket, head) => {
-    if (request.url && new URL(request.url, "http://localhost").pathname === "/quotes") {
+    if (request.url && new URL(request.url, "http://localhost").pathname === "/api/quotes") {
       wss.handleUpgrade(request, socket, head, (ws) => {
         wss.emit("connection", ws, request);
       });

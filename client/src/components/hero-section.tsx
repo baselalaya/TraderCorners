@@ -28,7 +28,8 @@ export default function HeroSection() {
 
   useEffect(() => {
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const wsUrl = `${proto}://${window.location.host}/quotes`;
+    const base = (import.meta as any).env.VITE_QUOTES_BASE || '';
+    const wsUrl = `${proto}://${(base || window.location.host).replace(/^https?:\/\//,'')}/api/quotes`;
     let triedOnce = false;
     const openWS = () => {
       const ws = new WebSocket(wsUrl);
@@ -60,7 +61,7 @@ export default function HeroSection() {
       ws.onclose = () => {
         setStatus("polling");
         // Try SSE fallback first
-        const es = new EventSource(`/quotes/events`);
+        const es = new EventSource(`${base || ''}/api/quotes/events`);
         es.onmessage = (ev) => {
           try {
             const data = JSON.parse(ev.data);
@@ -87,7 +88,7 @@ export default function HeroSection() {
           if (!pollRef.current) {
             pollRef.current = setInterval(async () => {
               try {
-                const res = await fetch(`/quotes`);
+                const res = await fetch(`${base || ''}/api/quotes`);
                 if (!res.ok) return;
                 const data = await res.json();
                 const arr = Array.isArray(data?.items) ? data.items : [];
