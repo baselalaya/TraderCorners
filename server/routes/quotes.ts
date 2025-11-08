@@ -37,12 +37,15 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
           quotesHub.broadcast(snap);
           lastGood = snap;
           lastFetchDay = today;
+          console.log(`[quotes] yahoo ok symbols=${snap.map(s=>s.symbol).join(',')}`);
           res.json({ items: snap });
         } else {
           // still empty; if we have a lastGood cache, serve it, else empty
           if (lastGood && lastGood.length) {
+            console.warn(`[quotes] yahoo empty; serving lastGood count=${lastGood.length}`);
             res.json({ items: lastGood });
           } else {
+            console.warn(`[quotes] yahoo empty; no cache available`);
             res.json({ items: [] });
           }
         }
@@ -56,6 +59,8 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
                 quotesHub.broadcast(upd);
                 lastGood = upd;
                 lastFetchDay = new Date().toISOString().slice(0,10);
+              } else {
+                console.warn(`[quotes] yahoo polling empty`);
               }
             } catch {}
           }, interval);

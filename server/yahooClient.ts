@@ -8,7 +8,10 @@ export type YFNormalized = {
   ts: number;
 };
 
-const YF_ENDPOINT = "https://query1.finance.yahoo.com/v7/finance/quote";
+const YF_ENDPOINTS = [
+  "https://query1.finance.yahoo.com/v7/finance/quote",
+  "https://query2.finance.yahoo.com/v7/finance/quote"
+];
 
 const YMAP: Record<string, string> = {
   "EUR/USD": "EURUSD=X",
@@ -31,10 +34,36 @@ function normalizeSymbolFromY(ticker: string): string {
 export async function fetchYahooSnapshot(pairs: string[]): Promise<YFNormalized[]> {
   const tickers = pairs.map(toYFSymbol).filter((s): s is string => Boolean(s));
   if (tickers.length === 0) return [];
-  const url = `${YF_ENDPOINT}?symbols=${encodeURIComponent(tickers.join(","))}`;
-  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
-  if (!res.ok) throw new Error(`Yahoo quotes failed ${res.status}`);
-  const json = await res.json();
+  const headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://finance.yahoo.com/",
+    "Origin": "https://finance.yahoo.com",
+  } as Record<string,string>;
+
+  let json: any = null;
+  let lastStatus = 0;
+  for (const ep of YF_ENDPOINTS) {
+    const url = `${ep}?symbols=${encodeURIComponent(tickers.join(","))}`;
+    const res = await fetch(url, { headers });
+    lastStatus = res.status;
+    if (res.ok) {
+      json = await res.json();
+      break;
+    }
+    if (res.status === 401 || res.status === 403) {
+      // try next endpoint
+      continue;
+    } else {
+      // non-auth error, break
+      break;
+    }
+  }
+  if (!json) {
+    if (lastStatus === 401 || lastStatus === 403) return [];
+    throw new Error(`Yahoo quotes failed ${lastStatus || 'unknown'}`);
+  }
   const list = json?.quoteResponse?.result || [];
   const now = Date.now();
   const out: YFNormalized[] = [];
@@ -48,4 +77,3 @@ export async function fetchYahooSnapshot(pairs: string[]): Promise<YFNormalized[
   }
   return out;
 }
-
