@@ -1,5 +1,6 @@
 // client/src/components/hero-section.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import TradingViewTickerTape from "@/components/TradingViewTickerTape";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -430,25 +431,31 @@ export default function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 z-10">
         <div className="border-t border-white/10 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/10">
           <div className="max-w-7xl mx-auto px-4 py-2">
-            {typeof window !== "undefined" && (
-              // Dynamic require to avoid SSR issues
-              // eslint-disable-next-line @typescript-eslint/no-var-requires
-              React.createElement(require("@/components/TradingViewTickerTape").default, {
-                symbols: [
-                  { proName: "NASDAQ:AAPL", title: "AAPL" },
-                  { proName: "NASDAQ:MSFT", title: "MSFT" },
-                  { proName: "NASDAQ:TSLA", title: "TSLA" },
-                  { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
-                  { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
-                  { proName: "FX:EURUSD", title: "EUR/USD" },
-                ],
-                colorTheme: "dark",
-                transparent: true,
-              })
-            )}
+            <TickerTapeClient />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+// Client-only wrapper to avoid SSR issues and ESM require problems
+function TickerTapeClient() {
+  const [ready, setReady] = React.useState(false);
+  React.useEffect(() => setReady(true), []);
+  if (!ready) return <div className="h-10 w-full animate-pulse rounded bg-neutral-800/40" aria-hidden />;
+  return (
+    <TradingViewTickerTape
+      symbols={[
+        { proName: "NASDAQ:AAPL", title: "AAPL" },
+        { proName: "NASDAQ:MSFT", title: "MSFT" },
+        { proName: "NASDAQ:TSLA", title: "TSLA" },
+        { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
+        { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
+        { proName: "FX:EURUSD", title: "EUR/USD" },
+      ]}
+      colorTheme="dark"
+      transparent
+    />
   );
 }
