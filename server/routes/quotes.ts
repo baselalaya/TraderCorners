@@ -9,36 +9,53 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
   // Upstream WS disabled (Alpha Vantage has no WS); rely on polling
 
   let pollTimer: NodeJS.Timeout | null = null;
+  let lastGood: ReturnType<typeof quotesHub.getLatestArray> | null = null;
+  let lastFetchDay: string | null = null;
+  const pollDisabled = String(process.env.QUOTES_POLL_DISABLED || '').toLowerCase() === 'true';
 
   app.get("/api/quotes", async (_req, res) => {
     const latest = quotesHub.getLatestArray();
     if (latest.length === 0) {
       try {
-        // cold start: attempt up to 3 tries with small backoff to avoid empty response
-        let snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
-        if (!snap.length) {
-          await new Promise(r => setTimeout(r, 800));
+        // allow at most one fetch per calendar day when polling is disabled
+        const today = new Date().toISOString().slice(0,10);
+        const mayFetch = !pollDisabled || lastFetchDay !== today;
+        let snap: any[] = [];
+        if (mayFetch) {
+          // cold start: attempt up to 3 tries with small backoff to avoid empty response
           snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
-        }
-        if (!snap.length) {
-          await new Promise(r => setTimeout(r, 1200));
-          snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+          if (!snap.length) {
+            await new Promise(r => setTimeout(r, 800));
+            snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+          }
+          if (!snap.length) {
+            await new Promise(r => setTimeout(r, 1200));
+            snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+          }
         }
         if (snap.length) {
           quotesHub.broadcast(snap);
+          lastGood = snap;
+          lastFetchDay = today;
           res.json({ items: snap });
         } else {
-          // still empty; return empty but keep polling to fill soon
-          res.json({ items: [] });
+          // still empty; if we have a lastGood cache, serve it, else empty
+          if (lastGood && lastGood.length) {
+            res.json({ items: lastGood });
+          } else {
+            res.json({ items: [] });
+          }
         }
-        // kick off periodic polling to simulate streaming
-        if (!pollTimer) {
+        // kick off periodic polling unless disabled
+        if (!pollTimer && !pollDisabled) {
           const interval = process.env.NODE_ENV === 'development' ? 5000 : 15000;
           pollTimer = setInterval(async () => {
             try {
               const upd = await fetchAVSnapshot(DEFAULT_SYMBOLS);
               if (upd.length) {
                 quotesHub.broadcast(upd);
+                lastGood = upd;
+                lastFetchDay = new Date().toISOString().slice(0,10);
               }
             } catch {}
           }, interval);
@@ -47,6 +64,9 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
         res.status(502).json({ items: [], message: e?.message || "Upstream error" });
       }
     } else {
+      // update lastGood for resilience and return
+      lastGood = latest;
+      lastFetchDay = new Date().toISOString().slice(0,10);
       res.json({ items: latest });
     }
   });
