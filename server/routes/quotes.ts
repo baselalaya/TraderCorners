@@ -61,6 +61,8 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
                   { symbol: 'USDCAD', price: rates.CAD },
                   { symbol: 'NZDUSD', price: rates.NZD ? 1 / rates.NZD : undefined },
                   { symbol: 'EURJPY', price: (rates.JPY && rates.EUR) ? (rates.JPY / rates.EUR) : undefined },
+                  { symbol: 'EURGBP', price: (rates.GBP && rates.EUR) ? (1 / rates.EUR) / (1 / rates.GBP) : undefined },
+                  { symbol: 'GBPJPY', price: (rates.JPY && rates.GBP) ? (rates.JPY / rates.GBP) : undefined },
                 ].filter(x => Number.isFinite(x.price));
                 snap = fx.map((x: any) => ({ symbol: x.symbol, bid: x.price, ask: x.price, price: x.price, ts: now }));
               }
@@ -93,16 +95,16 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
           quotesHub.broadcast(snap);
           lastGood = snap;
           lastFetchDay = today;
-          console.log(`[quotes] yahoo ok symbols=${snap.map(s=>s.symbol).join(',')}`);
-          res.json({ items: snap });
+          console.log(`[quotes] snapshot ok symbols=${snap.map(s=>s.symbol).join(',')}`);
+          res.json({ items: snap, source: 'yahoo_or_fallback' });
         } else {
           // still empty; if we have a lastGood cache, serve it, else empty
           if (lastGood && lastGood.length) {
-            console.warn(`[quotes] yahoo empty; serving lastGood count=${lastGood.length}`);
-            res.json({ items: lastGood });
+            console.warn(`[quotes] empty; serving lastGood count=${lastGood.length}`);
+            res.json({ items: lastGood, source: 'cache' });
           } else {
-            console.warn(`[quotes] yahoo empty; no cache available`);
-            res.json({ items: [] });
+            console.warn(`[quotes] empty; no cache available`);
+            res.json({ items: [], source: 'empty' });
           }
         }
         // kick off periodic polling unless disabled
@@ -116,7 +118,37 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
                 lastGood = upd;
                 lastFetchDay = new Date().toISOString().slice(0,10);
               } else {
-                console.warn(`[quotes] yahoo polling empty`);
+                // try fallback during polling as well
+                try {
+                  const base = 'USD';
+                  const majors = ['EUR','GBP','JPY','AUD','CHF','CAD','NZD'];
+                  const resp = await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${majors.join(',')}` as any);
+                  if (resp.ok) {
+                    const j = await resp.json();
+                    const rates = j?.rates || {};
+                    const now = Date.now();
+                    const fx = [
+                      { symbol: 'EURUSD', price: rates.EUR ? 1 / rates.EUR : undefined },
+                      { symbol: 'GBPUSD', price: rates.GBP ? 1 / rates.GBP : undefined },
+                      { symbol: 'USDJPY', price: rates.JPY },
+                      { symbol: 'AUDUSD', price: rates.AUD ? 1 / rates.AUD : undefined },
+                      { symbol: 'USDCHF', price: rates.CHF },
+                      { symbol: 'USDCAD', price: rates.CAD },
+                      { symbol: 'NZDUSD', price: rates.NZD ? 1 / rates.NZD : undefined },
+                      { symbol: 'EURJPY', price: (rates.JPY && rates.EUR) ? (rates.JPY / rates.EUR) : undefined },
+                    ].filter(x => Number.isFinite(x.price));
+                    if (fx.length) {
+                      const out = fx.map((x: any) => ({ symbol: x.symbol, bid: x.price, ask: x.price, price: x.price, ts: now }));
+                      quotesHub.broadcast(out);
+                      lastGood = out;
+                      lastFetchDay = new Date().toISOString().slice(0,10);
+                    } else {
+                      console.warn(`[quotes] yahoo polling empty and fallback empty`);
+                    }
+                  }
+                } catch {
+                  console.warn(`[quotes] yahoo polling empty`);
+                }
               }
             } catch {}
           }, interval);

@@ -1,6 +1,5 @@
 // client/src/components/hero-section.tsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import TradingViewTickerTape from "@/components/TradingViewTickerTape";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -284,14 +283,7 @@ export default function HeroSection() {
         <div className="scroll-arrow"></div>
       </div>
 
-      {/* Slim ticker tape at bottom edge of hero */}
-      <div className="absolute inset-x-0 bottom-0 z-10">
-        <div className="border-t border-white/10 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/10">
-          <div className="max-w-7xl mx-auto px-4 py-2">
-            <TickerTapeClient />
-          </div>
-        </div>
-      </div>
+      {/* Slim ticker tape removed as requested (kept invisible) */}
     </section>
   );
 }
