@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { WebSocketServer } from "ws";
 import { quotesHub } from "../quotesHub";
-import { fetchAVSnapshot } from "../avClient";
+import { fetchYahooSnapshot } from "../yahooClient";
 
 const DEFAULT_SYMBOLS = (process.env.QUOTES_SYMBOLS?.split(',').map(s => s.trim()).filter(Boolean) || ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD"]);
 
@@ -22,15 +22,15 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
         const mayFetch = !pollDisabled || lastFetchDay !== today;
         let snap: any[] = [];
         if (mayFetch) {
-          // cold start: attempt up to 3 tries with small backoff to avoid empty response
-          snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+          // cold start fetch (Yahoo only)
+          snap = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
           if (!snap.length) {
             await new Promise(r => setTimeout(r, 800));
-            snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+            snap = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
           }
           if (!snap.length) {
             await new Promise(r => setTimeout(r, 1200));
-            snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+            snap = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
           }
         }
         if (snap.length) {
@@ -51,7 +51,7 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
           const interval = process.env.NODE_ENV === 'development' ? 5000 : 15000;
           pollTimer = setInterval(async () => {
             try {
-              const upd = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+              const upd = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
               if (upd.length) {
                 quotesHub.broadcast(upd);
                 lastGood = upd;
