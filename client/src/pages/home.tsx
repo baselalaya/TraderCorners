@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import MarketsSection from "@/components/markets-section";
+import MarketPricesSection from "@/components/MarketPricesSection";
 import AccountTypesSection from "@/components/account-types-section";
 import TradingProductsSection from "@/components/trading-products-section";
 import FAQSection from "@/components/faq-section";
@@ -40,6 +41,7 @@ export default function Home() {
       <InteractiveCursor />
       <Header />
       <HeroSection />
+      <MarketPricesSection />
       <MarketsSection />
       <AccountTypesSection />
       <TradingProductsSection />
