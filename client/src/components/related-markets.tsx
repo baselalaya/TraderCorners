@@ -1,4 +1,5 @@
 import { marketData } from "@/lib/market-data";
+import { useQuotes } from "@/providers/QuotesProvider";
 import { motion } from "framer-motion";
 
 type MarketGroup = keyof typeof marketData;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export default function RelatedMarkets({ title, group, symbols }: Props) {
+  const quotes = useQuotes();
   const data = marketData[group].filter((item) =>
     symbols && symbols.length > 0 ? symbols.includes(item.symbol) : true
   );
@@ -45,7 +47,18 @@ export default function RelatedMarkets({ title, group, symbols }: Props) {
                 <div className="grid grid-cols-3 gap-4 items-center text-right">
                   <div>
                     <div className="text-xs text-muted-foreground">Price</div>
-                    <div className="font-mono font-bold">{item.price}</div>
+                    <div className="font-mono font-bold">
+                      {(() => {
+                        const key = item.symbol.toUpperCase().replace('/', '');
+                        const q = (quotes as any)[key];
+                        const p = Number(q?.price);
+                        if (Number.isFinite(p)) {
+                          const isJPY = key.endsWith('JPY');
+                          return new Intl.NumberFormat(undefined, { minimumFractionDigits: isJPY ? 2 : 4, maximumFractionDigits: isJPY ? 3 : 5 }).format(p);
+                        }
+                        return item.price;
+                      })()}
+                    </div>
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">24h</div>
@@ -69,4 +82,3 @@ export default function RelatedMarkets({ title, group, symbols }: Props) {
     </section>
   );
 }
-

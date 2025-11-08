@@ -20,6 +20,7 @@ const YMAP: Record<string, string> = {
   "XAU/USD": "XAUUSD=X",
   "GBP/USD": "GBPUSD=X",
   "BTC/USD": "BTC-USD",
+  "ETH/USD": "ETH-USD",
   // Commodities mapping for reliability
   "GOLD": "GC=F", // Gold Futures
   "SILVER": "SI=F", // Silver Futures

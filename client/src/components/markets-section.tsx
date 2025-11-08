@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { marketData } from "@/lib/market-data";
 import CryptoPriceStrip from "@/components/CryptoPriceStrip";
 import { fetcher } from "@/lib/fetcher";
+import { useQuotes } from "@/providers/QuotesProvider";
 
 type MarketType = 'forex' | 'crypto' | 'commodities';
 
@@ -19,16 +20,17 @@ export default function MarketsSection() {
   const [commod, setCommod] = useState(marketData.commodities);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string|null>(null);
+  const quotes = useQuotes();
 
+  // Prefer live quotes from provider; fall back to one-off fetch
   useEffect(() => {
     let mounted = true;
     const load = async () => {
       try {
         setLoading(true);
         setError(null);
-        // Fetch simple FX and commodities via our server REST if available else skip
-        // Attempt Yahoo route in this codebase: server exposes /api/quotes combining sources
-        const res = await fetch(`/api/quotes`).catch(() => null as any);
+        // If provider has data, map it; else do a one-off fetch
+        const res = Object.keys(quotes).length ? null : await fetch(`/api/quotes`).catch(() => null as any);
         if (res && res.ok) {
           const json = await res.json();
           const items: any[] = Array.isArray(json?.items) ? json.items : [];
@@ -57,6 +59,21 @@ export default function MarketsSection() {
             };
           });
           if (mounted) { setFx(nextFx); setCommod(nextCom); }
+        } else if (Object.keys(quotes).length) {
+          const map = quotes as any;
+          const nextFx = marketData.forex.map(x => {
+            const key = x.symbol.toUpperCase().replace('/', '');
+            const q = map[key];
+            const price = Number(q?.price);
+            return {
+              ...x,
+              price: Number.isFinite(price) ? String(price) : x.price,
+              // change not provided by backend fallback; keep previous styling
+              change: x.change,
+              isPositive: x.isPositive,
+            };
+          });
+          if (mounted) setFx(nextFx);
         }
       } catch (e) {
         setError('Live data unavailable');
@@ -65,13 +82,38 @@ export default function MarketsSection() {
     load();
     const t = setInterval(load, 30000);
     return () => { mounted = false; clearInterval(t); };
-  }, []);
+  }, [quotes]);
 
   const currentData = useMemo(() => {
     if (activeMarket === 'forex') return fx;
     if (activeMarket === 'commodities') return commod;
-    return marketData.crypto; // crypto handled by strip below
-  }, [activeMarket, fx, commod]);
+    // Build crypto list from provider (BTCUSD, ETHUSD, SOLUSD by default)
+    if (activeMarket === 'crypto') {
+      const syms = ["BTC/USD","ETH/USD","SOL/USD"];
+      return syms.map((sym) => {
+        const key = sym.toUpperCase().replace('/', '');
+        const q = (quotes as any)[key];
+        const price = Number(q?.price);
+        return {
+          symbol: sym,
+          icon: sym.startsWith('BTC') ? '₿' : sym.startsWith('ETH') ? 'Ξ' : '◎',
+          price: Number.isFinite(price) ? new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 3 }).format(price) : '—',
+          change: '—',
+          isPositive: true,
+          volume: '—',
+        } as any;
+      });
+    }
+    return marketData.crypto;
+  }, [activeMarket, fx, commod, quotes]);
+
+  const formatFxPrice = (val: string | number, sym: string) => {
+    const n = typeof val === 'string' ? Number(val.replace(/[^0-9.\-]/g, '')) : Number(val);
+    if (!Number.isFinite(n)) return typeof val === 'string' ? val : '—';
+    const key = sym.toUpperCase().replace('/', '');
+    const isJPY = key.endsWith('JPY');
+    return new Intl.NumberFormat(undefined, { minimumFractionDigits: isJPY ? 2 : 4, maximumFractionDigits: isJPY ? 3 : 5 }).format(n);
+  };
 
   return (
     <section id="markets" className="py-20 bg-gradient-to-b from-background to-muted/20">
@@ -145,12 +187,7 @@ export default function MarketsSection() {
             ))}
           </div>
           
-          {/* Crypto live strip when Crypto tab selected */}
-          {activeMarket === 'crypto' && (
-            <div className="mb-6">
-              <CryptoPriceStrip ids={["bitcoin","ethereum","solana","cardano"]} />
-            </div>
-          )}
+          {/* Crypto tab now uses backend/provider quotes; no external strip */}
 
           {/* Market Data Cards */}
           <div className="grid gap-3 md:gap-4">
@@ -194,7 +231,7 @@ export default function MarketsSection() {
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-xs text-muted-foreground mb-1">Price</div>
-                      <div className="font-mono text-sm font-bold text-foreground">{item.price}</div>
+                      <div className="font-mono text-sm font-bold text-foreground">{formatFxPrice(item.price, item.symbol)}</div>
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground mb-1">24h Change</div>
@@ -232,7 +269,7 @@ export default function MarketsSection() {
                   {/* Price */}
                   <div className="text-left">
                     <div className="text-sm text-muted-foreground mb-1">Price</div>
-                    <div className="font-mono text-xl font-bold text-foreground">{item.price}</div>
+                    <div className="font-mono text-xl font-bold text-foreground">{formatFxPrice(item.price, item.symbol)}</div>
                   </div>
 
                   {/* Change */}

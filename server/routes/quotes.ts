@@ -13,6 +13,8 @@ const DEFAULT_SYMBOLS = (process.env.QUOTES_SYMBOLS?.split(',').map(s => s.trim(
   "SILVER",
   "CRUDE OIL",
   "NATURAL GAS",
+  "BTC/USD",
+  "ETH/USD",
 ]);
 
 export function mountQuotesRoutes(app: Express, server: import("http").Server) {
@@ -42,12 +44,10 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
             await new Promise(r => setTimeout(r, 1200));
             snap = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
           }
-          // Fallback: fetch a minimal FX set from exchangerate.host if still empty
+          // Fallback A (keyless): fetch FX majors from ER-API if still empty
           if (!snap.length) {
             try {
-              const base = 'USD';
-              const majors = ['EUR','GBP','JPY','AUD','CHF','CAD','NZD'];
-              const resp = await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${majors.join(',')}` as any);
+              const resp = await fetch('https://open.er-api.com/v6/latest/USD' as any);
               if (resp.ok) {
                 const j = await resp.json();
                 const rates = j?.rates || {};
@@ -66,6 +66,26 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
                 ].filter(x => Number.isFinite(x.price));
                 snap = fx.map((x: any) => ({ symbol: x.symbol, bid: x.price, ask: x.price, price: x.price, ts: now }));
               }
+            } catch {}
+          }
+          // Crypto fallback via Binance public (no key)
+          if (!snap.length) {
+            try {
+              const syms = ["BTCUSDT","ETHUSDT","SOLUSDT"]; // extend as needed
+              const now = Date.now();
+              const out: any[] = [];
+              for (const s of syms) {
+                const r = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${s}` as any);
+                if (r.ok) {
+                  const j = await r.json();
+                  const p = Number(j?.price);
+                  if (Number.isFinite(p)) {
+                    const norm = s.replace("USDT","USD");
+                    out.push({ symbol: norm, bid: p, ask: p, price: p, ts: now });
+                  }
+                }
+              }
+              if (out.length) snap = out;
             } catch {}
           }
           // Optional commodities approximation when Yahoo blocked
@@ -118,11 +138,9 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
                 lastGood = upd;
                 lastFetchDay = new Date().toISOString().slice(0,10);
               } else {
-                // try fallback during polling as well
+                // try fallback during polling as well (Path A: ER-API)
                 try {
-                  const base = 'USD';
-                  const majors = ['EUR','GBP','JPY','AUD','CHF','CAD','NZD'];
-                  const resp = await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${majors.join(',')}` as any);
+                  const resp = await fetch('https://open.er-api.com/v6/latest/USD' as any);
                   if (resp.ok) {
                     const j = await resp.json();
                     const rates = j?.rates || {};

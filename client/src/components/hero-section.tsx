@@ -1,146 +1,17 @@
 // client/src/components/hero-section.tsx
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { Rocket, Play } from "lucide-react";
 import { motion } from "framer-motion";
-
-interface TickerData { symbol: string; price: number; change: number; isPositive: boolean }
+import { useQuotes } from "@/providers/QuotesProvider";
+import HeroPriceTicket from "@/components/HeroPriceTicket";
 
 const formatNumber = (n: number) => {
   if (Number.isNaN(n)) return "--";
   return Intl.NumberFormat(undefined, { maximumFractionDigits: 4 }).format(n);
 };
 
-const formatChange = (c: number) => {
-  if (Number.isNaN(c)) return "--";
-  const sign = c >= 0 ? "+" : "";
-  return `${sign}${c.toFixed(2)}%`;
-};
-
 export default function HeroSection() {
-  const [status, setStatus] = useState<"idle"|"ok"|"polling"|"error">("idle");
-  const [lastUpdated, setLastUpdated] = useState<string>("");
-  const [map, setMap] = useState<Record<string, {symbol:string; price:number; change:number; isPositive:boolean}>>({});
-  const wsRef = useRef<WebSocket|null>(null);
-  const pollRef = useRef<any>(null);
-  const prevPriceRef = useRef<Record<string, number>>({});
-  const ORDER = (import.meta as any).env.VITE_QUOTES_ORDER
-    ? String((import.meta as any).env.VITE_QUOTES_ORDER).split(',').map((s:string)=>s.trim())
-    : ["EURUSD","USDJPY","XAUUSD","BTCUSD"];
-
-  const tickerData: TickerData[] = useMemo(() => {
-    const vals = Object.values(map);
-    const by = Object.fromEntries(vals.map(v => [v.symbol, v]));
-    const ordered: TickerData[] = [];
-    for (const s of ORDER) {
-      if (by[s]) ordered.push(by[s] as TickerData);
-    }
-    // limit to first 4 as per ORDER
-    return ordered.slice(0, 4);
-  }, [map]);
-  const feedConnected = tickerData.length > 0;
-
-  useEffect(() => {
-    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const base = (import.meta as any).env.VITE_QUOTES_BASE || '';
-    const wsUrl = `${proto}://${(base || window.location.host).replace(/^https?:\/\//,'')}/api/quotes`;
-    let triedOnce = false;
-    const openWS = () => {
-      const ws = new WebSocket(wsUrl);
-      wsRef.current = ws;
-      ws.onopen = () => {
-        setStatus("ok");
-        if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
-      };
-      ws.onmessage = (ev) => {
-        try {
-          const data = JSON.parse((ev as MessageEvent).data as any);
-          const arr = Array.isArray(data?.items) ? data.items : [];
-          setMap((prev) => {
-            const next = { ...prev } as any;
-            for (const it of arr) {
-              const sym = (it.symbol || it.display || '').toString();
-              const price = Number(it.price ?? NaN);
-              const prev = prevPriceRef.current[sym];
-              const diff = prev != null ? price - prev : 0;
-              const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
-              const isPositive = diff >= 0;
-              if (!sym) continue;
-              next[sym] = { symbol: sym, price, change, isPositive };
-              if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
-            }
-            return next;
-          });
-          setLastUpdated(new Date().toLocaleTimeString());
-        } catch {}
-      };
-      ws.onerror = () => setStatus("error");
-      ws.onclose = () => {
-        setStatus("polling");
-        // Try SSE fallback first
-        const es = new EventSource(`${base || ''}/api/quotes/events`);
-        es.onmessage = (ev) => {
-          try {
-            const data = JSON.parse(ev.data);
-            const arr = Array.isArray(data?.items) ? data.items : [];
-            setMap((prev) => {
-              const next = { ...prev } as any;
-              for (const it of arr) {
-                const sym = (it.symbol || it.display || '').toString();
-                const price = Number(it.price ?? NaN);
-                const prev = prevPriceRef.current[sym];
-                const diff = prev != null ? price - prev : 0;
-                const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
-                const isPositive = diff >= 0;
-                if (!sym) continue;
-                next[sym] = { symbol: sym, price, change, isPositive };
-                if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
-              }
-              return next;
-            });
-            setStatus('ok');
-            setLastUpdated(new Date().toLocaleTimeString());
-          } catch {}
-        };
-        es.onerror = () => {
-          es.close();
-          // fallback to REST polling
-          if (!pollRef.current) {
-            pollRef.current = setInterval(async () => {
-              try {
-                const res = await fetch(`${base || ''}/api/quotes`);
-                if (!res.ok) return;
-                const data = await res.json();
-                const arr = Array.isArray(data?.items) ? data.items : [];
-                setMap((prev) => {
-                  const next = { ...prev } as any;
-                  for (const it of arr) {
-                    const sym = (it.symbol || it.display || '').toString();
-                    const price = Number(it.price ?? NaN);
-                    const prev = prevPriceRef.current[sym];
-                    const diff = prev != null ? price - prev : 0;
-                    const change = Number.isFinite(it.change) ? Number(it.change) : (prev ? (diff / prev) * 100 : 0);
-                    const isPositive = diff >= 0;
-                    if (!sym) continue;
-                    next[sym] = { symbol: sym, price, change, isPositive };
-                    if (Number.isFinite(price)) prevPriceRef.current[sym] = price;
-                  }
-                  return next;
-                });
-                setLastUpdated(new Date().toLocaleTimeString());
-              } catch {}
-            }, 5000);
-          }
-        };
-        if (triedOnce) setTimeout(openWS, 1500);
-        triedOnce = true;
-      };
-    };
-    openWS();
-    return () => {
-      if (wsRef.current) wsRef.current.close();
-      if (pollRef.current) clearInterval(pollRef.current);
-    };
-  }, []);
+  const quotes = useQuotes();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -172,17 +43,10 @@ export default function HeroSection() {
       ></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Live feed status */}
+        {/* Live feed status (provider-based) */}
         <div className="mb-4 flex items-center justify-center lg:justify-start text-xs text-muted-foreground">
-          <div
-            className={`w-2 h-2 rounded-full mr-2 ${feedConnected ? "bg-green-500 animate-pulse" : "bg-red-500"}`}
-          />
-          <span>
-            {status === 'ok' && lastUpdated && `Live quotes updated ${lastUpdated}`}
-            {status === 'polling' && 'Fetching live quotes…'}
-            {status === 'error' && 'Live quotes error'}
-            {status === 'idle' && 'Initializing…'}
-          </span>
+          <div className={`w-2 h-2 rounded-full mr-2 ${Object.keys(quotes).length ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
+          <span>{Object.keys(quotes).length ? 'Live quotes active' : 'Waiting for live quotes…'}</span>
         </div>
 
         {/* Layout */}
@@ -272,7 +136,7 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right - Live Markets removed as requested */}
+          {/* Right - Live Markets removed; hero uses provider-only now */}
         </div>
       </div>
 
@@ -283,28 +147,10 @@ export default function HeroSection() {
         <div className="scroll-arrow"></div>
       </div>
 
-      {/* Slim ticker tape removed as requested (kept invisible) */}
+      {/* Bottom live prices ticket */}
+      <HeroPriceTicket />
     </section>
   );
 }
 
-// Client-only wrapper to avoid SSR issues and ESM require problems
-function TickerTapeClient() {
-  const [ready, setReady] = React.useState(false);
-  React.useEffect(() => setReady(true), []);
-  if (!ready) return <div className="h-10 w-full animate-pulse rounded bg-neutral-800/40" aria-hidden />;
-  return (
-    <TradingViewTickerTape
-      symbols={[
-        { proName: "NASDAQ:AAPL", title: "AAPL" },
-        { proName: "NASDAQ:MSFT", title: "MSFT" },
-        { proName: "NASDAQ:TSLA", title: "TSLA" },
-        { proName: "BINANCE:BTCUSDT", title: "BTC/USDT" },
-        { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
-        { proName: "FX:EURUSD", title: "EUR/USD" },
-      ]}
-      colorTheme="light"
-      transparent
-    />
-  );
-}
+// TradingView ticker removed; using provider-driven ticket instead
