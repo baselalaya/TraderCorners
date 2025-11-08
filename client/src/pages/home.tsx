@@ -41,7 +41,7 @@ export default function Home() {
       <InteractiveCursor />
       <Header />
       <HeroSection />
-      <MarketPricesSection />
+      {/* <MarketPricesSection /> */}
       <MarketsSection />
       <AccountTypesSection />
       <TradingProductsSection />
