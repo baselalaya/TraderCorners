@@ -23,7 +23,7 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
         }
         // kick off periodic polling to simulate streaming
         if (!pollTimer) {
-          const interval = process.env.NODE_ENV === 'development' ? 5000 : 10000;
+          const interval = process.env.NODE_ENV === 'development' ? 5000 : 15000;
           pollTimer = setInterval(async () => {
             try {
               const upd = await fetchAVSnapshot(DEFAULT_SYMBOLS);

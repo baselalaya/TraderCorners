@@ -23,17 +23,19 @@ export default function HeroSection() {
   const wsRef = useRef<WebSocket|null>(null);
   const pollRef = useRef<any>(null);
   const prevPriceRef = useRef<Record<string, number>>({});
-  const ORDER = ["EURUSD","GBPUSD","USDJPY","XAUUSD"];
+  const ORDER = (import.meta as any).env.VITE_QUOTES_ORDER
+    ? String((import.meta as any).env.VITE_QUOTES_ORDER).split(',').map((s:string)=>s.trim())
+    : ["EURUSD","USDJPY","XAUUSD","BTCUSD"];
 
   const tickerData: TickerData[] = useMemo(() => {
     const vals = Object.values(map);
     const by = Object.fromEntries(vals.map(v => [v.symbol, v]));
     const ordered: TickerData[] = [];
-    for (const s of ["EURUSD","GBPUSD","USDJPY","XAUUSD"]) {
+    for (const s of ORDER) {
       if (by[s]) ordered.push(by[s] as TickerData);
     }
-    for (const v of vals) if (!ordered.find(o => o.symbol === v.symbol)) ordered.push(v as TickerData);
-    return ordered;
+    // limit to first 4 as per ORDER
+    return ordered.slice(0, 4);
   }, [map]);
   const feedConnected = tickerData.length > 0;
 

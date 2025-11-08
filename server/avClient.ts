@@ -43,6 +43,9 @@ async function fetchPair(from: string, to: string): Promise<AVNormalized | null>
 export async function fetchAVSnapshot(symbols: string[]): Promise<AVNormalized[]> {
   const tasks = symbols.map((s) => {
     const [base, quote] = s.split("/");
+    if (base?.toUpperCase() === 'BTC') {
+      return fetchCryptoSpot('BTC', quote || 'USD');
+    }
     return fetchPair(base, quote);
   });
   const results = await Promise.allSettled(tasks);
@@ -53,3 +56,20 @@ export async function fetchAVSnapshot(symbols: string[]): Promise<AVNormalized[]
   return out;
 }
 
+// Crypto: use DIGITAL_CURRENCY_INTRADAY to get the latest price
+async function fetchCryptoSpot(symbol: string, market: string): Promise<AVNormalized | null> {
+  const url = `${AV_BASE}?function=DIGITAL_CURRENCY_INTRADAY&symbol=${encodeURIComponent(symbol)}&market=${encodeURIComponent(market)}&apikey=${AV_KEY}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`AV crypto ${symbol}${market} failed ${res.status}`);
+  const json = await res.json();
+  const series = json && (json["Time Series (Digital Currency Intraday)"] || json["Time Series (Digital Currency Daily)"]);
+  if (!series) return null;
+  const firstKey = Object.keys(series)[0];
+  if (!firstKey) return null;
+  const row = series[firstKey];
+  const priceStr = row && (row["1a. price (USD)"] || row["4a. close (USD)"] || Object.values(row)[0]);
+  const price = Number(priceStr);
+  if (!Number.isFinite(price)) return null;
+  const sym = normSymbol(`${symbol}/${market}`);
+  return { symbol: sym, bid: price, ask: price, price, ts: Date.now() };
+}
