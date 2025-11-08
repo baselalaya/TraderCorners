@@ -392,7 +392,7 @@ export default function HeroSection() {
                 ))}
               </div>
 
-              {/* Trend indicator (now dynamic) */}
+              {/* Trend indicator (now dynamic) 
               <motion.div className="mt-6 lg:mt-8 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>
                 <div
                   className={`inline-flex items-center space-x-2 px-3 lg:px-4 py-2 border rounded-full ${
@@ -411,7 +411,7 @@ export default function HeroSection() {
                 {lastUpdated && feedConnected && (
                   <div className="mt-2 text-xs text-muted-foreground">Last updated: {lastUpdated}</div>
                 )}
-              </motion.div>
+              </motion.div>*/}
             </div>
           </motion.div>
         </div>
