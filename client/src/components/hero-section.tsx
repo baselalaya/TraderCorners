@@ -454,7 +454,7 @@ function TickerTapeClient() {
         { proName: "BINANCE:ETHUSDT", title: "ETH/USDT" },
         { proName: "FX:EURUSD", title: "EUR/USD" },
       ]}
-      colorTheme="dark"
+      colorTheme="light"
       transparent
     />
   );
