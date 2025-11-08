@@ -14,11 +14,21 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
     const latest = quotesHub.getLatestArray();
     if (latest.length === 0) {
       try {
-        const snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+        // cold start: attempt up to 3 tries with small backoff to avoid empty response
+        let snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+        if (!snap.length) {
+          await new Promise(r => setTimeout(r, 800));
+          snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+        }
+        if (!snap.length) {
+          await new Promise(r => setTimeout(r, 1200));
+          snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+        }
         if (snap.length) {
           quotesHub.broadcast(snap);
           res.json({ items: snap });
         } else {
+          // still empty; return empty but keep polling to fill soon
           res.json({ items: [] });
         }
         // kick off periodic polling to simulate streaming
@@ -27,7 +37,9 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
           pollTimer = setInterval(async () => {
             try {
               const upd = await fetchAVSnapshot(DEFAULT_SYMBOLS);
-              if (upd.length) quotesHub.broadcast(upd);
+              if (upd.length) {
+                quotesHub.broadcast(upd);
+              }
             } catch {}
           }, interval);
         }
