@@ -1,31 +1,36 @@
 import type { Express } from "express";
 import { WebSocketServer } from "ws";
 import { quotesHub } from "../quotesHub";
-import { connectTDWS, fetchTDSnapshot } from "../tdClient";
+import { fetchAVSnapshot } from "../avClient";
 
-const DEFAULT_SYMBOLS = ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD"];
+const DEFAULT_SYMBOLS = (process.env.QUOTES_SYMBOLS?.split(',').map(s => s.trim()).filter(Boolean) || ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD"]);
 
 export function mountQuotesRoutes(app: Express, server: import("http").Server) {
-  let upstreamStop: (() => void) | null = null;
-  let upstreamStarted = false;
+  // Upstream WS disabled (Alpha Vantage has no WS); rely on polling
 
-  async function ensureUpstream() {
-    if (upstreamStarted) return;
-    upstreamStarted = true;
-    upstreamStop = connectTDWS({
-      symbols: DEFAULT_SYMBOLS,
-      onTick: (items) => quotesHub.broadcast(items),
-      onError: () => {},
-    });
-  }
+  let pollTimer: NodeJS.Timeout | null = null;
 
   app.get("/api/quotes", async (_req, res) => {
     const latest = quotesHub.getLatestArray();
     if (latest.length === 0) {
       try {
-        const snap = await fetchTDSnapshot(DEFAULT_SYMBOLS);
-        for (const it of snap) { /* seed cache */ }
-        res.json({ items: snap });
+        const snap = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+        if (snap.length) {
+          quotesHub.broadcast(snap);
+          res.json({ items: snap });
+        } else {
+          res.json({ items: [] });
+        }
+        // kick off periodic polling to simulate streaming
+        if (!pollTimer) {
+          const interval = process.env.NODE_ENV === 'development' ? 5000 : 10000;
+          pollTimer = setInterval(async () => {
+            try {
+              const upd = await fetchAVSnapshot(DEFAULT_SYMBOLS);
+              if (upd.length) quotesHub.broadcast(upd);
+            } catch {}
+          }, interval);
+        }
       } catch (e: any) {
         res.status(502).json({ items: [], message: e?.message || "Upstream error" });
       }
