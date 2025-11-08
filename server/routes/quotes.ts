@@ -110,16 +110,23 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
-    res.flushHeaders?.();
+    // flush headers for proxies
+    (res as any).flushHeaders?.();
 
     const write = (items: any[]) => {
-      res.write(`data: ${JSON.stringify({ items })}\n\n`);
-    }
-    // send initial snapshot
+      try { res.write(`data: ${JSON.stringify({ items })}\n\n`); } catch {}
+    };
+
+    // heartbeat to keep connection open through proxies/CDNs
+    const heartbeat = setInterval(() => {
+      try { res.write(`:\n\n`); } catch {}
+    }, 15000);
+
+    // initial snapshot (best effort)
     try {
       const latest = quotesHub.getLatestArray();
       if (latest.length) write(latest);
-      else write(await fetchTDSnapshot(DEFAULT_SYMBOLS));
+      else write([]);
     } catch {}
 
     const handler = (items: any[]) => write(items);
@@ -131,8 +138,9 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
     };
 
     req.on('close', () => {
+      clearInterval(heartbeat);
       (quotesHub as any).broadcast = origBroadcast;
-      res.end();
+      try { res.end(); } catch {}
     });
   });
 
