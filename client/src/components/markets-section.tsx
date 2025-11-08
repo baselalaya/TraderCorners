@@ -93,14 +93,17 @@ export default function MarketsSection() {
       return syms.map((sym) => {
         const key = sym.toUpperCase().replace('/', '');
         const q = (quotes as any)[key];
-        const price = Number(q?.price);
+        const num = Number(q?.price);
+        const has = Number.isFinite(num);
+        const formatted = has ? new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 3 }).format(num) : '—';
         return {
           symbol: sym,
           icon: sym.startsWith('BTC') ? '₿' : sym.startsWith('ETH') ? 'Ξ' : '◎',
-          price: Number.isFinite(price) ? new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 3 }).format(price) : '—',
+          price: formatted,
           change: '—',
-          isPositive: true,
+          isPositive: has ? true : false,
           volume: '—',
+          _pending: !has,
         } as any;
       });
     }
@@ -230,8 +233,14 @@ export default function MarketsSection() {
                   {/* Bottom Row - Data */}
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-xs text-muted-foreground mb-1">Price</div>
-                      <div className="font-mono text-sm font-bold text-foreground">{formatFxPrice(item.price, item.symbol)}</div>
+                    <div className="text-xs text-muted-foreground mb-1">Price</div>
+                    <div className="font-mono text-sm font-bold text-foreground">
+                      {(item as any)._pending ? (
+                        <span className="inline-block h-4 w-20 rounded bg-white/10 animate-pulse align-middle" aria-hidden />
+                      ) : (
+                        formatFxPrice(item.price, item.symbol)
+                      )}
+                    </div>
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground mb-1">24h Change</div>
@@ -269,7 +278,13 @@ export default function MarketsSection() {
                   {/* Price */}
                   <div className="text-left">
                     <div className="text-sm text-muted-foreground mb-1">Price</div>
-                    <div className="font-mono text-xl font-bold text-foreground">{formatFxPrice(item.price, item.symbol)}</div>
+                    <div className="font-mono text-xl font-bold text-foreground">
+                      {(item as any)._pending ? (
+                        <span className="inline-block h-5 w-24 rounded bg-white/10 animate-pulse align-middle" aria-hidden />
+                      ) : (
+                        formatFxPrice(item.price, item.symbol)
+                      )}
+                    </div>
                   </div>
 
                   {/* Change */}
