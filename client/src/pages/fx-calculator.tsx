@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -49,6 +49,26 @@ export default function FxCalculatorPage() {
   const [leverage, setLeverage] = useState(100);
   const [account, setAccount] = useState<AccountCurrency>("USD");
   const [price, setPrice] = useState(1.085);
+  // Auto-fill price for EURUSD from /api/quotes on mount, but keep user-editable
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      try {
+        const res = await fetch('/api/quotes');
+        if (!res.ok) return;
+        const j = await res.json();
+        const items: any[] = Array.isArray(j?.items) ? j.items : [];
+        const by = Object.fromEntries(items.map(i => [String(i.symbol || i.display || '').toUpperCase(), i]));
+        // Normalize keys like EURUSD or EUR/USD
+        const v = by['EURUSD'] || by['EUR/USD'];
+        const p = Number(v?.price);
+        if (mounted && Number.isFinite(p)) setPrice(p);
+      } catch {}
+    };
+    load();
+    const t = setInterval(load, 30000);
+    return () => { mounted = false; clearInterval(t); };
+  }, []);
   const [stopPips, setStopPips] = useState(20);
   const [takePips, setTakePips] = useState(40);
 

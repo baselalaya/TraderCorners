@@ -41,6 +41,26 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
             await new Promise(r => setTimeout(r, 1200));
             snap = await fetchYahooSnapshot(DEFAULT_SYMBOLS);
           }
+          // Fallback: fetch a minimal FX set from exchangerate.host if still empty
+          if (!snap.length) {
+            try {
+              const base = 'USD';
+              const majors = ['EUR','GBP','JPY','AUD'];
+              const resp = await fetch(`https://api.exchangerate.host/latest?base=${base}&symbols=${majors.join(',')}` as any);
+              if (resp.ok) {
+                const j = await resp.json();
+                const rates = j?.rates || {};
+                const now = Date.now();
+                const fx = [
+                  { symbol: 'EURUSD', price: rates.EUR ? 1 / rates.EUR : undefined },
+                  { symbol: 'GBPUSD', price: rates.GBP ? 1 / rates.GBP : undefined },
+                  { symbol: 'USDJPY', price: rates.JPY },
+                  { symbol: 'AUDUSD', price: rates.AUD ? 1 / rates.AUD : undefined },
+                ].filter(x => Number.isFinite(x.price));
+                snap = fx.map((x: any) => ({ symbol: x.symbol, bid: x.price, ask: x.price, price: x.price, ts: now }));
+              }
+            } catch {}
+          }
         }
         if (snap.length) {
           quotesHub.broadcast(snap);

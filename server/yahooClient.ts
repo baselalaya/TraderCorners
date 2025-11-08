@@ -15,7 +15,8 @@ const YF_ENDPOINTS = [
 
 const YMAP: Record<string, string> = {
   "EUR/USD": "EURUSD=X",
-  "USD/JPY": "JPY=X", // Yahoo also supports USDJPY=X; JPY=X yields USD/JPY price
+  // Prefer explicit cross tickers for consistency
+  "USD/JPY": "USDJPY=X",
   "XAU/USD": "XAUUSD=X",
   "GBP/USD": "GBPUSD=X",
   "BTC/USD": "BTC-USD",
@@ -36,8 +37,27 @@ function normalizeSymbolFromY(ticker: string): string {
   return ticker.replaceAll("/", "");
 }
 
+function uniq<T>(arr: T[]): T[] { return Array.from(new Set(arr)); }
+
+function chunk<T>(arr: T[], size: number): T[][] {
+  const out: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
 export async function fetchYahooSnapshot(pairs: string[]): Promise<YFNormalized[]> {
-  const tickers = pairs.map(toYFSymbol).filter((s): s is string => Boolean(s));
+  const primary = pairs.map(toYFSymbol).filter((s): s is string => Boolean(s));
+  // Provide alternates for some instruments to improve hit rate
+  const alternateMap: Record<string, string[]> = {
+    "XAU/USD": ["GC=F"],
+    "GOLD": ["XAUUSD=X"],
+    "SILVER": ["XAGUSD=X", "SI=F"],
+    "CRUDE OIL": ["BZ=F", "CL=F"],
+    "NATURAL GAS": ["NG=F"],
+    "USD/JPY": ["JPY=X", "USDJPY=X"],
+  };
+  const alternates = pairs.flatMap(p => alternateMap[p] || []);
+  const tickers = uniq([...primary, ...alternates]).filter(Boolean);
   if (tickers.length === 0) return [];
   const headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0 Safari/537.36",
@@ -47,29 +67,33 @@ export async function fetchYahooSnapshot(pairs: string[]): Promise<YFNormalized[
     "Origin": "https://finance.yahoo.com",
   } as Record<string,string>;
 
-  let json: any = null;
+  const lists: any[] = [];
   let lastStatus = 0;
-  for (const ep of YF_ENDPOINTS) {
-    const url = `${ep}?symbols=${encodeURIComponent(tickers.join(","))}`;
-    const res = await fetch(url, { headers });
-    lastStatus = res.status;
-    if (res.ok) {
-      json = await res.json();
-      break;
+  for (const chunkTickers of chunk(tickers, 6)) {
+    let gotOne = false;
+    for (const ep of YF_ENDPOINTS) {
+      const url = `${ep}?symbols=${encodeURIComponent(chunkTickers.join(","))}`;
+      const res = await fetch(url, { headers });
+      lastStatus = res.status;
+      if (res.ok) {
+        const json = await res.json();
+        const part = json?.quoteResponse?.result || [];
+        lists.push(...part);
+        gotOne = true;
+        break;
+      }
+      if (res.status === 401 || res.status === 403) {
+        continue;
+      } else {
+        break;
+      }
     }
-    if (res.status === 401 || res.status === 403) {
-      // try next endpoint
+    if (!gotOne && (lastStatus === 401 || lastStatus === 403)) {
+      // continue with next chunk; nothing we can do for auth errors
       continue;
-    } else {
-      // non-auth error, break
-      break;
     }
   }
-  if (!json) {
-    if (lastStatus === 401 || lastStatus === 403) return [];
-    throw new Error(`Yahoo quotes failed ${lastStatus || 'unknown'}`);
-  }
-  const list = json?.quoteResponse?.result || [];
+  const list = lists;
   const now = Date.now();
   const out: YFNormalized[] = [];
   for (const r of list) {
