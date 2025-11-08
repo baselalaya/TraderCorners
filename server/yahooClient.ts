@@ -19,6 +19,11 @@ const YMAP: Record<string, string> = {
   "XAU/USD": "XAUUSD=X",
   "GBP/USD": "GBPUSD=X",
   "BTC/USD": "BTC-USD",
+  // Commodities mapping for reliability
+  "GOLD": "GC=F", // Gold Futures
+  "SILVER": "SI=F", // Silver Futures
+  "CRUDE OIL": "CL=F", // WTI Crude Oil Futures
+  "NATURAL GAS": "NG=F",
 };
 
 function toYFSymbol(pair: string): string | null {

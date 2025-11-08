@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { marketData } from "@/lib/market-data";
+import CryptoPriceStrip from "@/components/CryptoPriceStrip";
+import { fetcher } from "@/lib/fetcher";
 
 type MarketType = 'forex' | 'crypto' | 'commodities';
 
@@ -13,7 +15,63 @@ export default function MarketsSection() {
     { id: 'commodities' as MarketType, label: 'Commodities' },
   ];
 
-  const currentData = marketData[activeMarket];
+  const [fx, setFx] = useState(marketData.forex);
+  const [commod, setCommod] = useState(marketData.commodities);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string|null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Fetch simple FX and commodities via our server REST if available else skip
+        // Attempt Yahoo route in this codebase: server exposes /api/quotes combining sources
+        const res = await fetch(`/api/quotes`).catch(() => null as any);
+        if (res && res.ok) {
+          const json = await res.json();
+          const items: any[] = Array.isArray(json?.items) ? json.items : [];
+          const map = Object.fromEntries(items.map(i => [String(i.display || i.symbol || ''), i]));
+          const nextFx = marketData.forex.map(x => {
+            const m = map[x.symbol.replace("/", "")] || map[x.symbol];
+            const price = Number(m?.price);
+            const change = Number(m?.change);
+            return {
+              ...x,
+              price: Number.isFinite(price) ? String(price) : x.price,
+              change: Number.isFinite(change) ? `${change >= 0 ? '+' : ''}${change.toFixed(2)}%` : x.change,
+              isPositive: Number.isFinite(change) ? change >= 0 : x.isPositive,
+            };
+          });
+          const nextCom = marketData.commodities.map(x => {
+            const aliases = [x.symbol, x.symbol.replace(' ', ''), x.symbol.replace(' ', '_'), x.symbol.toUpperCase()];
+            const m = aliases.reduce((acc, k) => acc || map[k], null as any);
+            const price = Number(m?.price);
+            const change = Number(m?.change);
+            return {
+              ...x,
+              price: Number.isFinite(price) ? `$${price}` : x.price,
+              change: Number.isFinite(change) ? `${change >= 0 ? '+' : ''}${change.toFixed(2)}%` : x.change,
+              isPositive: Number.isFinite(change) ? change >= 0 : x.isPositive,
+            };
+          });
+          if (mounted) { setFx(nextFx); setCommod(nextCom); }
+        }
+      } catch (e) {
+        setError('Live data unavailable');
+      } finally { setLoading(false); }
+    };
+    load();
+    const t = setInterval(load, 30000);
+    return () => { mounted = false; clearInterval(t); };
+  }, []);
+
+  const currentData = useMemo(() => {
+    if (activeMarket === 'forex') return fx;
+    if (activeMarket === 'commodities') return commod;
+    return marketData.crypto; // crypto handled by strip below
+  }, [activeMarket, fx, commod]);
 
   return (
     <section id="markets" className="py-20 bg-gradient-to-b from-background to-muted/20">
@@ -87,6 +145,13 @@ export default function MarketsSection() {
             ))}
           </div>
           
+          {/* Crypto live strip when Crypto tab selected */}
+          {activeMarket === 'crypto' && (
+            <div className="mb-6">
+              <CryptoPriceStrip ids={["bitcoin","ethereum","solana","cardano"]} />
+            </div>
+          )}
+
           {/* Market Data Cards */}
           <div className="grid gap-3 md:gap-4">
             {currentData.map((item, index) => (

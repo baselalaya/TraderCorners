@@ -3,7 +3,16 @@ import { WebSocketServer } from "ws";
 import { quotesHub } from "../quotesHub";
 import { fetchYahooSnapshot } from "../yahooClient";
 
-const DEFAULT_SYMBOLS = (process.env.QUOTES_SYMBOLS?.split(',').map(s => s.trim()).filter(Boolean) || ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD"]);
+const DEFAULT_SYMBOLS = (process.env.QUOTES_SYMBOLS?.split(',').map(s => s.trim()).filter(Boolean) || [
+  "EUR/USD",
+  "GBP/USD",
+  "USD/JPY",
+  "XAU/USD",
+  "GOLD",
+  "SILVER",
+  "CRUDE OIL",
+  "NATURAL GAS",
+]);
 
 export function mountQuotesRoutes(app: Express, server: import("http").Server) {
   // Upstream WS disabled (Alpha Vantage has no WS); rely on polling
