@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuote } from "@/providers/QuotesProvider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
+import { QuotesProvider } from "@/providers/QuotesProvider";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -50,12 +51,17 @@ export default function FxCalculatorPage() {
   const [leverage, setLeverage] = useState(100);
   const [account, setAccount] = useState<AccountCurrency>("USD");
   const [price, setPrice] = useState(1.085);
-  // Auto-fill price for EURUSD from /api/quotes on mount, but keep user-editable
-  const eurusd = useQuote('EURUSD');
+  const userEdited = useRef(false);
+  // Auto-fill price from live quotes for the selected pair; fallback to EURUSD
+  const live = useQuote(pair);
   useEffect(() => {
-    const p = Number(eurusd?.price);
-    if (Number.isFinite(p)) setPrice(p);
-  }, [eurusd?.price]);
+    // Reset userEdited when symbol changes so new pair can auto-fill
+    userEdited.current = false;
+  }, [pair]);
+  useEffect(() => {
+    const p = Number(live?.price);
+    if (!userEdited.current && Number.isFinite(p)) setPrice(p);
+  }, [live?.price]);
   const [stopPips, setStopPips] = useState(20);
   const [takePips, setTakePips] = useState(40);
 
@@ -70,6 +76,7 @@ export default function FxCalculatorPage() {
   }, [pair, lots, leverage, account, price, stopPips, takePips]);
 
   return (
+    <QuotesProvider>
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/20 text-foreground">
       <SEO page="fxCalculator" />
       <Header />
@@ -116,7 +123,12 @@ export default function FxCalculatorPage() {
               </div>
               <div>
                 <label className="text-sm text-muted-foreground">Market Price</label>
-                <Input type="number" step={0.0001} value={price} onChange={(e) => setPrice(Number(e.target.value))} />
+                <Input
+                  type="number"
+                  step={0.0001}
+                  value={price}
+                  onChange={(e) => { userEdited.current = true; setPrice(Number(e.target.value)); }}
+                />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -156,5 +168,6 @@ export default function FxCalculatorPage() {
       </main>
       <Footer />
     </div>
+    </QuotesProvider>
   );
 }
