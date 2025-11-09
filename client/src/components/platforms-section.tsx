@@ -143,17 +143,7 @@ export default function PlatformsSection() {
                   </div>
                   
                   {/* CTA */}
-                  <motion.button 
-                    className="w-full py-4 px-6 bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group/btn"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="relative z-10 flex items-center justify-center font-bold">
-                      <Download className="mr-2" size={18} />
-                      Get Started
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
-                  </motion.button>
+                  {/* CTA removed in first section as requested */}
                 </div>
 
                 {/* Decorative Elements */}

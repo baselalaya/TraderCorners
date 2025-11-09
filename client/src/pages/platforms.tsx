@@ -27,11 +27,11 @@ const platforms = [
     devices: ["Windows", "Mac", "iOS", "Android", "Web"],
     image: "/mt5-all.png",
     downloadLinks: {
-      windows: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/traderCorners5setup.exe",
-      mac: "https://download.mql5.com/cdn/web/trader.corners.limited/mt5/tradercorners5.dmg",
+      windows: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe",
+      mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5.pkg",
       ios: "https://apps.apple.com/app/metatrader-5/id413251709",
       android: "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5",
-      web: "https://trade.tradercorners.com/terminal"
+      web: "https://www.metatrader5.com/en/terminal"
     }
   },
   {
@@ -49,7 +49,7 @@ const platforms = [
     devices: ["Any Browser"],
     image: "/webtrader.jpg",
     downloadLinks: {
-      web: "#"
+      web: "https://www.metatrader5.com/en/terminal"
     }
   },
   {
@@ -67,8 +67,8 @@ const platforms = [
     devices: ["iOS", "Android"],
     image: "/mt5-mobile.webp",
     downloadLinks: {
-      ios: "#",
-      android: "#"
+      ios: "https://apps.apple.com/app/metatrader-5/id413251709",
+      android: "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5"
     }
   }
 ];
