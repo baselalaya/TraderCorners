@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import SEO from "@/components/seo";
@@ -13,15 +13,19 @@ function isoDate(date: Date) {
 
 export default function EconomicCalendarPage() {
   const [datePreset, setDatePreset] = useState("week");
-  const [tz, setTz] = useState<string>(() => localStorage.getItem("tc_tz") || "UTC");
+  const [tz, setTz] = useState<string>(() => {
+    try { return localStorage.getItem("tc_tz") || "UTC"; } catch { return "UTC"; }
+  });
   // Defaults: High/Medium and US/EU
   const [impacts, setImpacts] = useState<Record<Impact, boolean>>({ low: false, medium: true, high: true });
   const [countries, setCountries] = useState<string[]>(["US","EU"]);
   const [categories, setCategories] = useState<string[]>(["GDP","CPI","PMI","Employment"]);
   const [events, setEvents] = useState<EconomicEvent[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const inflight = useRef<AbortController | null>(null);
 
-  useEffect(() => { localStorage.setItem("tc_tz", tz); }, [tz]);
+  useEffect(() => { try { localStorage.setItem("tc_tz", tz); } catch {} }, [tz]);
 
   const range = useMemo(() => {
     const now = new Date();
@@ -38,17 +42,28 @@ export default function EconomicCalendarPage() {
   }, [datePreset]);
 
   const load = async () => {
+    // abort any in-flight request
+    try { inflight.current?.abort(); } catch {}
+    const ac = new AbortController();
+    inflight.current = ac;
     setLoading(true);
-    const data = await fetchEconomicEvents({
-      from: range.from,
-      to: range.to,
-      countries,
-      impacts: (Object.keys(impacts) as Impact[]).filter(k => impacts[k]),
-      categories: categories as Category[],
-      tz
-    });
-    setEvents(data);
-    setLoading(false);
+    setError(null);
+    try {
+      const data = await fetchEconomicEvents({
+        from: range.from,
+        to: range.to,
+        countries,
+        impacts: (Object.keys(impacts) as Impact[]).filter(k => impacts[k]),
+        categories: categories as Category[],
+        tz
+      }, ac);
+      setEvents(Array.isArray(data) ? data : []);
+    } catch (e: any) {
+      if (e?.name !== 'AbortError') setError('Failed to load events. Please try again.');
+    } finally {
+      setLoading(false);
+      if (inflight.current === ac) inflight.current = null;
+    }
   };
 
   useEffect(() => { load(); /* eslint-disable-next-line */ }, [range.from, range.to]);
@@ -71,6 +86,12 @@ export default function EconomicCalendarPage() {
             <p className="text-lg text-muted-foreground max-w-3xl">Filter global macroeconomic events by date, country, impact and category. Times shown in your selected timezone.</p>
           </motion.div>
         </section>
+
+        {error && (
+          <div className="mb-4 p-4 rounded-xl border border-red-300 bg-red-50 text-red-800 text-sm">
+            {error}
+          </div>
+        )}
 
         <CalendarFilters
           datePreset={datePreset}
