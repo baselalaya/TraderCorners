@@ -68,26 +68,29 @@ export function mountQuotesRoutes(app: Express, server: import("http").Server) {
               }
             } catch {}
           }
-          // Crypto fallback via Binance public (no key)
-          if (!snap.length) {
-            try {
-              const syms = ["BTCUSDT","ETHUSDT","SOLUSDT"]; // extend as needed
-              const now = Date.now();
-              const out: any[] = [];
-              for (const s of syms) {
-                const r = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${s}` as any);
-                if (r.ok) {
-                  const j = await r.json();
-                  const p = Number(j?.price);
-                  if (Number.isFinite(p)) {
-                    const norm = s.replace("USDT","USD");
-                    out.push({ symbol: norm, bid: p, ask: p, price: p, ts: now });
-                  }
+          // Merge Binance crypto into snapshot (no key), regardless of FX path success
+          try {
+            const syms = ["BTCUSDT","ETHUSDT","SOLUSDT"]; // extend as needed
+            const now = Date.now();
+            const out: any[] = [];
+            for (const s of syms) {
+              const r = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${s}` as any);
+              if (r.ok) {
+                const j = await r.json();
+                const p = Number(j?.price);
+                if (Number.isFinite(p)) {
+                  const norm = s.replace("USDT","USD");
+                  out.push({ symbol: norm, bid: p, ask: p, price: p, ts: now });
                 }
               }
-              if (out.length) snap = out;
-            } catch {}
-          }
+            }
+            if (out.length) {
+              const existing = new Set(snap.map(it => String(it.symbol).toUpperCase()));
+              for (const it of out) {
+                if (!existing.has(String(it.symbol).toUpperCase())) snap.push(it);
+              }
+            }
+          } catch {}
           // Optional commodities approximation when Yahoo blocked
           if (!snap.length) {
             try {
