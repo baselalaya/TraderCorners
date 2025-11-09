@@ -8,47 +8,53 @@ const accountTypes = [
   {
     name: "Basic Account",
     description: "Essential trading with low minimums and MT5 access",
-    minDeposit: "$20",
-    spread: "From 1.2 pips",
-    leverage: "1:100",
-    features: [
-      "Minimum Lot Size: 0.01",
-      "Instruments: 28 FX pairs, Metals, CFD",
-      "Platforms: MT5",
-      "Stop Out: 10%",
-    ],
+    specs: {
+      minDeposit: "20",
+      spreadsFrom: "1.2",
+      minLot: "0.01",
+      leverage: "1:100",
+      commission: "$0.0",
+      instruments: "28 currency pairs, Metals, CFD",
+      platforms: "MT5",
+      stopOut: "10%",
+    },
     popular: false,
-    color: "from-slate-500 to-slate-600"
+    color: "from-sky-500 to-sky-600",
+    cta: "https://my.tradercorners.com/en/register/basic",
   },
   {
     name: "Premium Account",
     description: "Tighter spreads and higher leverage for active traders",
-    minDeposit: "$10,000",
-    spread: "From 0.8 pips",
-    leverage: "1:400",
-    features: [
-      "Minimum Lot Size: 0.01",
-      "Instruments: 28 FX pairs, Metals, CFD",
-      "Platforms: MT5",
-      "Stop Out: 10%",
-    ],
+    specs: {
+      minDeposit: "10,000",
+      spreadsFrom: "0.8",
+      minLot: "0.01",
+      leverage: "1:400",
+      commission: "$0.0",
+      instruments: "28 currency pairs, Metals, CFD",
+      platforms: "MT5",
+      stopOut: "10%",
+    },
     popular: true,
-    color: "from-primary to-secondary"
+    color: "from-primary to-secondary",
+    cta: "https://my.tradercorners.com/en/register/premium",
   },
   {
     name: "Institutional Account",
     description: "Institutional-grade conditions with ultra-low spreads",
-    minDeposit: "$20",
-    spread: "From 0.5 pips",
-    leverage: "1:400",
-    features: [
-      "Minimum Lot Size: 0.01",
-      "Instruments: 28 FX pairs, Metals, CFD",
-      "Platforms: MT5",
-      "Stop Out: 10%",
-    ],
+    specs: {
+      minDeposit: "20",
+      spreadsFrom: "0.5",
+      minLot: "0.01",
+      leverage: "1:400",
+      commission: "$0.0",
+      instruments: "28 currency pairs, Metals, CFD",
+      platforms: "MT5",
+      stopOut: "10%",
+    },
     popular: false,
-    color: "from-yellow-500 to-yellow-600"
+    color: "from-violet-500 to-violet-600",
+    cta: "https://my.tradercorners.com/en/register/institutional",
   }
 ];
 
@@ -106,33 +112,16 @@ export default function AccountTypesSection() {
                 </CardHeader>
 
                 <CardContent className="space-y-6 px-6">
-                  <div className="text-center p-4 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl border border-primary/10">
-                    <div className="text-3xl font-bold text-primary mb-1">{account.minDeposit}</div>
-                    <div className="text-sm font-medium text-muted-foreground">Minimum Deposit</div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
-                      <div className="font-bold text-sm text-foreground">{account.spread}</div>
-                      <div className="text-xs text-muted-foreground">Spreads</div>
-                    </div>
-                    <div className="text-center p-3 bg-muted/30 rounded-xl border border-border/50">
-                      <div className="font-bold text-sm text-foreground">{account.leverage}</div>
-                      <div className="text-xs text-muted-foreground">Leverage</div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="font-bold text-sm text-foreground">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {account.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm group/item">
-                          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 flex-shrink-0 group-hover/item:bg-primary/30 transition-colors">
-                            <Check className="w-3 h-3 text-primary" />
-                          </div>
-                          <span className="text-muted-foreground group-hover/item:text-foreground transition-colors">{feature}</span>
-                        </li>
-                      ))}
+                  <div className="text-left p-4 bg-muted/20 rounded-2xl border border-border/50">
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Minimum Initial Deposit</span><span className="font-semibold text-foreground">{account.specs.minDeposit}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Spreads from pips</span><span className="font-semibold text-foreground">{account.specs.spreadsFrom}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Minimum Lot Size</span><span className="font-semibold text-foreground">{account.specs.minLot}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Leverage up to</span><span className="font-semibold text-foreground">{account.specs.leverage}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Commission</span><span className="font-semibold text-foreground">{account.specs.commission}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Instruments</span><span className="font-semibold text-foreground text-right">{account.specs.instruments}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Platforms</span><span className="font-semibold text-foreground">{account.specs.platforms}</span></li>
+                      <li className="flex items-center justify-between"><span className="text-muted-foreground">Stop out</span><span className="font-semibold text-foreground">{account.specs.stopOut}</span></li>
                     </ul>
                   </div>
 
@@ -146,7 +135,7 @@ export default function AccountTypesSection() {
                       }`}
                       size="lg"
                     >
-                      <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
+                      <a href={account.cta} target="_blank" rel="noopener noreferrer">
                         {account.popular ? 'Get Started Now' : 'Choose This Plan'}
                       </a>
                     </Button>

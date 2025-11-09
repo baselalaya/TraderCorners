@@ -179,7 +179,17 @@ export default function AccountsPage() {
                     size="lg"
                     asChild
                   >
-                    <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">Open {account.name} Account</a>
+                    <a
+                      href={
+                        account.id === 'premium'
+                          ? 'https://my.tradercorners.com/en/register/premium'
+                          : 'https://my.tradercorners.com/en/register/basic'
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open {account.name} Account
+                    </a>
                   </Button>
                 </div>
               </motion.div>
