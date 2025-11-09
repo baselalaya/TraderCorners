@@ -15,48 +15,36 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100"></div>
-      <div className="absolute inset-0 opacity-15">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
+      {/* Background video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/tradercorners-hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
         />
+        {/* White overlay for readability */}
+        <div className="absolute inset-0 bg-white/95" aria-hidden></div>
       </div>
-
-      {/* Static minimal accents */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        <div className="absolute top-20 left-20 w-3 h-3 bg-primary/30 rounded-full"></div>
-        <div className="absolute top-40 right-32 w-2 h-2 bg-primary/40 rounded-full"></div>
-        <div className="absolute bottom-32 left-40 w-2.5 h-2.5 bg-primary/35 rounded-full"></div>
-        <div className="absolute bottom-20 right-20 w-3 h-3 bg-primary/30 rounded-full"></div>
-      </div>
-
-      {/* Subtle glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-      <div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse"
-        style={{ animationDelay: "2s" }}
-      ></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Live feed status (provider-based) */}
-        <div className="mb-4 flex items-center justify-center lg:justify-start text-xs text-muted-foreground">
+        {/* <div className="mb-4 flex items-center justify-center text-xs text-muted-foreground">
           <div className={`w-2 h-2 rounded-full mr-2 ${Object.keys(quotes).length ? "bg-green-500 animate-pulse" : "bg-red-500"}`} />
           <span>{Object.keys(quotes).length ? 'Live quotes active' : 'Waiting for live quotes…'}</span>
-        </div>
+        </div> */}
 
-        {/* Layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[80vh] lg:min-h-[60vh]">
-          {/* Left */}
+        {/* Centered single-column layout */}
+        <div className="flex flex-col items-center justify-center min-h-[70vh]">
           <motion.div
-            className="scroll-reveal space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1"
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.25, 0.8, 0.25, 1] }}
+            className="scroll-reveal space-y-6 text-center max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.8, 0.25, 1] }}
           >
             <div className="space-y-3 lg:space-y-4">
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
@@ -76,7 +64,7 @@ export default function HeroSection() {
             </div>
 
             <motion.p
-              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-md lg:max-w-lg mx-auto lg:mx-0 leading-relaxed px-4 lg:px-0"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -86,7 +74,7 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 lg:gap-4 px-4 lg:px-0"
+              className="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -120,7 +108,7 @@ export default function HeroSection() {
 
             {/* Trust Indicators */}
             <motion.div
-              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pt-4 text-center lg:text-left"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
@@ -135,8 +123,6 @@ export default function HeroSection() {
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Right - Live Markets removed; hero uses provider-only now */}
         </div>
       </div>
 
