@@ -44,7 +44,7 @@ export default function Home() {
         <Header />
         <HeroSection />
         {/* <MarketPricesSection /> */}
-        <MarketsSection />
+        {/* <MarketsSection /> */}
         <AccountTypesSection />
         <TradingProductsSection />
         <FAQSection />
