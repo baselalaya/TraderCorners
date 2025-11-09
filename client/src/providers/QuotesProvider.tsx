@@ -27,7 +27,8 @@ export function QuotesProvider({ children }: { children: React.ReactNode }) {
           if (!key) continue;
           const price = Number(it.price ?? it.bid ?? it.ask);
           if (!Number.isFinite(price)) continue;
-          next[key] = { symbol: key, price, bid: Number(it.bid), ask: Number(it.ask), ts: Number(it.ts) };
+          const prevPrice = next[key]?.price;
+          next[key] = { symbol: key, price, bid: Number(it.bid), ask: Number(it.ask), ts: Number(it.ts), ...(Number.isFinite(prevPrice) ? { prev: prevPrice } as any : {}) } as any;
         }
         return next;
       });
@@ -91,4 +92,3 @@ export function useQuotes(): QuotesMap {
   const ctx = React.useContext(QuotesContext);
   return ctx?.quotes || {};
 }
-

@@ -6,6 +6,8 @@ export type YFNormalized = {
   ask: number;
   price: number;
   ts: number;
+  changePercent24h?: number;
+  volume24h?: number;
 };
 
 const YF_ENDPOINTS = [
@@ -26,10 +28,16 @@ const YMAP: Record<string, string> = {
   "SILVER": "SI=F", // Silver Futures
   "CRUDE OIL": "CL=F", // WTI Crude Oil Futures
   "NATURAL GAS": "NG=F",
+  // explicit normalized commodity symbols
+  "XAU/USD": "XAUUSD=X",
+  "XAG/USD": "XAGUSD=X",
+  "CL": "CL=F",
+  "BZ": "BZ=F",
 };
 
 function toYFSymbol(pair: string): string | null {
-  return YMAP[pair] || null;
+  // If known mapping exists, use it; otherwise pass through for equities/indices
+  return YMAP[pair] || pair;
 }
 
 function normalizeSymbolFromY(ticker: string): string {
@@ -103,7 +111,12 @@ export async function fetchYahooSnapshot(pairs: string[]): Promise<YFNormalized[
     const ask = Number(r.ask ?? price);
     if (!Number.isFinite(price)) continue;
     const sym = normalizeSymbolFromY(String(r.symbol));
-    out.push({ symbol: sym, bid, ask, price: (bid + ask) / 2 || price, ts: now });
+    const pct = Number(r.regularMarketChangePercent ?? r.postMarketChangePercent ?? r.preMarketChangePercent);
+    const vol = Number(r.regularMarketVolume ?? r.averageDailyVolume3Month ?? r.averageDailyVolume10Day);
+    out.push({ symbol: sym, bid, ask, price: (bid + ask) / 2 || price, ts: now, 
+      ...(Number.isFinite(pct) ? { changePercent24h: pct } : {}),
+      ...(Number.isFinite(vol) ? { volume24h: vol } : {}),
+    });
   }
   return out;
 }

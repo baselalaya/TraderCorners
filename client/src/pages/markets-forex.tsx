@@ -2,9 +2,11 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import RelatedMarkets from "@/components/related-markets";
 import MarketLayout from "@/components/market-layout";
+import { QuotesProvider } from "@/providers/QuotesProvider";
 
 export default function MarketsForex() {
   return (
+    <QuotesProvider>
     <div className="min-h-screen flex flex-col">
       <Header />
       <MarketLayout
@@ -50,5 +52,6 @@ export default function MarketsForex() {
       />
       <Footer />
     </div>
+    </QuotesProvider>
   );
 }

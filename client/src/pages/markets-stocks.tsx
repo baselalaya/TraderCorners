@@ -2,9 +2,11 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import RelatedMarkets from "@/components/related-markets";
 import MarketLayout from "@/components/market-layout";
+import { QuotesProvider } from "@/providers/QuotesProvider";
 
 export default function MarketsStocks() {
   return (
+    <QuotesProvider>
     <div className="min-h-screen flex flex-col">
       <Header />
       <MarketLayout
@@ -46,10 +48,11 @@ export default function MarketsStocks() {
             )
           }
         ]}
-        // Using commodities proxy until stocks data group is added
-        related={<RelatedMarkets title="Related Indices & Proxies" group="commodities" symbols={["GOLD","SILVER"]} />}
+        // Show popular US stocks and major indices
+        related={<RelatedMarkets title="Trending Stocks & Indices" group="forex" symbols={["AAPL","MSFT","NVDA","AMZN","TSLA","^GSPC","^NDX","^DJI"]} />}
       />
       <Footer />
     </div>
+    </QuotesProvider>
   );
 }
