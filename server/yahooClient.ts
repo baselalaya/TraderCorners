@@ -29,7 +29,6 @@ const YMAP: Record<string, string> = {
   "CRUDE OIL": "CL=F", // WTI Crude Oil Futures
   "NATURAL GAS": "NG=F",
   // explicit normalized commodity symbols
-  "XAU/USD": "XAUUSD=X",
   "XAG/USD": "XAGUSD=X",
   "CL": "CL=F",
   "BZ": "BZ=F",
