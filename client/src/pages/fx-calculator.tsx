@@ -45,7 +45,12 @@ function swapCost(lots: number, days: number, pointsPerDay: number): number {
   return pointsPerDay * days * lots;
 }
 
-export default function FxCalculatorPage() {
+const numberFormatter = new Intl.NumberFormat("en-US", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+function FxCalculatorInner() {
   const [pair, setPair] = useState<Pair>("EURUSD");
   const [lots, setLots] = useState(1);
   const [leverage, setLeverage] = useState(100);
@@ -76,7 +81,6 @@ export default function FxCalculatorPage() {
   }, [pair, lots, leverage, account, price, stopPips, takePips]);
 
   return (
-    <QuotesProvider>
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted/20 text-foreground">
       <SEO page="fxCalculator" />
       <Header />
@@ -124,10 +128,21 @@ export default function FxCalculatorPage() {
               <div>
                 <label className="text-sm text-muted-foreground">Market Price</label>
                 <Input
-                  type="number"
-                  step={0.0001}
-                  value={price}
-                  onChange={(e) => { userEdited.current = true; setPrice(Number(e.target.value)); }}
+                  type="text"
+                  value={Number.isFinite(price) ? new Intl.NumberFormat("en-US", {
+                    minimumFractionDigits: 4,
+                    maximumFractionDigits: 4,
+                  }).format(price) : ""}
+                  onChange={(e) => {
+                    userEdited.current = true;
+                    const raw = e.target.value.replace(/,/g, "");
+                    if (raw === "") {
+                      setPrice(NaN as any);
+                      return;
+                    }
+                    const next = Number(raw);
+                    if (Number.isFinite(next)) setPrice(next);
+                  }}
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -147,18 +162,18 @@ export default function FxCalculatorPage() {
             <Card className="bg-card/50 backdrop-blur-xl border border-border/50">
               <CardHeader><CardTitle>Results</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-muted-foreground">Pip Value</span><span className="font-medium">{results.pv.toFixed(2)} {account}</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Margin Required</span><span className="font-medium">{results.margin.toFixed(2)} {account}</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Stop Loss (approx)</span><span className="font-medium">{results.stopLoss.toFixed(2)} {account}</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Take Profit (approx)</span><span className="font-medium">{results.takeProfit.toFixed(2)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Pip Value</span><span className="font-medium">{numberFormatter.format(results.pv)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Margin Required</span><span className="font-medium">{numberFormatter.format(results.margin)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Stop Loss (approx)</span><span className="font-medium">{numberFormatter.format(results.stopLoss)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Take Profit (approx)</span><span className="font-medium">{numberFormatter.format(results.takeProfit)} {account}</span></div>
               </CardContent>
             </Card>
 
             <Card className="bg-card/50 backdrop-blur-xl border border-border/50">
               <CardHeader><CardTitle>Overnight Swap (Illustrative)</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-muted-foreground">Long (1 day)</span><span className="font-medium">{results.swapLong.toFixed(2)} {account}</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Short (1 day)</span><span className="font-medium">{results.swapShort.toFixed(2)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Long (1 day)</span><span className="font-medium">{numberFormatter.format(results.swapLong)} {account}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Short (1 day)</span><span className="font-medium">{numberFormatter.format(results.swapShort)} {account}</span></div>
               </CardContent>
             </Card>
           </div>
@@ -168,6 +183,13 @@ export default function FxCalculatorPage() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function FxCalculatorPage() {
+  return (
+    <QuotesProvider>
+      <FxCalculatorInner />
     </QuotesProvider>
   );
 }

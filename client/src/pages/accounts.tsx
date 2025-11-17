@@ -358,7 +358,7 @@ export default function AccountsPage() {
                 </motion.a>
                 
                 <motion.a 
-                  href="https://my.tradercorners.com/en/register/account-types"
+                  href="https://my.tradercorners.com/en/register/demo/demo-account-types"
                   target="_blank" rel="noopener noreferrer"
                   className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
                   whileHover={{ scale: 1.02, y: -2 }}

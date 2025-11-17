@@ -294,7 +294,7 @@ export default function RiskDisclosure() {
                     <div className="space-y-2">
                       <div className="flex items-center space-x-3">
                         <Shield className="text-primary" size={16} />
-                        <span className="text-sm text-muted-foreground">Email: risk@tradercorners.com</span>
+                        <span className="text-sm text-muted-foreground">Email: info@tradercorners.com</span>
                       </div>
                       <div className="flex items-center space-x-3">
                         <Globe className="text-primary" size={16} />

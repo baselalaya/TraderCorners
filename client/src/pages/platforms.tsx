@@ -306,7 +306,7 @@ export default function PlatformsPage() {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.a>
                 
-                <motion.a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"
+                <motion.a href="https://my.tradercorners.com/en/register/demo/demo-account-types" target="_blank" rel="noopener noreferrer"
                   className="border-2 border-white/80 text-white bg-transparent px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}

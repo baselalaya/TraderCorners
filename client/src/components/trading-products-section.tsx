@@ -248,7 +248,7 @@ export default function TradingProductsSection() {
               Access global markets with institutional-grade execution and competitive pricing. Start with a demo account to explore our full range of trading products.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
+              <a href="https://my.tradercorners.com/en/register/demo/demo-account-types" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="h-12 px-8 bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:shadow-lg">
                   Open Demo Account
                 </Button>

@@ -20,7 +20,7 @@ export default function Footer() {
       title: "Trading",
       links: [
         { text: "Trading Products", href: "/products" },
-        { text: "Account Types", href: "/accounts" },
+        { text: "Account Types", href: "https://my.tradercorners.com/en/register/account-types" },
         { text: "Trading Platforms", href: "/platforms" }
       ],
     },

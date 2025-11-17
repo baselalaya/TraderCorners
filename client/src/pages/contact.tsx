@@ -202,7 +202,7 @@ export default function ContactPage() {
                               {isSubmitted ? 'Message Sent!' : 'Send Message'}
                             </Button>
                           </motion.div>
-                          <motion.a href="tel:+41447078388" className="hidden sm:block" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+                          <motion.a href="tel:+41447078388" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
                             <Button variant="outline" size="lg">Call Us</Button>
                           </motion.a>
                         </div>
@@ -309,7 +309,7 @@ export default function ContactPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.a>
                   
-                  <motion.a href="/accounts"
+                  <motion.a href="https://my.tradercorners.com/en/register/demo/demo-account-types" target="_blank" rel="noopener noreferrer"
                     className="border-2 border-white/80 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm bg-white/10 hover:bg-white hover:text-primary transition-all duration-300 relative overflow-hidden group"
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}

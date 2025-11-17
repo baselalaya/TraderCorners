@@ -154,7 +154,7 @@ export default function Products() {
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </a>
-                  <a href="/accounts">
+                  <a href="https://my.tradercorners.com/en/register/demo/demo-account-types" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg">
                       View Demo Account
                     </Button>
@@ -254,7 +254,7 @@ export default function Products() {
                             }`}
                             size="lg"
                           >
-                            Start Trading {product.name}
+                            Start Trading {product.name.replace(" Trading", "")}
                           </Button>
                           </a>
                         </motion.div>
@@ -332,12 +332,16 @@ export default function Products() {
                   Join thousands of traders who trust Trader Corners for their trading needs. Open your account today and access global markets.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer"><Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
-                    Open Live Account
-                  </Button></a>
-                  <a href="/accounts"><Button variant="outline" size="lg">
-                    Try Demo Account
-                  </Button></a>
+                  <a href="https://my.tradercorners.com/en/register/account-types" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                      Open Live Account
+                    </Button>
+                  </a>
+                  <a href="https://my.tradercorners.com/en/register/demo/demo-account-types" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg">
+                      Try Demo Account
+                    </Button>
+                  </a>
                 </div>
               </div>
             </motion.div>

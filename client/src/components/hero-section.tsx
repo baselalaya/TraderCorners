@@ -64,7 +64,7 @@ export default function HeroSection() {
             </div>
 
             <motion.p
-              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -93,7 +93,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.a>
               <motion.a
-                href="https://my.tradercorners.com/en/register/account-types"
+                href="https://my.tradercorners.com/en/register/demo/demo-account-types"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-primary text-primary bg-transparent px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 relative overflow-hidden group flex items-center justify-center text-sm lg:text-base"
