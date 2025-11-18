@@ -1,6 +1,7 @@
-import type { Express } from "express";
+import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { mountQuotesRoutes } from "./routes/quotes";
+import nodemailer from "nodemailer";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoints for market data and other trading platform features
@@ -91,15 +92,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Contact form endpoint
-  app.post("/api/contact", (req, res) => {
-    const { name, email, message } = req.body;
+  app.post("/api/contact", async (req: Request, res: Response) => {
+    const { name, email, subject, message } = req.body || {};
     
     if (!name || !email || !message) {
-      return res.status(400).json({ error: "All fields are required" });
+      return res.status(400).json({ error: "Name, email, and message are required" });
     }
 
-    // Mock contact form logic
-    res.json({ success: true, message: "Message sent successfully" });
+    try {
+      const transport = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || "smtp.office365.com",
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: false,
+        auth: {
+          user: process.env.SMTP_USER || "info@tradercorners.com",
+          pass: process.env.SMTP_PASS || "",
+        },
+      });
+
+      const adminAddress = process.env.CONTACT_RECEIVER || "info@tradercorners.com";
+
+      await transport.sendMail({
+        from: `"Trader Corners Website" <${process.env.SMTP_USER || "info@tradercorners.com"}>`,
+        to: adminAddress,
+        subject: subject && String(subject).trim().length > 0
+          ? `Contact Form: ${subject}`
+          : "New Contact Form Submission",
+        replyTo: email,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          subject ? `Subject: ${subject}` : "",
+          "",
+          "Message:",
+          message,
+        ].filter(Boolean).join("\n"),
+      });
+
+      res.json({ success: true, message: "Message sent successfully" });
+    } catch (err) {
+      console.error("Error sending contact email", err);
+      res.status(500).json({ error: "Failed to send message. Please try again later." });
+    }
   });
 
   const httpServer = createServer(app);

@@ -48,12 +48,35 @@ export default function ContactPage() {
     message: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || "Failed to send message");
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 4000);
+    } catch (err: any) {
+      setSubmitError(err?.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -195,11 +218,23 @@ export default function ContactPage() {
                             required
                           />
                         </div>
+                        {submitError && (
+                          <p className="text-sm text-red-500 mb-2">{submitError}</p>
+                        )}
                         <div className="flex gap-3">
-                          <motion.div className="flex-1" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-                            <Button type="submit" className={`w-full ${isSubmitted ? 'bg-green-500 hover:bg-green-600' : 'bg-primary'} text-primary-foreground`} size="lg">
+                          <motion.div className="flex-1" whileHover={{ scale: isSubmitting ? 1 : 1.01 }} whileTap={{ scale: isSubmitting ? 1 : 0.99 }}>
+                            <Button
+                              type="submit"
+                              disabled={isSubmitting}
+                              className={`w-full ${isSubmitted ? 'bg-green-500 hover:bg-green-600' : 'bg-primary'} text-primary-foreground`}
+                              size="lg"
+                            >
                               <Send className="w-4 h-4 mr-2" />
-                              {isSubmitted ? 'Message Sent!' : 'Send Message'}
+                              {isSubmitting
+                                ? "Sending..."
+                                : isSubmitted
+                                  ? "Message Sent!"
+                                  : "Send Message"}
                             </Button>
                           </motion.div>
                           <motion.a href="tel:+41447078388" whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
